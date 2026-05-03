@@ -43,7 +43,7 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 		<BaseHead title={`Posts — ${SITE_TITLE}`} description={pageDescription} />
 		<style>
 			.page-header {
-				max-width: var(--page-width);
+				max-width: var(--page-width-wide);
 				margin: 0 auto;
 				padding: 3rem 1rem 1.5rem;
 			}
@@ -69,7 +69,7 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 			}
 
 			.section {
-				max-width: var(--page-width);
+				max-width: var(--page-width-wide);
 				margin: 0 auto;
 				padding: 2rem 1rem 1rem;
 			}
@@ -95,10 +95,14 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 				margin: 0;
 				padding: 0;
 				display: grid;
-				gap: 1rem;
+				gap: 1.2rem;
+				grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+				align-items: stretch;
 			}
 			.post-card {
-				display: block;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
 				padding: 1.4em 1.5em;
 				background: var(--bg-elevated);
 				border: 1px solid var(--border);
@@ -176,6 +180,7 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 				margin: 0 0 1em;
 				font-size: 0.98rem;
 				line-height: 1.55;
+				flex: 1;
 			}
 			.post-card:hover h2 {
 				color: var(--accent);

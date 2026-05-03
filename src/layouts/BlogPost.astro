@@ -37,7 +37,7 @@ const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : '
 
 			/* Article header — Scientific American feel */
 			.article-header {
-				max-width: 760px;
+				max-width: var(--page-width-wide);
 				margin: 0 auto;
 				padding: 3rem 1rem 1.5rem;
 				text-align: center;
@@ -96,7 +96,7 @@ const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : '
 
 			/* Body — long-form prose */
 			.prose {
-				width: 720px;
+				width: var(--page-width);
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 2.5rem 1rem 2rem;
@@ -195,7 +195,7 @@ const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : '
 
 			/* Article footer */
 			.article-footer {
-				max-width: 720px;
+				max-width: var(--page-width);
 				margin: 1rem auto 0;
 				padding: 2rem 1rem;
 				border-top: 1px solid var(--border);
