@@ -13,11 +13,38 @@ const { title, description, pubDate, updatedDate, heroImage, minutes } = Astro.p
 const locale: Locale = (Astro.props as any).locale ?? localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
 const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
+
+// JSON-LD BlogPosting — eligible for Google's article rich-result card
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: title,
+	description,
+	datePublished: pubDate instanceof Date ? pubDate.toISOString() : String(pubDate),
+	...(updatedDate ? { dateModified: updatedDate instanceof Date ? updatedDate.toISOString() : String(updatedDate) } : {}),
+	inLanguage: htmlLang,
+	url: new URL(Astro.url.pathname, Astro.site).toString(),
+	image: new URL('/og-image.png', Astro.site).toString(),
+	author: {
+		'@type': 'Person',
+		name: 'Q.C. Zhang',
+		url: new URL('/about/', Astro.site).toString(),
+	},
+	publisher: {
+		'@type': 'Person',
+		name: 'Q.C. Zhang',
+		url: new URL('/', Astro.site).toString(),
+	},
+	mainEntityOfPage: {
+		'@type': 'WebPage',
+		'@id': new URL(Astro.url.pathname, Astro.site).toString(),
+	},
+};
 ---
 
 <html lang={htmlLang}>
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} schema={schema} />
 		<style>
 			main {
 				width: 100%;

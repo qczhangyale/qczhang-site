@@ -11,11 +11,39 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	/** Optional JSON-LD object embedded in <script type="application/ld+json">.
+	 *  Pass page-specific schemas (Person, ScholarlyArticle, BlogPosting, …);
+	 *  if omitted, a WebSite schema is emitted by default. */
+	schema?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image } = Astro.props;
+const { title, description, image, schema } = Astro.props;
+
+// Strip any locale prefix from the current path so we can emit hreflang
+// alternates for the three locales pointing at the same content.
+const pathname = Astro.url.pathname;
+const localelessPath = pathname.replace(/^\/(zh-cn|zh-tw)\//, '/').replace(/^\/(zh-cn|zh-tw)$/, '/');
+const altEn = new URL(localelessPath, Astro.site).toString();
+const altZhCn = new URL('/zh-cn' + (localelessPath === '/' ? '/' : localelessPath), Astro.site).toString();
+const altZhTw = new URL('/zh-tw' + (localelessPath === '/' ? '/' : localelessPath), Astro.site).toString();
+
+// Default schema — a WebSite blob so every page has at least basic structured data.
+const defaultSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: SITE_TITLE,
+	url: Astro.site?.toString() ?? 'https://qczhang.com/',
+	description,
+	inLanguage: 'en',
+	author: {
+		'@type': 'Person',
+		name: 'Q.C. Zhang',
+		url: new URL('/about/', Astro.site).toString(),
+	},
+};
+const schemaToEmit = schema ?? defaultSchema;
 ---
 
 <!-- Global Metadata -->
@@ -69,6 +97,15 @@ const { title, description, image } = Astro.props;
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- hreflang alternates — point search engines at the right locale variant -->
+<link rel="alternate" hreflang="en" href={altEn} />
+<link rel="alternate" hreflang="zh-CN" href={altZhCn} />
+<link rel="alternate" hreflang="zh-TW" href={altZhTw} />
+<link rel="alternate" hreflang="x-default" href={altEn} />
+
+<!-- Structured data (JSON-LD) — Person / ScholarlyArticle / BlogPosting / WebSite -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaToEmit)} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>

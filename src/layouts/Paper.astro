@@ -12,11 +12,38 @@ const { title, description, doi, date, category, precision, keyFormula } = Astro
 const locale: Locale = Astro.props.locale ?? localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
 const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
+
+// JSON-LD ScholarlyArticle — helps Google Scholar and rich-result indexing
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'ScholarlyArticle',
+	headline: title,
+	name: title,
+	description,
+	datePublished: date instanceof Date ? date.toISOString().slice(0, 10) : String(date),
+	inLanguage: htmlLang,
+	url: new URL(Astro.url.pathname, Astro.site).toString(),
+	author: {
+		'@type': 'Person',
+		name: 'Q.C. Zhang',
+		url: new URL('/about/', Astro.site).toString(),
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: 'Zenodo',
+		url: 'https://zenodo.org/',
+	},
+	identifier: doi,
+	sameAs: doi.startsWith('10.') ? `https://doi.org/${doi}` : doi,
+	isAccessibleForFree: true,
+	license: 'https://creativecommons.org/licenses/by/4.0/',
+	mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+};
 ---
 
 <html lang={htmlLang}>
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} schema={schema} />
 		<style>
 			.paper-header {
 				background: var(--bg-subtle);

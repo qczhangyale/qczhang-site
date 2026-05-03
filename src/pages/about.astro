@@ -5,12 +5,36 @@ import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
 
 const description = 'About Q.C. Zhang and the TCG / Configurable Universe research program.';
+
+// JSON-LD Person schema — feeds Google Knowledge Graph
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Q.C. Zhang',
+	url: new URL('/', Astro.site).toString(),
+	mainEntityOfPage: new URL('/about/', Astro.site).toString(),
+	image: new URL('/og-image.png', Astro.site).toString(),
+	jobTitle: 'Independent researcher in theoretical physics',
+	email: 'mailto:qczhang@aya.yale.edu',
+	knowsAbout: [
+		'Theoretical physics',
+		'Twistor theory',
+		'Quantum gravity',
+		'Cosmological constant',
+		'Foundations of physics',
+		'Configurable Universe',
+		'Twistor Configuration Geometry',
+	],
+	subjectOf: [
+		{ '@type': 'CreativeWork', name: 'Twistor Configuration Geometry research program', url: new URL('/papers/', Astro.site).toString() },
+	],
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`About — ${SITE_TITLE}`} description={description} />
+		<BaseHead title={`About — ${SITE_TITLE}`} description={description} schema={personSchema} />
 		<style>
 			.page-header {
 				padding: 3rem 1rem 1.5rem;
