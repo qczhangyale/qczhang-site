@@ -28,6 +28,7 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 	<div class="share-menu" role="menu" hidden
 		data-msg-copied={t(locale, 'share.linkCopied')}
 		data-msg-failed={t(locale, 'share.copyFailed')}
+		data-msg-paste-hint={t(locale, 'share.linkedinPasteHint')}
 		data-email-subject={t(locale, 'share.emailSubject')}
 	>
 		<button type="button" class="share-item" role="menuitem" data-share-action="copy">
@@ -287,12 +288,22 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 					target = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) +
 						'&text=' + encodeURIComponent(title);
 				} else if (action === 'linkedin') {
-					// Feed-share endpoint mimics a manual paste so the OG preview renders.
-					// The undocumented `text` parameter pre-populates the post body so
-					// readers see a description, not just a bare URL.
-					target = 'https://www.linkedin.com/feed/?shareActive=true' +
-						'&shareUrl=' + encodeURIComponent(url) +
-						'&text=' + encodeURIComponent(composedText);
+					// LinkedIn dropped support for pre-filled post text years ago and
+					// only inconsistently honors the URL parameters. Most reliable UX:
+					// copy title + description + URL to clipboard, then open LinkedIn's
+					// composer. User pastes once with ⌘V — LinkedIn auto-detects the
+					// URL and renders the full rich preview card with our og:image.
+					const pasteHint = menu.getAttribute('data-msg-paste-hint')
+						|| 'Text copied — paste in LinkedIn';
+					copyToClipboard(composedText)
+						.then(function () { showToast(wrap, pasteHint); })
+						.catch(function () { /* still open LinkedIn even if copy fails */ });
+					window.open(
+						'https://www.linkedin.com/feed/?shareActive=true&shareUrl=' + encodeURIComponent(url),
+						'_blank', 'noopener,noreferrer'
+					);
+					closeMenu();
+					return;
 				} else if (action === 'email') {
 					const subjectTpl = menu.getAttribute('data-email-subject') || '{title}';
 					const subject = subjectTpl.replace('{title}', title);
