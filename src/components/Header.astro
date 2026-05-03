@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import ThemePicker from './ThemePicker.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import ShareButton from './ShareButton.astro';
 import { t, localeFromPath } from '../i18n';
+import avatar from '../assets/avatar.jpg';
 
 const locale = localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
@@ -13,8 +15,11 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 <header>
 	<div class="header-inner">
 		<a href={localePrefix + '/'} class="brand">
-			<span class="brand-name">{SITE_TITLE}</span>
-			<span class="brand-tag">{t(locale, 'site.brandTag')}</span>
+			<Image src={avatar} alt="" width={72} height={72} class="brand-avatar" loading="eager" />
+			<div class="brand-text">
+				<span class="brand-name">{SITE_TITLE}</span>
+				<span class="brand-tag">{t(locale, 'site.brandTag')}</span>
+			</div>
 		</a>
 		<div class="header-right">
 			<nav class="nav-links">
@@ -57,10 +62,31 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 
 	.brand {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.7rem;
 		text-decoration: none;
 		color: var(--text);
 		line-height: 1.2;
+	}
+
+	.brand-avatar {
+		width: 36px;
+		height: 36px;
+		border-radius: 999px;
+		object-fit: cover;
+		border: 1px solid var(--border);
+		flex-shrink: 0;
+		transition: border-color 0.15s, transform 0.15s;
+	}
+	.brand:hover .brand-avatar {
+		border-color: var(--accent);
+		transform: scale(1.04);
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.brand:hover {
@@ -118,6 +144,13 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 		}
 		.brand-tag {
 			display: none;
+		}
+		.brand-avatar {
+			width: 32px;
+			height: 32px;
+		}
+		.brand {
+			gap: 0.55rem;
 		}
 		.nav-links :global(a) {
 			padding: 0.4em 0.5em;
