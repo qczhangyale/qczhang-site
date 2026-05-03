@@ -44,6 +44,17 @@ const en: Dict = {
 	// Language picker
 	'lang.label': 'Language',
 
+	// Share button
+	'share.label': 'Share this page',
+	'share.linkCopied': 'Link copied',
+	'share.copyFailed': 'Copy failed',
+	'share.copy': 'Copy link',
+	'share.twitter': 'Share on X',
+	'share.linkedin': 'Share on LinkedIn',
+	'share.email': 'Share via email',
+	'share.weibo': 'Share on Weibo',
+	'share.emailSubject': 'TCG / Configurable Universe — {title}',
+
 	// Homepage
 	'home.eyebrow': 'A research program',
 	'home.title': 'Twistor Configuration Geometry & the Configurable Universe',
@@ -165,6 +176,16 @@ const zhCN: Dict = {
 
 	'lang.label': '语言',
 
+	'share.label': '分享此页',
+	'share.linkCopied': '链接已复制',
+	'share.copyFailed': '复制失败',
+	'share.copy': '复制链接',
+	'share.twitter': '分享到 X',
+	'share.linkedin': '分享到领英',
+	'share.email': '通过邮件分享',
+	'share.weibo': '分享到微博',
+	'share.emailSubject': 'TCG / 可配置宇宙 — {title}',
+
 	'home.eyebrow': '一项研究计划',
 	'home.title': '扭量构型几何与可配置宇宙',
 	'home.tagline': '如果物理学的无量纲常数不是自由参数,而是某个腔室的结构不变量呢?',
@@ -277,6 +298,16 @@ const zhTW: Dict = {
 	'theme.label': '配色主題',
 
 	'lang.label': '語言',
+
+	'share.label': '分享此頁',
+	'share.linkCopied': '連結已複製',
+	'share.copyFailed': '複製失敗',
+	'share.copy': '複製連結',
+	'share.twitter': '分享到 X',
+	'share.linkedin': '分享到 LinkedIn',
+	'share.email': '透過電子郵件分享',
+	'share.weibo': '分享到微博',
+	'share.emailSubject': 'TCG / 可配置宇宙 — {title}',
 
 	'home.eyebrow': '一項研究計畫',
 	'home.title': '扭量構型幾何與可配置宇宙',

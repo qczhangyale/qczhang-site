@@ -3,6 +3,7 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import ThemePicker from './ThemePicker.astro';
 import LanguagePicker from './LanguagePicker.astro';
+import ShareButton from './ShareButton.astro';
 import { t, localeFromPath } from '../i18n';
 
 const locale = localeFromPath(Astro.url.pathname);
@@ -24,6 +25,7 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 			</nav>
 			<LanguagePicker />
 			<ThemePicker />
+			<ShareButton />
 		</div>
 	</div>
 </header>
