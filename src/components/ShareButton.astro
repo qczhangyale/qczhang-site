@@ -261,6 +261,15 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 				const url = window.location.href;
 				const title = document.title;
 
+				// Pull the page meta description so we can pre-populate the post body
+				// with real context, not just the URL. Falls back to title if missing.
+				const descMeta = document.querySelector('meta[name="description"]')
+					|| document.querySelector('meta[property="og:description"]');
+				const description = descMeta ? (descMeta.getAttribute('content') || '') : '';
+				const composedText = description
+					? title + '\n\n' + description + '\n\n' + url
+					: title + '\n\n' + url;
+
 				if (action === 'copy') {
 					const msgCopied = menu.getAttribute('data-msg-copied') || 'Link copied';
 					const msgFailed = menu.getAttribute('data-msg-failed') || 'Copy failed';
@@ -273,21 +282,32 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 
 				let target = null;
 				if (action === 'twitter') {
+					// X/Twitter renders an OG preview card from `url=`, and uses `text=` as
+					// the tweet body. Title is enough — description bloats the tweet.
 					target = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) +
 						'&text=' + encodeURIComponent(title);
 				} else if (action === 'linkedin') {
-					// Use the feed-share endpoint instead of share-offsite/ — the latter
-					// often fails to render the preview card in its dialog, while the
-					// feed endpoint mimics a manual paste and consistently fetches OG tags.
-					target = 'https://www.linkedin.com/feed/?shareActive=true&shareUrl=' + encodeURIComponent(url);
+					// Feed-share endpoint mimics a manual paste so the OG preview renders.
+					// The undocumented `text` parameter pre-populates the post body so
+					// readers see a description, not just a bare URL.
+					target = 'https://www.linkedin.com/feed/?shareActive=true' +
+						'&shareUrl=' + encodeURIComponent(url) +
+						'&text=' + encodeURIComponent(composedText);
 				} else if (action === 'email') {
 					const subjectTpl = menu.getAttribute('data-email-subject') || '{title}';
 					const subject = subjectTpl.replace('{title}', title);
+					// Email body: title, description, blank line, URL — easy to skim.
+					const body = description
+						? title + '\n\n' + description + '\n\n' + url
+						: title + '\n\n' + url;
 					target = 'mailto:?subject=' + encodeURIComponent(subject) +
-						'&body=' + encodeURIComponent(url);
+						'&body=' + encodeURIComponent(body);
 				} else if (action === 'weibo') {
+					// Weibo's `title` parameter populates the post text and supports
+					// description-length content. Append description for richer context.
+					const weiboTitle = description ? title + ' — ' + description : title;
 					target = 'https://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) +
-						'&title=' + encodeURIComponent(title);
+						'&title=' + encodeURIComponent(weiboTitle);
 				}
 
 				if (target) {
