@@ -1,0 +1,65 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { t } from '../../i18n';
+
+const locale = 'zh-cn';
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="warm">
+	<head>
+		<BaseHead title={`${t(locale, 'about.title')} — Q.C. Zhang`} description={t(locale, 'about.lede')} />
+		<style>
+			.page-header { padding: 3rem 1rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--bg-subtle); }
+			.page-header-inner { max-width: var(--page-width); margin: 0 auto; }
+			.page-eyebrow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+			.page-header h1 { margin: 0 0 0.3em 0; font-size: 2rem; letter-spacing: -0.02em; }
+			.lede { font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-muted); font-style: italic; margin: 0; line-height: 1.5; max-width: 600px; }
+			main { max-width: var(--page-width); margin: 0 auto; padding: 2.5rem 1rem 1rem; }
+			main p { line-height: 1.75; }
+			h2 { margin-top: 2.5em; font-size: 1.25rem; }
+			.contact-card { margin-top: 3rem; padding: 1.5em 1.6em; background: var(--bg-subtle); border-left: 3px solid var(--accent); border-radius: 6px; }
+			.contact-card h3 { margin: 0 0 0.5em 0; font-size: 1rem; }
+			.contact-card p { margin-bottom: 0.5em; color: var(--text-muted); font-size: 0.95rem; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="page-header">
+			<div class="page-header-inner">
+				<div class="page-eyebrow">{t(locale, 'about.eyebrow')}</div>
+				<h1>{t(locale, 'about.title')}</h1>
+				<p class="lede">{t(locale, 'about.lede')}</p>
+			</div>
+		</div>
+
+		<main>
+			<p>{t(locale, 'about.intro')}</p>
+			<p set:html={t(locale, 'about.framework').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')}></p>
+
+			<h2>{t(locale, 'about.empiricalAnchor')}</h2>
+			<p set:html={t(locale, 'about.empiricalAnchorBody').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')}></p>
+
+			<h2>{t(locale, 'about.prediction')}</h2>
+			<p>
+				{t(locale, 'about.predictionBody')} 框架还包含一条不可行定理(壳上弱角不可能,
+				60σ 排除)和三条结构性约束,详见
+				<a href="/zh-cn/papers/04-predictions-no-go/">预测与不可行性论文</a>。
+			</p>
+
+			<h2>{t(locale, 'about.corpus')}</h2>
+			<p>
+				{t(locale, 'about.corpusBody')} 详见<a href="/zh-cn/papers/">{t(locale, 'about.corpusList')}</a>。
+			</p>
+
+			<div class="contact-card">
+				<h3>{t(locale, 'about.contact')}</h3>
+				<p>{t(locale, 'about.contactEmail')}: <a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a></p>
+				<p style="margin-bottom: 0;">{t(locale, 'about.contactOpen')}</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

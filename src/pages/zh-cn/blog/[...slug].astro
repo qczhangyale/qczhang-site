@@ -1,0 +1,40 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../../../layouts/BlogPost.astro';
+import { filterEnglishOnly, pickLocalized } from '../../../i18n';
+
+export async function getStaticPaths() {
+	function readingMinutes(body) {
+		if (!body) return 1;
+		const cleaned = body
+			.replace(/```[\s\S]*?```/g, ' ')
+			.replace(/`[^`]+`/g, ' ')
+			.replace(/\$\$[\s\S]*?\$\$/g, ' ')
+			.replace(/\$[^$\n]+\$/g, ' ')
+			.replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+			.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+			.replace(/[#>*_~`-]+/g, ' ');
+		const words = cleaned.split(/\s+/).filter((w) => w.length > 0).length;
+		const cjk = (cleaned.match(/[一-鿿]/g) ?? []).length;
+		const effectiveWords = words + cjk * 0.8;
+		return Math.max(1, Math.round(effectiveWords / 200));
+	}
+
+	const all = await getCollection('blog');
+	const englishOnly = filterEnglishOnly(all);
+	return englishOnly.map((english) => {
+		const entry = pickLocalized(all, english, 'zh-cn');
+		return {
+			params: { slug: english.id },
+			props: { entry, minutes: readingMinutes(entry.body), locale: 'zh-cn' as const },
+		};
+	});
+}
+
+const { entry, minutes } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BlogPost {...entry.data} minutes={minutes} locale="zh-cn">
+	<Content />
+</BlogPost>

@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, pickLocalized } from '../../../i18n';
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import Header from '../../../components/Header.astro';
+import { t } from '../../../i18n';
+
+const locale = 'zh-tw';
+const all = await getCollection('papers');
+const englishOnly = filterEnglishOnly(all).sort((a, b) => a.data.order - b.data.order);
+const papers = englishOnly.map((e) => ({ english: e, localized: pickLocalized(all, e, 'zh-tw') }));
+const synthesis = papers.filter((p) => p.english.data.category === 'synthesis');
+const cosmology = papers.filter((p) => p.english.data.category === 'cosmology');
+const method = papers.filter((p) => p.english.data.category === 'method');
+const twistor = papers.filter((p) => p.english.data.category === 'twistor');
+
+const sections = [
+	{ key: 'synthesis', title: t(locale, 'papers.section.synthesis'), subtitle: t(locale, 'papers.section.synthesisSubtitle'), note: t(locale, 'papers.section.synthesisNote'), papers: synthesis },
+	{ key: 'cosmology', title: t(locale, 'papers.section.cosmology'), subtitle: t(locale, 'papers.section.cosmologySubtitle'), note: t(locale, 'papers.section.cosmologyNote'), papers: cosmology },
+	{ key: 'method', title: t(locale, 'papers.section.method'), subtitle: t(locale, 'papers.section.methodSubtitle'), note: t(locale, 'papers.section.methodNote'), papers: method },
+	{ key: 'twistor', title: t(locale, 'papers.section.twistor'), subtitle: t(locale, 'papers.section.twistorSubtitle'), note: t(locale, 'papers.section.twistorNote'), papers: twistor },
+];
+---
+
+<!doctype html>
+<html lang="zh-TW" data-theme="warm">
+	<head>
+		<BaseHead title={`${t(locale, 'papers.title')} — Q.C. Zhang`} description={t(locale, 'papers.intro')} />
+		<style>
+			.page-header { max-width: var(--page-width-wide); margin: 0 auto; padding: 3rem 1rem 1.5rem; }
+			.page-eyebrow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+			.page-header h1 { margin: 0 0 0.4em 0; font-size: 2.1rem; letter-spacing: -0.02em; }
+			.page-intro { color: var(--text-muted); font-size: 1.02rem; max-width: 720px; line-height: 1.65; }
+			.page-summary { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+			.summary-stat { font-family: var(--font-sans); }
+			.summary-stat .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; display: block; }
+			.summary-stat .label { font-size: 0.8rem; color: var(--text-faint); margin-top: 0.3em; display: block; }
+			.section { max-width: var(--page-width-wide); margin: 0 auto; padding: 2.5rem 1rem 1rem; }
+			.section-header { margin-bottom: 1.2rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border); }
+			.section-header h2 { margin: 0 0 0.2em 0; font-size: 1.4rem; }
+			.section-subtitle { font-family: var(--font-sans); font-size: 0.82rem; color: var(--accent); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.5em; }
+			.section-note { color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 720px; line-height: 1.65; }
+			.papers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+			.paper-card { display: flex; flex-direction: column; padding: 1.3em 1.4em; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+			.paper-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+			.paper-meta { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.7em; flex-wrap: wrap; }
+			.paper-num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+			.paper-card h3 { margin: 0 0 0.5em 0; font-size: 1.02rem; line-height: 1.35; font-family: var(--font-sans); }
+			.paper-card .description { color: var(--text-muted); margin: 0; font-size: 0.92rem; line-height: 1.55; flex: 1; }
+			.paper-card .doi { margin-top: 0.9em; padding-top: 0.7em; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="page-header">
+			<div class="page-eyebrow">{t(locale, 'papers.eyebrow')}</div>
+			<h1>{t(locale, 'papers.title')}</h1>
+			<p class="page-intro">{t(locale, 'papers.intro')}</p>
+			<div class="page-summary">
+				<div class="summary-stat"><span class="num">16</span><span class="label">{t(locale, 'papers.statPapers')}</span></div>
+				<div class="summary-stat"><span class="num">9</span><span class="label">{t(locale, 'papers.statRelations')}</span></div>
+				<div class="summary-stat"><span class="num">124</span><span class="label">{t(locale, 'papers.statOoM')}</span></div>
+				<div class="summary-stat"><span class="num">1</span><span class="label">{t(locale, 'papers.statPrediction')}</span></div>
+			</div>
+		</div>
+
+		{sections.map((s) => (
+			<div class="section">
+				<div class="section-header">
+					<div class="section-subtitle">{s.subtitle}</div>
+					<h2>{s.title}</h2>
+					<p class="section-note">{s.note}</p>
+				</div>
+				<div class="papers-grid">
+					{s.papers.map(({ english, localized }) => (
+						<a href={`/zh-tw/papers/${english.id}/`} class="paper-card">
+							<div class="paper-meta">
+								<span class={`badge badge-${english.data.category}`}>{english.data.category}</span>
+								{english.data.precision && <span class="badge-precision">{english.data.precision}</span>}
+								<span class="paper-num">№ {String(english.data.order).padStart(2, '0')}</span>
+							</div>
+							<h3>{localized.data.title}</h3>
+							<p class="description">{localized.data.description}</p>
+							<div class="doi">{english.data.doi}</div>
+						</a>
+					))}
+				</div>
+			</div>
+		))}
+
+		<Footer />
+	</body>
+</html>

@@ -1,114 +1,284 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import { filterEnglishOnly } from '../../i18n';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { SITE_TITLE } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Reading-time estimate at ~200 wpm. Strip simple markdown noise before counting.
+function readingMinutes(body: string | undefined): number {
+	if (!body) return 1;
+	const cleaned = body
+		.replace(/```[\s\S]*?```/g, ' ')          // fenced code
+		.replace(/`[^`]+`/g, ' ')                 // inline code
+		.replace(/\$\$[\s\S]*?\$\$/g, ' ')        // display math
+		.replace(/\$[^$\n]+\$/g, ' ')             // inline math
+		.replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')    // images
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')  // links → keep label only
+		.replace(/[#>*_~`-]+/g, ' ');             // markdown punctuation
+	const words = cleaned.split(/\s+/).filter((w) => w.length > 0).length;
+	return Math.max(1, Math.round(words / 200));
+}
+
+const LONG_READ_THRESHOLD = 5;  // minutes; ≥ this triggers the "Long read" tag
+
+// All posts sorted newest-first, with reading-time annotation
+const allPosts = filterEnglishOnly(await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.map((p) => ({ post: p, minutes: readingMinutes(p.body) }));
+
+// Split into pinned and rest. Pinned posts appear at the top
+// (themselves sorted newest-first); the rest follow in chronological order.
+const pinned = allPosts.filter((x) => x.post.data.pinned);
+const recent = allPosts.filter((x) => !x.post.data.pinned);
+
+const pageDescription = "Long-form writing on the Twistor Configuration Geometry program — essays, notes, and explanations.";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Posts — ${SITE_TITLE}`} description={pageDescription} />
 		<style>
-			main {
-				width: 960px;
+			.page-header {
+				max-width: var(--page-width);
+				margin: 0 auto;
+				padding: 3rem 1rem 1.5rem;
 			}
-			ul {
+			.page-eyebrow {
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				margin-bottom: 0.6rem;
+			}
+			.page-header h1 {
+				margin: 0 0 0.4em 0;
+				font-size: 2.2rem;
+				letter-spacing: -0.02em;
+			}
+			.page-intro {
+				color: var(--text-muted);
+				font-size: 1.05rem;
+				max-width: 640px;
+				margin: 0;
+			}
+
+			.section {
+				max-width: var(--page-width);
+				margin: 0 auto;
+				padding: 2rem 1rem 1rem;
+			}
+			.section-header {
 				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
+				align-items: baseline;
+				gap: 0.7em;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid var(--border);
+			}
+			.section-label {
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 600;
+				color: var(--text-faint);
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+			}
+
+			.posts {
+				list-style: none;
 				margin: 0;
 				padding: 0;
+				display: grid;
+				gap: 1rem;
 			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
+			.post-card {
 				display: block;
+				padding: 1.4em 1.5em;
+				background: var(--bg-elevated);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				color: inherit;
+				text-decoration: none;
+				transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
+			.post-card:hover {
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-md);
+				border-color: var(--border-strong);
+				text-decoration: none;
+			}
+
+			.post-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+				flex-wrap: wrap;
+				margin-bottom: 0.6em;
+				font-family: var(--font-sans);
+				font-size: 0.8rem;
+				color: var(--text-faint);
+			}
+			.post-meta .pin-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.3em;
+				padding: 0.15em 0.6em;
+				background: var(--accent-bg);
+				color: var(--accent);
+				border-radius: 999px;
+				font-size: 0.7rem;
+				font-weight: 600;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+			}
+			.post-meta .pin-icon {
+				font-size: 0.85em;
 				line-height: 1;
 			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
+			.post-meta .meta-sep {
+				color: var(--border-strong);
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
+			.post-meta .reading-time {
+				color: var(--text-muted);
+				font-weight: 500;
 			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
+			.post-meta .long-read-tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 0.15em 0.55em;
+				background: var(--bg-subtle);
+				color: var(--text-muted);
+				border: 1px solid var(--border);
+				border-radius: 999px;
+				font-size: 0.68rem;
+				font-weight: 600;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
 			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
+
+			.post-card h2 {
+				font-family: var(--font-serif);
+				font-size: 1.35rem;
+				line-height: 1.25;
+				margin: 0 0 0.4em 0;
+				color: var(--text);
+				font-weight: 700;
+				letter-spacing: -0.01em;
+			}
+			.post-card .description {
+				color: var(--text-muted);
+				margin: 0 0 1em;
+				font-size: 0.98rem;
+				line-height: 1.55;
+			}
+			.post-card:hover h2 {
+				color: var(--accent);
+			}
+			.post-card .card-cta {
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				font-weight: 500;
+				color: var(--accent);
+				margin-top: 0.4em;
+				transition: transform 0.15s;
+			}
+			.post-card:hover .card-cta {
+				transform: translateX(2px);
+				color: var(--accent-hover);
+			}
+
+			.empty-state {
+				text-align: center;
+				padding: 2rem 1rem;
+				color: var(--text-faint);
+				font-family: var(--font-sans);
+			}
+
+			@media (max-width: 640px) {
+				.page-header h1 {
+					font-size: 1.7rem;
 				}
-				ul li {
-					width: 100%;
-					text-align: center;
+				.post-card {
+					padding: 1.1em 1.2em;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
+				.post-card h2 {
+					font-size: 1.15rem;
 				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
+
+		{
+			pinned.length > 0 && (
+				<div class="section">
+					<div class="section-header">
+						<span class="section-label">Pinned</span>
+					</div>
+					<ul class="posts">
+						{pinned.map(({ post, minutes }) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
+								<a href={`/blog/${post.id}/`} class="post-card">
+									<div class="post-meta">
+										<span class="pin-badge">
+											<span class="pin-icon">📌</span> Pinned
+										</span>
 										<FormattedDate date={post.data.pubDate} />
-									</p>
+										<span class="meta-sep">·</span>
+										<span class="reading-time">{minutes} min read</span>
+										{minutes >= LONG_READ_THRESHOLD && (
+											<span class="long-read-tag">Long read</span>
+										)}
+									</div>
+									<h2>{post.data.title}</h2>
+									<p class="description">{post.data.description}</p>
+									<div class="card-cta">Continue reading →</div>
 								</a>
 							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
+						))}
+					</ul>
+				</div>
+			)
+		}
+
+		<div class="section">
+			<div class="section-header">
+				<span class="section-label">{pinned.length > 0 ? 'More posts' : 'Latest'}</span>
+			</div>
+			{
+				recent.length > 0 ? (
+					<ul class="posts">
+						{recent.map(({ post, minutes }) => (
+							<li>
+								<a href={`/blog/${post.id}/`} class="post-card">
+									<div class="post-meta">
+										<FormattedDate date={post.data.pubDate} />
+										<span class="meta-sep">·</span>
+										<span class="reading-time">{minutes} min read</span>
+										{minutes >= LONG_READ_THRESHOLD && (
+											<span class="long-read-tag">Long read</span>
+										)}
+									</div>
+									<h2>{post.data.title}</h2>
+									<p class="description">{post.data.description}</p>
+									<div class="card-cta">Continue reading →</div>
+								</a>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p class="empty-state">No more posts yet — check back soon.</p>
+				)
+			}
+		</div>
+
 		<Footer />
 	</body>
 </html>

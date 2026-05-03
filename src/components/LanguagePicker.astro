@@ -1,0 +1,105 @@
+---
+import { LOCALES, LOCALE_LABELS, LOCALE_FULL_NAMES, t, localeFromPath } from '../i18n';
+
+const currentLocale = localeFromPath(Astro.url.pathname);
+---
+
+<div class="lang-picker" role="group" aria-label={t(currentLocale, 'lang.label')}>
+	{LOCALES.map((locale) => (
+		<button
+			type="button"
+			data-locale-set={locale}
+			aria-label={LOCALE_FULL_NAMES[locale]}
+			title={LOCALE_FULL_NAMES[locale]}
+			aria-pressed={locale === currentLocale ? 'true' : 'false'}
+		>
+			{LOCALE_LABELS[locale]}
+		</button>
+	))}
+</div>
+
+<style>
+	.lang-picker {
+		display: inline-flex;
+		gap: 0;
+		padding: 2px;
+		background: var(--bg-subtle);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+	}
+	.lang-picker button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 28px;
+		height: 28px;
+		padding: 0 0.5em;
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 600;
+		line-height: 1;
+		border: none;
+		border-radius: 999px;
+		background: transparent;
+		color: var(--text-faint);
+		cursor: pointer;
+		transition: background 0.15s, color 0.15s;
+	}
+	.lang-picker button:hover {
+		color: var(--text);
+	}
+	.lang-picker button[aria-pressed="true"] {
+		background: var(--bg-elevated);
+		color: var(--accent);
+		box-shadow: var(--shadow-sm);
+	}
+	.lang-picker button:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 640px) {
+		.lang-picker button {
+			min-width: 26px;
+			height: 26px;
+			padding: 0 0.4em;
+			font-size: 0.74rem;
+		}
+	}
+</style>
+
+<script is:inline>
+	(function () {
+		const STORAGE_KEY = 'qcz-locale';
+		const VALID = ['en', 'zh-cn', 'zh-tw'];
+
+		function localeFromPath(pathname) {
+			const segments = pathname.split('/').filter(Boolean);
+			const first = segments[0]?.toLowerCase();
+			if (first === 'zh-cn' || first === 'zh-tw') return first;
+			return 'en';
+		}
+
+		function localizedUrl(pathname, target) {
+			const segments = pathname.split('/').filter(Boolean);
+			const current = localeFromPath(pathname);
+			const rest = current === 'en' ? segments : segments.slice(1);
+			if (target === 'en') {
+				return '/' + (rest.length ? rest.join('/') + '/' : '');
+			}
+			return '/' + target + '/' + (rest.length ? rest.join('/') + '/' : '');
+		}
+
+		document.addEventListener('click', function (e) {
+			const btn = e.target.closest('[data-locale-set]');
+			if (!btn) return;
+			const target = btn.getAttribute('data-locale-set');
+			if (!VALID.includes(target)) return;
+			try { localStorage.setItem(STORAGE_KEY, target); } catch (_) {}
+			const targetUrl = localizedUrl(window.location.pathname, target);
+			if (targetUrl !== window.location.pathname) {
+				window.location.assign(targetUrl);
+			}
+		});
+	})();
+</script>

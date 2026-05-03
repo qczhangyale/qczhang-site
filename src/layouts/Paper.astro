@@ -1,0 +1,226 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { t, type Locale, localeFromPath } from '../i18n';
+
+type Props = CollectionEntry<'papers'>['data'] & { locale?: Locale };
+
+const { title, description, doi, date, category, precision, keyFormula } = Astro.props;
+const locale: Locale = Astro.props.locale ?? localeFromPath(Astro.url.pathname);
+const localePrefix = locale === 'en' ? '' : '/' + locale;
+const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
+---
+
+<html lang={htmlLang}>
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			.paper-header {
+				background: var(--bg-subtle);
+				border-bottom: 1px solid var(--border);
+				padding: 3rem 1rem 2.5rem;
+			}
+			.paper-header-inner {
+				max-width: var(--page-width);
+				margin: 0 auto;
+			}
+			.paper-meta-top {
+				display: flex;
+				gap: 0.6rem;
+				align-items: center;
+				margin-bottom: 1.2rem;
+				flex-wrap: wrap;
+			}
+			.paper-back {
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				text-decoration: none;
+				margin-right: auto;
+			}
+			.paper-back:hover {
+				color: var(--accent);
+				text-decoration: none;
+			}
+
+			.paper-title {
+				font-size: 2rem;
+				line-height: 1.2;
+				margin: 0 0 1rem 0;
+				letter-spacing: -0.02em;
+			}
+
+			.paper-description {
+				font-family: var(--font-serif);
+				font-size: 1.1rem;
+				color: var(--text-muted);
+				font-style: italic;
+				margin: 0 0 1.5rem 0;
+			}
+
+			.paper-meta-row {
+				display: flex;
+				gap: 1.5rem;
+				flex-wrap: wrap;
+				font-family: var(--font-sans);
+				font-size: 0.88rem;
+				color: var(--text-muted);
+			}
+			.paper-meta-row .label {
+				color: var(--text-faint);
+				font-size: 0.75rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-bottom: 0.2em;
+				display: block;
+			}
+			.paper-meta-row .value a {
+				color: var(--accent);
+				font-family: var(--font-mono);
+				font-size: 0.92rem;
+			}
+
+			.key-formula {
+				margin-top: 1.5rem;
+				padding: 1.1em 1.3em;
+				background: var(--bg-elevated);
+				border: 1px solid var(--border);
+				border-left: 3px solid var(--accent);
+				border-radius: 4px;
+				font-family: var(--font-mono);
+				font-size: 0.95rem;
+				color: var(--text);
+			}
+			.key-formula-label {
+				font-family: var(--font-sans);
+				font-size: 0.7rem;
+				color: var(--text-faint);
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				margin-bottom: 0.3em;
+			}
+
+			.paper-body {
+				max-width: var(--page-width);
+				margin: 0 auto;
+				padding: 2.5rem 1rem 2rem;
+			}
+
+			/* Prose styling */
+			.paper-body :global(h2) {
+				margin-top: 2.2em;
+				margin-bottom: 0.6em;
+				font-size: 1.4rem;
+			}
+			.paper-body :global(h3) {
+				margin-top: 1.8em;
+				font-size: 1.15rem;
+			}
+			.paper-body :global(p) {
+				margin-bottom: 1em;
+				line-height: 1.55;
+			}
+			.paper-body :global(ul),
+			.paper-body :global(ol) {
+				margin-bottom: 1em;
+				line-height: 1.55;
+			}
+			.paper-body :global(li) {
+				margin-bottom: 0.4em;
+			}
+
+			.paper-footer {
+				max-width: var(--page-width);
+				margin: 2rem auto 0;
+				padding: 2rem 1rem;
+				border-top: 1px solid var(--border);
+				font-family: var(--font-sans);
+			}
+			.paper-footer-link {
+				font-size: 0.95rem;
+				color: var(--text-muted);
+				text-decoration: none;
+			}
+			.paper-footer-link:hover {
+				color: var(--accent);
+				text-decoration: none;
+			}
+			.paper-doi-cta {
+				margin-top: 1.5rem;
+				padding: 1.2em 1.4em;
+				background: var(--bg-subtle);
+				border-radius: 6px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+			.paper-doi-cta-text {
+				font-size: 0.92rem;
+				color: var(--text-muted);
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<header class="paper-header">
+			<div class="paper-header-inner">
+				<div class="paper-meta-top">
+					<a href={localePrefix + '/papers/'} class="paper-back">{t(locale, 'paper.back')}</a>
+					<span class={`badge badge-${category}`}>{category}</span>
+					{precision && <span class="badge-precision">{precision}</span>}
+				</div>
+
+				<h1 class="paper-title">{title}</h1>
+				<p class="paper-description">{description}</p>
+
+				<div class="paper-meta-row">
+					<div>
+						<span class="label">{t(locale, 'paper.published')}</span>
+						<span class="value"><FormattedDate date={date} /></span>
+					</div>
+					<div>
+						<span class="label">{t(locale, 'paper.doi')}</span>
+						<span class="value">
+							<a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a>
+						</span>
+					</div>
+				</div>
+
+				{
+					keyFormula && (
+						<div class="key-formula">
+							<div class="key-formula-label">{t(locale, 'paper.keyRelation')}</div>
+							{keyFormula}
+						</div>
+					)
+				}
+			</div>
+		</header>
+
+		<main class="paper-body">
+			<slot />
+		</main>
+
+		<div class="paper-footer">
+			<div class="paper-doi-cta">
+				<div class="paper-doi-cta-text">
+					{t(locale, 'paper.cta')}
+				</div>
+				<a href={`https://doi.org/${doi}`} class="btn btn-primary" target="_blank" rel="noopener">
+					{t(locale, 'paper.openZenodo')}
+				</a>
+			</div>
+			<p style="margin-top: 1.5rem;">
+				<a href={localePrefix + '/papers/'} class="paper-footer-link">{t(locale, 'paper.backFull')}</a>
+			</p>
+		</div>
+
+		<Footer />
+	</body>
+</html>

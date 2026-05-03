@@ -1,0 +1,228 @@
+---
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, pickLocalized } from '../../i18n';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { t } from '../../i18n';
+
+const locale = 'zh-cn';
+const all = await getCollection('papers');
+const englishOnly = filterEnglishOnly(all).sort((a, b) => a.data.order - b.data.order);
+const papers = englishOnly.map((e) => ({ english: e, localized: pickLocalized(all, e, 'zh-cn') }));
+const synthesis = papers.filter((p) => p.english.data.category === 'synthesis');
+
+const relations = [
+	{ id: 'O1', formula: '1/α ≈ π + π² + 4π³', precision: '2.2 ppm', sector: '电磁', provenance: 'partial', originLabel: t(locale, 'rel.twistorOrigin') },
+	{ id: 'O2', formula: '1/α_s(M_Z) ≈ (π + 4π² + 36π³) / (π + π² + 4π³)', precision: '0.3%', sector: '强相互作用', provenance: 'original' },
+	{ id: 'O3', formula: 'sin²θ_W(0) ≈ 3/(4π)', precision: '0.03%', sector: '弱(Thomson)', provenance: 'original' },
+	{ id: 'O4', formula: 'm_π / m_e ≈ 2(π + π² + 4π³)', precision: '0.4%', sector: '强子', provenance: 'partial', originLabel: t(locale, 'rel.nambuRecast') },
+	{ id: 'O5', formula: 'y_e ≈ (1 − 1/(2π)) · e^(−4π)', precision: '0.09%', sector: '电子 Yukawa', provenance: 'original' },
+	{ id: 'O6', formula: 'L_τ/L_μ ≈ L_μ/L_e ≈ φ', precision: '0.24% / 0.54%', sector: '轻子质量比', provenance: 'original' },
+	{ id: 'O7', formula: 'M_W / v ≈ 1/√(3π)', precision: '0.21%', sector: '电弱', provenance: 'original' },
+	{ id: 'O8', formula: 'α_G ≡ G m_e² / (ℏc) ≈ α⁸ y_e⁵', precision: '0.024%', sector: '引力', provenance: 'original' },
+	{ id: 'O9', formula: 'Λ ℓ_Pl² ≈ (α⁴ / 4π)(m_e / m_Pl)⁵', precision: '1.9%', sector: '宇宙学', provenance: 'original' },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="warm">
+	<head>
+		<BaseHead title={t(locale, 'home.title')} description={t(locale, 'site.tagline')} />
+		<style>
+			.hero {
+				padding: 4rem 1rem 3rem;
+				background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+				border-bottom: 1px solid var(--border);
+			}
+			.hero-inner { max-width: var(--page-width); margin: 0 auto; }
+			.hero-eyebrow {
+				font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600;
+				color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+				margin-bottom: 1rem;
+			}
+			.hero h1 { font-size: 2.4rem; line-height: 1.2; margin: 0 0 0.6em 0; letter-spacing: -0.02em; }
+			.hero-tagline {
+				font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-muted);
+				font-style: italic; margin-bottom: 2rem; line-height: 1.55;
+			}
+			.hero-cta { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.5rem; }
+			.section { max-width: var(--page-width); margin: 0 auto; padding: 3rem 1rem 1rem; }
+			.section-eyebrow {
+				font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600;
+				color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase;
+				margin-bottom: 0.4rem;
+			}
+			.section h2 { margin-top: 0; font-size: 1.5rem; }
+			.section-intro { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.65; }
+			.lead { font-size: 1.05rem; line-height: 1.75; }
+			.lead p { margin-bottom: 1.1em; }
+			.fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+			.fact { padding: 1.1em 1.2em; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; }
+			.fact-label { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.3em; }
+			.fact-value { font-family: var(--font-serif); font-size: 0.98rem; line-height: 1.55; }
+			@media (max-width: 640px) { .fact-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 1.7rem; } }
+
+			.synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+			.synth-card .synth-num { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.3em; }
+			.synth-card h3 { margin: 0 0 0.4em 0; font-size: 1.05rem; line-height: 1.3; }
+			.synth-card p { color: var(--text-muted); margin: 0; font-size: 0.93rem; line-height: 1.55; }
+			@media (max-width: 640px) { .synth-grid { grid-template-columns: 1fr; } }
+			.all-papers-link { margin: 1.4rem 0 0; text-align: right; font-family: var(--font-sans); font-size: 0.95rem; }
+			.all-papers-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+			.relations-wrapper { margin-top: 1rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg-elevated); }
+			.relations-table { width: 100%; border-collapse: collapse; margin: 0; font-size: 0.95rem; }
+			.relations-table thead th {
+				padding: 0.7em 1.1em; background: var(--bg-subtle); border-bottom: 1px solid var(--border);
+				font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+				color: var(--text-faint); letter-spacing: 0.06em; text-transform: uppercase;
+				text-align: left; white-space: nowrap;
+			}
+			.relations-table tbody td { padding: 0.85em 1.1em; border-bottom: 1px solid var(--border); vertical-align: middle; }
+			.relations-table tbody tr:last-child td { border-bottom: none; }
+			.relations-table .col-id { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); font-weight: 600; width: 1%; white-space: nowrap; }
+			.relations-table .col-formula { font-family: var(--font-mono); font-size: 0.92rem; }
+			.relations-table .col-sector { font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-faint); white-space: nowrap; width: 1%; }
+			.relations-table .col-precision { white-space: nowrap; width: 1%; text-align: right; }
+			.relations-table .col-origin { white-space: nowrap; width: 1%; text-align: right; }
+			.origin-badge {
+				display: inline-flex; align-items: center; gap: 0.3em;
+				font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500;
+				color: var(--text-muted); white-space: nowrap;
+			}
+			.origin-badge.yes { color: var(--text); }
+			.origin-badge .check { font-size: 0.9em; line-height: 1; color: var(--text-faint); }
+			.contact-block { margin-top: 2.5rem; padding: 1.5em 1.5em; background: var(--bg-subtle); border-radius: 8px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+			.contact-block strong { color: var(--text); }
+
+			@media (max-width: 720px) {
+				.relations-table { display: block; }
+				.relations-table thead { display: none; }
+				.relations-table tbody, .relations-table tr, .relations-table td { display: block; }
+				.relations-wrapper { border: none; border-radius: 0; background: transparent; overflow: visible; }
+				.relations-table tr { margin-bottom: 0.7rem; padding: 0.9em 1em; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-elevated); }
+				.relations-table tbody td { padding: 0.25em 0; border: none; text-align: left; width: auto; }
+				.relations-table .col-id { display: inline-block; margin-right: 0.6em; }
+				.relations-table .col-id::after { content: ' · '; color: var(--text-faint); margin: 0 0.2em; }
+				.relations-table .col-sector { display: inline-block; }
+				.relations-table .col-formula { font-size: 0.88rem; margin: 0.4em 0 0.5em; overflow-x: auto; }
+				.relations-table .col-precision, .relations-table .col-origin { display: inline-block; margin-right: 0.5em; }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="hero-eyebrow">{t(locale, 'home.eyebrow')}</div>
+				<h1>{t(locale, 'home.title')}</h1>
+				<p class="hero-tagline">{t(locale, 'home.tagline')}</p>
+				<div class="hero-cta">
+					<a href="/zh-cn/papers/" class="btn btn-primary">{t(locale, 'home.cta.read')}</a>
+					<a href="/zh-cn/about/" class="btn btn-secondary">{t(locale, 'home.cta.about')}</a>
+				</div>
+			</div>
+		</section>
+
+		<div class="section">
+			<div class="lead">
+				<p>
+					物理学的无量纲常数 — α、Λ、α<sub>G</sub>、Yukawa 耦合、sin²θ<sub>W</sub> 等 —
+					一向被当作可调的自由参数。本研究计划提议另一种解读:它们其实是建立在
+					彭罗斯射影扭量空间 CP³ 上的某种组合几何中,某个**特定腔室的结构不变量**。
+				</p>
+				<p>
+					框架称为<strong>扭量构型几何 (TCG)</strong>;哲学诠释称为
+					<strong>可配置宇宙</strong> — 常数即腔室不变量,正如向量空间的维度
+					是其结构的不变量,而非外部设定的参数。
+				</p>
+			</div>
+
+			<div class="fact-grid">
+				<div class="fact">
+					<div class="fact-label">{t(locale, 'home.factAnchorLabel')}</div>
+					<div class="fact-value">
+						九条独立测得常数之间的亚百分位代数关系,横跨六个物理领域,
+						涵盖 <strong>124 个数量级</strong>。
+					</div>
+				</div>
+				<div class="fact">
+					<div class="fact-label">{t(locale, 'home.factPredLabel')}</div>
+					<div class="fact-value">
+						自旋-1 短程第五力,α<sub>Y</sub> ≈ 1.88×10⁴,λ ≲ 5–10 μm —
+						距当前实验限约 500 倍。
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-eyebrow">{t(locale, 'home.startHere')}</div>
+			<h2>{t(locale, 'home.synthesisTitle')}</h2>
+			<p class="section-intro">{t(locale, 'home.synthesisIntro')}</p>
+			<div class="synth-grid">
+				{synthesis.map(({ english, localized }, i) => (
+					<a href={`/zh-cn/papers/${english.id}/`} class="card synth-card">
+						<div class="synth-num">论文 {String(i + 1).padStart(2, '0')}</div>
+						<h3>{localized.data.shortTitle ?? localized.data.title}</h3>
+						<p>{localized.data.description}</p>
+					</a>
+				))}
+			</div>
+			<p class="all-papers-link">
+				<a href="/zh-cn/papers/">→ {t(locale, 'home.allPapersLink', { n: papers.length })}</a>
+			</p>
+		</div>
+
+		<div class="section">
+			<div class="section-eyebrow">{t(locale, 'home.empiricalBody')}</div>
+			<h2>{t(locale, 'home.relationsTitle')}</h2>
+			<p class="section-intro">{t(locale, 'home.relationsIntro')}</p>
+			<div class="relations-wrapper">
+				<table class="relations-table">
+					<thead>
+						<tr>
+							<th class="col-id">{t(locale, 'rel.id')}</th>
+							<th class="col-formula">{t(locale, 'rel.formula')}</th>
+							<th class="col-sector">{t(locale, 'rel.sector')}</th>
+							<th class="col-precision">{t(locale, 'rel.precision')}</th>
+							<th class="col-origin">{t(locale, 'rel.original')}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{relations.map((r) => {
+							const isOriginal = r.provenance === 'original';
+							const originText = (r as any).originLabel ?? (isOriginal ? t(locale, 'rel.yes') : t(locale, 'rel.yes'));
+							return (
+								<tr class={r.provenance}>
+									<td class="col-id">{r.id}</td>
+									<td class="col-formula"><code>{r.formula}</code></td>
+									<td class="col-sector">{r.sector}</td>
+									<td class="col-precision"><span class="badge-precision">{r.precision}</span></td>
+									<td class="col-origin">
+										<span class={`origin-badge ${isOriginal ? 'yes' : 'partial'}`}>
+											{isOriginal && <span class="check">✓</span>}
+											{originText}
+										</span>
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="contact-block">
+				<p><strong>{t(locale, 'home.contactBlockTitle')}</strong> {t(locale, 'home.contactBlockBody')}</p>
+				<p style="margin-bottom: 0;">
+					{t(locale, 'home.contactBlockOpen')} <a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a>。
+				</p>
+			</div>
+		</div>
+
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, pickLocalized } from '../../../i18n';
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Header from '../../../components/Header.astro';
+import { t } from '../../../i18n';
+
+const locale = 'zh-cn';
+
+function readingMinutes(body: string | undefined): number {
+	if (!body) return 1;
+	const cleaned = body
+		.replace(/```[\s\S]*?```/g, ' ')
+		.replace(/`[^`]+`/g, ' ')
+		.replace(/\$\$[\s\S]*?\$\$/g, ' ')
+		.replace(/\$[^$\n]+\$/g, ' ')
+		.replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+		.replace(/[#>*_~`-]+/g, ' ');
+	const words = cleaned.split(/\s+/).filter((w) => w.length > 0).length;
+	return Math.max(1, Math.round(words / 200));
+}
+
+const LONG_READ_THRESHOLD = 5;
+
+const all = await getCollection('blog');
+const allPosts = filterEnglishOnly(all)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.map((english) => {
+		const localized = pickLocalized(all, english, 'zh-cn');
+		return { english, post: localized, minutes: readingMinutes(localized.body) };
+	});
+
+const pinned = allPosts.filter((x) => x.english.data.pinned);
+const recent = allPosts.filter((x) => !x.english.data.pinned);
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="warm">
+	<head>
+		<BaseHead title={`${t(locale, 'blog.title')} — Q.C. Zhang`} description={t(locale, 'blog.intro')} />
+		<style>
+			.page-header { max-width: var(--page-width); margin: 0 auto; padding: 3rem 1rem 1.5rem; }
+			.page-eyebrow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+			.page-header h1 { margin: 0 0 0.4em 0; font-size: 2rem; letter-spacing: -0.02em; }
+			.page-intro { color: var(--text-muted); font-size: 1.02rem; max-width: 640px; margin: 0; line-height: 1.65; }
+			.section { max-width: var(--page-width); margin: 0 auto; padding: 2rem 1rem 1rem; }
+			.section-header { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+			.section-label { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+			.posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+			.post-card { display: block; padding: 1.4em 1.5em; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; color: inherit; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+			.post-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+			.post-meta { display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; margin-bottom: 0.6em; font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-faint); }
+			.pin-badge { display: inline-flex; align-items: center; gap: 0.3em; padding: 0.15em 0.6em; background: var(--accent-bg); color: var(--accent); border-radius: 999px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+			.meta-sep { color: var(--border-strong); }
+			.reading-time { color: var(--text-muted); font-weight: 500; }
+			.long-read-tag { display: inline-flex; align-items: center; padding: 0.15em 0.55em; background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+			.post-card h2 { font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.3; margin: 0 0 0.4em 0; color: var(--text); font-weight: 700; letter-spacing: -0.01em; }
+			.post-card .description { color: var(--text-muted); margin: 0 0 1em; font-size: 0.95rem; line-height: 1.65; }
+			.post-card:hover h2 { color: var(--accent); }
+			.card-cta { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; color: var(--accent); margin-top: 0.4em; transition: transform 0.15s; }
+			.post-card:hover .card-cta { transform: translateX(2px); color: var(--accent-hover); }
+			.empty-state { text-align: center; padding: 2rem 1rem; color: var(--text-faint); font-family: var(--font-sans); }
+		</style>
+	</head>
+	<body>
+		<Header />
+
+		{pinned.length > 0 && (
+			<div class="section">
+				<div class="section-header"><span class="section-label">{t(locale, 'blog.section.pinned')}</span></div>
+				<ul class="posts">
+					{pinned.map(({ english, post, minutes }) => (
+						<li>
+							<a href={`/zh-cn/blog/${english.id}/`} class="post-card">
+								<div class="post-meta">
+									<span class="pin-badge">📌 {t(locale, 'blog.pinBadge')}</span>
+									<FormattedDate date={post.data.pubDate} />
+									<span class="meta-sep">·</span>
+									<span class="reading-time">{t(locale, 'blog.minRead', { n: minutes })}</span>
+									{minutes >= LONG_READ_THRESHOLD && (
+										<span class="long-read-tag">{t(locale, 'blog.longRead')}</span>
+									)}
+								</div>
+								<h2>{post.data.title}</h2>
+								<p class="description">{post.data.description}</p>
+								<div class="card-cta">{t(locale, 'blog.continueReading')}</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		)}
+
+		<div class="section">
+			<div class="section-header">
+				<span class="section-label">{pinned.length > 0 ? t(locale, 'blog.section.morePosts') : t(locale, 'blog.section.latest')}</span>
+			</div>
+			{recent.length > 0 ? (
+				<ul class="posts">
+					{recent.map(({ english, post, minutes }) => (
+						<li>
+							<a href={`/zh-cn/blog/${english.id}/`} class="post-card">
+								<div class="post-meta">
+									<FormattedDate date={post.data.pubDate} />
+									<span class="meta-sep">·</span>
+									<span class="reading-time">{t(locale, 'blog.minRead', { n: minutes })}</span>
+									{minutes >= LONG_READ_THRESHOLD && (
+										<span class="long-read-tag">{t(locale, 'blog.longRead')}</span>
+									)}
+								</div>
+								<h2>{post.data.title}</h2>
+								<p class="description">{post.data.description}</p>
+								<div class="card-cta">{t(locale, 'blog.continueReading')}</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			) : (
+				<p class="empty-state">{t(locale, 'blog.empty')}</p>
+			)}
+		</div>
+
+		<Footer />
+	</body>
+</html>

@@ -2,8 +2,8 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import 'katex/dist/katex.min.css';
 import type { ImageMetadata } from 'astro';
-import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
 
@@ -15,12 +15,44 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+
+<!-- Theme: apply immediately to avoid flash-of-wrong-theme.
+     Reads localStorage; falls back to OS prefers-color-scheme then warm. -->
+<script is:inline>
+	(function () {
+		try {
+			// Clean up legacy dark-variant key if present
+			try { localStorage.removeItem('qcz-dark-variant'); } catch (e) {}
+
+			var stored = localStorage.getItem('qcz-theme');
+			var valid = ['daylight', 'warm', 'dark'];
+			// Migrate legacy values: 'light' → 'warm', 'sepia' → 'warm'
+			if (stored === 'light' || stored === 'sepia') {
+				stored = 'warm';
+				try { localStorage.setItem('qcz-theme', 'warm'); } catch (e) {}
+			}
+			var theme;
+			if (stored && valid.indexOf(stored) !== -1) {
+				theme = stored;
+			} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				theme = 'dark';
+			} else {
+				theme = 'warm';
+			}
+			document.documentElement.setAttribute('data-theme', theme);
+		} catch (e) {
+			document.documentElement.setAttribute('data-theme', 'warm');
+		}
+	})();
+</script>
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
@@ -47,11 +79,11 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+{image && <meta property="og:image" content={new URL(image.src, Astro.url)} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:card" content={image ? "summary_large_image" : "summary"} />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+{image && <meta property="twitter:image" content={new URL(image.src, Astro.url)} />}

@@ -5,52 +5,208 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { t, type Locale, localeFromPath } from '../i18n';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { minutes?: number; locale?: Locale };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, minutes } = Astro.props;
+const locale: Locale = (Astro.props as any).locale ?? localeFromPath(Astro.url.pathname);
+const localePrefix = locale === 'en' ? '' : '/' + locale;
+const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
 ---
 
-<html lang="en">
+<html lang={htmlLang}>
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
+				width: 100%;
 				margin: 0;
 			}
 			.hero-image {
 				width: 100%;
+				max-width: 1020px;
+				margin: 0 auto;
 			}
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
 				border-radius: 12px;
-				box-shadow: var(--box-shadow);
+				box-shadow: var(--shadow-md);
 			}
+
+			/* Article header — Scientific American feel */
+			.article-header {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 3rem 1rem 1.5rem;
+				text-align: center;
+				border-bottom: 1px solid var(--border);
+			}
+			.article-eyebrow {
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				margin-bottom: 1rem;
+			}
+			.article-title {
+				font-family: var(--font-serif);
+				font-size: 2.6rem;
+				line-height: 1.15;
+				letter-spacing: -0.02em;
+				margin: 0 0 1rem;
+				font-weight: 700;
+			}
+			.article-dek {
+				font-family: var(--font-serif);
+				font-size: 1.18rem;
+				font-style: italic;
+				color: var(--text-muted);
+				line-height: 1.5;
+				margin: 0 auto 1.6rem;
+				max-width: 640px;
+			}
+			.article-byline {
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				color: var(--text-faint);
+				letter-spacing: 0.04em;
+			}
+			.article-byline .by {
+				color: var(--text-muted);
+				font-weight: 600;
+				margin-right: 0.3em;
+			}
+			.article-byline .sep {
+				margin: 0 0.5em;
+				color: var(--border-strong);
+			}
+
+			@media (max-width: 640px) {
+				.article-title {
+					font-size: 1.85rem;
+				}
+				.article-dek {
+					font-size: 1.05rem;
+				}
+			}
+
+			/* Body — long-form prose */
 			.prose {
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
+				padding: 2.5rem 1rem 2rem;
+				color: var(--text);
+				font-size: 1.05rem;
+				line-height: 1.65;
 			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+			.prose :global(p) {
+				margin: 0 0 1.2em;
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
+
+			/* Drop cap on first paragraph */
+			.prose :global(> p:first-of-type::first-letter) {
+				font-family: var(--font-serif);
+				font-size: 4.2em;
+				font-weight: 700;
+				float: left;
+				line-height: 0.85;
+				margin: 0.05em 0.1em 0 0;
+				color: var(--accent);
 			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+
+			/* Section headings — small caps eyebrow style */
+			.prose :global(h2) {
+				font-family: var(--font-sans);
+				font-size: 1.1rem;
+				font-weight: 700;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				color: var(--accent);
+				margin: 2.8em 0 0.7em;
+				padding-bottom: 0.4em;
+				border-bottom: 1px solid var(--border);
 			}
-			.last-updated-on {
+			.prose :global(h3) {
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				margin: 2em 0 0.5em;
+			}
+
+			/* Pull quotes via blockquote */
+			.prose :global(blockquote) {
+				font-family: var(--font-serif);
+				font-size: 1.35rem;
+				line-height: 1.4;
 				font-style: italic;
+				color: var(--text);
+				border-left: none;
+				border-top: 2px solid var(--accent);
+				border-bottom: 2px solid var(--accent);
+				margin: 2.2em 0;
+				padding: 1.3em 0.5em;
+				text-align: center;
+			}
+			.prose :global(blockquote p) {
+				margin: 0;
+			}
+			.prose :global(blockquote p::before) {
+				content: '“';
+				font-size: 1.6em;
+				line-height: 0;
+				vertical-align: -0.3em;
+				margin-right: 0.05em;
+				color: var(--accent);
+			}
+			.prose :global(blockquote p::after) {
+				content: '”';
+				font-size: 1.6em;
+				line-height: 0;
+				vertical-align: -0.3em;
+				margin-left: 0.05em;
+				color: var(--accent);
+			}
+
+			/* Lists */
+			.prose :global(ul),
+			.prose :global(ol) {
+				margin: 0 0 1.2em;
+				padding-left: 1.3em;
+			}
+			.prose :global(li) {
+				margin: 0.4em 0;
+			}
+
+			/* Inline code in prose */
+			.prose :global(code) {
+				font-size: 0.93em;
+			}
+
+			/* Math display blocks — extra breathing room */
+			.prose :global(.katex-display) {
+				margin: 1.5em 0 !important;
+			}
+
+			/* Article footer */
+			.article-footer {
+				max-width: 720px;
+				margin: 1rem auto 0;
+				padding: 2rem 1rem;
+				border-top: 1px solid var(--border);
+				font-family: var(--font-sans);
+				font-size: 0.9rem;
+				color: var(--text-muted);
+				text-align: center;
+			}
+			.article-footer .last-updated {
+				font-style: italic;
+				color: var(--text-faint);
 			}
 		</style>
 	</head>
@@ -58,28 +214,47 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<body>
 		<Header />
 		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+			<header class="article-header">
+				<div class="article-eyebrow">{t(locale, 'article.eyebrow')}</div>
+				<h1 class="article-title">{title}</h1>
+				{description && <p class="article-dek">{description}</p>}
+				<div class="article-byline">
+					<span class="by">{t(locale, 'article.byline.by')}</span> Q.C. Zhang
+					<span class="sep">·</span>
+					<FormattedDate date={pubDate} />
+					{minutes !== undefined && (
+						<>
+							<span class="sep">·</span>
+							<span>{t(locale, 'blog.minRead', { n: minutes })}</span>
+						</>
+					)}
+					{updatedDate && (
+						<>
+							<span class="sep">·</span>
+							<span class="last-updated">{t(locale, 'article.byline.updated')} <FormattedDate date={updatedDate} /></span>
+						</>
+					)}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+			</header>
+
+			{
+				heroImage && (
+					<div class="hero-image">
+						<Image width={1020} height={510} src={heroImage} alt="" />
 					</div>
-					<slot />
-				</div>
+				)
+			}
+
+			<article class="prose">
+				<slot />
 			</article>
+
+			<div class="article-footer">
+				<p>
+					{t(locale, 'article.footer')}
+					<a href={localePrefix + '/papers/'}>{t(locale, 'article.footer.bibliography')}</a>
+				</p>
+			</div>
 		</main>
 		<Footer />
 	</body>

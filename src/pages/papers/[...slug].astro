@@ -1,0 +1,21 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Paper from '../../layouts/Paper.astro';
+import { filterEnglishOnly } from '../../i18n';
+
+export async function getStaticPaths() {
+	const papers = filterEnglishOnly(await getCollection('papers'));
+	return papers.map((p) => ({
+		params: { slug: p.id },
+		props: p,
+	}));
+}
+type Props = CollectionEntry<'papers'>;
+
+const paper = Astro.props;
+const { Content } = await render(paper);
+---
+
+<Paper {...paper.data}>
+	<Content />
+</Paper>

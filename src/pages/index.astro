@@ -1,49 +1,551 @@
 ---
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly } from '../i18n';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const papers = filterEnglishOnly(await getCollection('papers')).sort((a, b) => a.data.order - b.data.order);
+const synthesis = papers.filter((p) => p.data.category === 'synthesis');
+
+// Provenance (per the DAEDALUS Review §2):
+//   'original' — first identified in this research program
+//   'partial'  — bare numerical relation pre-existing; the twistor-geometric reading is original
+const relations = [
+	{
+		id: 'O1', formula: '1/α ≈ π + π² + 4π³', precision: '2.2 ppm', sector: 'electromagnetic',
+		provenance: 'partial', originLabel: 'Twistor origin',
+		note: 'The closed form is a numerical approximation; the chamber-weighted Fubini–Study sum on CP³ that produces it is the contribution.'
+	},
+	{
+		id: 'O2', formula: '1/α_s(M_Z) ≈ (π + 4π² + 36π³) / (π + π² + 4π³)', precision: '0.3%', sector: 'strong',
+		provenance: 'original'
+	},
+	{
+		id: 'O3', formula: 'sin²θ_W(0) ≈ 3/(4π)', precision: '0.03%', sector: 'weak (Thomson)',
+		provenance: 'original'
+	},
+	{
+		id: 'O4', formula: 'm_π / m_e ≈ 2(π + π² + 4π³)', precision: '0.4%', sector: 'hadronic',
+		provenance: 'partial', originLabel: 'Nambu, recast',
+		note: 'The Nambu identity m_π/m_e ≈ 2/α (1952) predates this work. Original here: the factor 2 is reinterpreted as the Fibonacci matching count F₃ at the n=2 stratum, and 1/α is replaced by its π-power expansion (O1).'
+	},
+	{
+		id: 'O5', formula: 'y_e ≈ (1 − 1/(2π)) · e^(−4π)', precision: '0.09%', sector: 'leptonic Yukawa',
+		provenance: 'original'
+	},
+	{
+		id: 'O6', formula: 'L_τ/L_μ ≈ L_μ/L_e ≈ φ   (L_ℓ = ln 1/y_ℓ)', precision: '0.24% / 0.54%', sector: 'lepton mass ratios',
+		provenance: 'original'
+	},
+	{
+		id: 'O7', formula: 'M_W / v ≈ 1/√(3π)', precision: '0.21%', sector: 'electroweak',
+		provenance: 'original'
+	},
+	{
+		id: 'O8', formula: 'α_G ≡ G m_e² / (ℏc) ≈ α⁸ y_e⁵', precision: '0.024%', sector: 'gravitational',
+		provenance: 'original'
+	},
+	{
+		id: 'O9', formula: 'Λ ℓ_Pl² ≈ (α⁴ / 4π)(m_e / m_Pl)⁵', precision: '1.9%', sector: 'cosmological',
+		provenance: 'original'
+	},
+];
+
+const originalCount = relations.filter((r) => r.provenance === 'original').length;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				padding: 4rem 1rem 3rem;
+				background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+				border-bottom: 1px solid var(--border);
+			}
+			.hero-inner {
+				max-width: var(--page-width);
+				margin: 0 auto;
+			}
+			.hero-eyebrow {
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				margin-bottom: 1rem;
+			}
+			.hero h1 {
+				font-size: 2.6rem;
+				line-height: 1.15;
+				margin: 0 0 0.6em 0;
+				letter-spacing: -0.025em;
+			}
+			.hero-tagline {
+				font-family: var(--font-serif);
+				font-size: 1.2rem;
+				color: var(--text-muted);
+				font-style: italic;
+				margin-bottom: 2rem;
+			}
+			.hero-cta {
+				display: flex;
+				gap: 0.7rem;
+				flex-wrap: wrap;
+				margin-top: 1.5rem;
+			}
+
+			.section {
+				max-width: var(--page-width);
+				margin: 0 auto;
+				padding: 3rem 1rem 1rem;
+			}
+			.section-eyebrow {
+				font-family: var(--font-sans);
+				font-size: 0.75rem;
+				font-weight: 600;
+				color: var(--text-faint);
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				margin-bottom: 0.4rem;
+			}
+			.section h2 {
+				margin-top: 0;
+				font-size: 1.55rem;
+			}
+			.section-intro {
+				color: var(--text-muted);
+				margin-bottom: 1.5rem;
+			}
+
+			.lead {
+				font-size: 1.08rem;
+				line-height: 1.55;
+			}
+			.lead p {
+				margin-bottom: 1.1em;
+			}
+
+			.fact-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+			.fact {
+				padding: 1.1em 1.2em;
+				background: var(--bg-elevated);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+			}
+			.fact-label {
+				font-family: var(--font-sans);
+				font-size: 0.75rem;
+				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				margin-bottom: 0.3em;
+			}
+			.fact-value {
+				font-family: var(--font-serif);
+				font-size: 0.98rem;
+				color: var(--text);
+				line-height: 1.45;
+			}
+
+			@media (max-width: 640px) {
+				.fact-grid {
+					grid-template-columns: 1fr;
+				}
+				.hero h1 {
+					font-size: 1.9rem;
+				}
+				.hero-tagline {
+					font-size: 1.05rem;
+				}
+			}
+
+			.synth-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				margin-top: 1rem;
+			}
+			.synth-card .synth-num {
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.08em;
+				margin-bottom: 0.3em;
+			}
+			.synth-card h3 {
+				margin: 0 0 0.4em 0;
+				font-size: 1.05rem;
+				line-height: 1.3;
+			}
+			.synth-card p {
+				color: var(--text-muted);
+				margin: 0;
+				font-size: 0.93rem;
+				line-height: 1.55;
+			}
+
+			@media (max-width: 640px) {
+				.synth-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			.all-papers-link {
+				margin: 1.4rem 0 0;
+				text-align: right;
+				font-family: var(--font-sans);
+				font-size: 0.95rem;
+			}
+			.all-papers-link a {
+				color: var(--accent);
+				text-decoration: none;
+				font-weight: 500;
+				border-bottom: 1px solid transparent;
+				transition: border-color 0.15s, color 0.15s;
+			}
+			.all-papers-link a:hover {
+				color: var(--accent-hover);
+				border-bottom-color: var(--accent-hover);
+			}
+
+			/* Relations table — proper HTML table for natural column alignment */
+			.relations-wrapper {
+				margin-top: 1rem;
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				overflow: hidden;
+				background: var(--bg-elevated);
+			}
+			.relations-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 0;
+				font-size: 0.95rem;
+			}
+			.relations-table thead th {
+				padding: 0.7em 1.1em;
+				background: var(--bg-subtle);
+				border-bottom: 1px solid var(--border);
+				font-family: var(--font-sans);
+				font-size: 0.72rem;
+				font-weight: 600;
+				color: var(--text-faint);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				text-align: left;
+				white-space: nowrap;
+			}
+			.relations-table tbody td {
+				padding: 0.85em 1.1em;
+				border-bottom: 1px solid var(--border);
+				vertical-align: middle;
+				background: inherit;
+			}
+			.relations-table tbody tr:last-child td {
+				border-bottom: none;
+			}
+			.relations-table .col-id {
+				font-family: var(--font-mono);
+				font-size: 0.78rem;
+				color: var(--text-faint);
+				font-weight: 600;
+				width: 1%;
+				white-space: nowrap;
+			}
+			.relations-table .col-formula {
+				font-family: var(--font-mono);
+				font-size: 0.92rem;
+			}
+			.relations-table .col-sector {
+				font-family: var(--font-sans);
+				font-size: 0.82rem;
+				color: var(--text-faint);
+				white-space: nowrap;
+				width: 1%;
+			}
+			.relations-table .col-precision {
+				white-space: nowrap;
+				width: 1%;
+				text-align: right;
+			}
+			.relations-table .col-origin {
+				white-space: nowrap;
+				width: 1%;
+				text-align: right;
+			}
+
+			/* Origin column — neutral text, no color highlight.
+			   Differentiation via text content + ✓ checkmark only. */
+			.origin-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.3em;
+				font-family: var(--font-sans);
+				font-size: 0.78rem;
+				font-weight: 500;
+				color: var(--text-muted);
+				white-space: nowrap;
+				letter-spacing: 0.01em;
+			}
+			.origin-badge.yes {
+				color: var(--text);
+			}
+			.origin-badge .check {
+				font-size: 0.9em;
+				line-height: 1;
+				color: var(--text-faint);
+			}
+
+			.relations-legend {
+				margin-top: 1rem;
+				padding: 0.9em 1.1em;
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				background: var(--bg-subtle);
+				border-radius: 6px;
+				line-height: 1.55;
+			}
+			.relations-legend p {
+				margin: 0 0 0.4em 0;
+			}
+			.relations-legend p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* Mobile: collapse table into stacked cards */
+			@media (max-width: 720px) {
+				.relations-wrapper {
+					border: none;
+					border-radius: 0;
+					background: transparent;
+					overflow: visible;
+				}
+				.relations-table {
+					display: block;
+				}
+				.relations-table thead {
+					display: none;
+				}
+				.relations-table tbody,
+				.relations-table tr,
+				.relations-table td {
+					display: block;
+				}
+				.relations-table tr {
+					margin-bottom: 0.7rem;
+					padding: 0.9em 1em;
+					border: 1px solid var(--border);
+					border-radius: 6px;
+					background: var(--bg-elevated);
+				}
+				.relations-table tbody td {
+					padding: 0.25em 0;
+					border: none;
+					text-align: left;
+					width: auto;
+				}
+				.relations-table .col-id {
+					display: inline-block;
+					margin-right: 0.6em;
+				}
+				.relations-table .col-id::after {
+					content: ' · ';
+					color: var(--text-faint);
+					margin: 0 0.2em;
+				}
+				.relations-table .col-sector {
+					display: inline-block;
+				}
+				.relations-table .col-formula {
+					font-size: 0.88rem;
+					margin: 0.4em 0 0.5em;
+					overflow-x: auto;
+				}
+				.relations-table .col-precision,
+				.relations-table .col-origin {
+					display: inline-block;
+					margin-right: 0.5em;
+				}
+			}
+
+			.contact-block {
+				margin-top: 2.5rem;
+				padding: 1.5em 1.5em;
+				background: var(--bg-subtle);
+				border-radius: 8px;
+				color: var(--text-muted);
+				font-size: 0.95rem;
+			}
+			.contact-block strong {
+				color: var(--text);
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="hero-eyebrow">A research program</div>
+				<h1>Twistor Configuration Geometry &amp; the Configurable Universe</h1>
+				<p class="hero-tagline">
+					What if the dimensionless constants of physics aren't free parameters,
+					but structural invariants of a chamber?
+				</p>
+				<div class="hero-cta">
+					<a href="/papers/" class="btn btn-primary">Read the papers</a>
+					<a href="/about/" class="btn btn-secondary">About</a>
+				</div>
+			</div>
+		</section>
+
+		<div class="section">
+			<div class="lead">
+				<p>
+					Across a 16-paper arc on Zenodo, this program proposes that the dimensionless
+					constants — α, Λ, α<sub>G</sub>, Yukawa couplings, sin²θ<sub>W</sub>,
+					and others — are not free parameters but structural invariants of a
+					combinatorial geometry built on Penrose's projective twistor space CP³.
+				</p>
+				<p>
+					The framework is <strong>Twistor Configuration Geometry (TCG)</strong>;
+					the philosophical reading is the <strong>Configurable Universe</strong> —
+					constants are <em>chamber invariants</em>, in the same sense that the
+					dimension of a vector space is.
+				</p>
+			</div>
+
+			<div class="fact-grid">
+				<div class="fact">
+					<div class="fact-label">Empirical anchor</div>
+					<div class="fact-value">
+						Nine sub-percent algebraic relations across six physical sectors,
+						spanning <strong>124 orders of magnitude</strong>.
+					</div>
+				</div>
+				<div class="fact">
+					<div class="fact-label">Falsifiable prediction</div>
+					<div class="fact-value">
+						Spin-1 short-range fifth force at α<sub>Y</sub> ≈ 1.88×10⁴,
+						λ ≲ 5–10 μm — about 500× from current bounds.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-eyebrow">Start here</div>
+			<h2>The four synthesis papers</h2>
+			<p class="section-intro">
+				Published May 2026. Read these four together for the full program: the empirical
+				body, the philosophical reading, the mathematical framework, and the predictive ledger.
 			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
+			<div class="synth-grid">
+				{
+					synthesis.map((p, i) => (
+						<a href={`/papers/${p.id}/`} class="card synth-card">
+							<div class="synth-num">PAPER {String(i + 1).padStart(2, '0')}</div>
+							<h3>{p.data.shortTitle ?? p.data.title}</h3>
+							<p>{p.data.description}</p>
+						</a>
+					))
+				}
+			</div>
+			<p class="all-papers-link">
+				<a href="/papers/">→ See all {papers.length} papers</a>
 			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
+		</div>
+
+		<div class="section">
+			<div class="section-eyebrow">The empirical body</div>
+			<h2>The nine relations</h2>
+			<p class="section-intro">
+				Each row is a closed-form expression among independently-measured constants,
+				written in a small mathematical vocabulary (low-order π powers, factorials,
+				Fibonacci numbers, the golden ratio).
 			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+			<div class="relations-wrapper">
+				<table class="relations-table">
+					<thead>
+						<tr>
+							<th class="col-id">ID</th>
+							<th class="col-formula">Relation</th>
+							<th class="col-sector">Sector</th>
+							<th class="col-precision">Precision</th>
+							<th class="col-origin">Original?</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							relations.map((r) => {
+								const isOriginal = r.provenance === 'original';
+								const originText = r.originLabel ?? (isOriginal ? 'Yes' : 'Partial');
+								const originClass = isOriginal ? 'yes' : 'partial';
+								return (
+									<tr class={r.provenance} title={r.note ?? ''}>
+										<td class="col-id">{r.id}</td>
+										<td class="col-formula"><code>{r.formula}</code></td>
+										<td class="col-sector">{r.sector}</td>
+										<td class="col-precision"><span class="badge-precision">{r.precision}</span></td>
+										<td class="col-origin">
+											<span class={`origin-badge ${originClass}`}>
+												{isOriginal && <span class="check">✓</span>}
+												{originText}
+											</span>
+										</td>
+									</tr>
+								);
+							})
+						}
+					</tbody>
+				</table>
+			</div>
+			<div class="relations-legend">
+				<p>
+					<strong>✓ Yes</strong> — the relation was first identified in this research program
+					(7 of 9).
+				</p>
+				<p>
+					<strong>Twistor origin</strong> (O1, <code>1/α ≈ π + π² + 4π³</code>) — the bare
+					numerical approximation can be checked by anyone with a calculator. The
+					contribution is its derivation as a chamber-weighted Fubini–Study volume sum on
+					Penrose's twistor space CP³, fixing the ambient dimension N = 3 uniquely.
+				</p>
+				<p>
+					<strong>Nambu, recast</strong> (O4, <code>m_π/m_e ≈ 2(π + π² + 4π³)</code>) —
+					Nambu's 1952 identity <code>m_π/m_e ≈ 2/α</code> predates this work. Original
+					here: the factor 2 is reinterpreted as the Fibonacci matching count
+					<code>F₃ = 2</code> at the n=2 stratum (super-flag construction, Paper #14), and
+					<code>1/α</code> is substituted with its π-power expansion (O1).
+				</p>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="contact-block">
+				<p>
+					<strong>About this site.</strong> Q.C. Zhang's research site for the TCG /
+					Configurable Universe program. All papers are on Zenodo, CC-BY-4.0.
+				</p>
+				<p style="margin-bottom: 0;">
+					Open to criticism, collaboration, and pointers to related work.
+					Contact <a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a>.
+				</p>
+			</div>
+		</div>
+
 		<Footer />
 	</body>
 </html>

@@ -1,20 +1,35 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { filterEnglishOnly } from '../../i18n';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	function readingMinutes(body: string | undefined): number {
+		if (!body) return 1;
+		const cleaned = body
+			.replace(/```[\s\S]*?```/g, ' ')
+			.replace(/`[^`]+`/g, ' ')
+			.replace(/\$\$[\s\S]*?\$\$/g, ' ')
+			.replace(/\$[^$\n]+\$/g, ' ')
+			.replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+			.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+			.replace(/[#>*_~`-]+/g, ' ');
+		const words = cleaned.split(/\s+/).filter((w) => w.length > 0).length;
+		return Math.max(1, Math.round(words / 200));
+	}
+
+	const posts = filterEnglishOnly(await getCollection('blog'));
 	return posts.map((post) => ({
 		params: { slug: post.id },
-		props: post,
+		props: { ...post, minutes: readingMinutes(post.body) },
 	}));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'blog'> & { minutes: number };
 
 const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} minutes={post.minutes}>
 	<Content />
 </BlogPost>
