@@ -98,16 +98,16 @@
 	--shadow-lg: 0 4px 8px rgba(20, 30, 45, 0.08), 0 12px 24px rgba(20, 30, 45, 0.06);
 }
 
-/* ----- Dark: GitHub Dark — clean, professional, neutral ----- */
+/* ----- Dark: GitHub Dimmed flavor — softer than GitHub Dark ----- */
 [data-theme="dark"] {
-	--bg: #0d1117;
-	--bg-subtle: #1a2028;     /* was #161b22 — brighter to elevate panels */
-	--bg-elevated: #262c36;   /* was #1c2128 — clearly raised cards/tables */
-	--text: #c9d1d9;
-	--text-muted: #8b949e;
-	--text-faint: #6e7681;
-	--border: #3a414c;        /* was #30363d — visible against brighter elevated */
-	--border-strong: #4f5867; /* was #444c56 */
+	--bg: #161b22;            /* was #0d1117 — lifted base canvas */
+	--bg-subtle: #21262d;     /* was #1a2028 */
+	--bg-elevated: #2d333b;   /* was #262c36 — cards/tables clearly raised */
+	--text: #cdd5dc;          /* was #c9d1d9 — slightly lighter for new bg */
+	--text-muted: #92a0ad;    /* was #8b949e */
+	--text-faint: #768494;    /* was #6e7681 */
+	--border: #424a54;        /* was #3a414c — keeps visibility on lifted bg */
+	--border-strong: #56606e; /* was #4f5867 */
 
 	--accent: #58a6ff;
 	--accent-hover: #79b8ff;
@@ -135,10 +135,10 @@
 	--cat-twistor: #d2a8ff;
 	--cat-twistor-bg: #2a1f3d;
 
-	--header-bg: rgba(13, 17, 23, 0.9);
-	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
-	--shadow-md: 0 1px 3px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.4);
-	--shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.6), 0 12px 24px rgba(0, 0, 0, 0.5);
+	--header-bg: rgba(22, 27, 34, 0.9);  /* matches lifted --bg */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+	--shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.35);
+	--shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.5), 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Dark-theme: lift cards/sections with a subtle inner glow border */
