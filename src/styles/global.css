@@ -100,14 +100,14 @@
 
 /* ----- Dark: GitHub Dimmed flavor — softer than GitHub Dark ----- */
 [data-theme="dark"] {
-	--bg: #1d242e;            /* was #161b22 — lifted further */
-	--bg-subtle: #28303a;     /* was #21262d */
-	--bg-elevated: #353c47;   /* was #2d333b — cards/tables clearly raised */
-	--text: #d2dae1;          /* was #cdd5dc — slightly lighter for new bg */
-	--text-muted: #98a6b3;    /* was #92a0ad */
-	--text-faint: #7c8a99;    /* was #768494 */
-	--border: #4a525e;        /* was #424a54 — keeps visibility on lifted bg */
-	--border-strong: #5e6876; /* was #56606e */
+	--bg: #252c38;            /* was #1d242e — lifted further */
+	--bg-subtle: #2f3742;     /* was #28303a */
+	--bg-elevated: #3d4452;   /* was #353c47 — cards/tables clearly raised */
+	--text: #d8dfe6;          /* was #d2dae1 — slightly lighter for new bg */
+	--text-muted: #9caab7;    /* was #98a6b3 */
+	--text-faint: #82909e;    /* was #7c8a99 */
+	--border: #535c69;        /* was #4a525e — keeps visibility on lifted bg */
+	--border-strong: #677082; /* was #5e6876 */
 
 	--accent: #58a6ff;
 	--accent-hover: #79b8ff;
@@ -135,7 +135,7 @@
 	--cat-twistor: #d2a8ff;
 	--cat-twistor-bg: #2a1f3d;
 
-	--header-bg: rgba(29, 36, 46, 0.9);  /* matches lifted --bg */
+	--header-bg: rgba(37, 44, 56, 0.9);  /* matches lifted --bg */
 	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
 	--shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.35);
 	--shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.5), 0 12px 24px rgba(0, 0, 0, 0.4);
