@@ -41,14 +41,15 @@ const { title, description, image } = Astro.props;
 			var theme;
 			if (stored && valid.indexOf(stored) !== -1) {
 				theme = stored;
-			} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				theme = 'dark';
 			} else {
-				theme = 'warm';
+				// Default to dark for first-time visitors regardless of OS preference.
+				// Users can still pick warm or daylight from the theme picker; their
+				// choice is persisted in localStorage and overrides this default.
+				theme = 'dark';
 			}
 			document.documentElement.setAttribute('data-theme', theme);
 		} catch (e) {
-			document.documentElement.setAttribute('data-theme', 'warm');
+			document.documentElement.setAttribute('data-theme', 'dark');
 		}
 	})();
 </script>

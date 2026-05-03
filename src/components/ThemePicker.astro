@@ -73,11 +73,11 @@
 		const VALID = ['daylight', 'warm', 'dark'];
 
 		function getCurrent() {
-			return document.documentElement.getAttribute('data-theme') || 'warm';
+			return document.documentElement.getAttribute('data-theme') || 'dark';
 		}
 
 		function applyTheme(theme) {
-			if (!VALID.includes(theme)) theme = 'warm';
+			if (!VALID.includes(theme)) theme = 'dark';
 			document.documentElement.setAttribute('data-theme', theme);
 			try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
 			updatePressed(theme);
