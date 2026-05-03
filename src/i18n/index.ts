@@ -46,9 +46,9 @@ const en: Dict = {
 
 	// Share button
 	'share.label': 'Share this page',
-	'share.linkCopied': 'Link copied',
+	'share.linkCopied': 'Copied to clipboard',
 	'share.copyFailed': 'Copy failed',
-	'share.copy': 'Copy link',
+	'share.copy': 'Copy summary and link',
 	'share.twitter': 'Share on X',
 	'share.linkedin': 'Share on LinkedIn',
 	'share.facebook': 'Share on Facebook',
@@ -179,9 +179,9 @@ const zhCN: Dict = {
 	'lang.label': '语言',
 
 	'share.label': '分享此页',
-	'share.linkCopied': '链接已复制',
+	'share.linkCopied': '已复制到剪贴板',
 	'share.copyFailed': '复制失败',
-	'share.copy': '复制链接',
+	'share.copy': '复制摘要和链接',
 	'share.twitter': '分享到 X',
 	'share.linkedin': '分享到领英',
 	'share.facebook': '分享到脸书',
@@ -304,9 +304,9 @@ const zhTW: Dict = {
 	'lang.label': '語言',
 
 	'share.label': '分享此頁',
-	'share.linkCopied': '連結已複製',
+	'share.linkCopied': '已複製到剪貼簿',
 	'share.copyFailed': '複製失敗',
-	'share.copy': '複製連結',
+	'share.copy': '複製摘要與連結',
 	'share.twitter': '分享到 X',
 	'share.linkedin': '分享到 LinkedIn',
 	'share.facebook': '分享到 Facebook',

@@ -270,9 +270,12 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 					: title + '\n\n' + url;
 
 				if (action === 'copy') {
-					const msgCopied = menu.getAttribute('data-msg-copied') || 'Link copied';
+					const msgCopied = menu.getAttribute('data-msg-copied') || 'Copied';
 					const msgFailed = menu.getAttribute('data-msg-failed') || 'Copy failed';
-					copyToClipboard(url)
+					// Copy the full summary block (title + description + URL),
+					// matching the LinkedIn paste payload — useful for pasting
+					// into Slack, email, group chats, etc.
+					copyToClipboard(composedText)
 						.then(function () { showToast(wrap, msgCopied); })
 						.catch(function () { showToast(wrap, msgFailed); });
 					closeMenu();
