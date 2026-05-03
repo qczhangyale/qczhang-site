@@ -323,10 +323,20 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 
 				if (target) {
 					if (action === 'email') {
-						window.location.href = target;
+						// mailto: via a programmatically-clicked anchor is more reliable
+						// than window.location.href — stays inside the user-gesture context,
+						// doesn't trigger the "leave page" prompt, and properly hands off
+						// to the OS-registered mail handler.
+						const a = document.createElement('a');
+						a.href = target;
+						a.rel = 'noopener noreferrer';
+						a.style.display = 'none';
+						document.body.appendChild(a);
+						a.click();
+						setTimeout(function () { document.body.removeChild(a); }, 100);
 					} else {
-						// Open in a new tab (no width/height) — LinkedIn's feed share view
-						// needs the full window, and popup blockers are friendlier to plain tabs.
+						// Open in a new tab — LinkedIn's feed share view needs the full
+						// window, and popup blockers are friendlier to plain tabs.
 						window.open(target, '_blank', 'noopener,noreferrer');
 					}
 				}
