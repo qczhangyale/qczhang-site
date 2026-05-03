@@ -55,7 +55,7 @@ const en: Dict = {
 	'share.email': 'Share via email',
 	'share.weibo': 'Share on Weibo',
 	'share.emailSubject': 'TCG / Configurable Universe — {title}',
-	'share.linkedinPasteHint': 'Text copied — paste (⌘V) in LinkedIn',
+	'share.pasteHint': 'Text copied — paste (⌘V) in the share window',
 
 	// Homepage
 	'home.eyebrow': 'A research program',
@@ -188,7 +188,7 @@ const zhCN: Dict = {
 	'share.email': '通过邮件分享',
 	'share.weibo': '分享到微博',
 	'share.emailSubject': 'TCG / 可配置宇宙 — {title}',
-	'share.linkedinPasteHint': '文本已复制 — 在领英中粘贴 (⌘V)',
+	'share.pasteHint': '文本已复制 — 在分享窗口中粘贴 (⌘V)',
 
 	'home.eyebrow': '一项研究计划',
 	'home.title': '扭量构型几何与可配置宇宙',
@@ -313,7 +313,7 @@ const zhTW: Dict = {
 	'share.email': '透過電子郵件分享',
 	'share.weibo': '分享到微博',
 	'share.emailSubject': 'TCG / 可配置宇宙 — {title}',
-	'share.linkedinPasteHint': '文字已複製 — 在 LinkedIn 中貼上 (⌘V)',
+	'share.pasteHint': '文字已複製 — 在分享視窗中貼上 (⌘V)',
 
 	'home.eyebrow': '一項研究計畫',
 	'home.title': '扭量構型幾何與可配置宇宙',

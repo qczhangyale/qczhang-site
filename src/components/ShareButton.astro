@@ -28,7 +28,7 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 	<div class="share-menu" role="menu" hidden
 		data-msg-copied={t(locale, 'share.linkCopied')}
 		data-msg-failed={t(locale, 'share.copyFailed')}
-		data-msg-paste-hint={t(locale, 'share.linkedinPasteHint')}
+		data-msg-paste-hint={t(locale, 'share.pasteHint')}
 	>
 		<button type="button" class="share-item" role="menuitem" data-share-action="copy">
 			<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -288,27 +288,23 @@ const showWeibo = locale === 'zh-cn' || locale === 'zh-tw';
 					// the tweet body. Title is enough — description bloats the tweet.
 					target = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) +
 						'&text=' + encodeURIComponent(title);
-				} else if (action === 'linkedin') {
-					// LinkedIn dropped support for pre-filled post text years ago and
-					// only inconsistently honors the URL parameters. Most reliable UX:
-					// copy title + description + URL to clipboard, then open LinkedIn's
-					// composer. User pastes once with ⌘V — LinkedIn auto-detects the
-					// URL and renders the full rich preview card with our og:image.
+				} else if (action === 'linkedin' || action === 'facebook') {
+					// Both LinkedIn and Facebook dropped support for pre-filled post
+					// text via URL parameters years ago. Most reliable UX: copy
+					// title + description + URL to clipboard, then open the
+					// composer. User pastes once with ⌘V — the platform auto-detects
+					// the URL and renders the full rich preview card from our OG tags.
 					const pasteHint = menu.getAttribute('data-msg-paste-hint')
-						|| 'Text copied — paste in LinkedIn';
+						|| 'Text copied — paste with ⌘V';
 					copyToClipboard(composedText)
 						.then(function () { showToast(wrap, pasteHint); })
-						.catch(function () { /* still open LinkedIn even if copy fails */ });
-					window.open(
-						'https://www.linkedin.com/feed/?shareActive=true&shareUrl=' + encodeURIComponent(url),
-						'_blank', 'noopener,noreferrer'
-					);
+						.catch(function () { /* still open the share window even if copy fails */ });
+					const composerUrl = action === 'linkedin'
+						? 'https://www.linkedin.com/feed/?shareActive=true&shareUrl=' + encodeURIComponent(url)
+						: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+					window.open(composerUrl, '_blank', 'noopener,noreferrer');
 					closeMenu();
 					return;
-				} else if (action === 'facebook') {
-					// Facebook's sharer.php fetches OG tags from our URL and renders
-					// the rich preview card with title, description, and og:image.
-					target = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
 				} else if (action === 'weibo') {
 					// Weibo's `title` parameter populates the post text and supports
 					// description-length content. Append description for richer context.
