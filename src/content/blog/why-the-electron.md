@@ -2,6 +2,7 @@
 title: "Why the Electron? The Standard Model's Sole Architect Particle"
 description: "Three of physics's deepest mysteries — Newton's gravitational constant G, the cosmological constant Λ, and the baryon-to-photon ratio η — turn out to be expressible in terms of just two couplings of one specific particle. Among the seventeen elementary particles, only the electron fits."
 pubDate: 2026-05-05
+featured: true
 ---
 
 Three of physics's deepest mysteries — Newton's gravitational constant $G$, the cosmological constant $\Lambda$, and the baryon-to-photon ratio $\eta$ — turn out to be expressible in remarkably simple form. Each, written carefully, reduces to combinations of just two numbers: the fine-structure constant $\alpha \approx 1/137$ and the electron Yukawa coupling $y_e \approx 3 \times 10^{-6}$.

@@ -14,6 +14,11 @@ const blog = defineCollection({
 			// Pinned posts always appear above un-pinned ones in the blog index,
 			// regardless of date. Pinned posts among themselves still sort by pubDate desc.
 			pinned: z.boolean().optional().default(false),
+			// Featured posts appear right after pinned posts in the "More posts"
+			// grid (still in pubDate-desc order among themselves), ahead of the
+			// purely date-sorted remainder. Use for editor's-pick promotion of
+			// non-pinned posts you still want to surface near the top.
+			featured: z.boolean().optional().default(false),
 		}),
 });
 

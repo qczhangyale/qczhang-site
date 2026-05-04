@@ -29,10 +29,13 @@ const allPosts = filterEnglishOnly(await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.map((p) => ({ post: p, minutes: readingMinutes(p.body) }));
 
-// Split into pinned and rest. Pinned posts appear at the top
-// (themselves sorted newest-first); the rest follow in chronological order.
+// "Featured" section combines pinned + featured posts. Pinned posts come
+// first within the section (sorted newest-first); featured posts follow
+// (also newest-first). Everything else flows into the "More posts" grid.
 const pinned = allPosts.filter((x) => x.post.data.pinned);
-const recent = allPosts.filter((x) => !x.post.data.pinned);
+const featured = allPosts.filter((x) => !x.post.data.pinned && x.post.data.featured);
+const highlight = [...pinned, ...featured];
+const recent = allPosts.filter((x) => !x.post.data.pinned && !x.post.data.featured);
 
 const pageDescription = "Long-form writing on the Twistor Configuration Geometry program — essays, notes, and explanations.";
 ---
@@ -222,18 +225,18 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 		<Header />
 
 		{
-			pinned.length > 0 && (
+			highlight.length > 0 && (
 				<div class="section">
 					<div class="section-header">
-						<span class="section-label">Pinned</span>
+						<span class="section-label">Featured</span>
 					</div>
 					<ul class="posts">
-						{pinned.map(({ post, minutes }) => (
+						{highlight.map(({ post, minutes }) => (
 							<li>
 								<a href={`/blog/${post.id}/`} class="post-card">
 									<div class="post-meta">
 										<span class="pin-badge">
-											<span class="pin-icon">📌</span> Pinned
+											<span class="pin-icon">★</span> Featured
 										</span>
 										<FormattedDate date={post.data.pubDate} />
 										<span class="meta-sep">·</span>
@@ -255,7 +258,7 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 
 		<div class="section">
 			<div class="section-header">
-				<span class="section-label">{pinned.length > 0 ? 'More posts' : 'Latest'}</span>
+				<span class="section-label">{highlight.length > 0 ? 'More posts' : 'Latest'}</span>
 			</div>
 			{
 				recent.length > 0 ? (

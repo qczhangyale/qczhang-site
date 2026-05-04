@@ -34,7 +34,9 @@ const allPosts = filterEnglishOnly(all)
 	});
 
 const pinned = allPosts.filter((x) => x.english.data.pinned);
-const recent = allPosts.filter((x) => !x.english.data.pinned);
+const featured = allPosts.filter((x) => !x.english.data.pinned && x.english.data.featured);
+const highlight = [...pinned, ...featured];
+const recent = allPosts.filter((x) => !x.english.data.pinned && !x.english.data.featured);
 ---
 
 <!doctype html>
@@ -68,15 +70,15 @@ const recent = allPosts.filter((x) => !x.english.data.pinned);
 	<body>
 		<Header />
 
-		{pinned.length > 0 && (
+		{highlight.length > 0 && (
 			<div class="section">
 				<div class="section-header"><span class="section-label">{t(locale, 'blog.section.pinned')}</span></div>
 				<ul class="posts">
-					{pinned.map(({ english, post, minutes }) => (
+					{highlight.map(({ english, post, minutes }) => (
 						<li>
 							<a href={`/zh-tw/blog/${english.id}/`} class="post-card">
 								<div class="post-meta">
-									<span class="pin-badge">📌 {t(locale, 'blog.pinBadge')}</span>
+									<span class="pin-badge">★ {t(locale, 'blog.pinBadge')}</span>
 									<FormattedDate date={post.data.pubDate} />
 									<span class="meta-sep">·</span>
 									<span class="reading-time">{t(locale, 'blog.minRead', { n: minutes })}</span>
@@ -96,7 +98,7 @@ const recent = allPosts.filter((x) => !x.english.data.pinned);
 
 		<div class="section">
 			<div class="section-header">
-				<span class="section-label">{pinned.length > 0 ? t(locale, 'blog.section.morePosts') : t(locale, 'blog.section.latest')}</span>
+				<span class="section-label">{highlight.length > 0 ? t(locale, 'blog.section.morePosts') : t(locale, 'blog.section.latest')}</span>
 			</div>
 			{recent.length > 0 ? (
 				<ul class="posts">
