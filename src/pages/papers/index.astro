@@ -14,6 +14,7 @@ const synthesis = papers.filter((p) => p.data.category === 'synthesis');
 const cosmology = papers.filter((p) => p.data.category === 'cosmology');
 const method = papers.filter((p) => p.data.category === 'method');
 const twistor = papers.filter((p) => p.data.category === 'twistor');
+const foundations = papers.filter((p) => p.data.category === 'foundations');
 
 const description =
 	'All papers in the Twistor Configuration Geometry / Configurable Universe research program.';
@@ -46,6 +47,13 @@ const sections = [
 		subtitle: 'April 2026 — the geometric breakthrough',
 		note: '1/α as a chamber-weighted Fubini–Study sum, the stratified Penrose-volume integral, the electron-Yukawa closed form, the super-flag construction, lepton golden-ratio scaling, and the super-CY reading of Λ.',
 		papers: twistor,
+	},
+	{
+		key: 'foundations',
+		title: 'Foundations of Single-Photon Physics',
+		subtitle: 'May 2026 — separate workstream',
+		note: 'Boundary-defined null connection ontology for photon events, paired with a no-signaling-preserving predictive companion. A standalone foundations workstream distinct from the 16-paper TCG arc, with its own Zenodo records.',
+		papers: foundations,
 	},
 ];
 ---

@@ -108,6 +108,9 @@ const en: Dict = {
 	'papers.section.twistor': 'Twistor Framework Discoveries',
 	'papers.section.twistorSubtitle': 'April 2026 — the geometric breakthrough',
 	'papers.section.twistorNote': '1/α as a chamber-weighted Fubini–Study sum, the stratified Penrose-volume integral, the electron-Yukawa closed form, the super-flag construction, lepton golden-ratio scaling, and the super-CY reading of Λ.',
+	'papers.section.foundations': 'Foundations of Single-Photon Physics',
+	'papers.section.foundationsSubtitle': 'May 2026 — separate workstream',
+	'papers.section.foundationsNote': 'Boundary-defined null connection ontology for photon events, paired with a no-signaling-preserving predictive companion. A standalone foundations workstream distinct from the 16-paper TCG arc, with its own Zenodo records.',
 
 	// Blog index
 	'blog.eyebrow': 'Posts',
@@ -238,6 +241,9 @@ const zhCN: Dict = {
 	'papers.section.twistor': '扭量框架发现',
 	'papers.section.twistorSubtitle': '2026 年 4 月 — 几何突破',
 	'papers.section.twistorNote': '1/α 作为腔室加权 Fubini–Study 体积之和、分层 Penrose 体积积分、电子 Yukawa 闭式、超旗构造、轻子黄金比例缩放,以及对 Λ 的超 Calabi–Yau 解读。',
+	'papers.section.foundations': '单光子物理基础',
+	'papers.section.foundationsSubtitle': '2026 年 5 月 — 独立工作线',
+	'papers.section.foundationsNote': '光子事件的边界定义零联络本体论,配以保持无信号传递的可预测性扩展。独立于 16 篇 TCG 论文系列的基础研究工作线,在 Zenodo 上有其独立记录。',
 
 	'blog.eyebrow': '文章',
 	'blog.title': '长文写作',
@@ -363,6 +369,9 @@ const zhTW: Dict = {
 	'papers.section.twistor': '扭量框架發現',
 	'papers.section.twistorSubtitle': '2026 年 4 月 — 幾何突破',
 	'papers.section.twistorNote': '1/α 作為腔室加權 Fubini–Study 體積之和、分層 Penrose 體積積分、電子 Yukawa 閉式、超旗構造、輕子黃金比例縮放,以及對 Λ 的超 Calabi–Yau 解讀。',
+	'papers.section.foundations': '單光子物理基礎',
+	'papers.section.foundationsSubtitle': '2026 年 5 月 — 獨立工作線',
+	'papers.section.foundationsNote': '光子事件的邊界定義零聯絡本體論,配以保持無信號傳遞的可預測性擴展。獨立於 16 篇 TCG 論文系列的基礎研究工作線,在 Zenodo 上有其獨立記錄。',
 
 	'blog.eyebrow': '文章',
 	'blog.title': '長文寫作',
@@ -456,11 +465,16 @@ export function localizedUrl(pathname: string, target: Locale): string {
 // strips dots when generating URL slugs, breaking dot-suffixed filenames.
 // ────────────────────────────────────────────────────────────────────────────
 
-const LOCALE_PREFIX = /^(zh-cn|zh-tw)\//;
+// Two locale-variant conventions are both supported:
+//   subdirectory:  src/content/papers/zh-cn/01-foo.md       → id "zh-cn/01-foo"
+//   sibling file:  src/content/papers/01-foo.zh-cn.md       → id "01-foo.zh-cn"
+// The auto-translate script (scripts/translate.mjs) writes sibling files;
+// either convention works.
+const LOCALE_VARIANT = /(?:^(?:zh-cn|zh-tw)\/|\.(?:zh-cn|zh-tw)$)/;
 
-/** Filter to English-only entries (no `zh-cn/` or `zh-tw/` prefix on id). */
+/** Filter to English-only entries (excludes both subdirectory and sibling locale variants). */
 export function filterEnglishOnly<T extends { id: string }>(entries: T[]): T[] {
-	return entries.filter((e) => !LOCALE_PREFIX.test(e.id));
+	return entries.filter((e) => !LOCALE_VARIANT.test(e.id));
 }
 
 /** Pick the locale-specific entry from a collection if one exists, else fall back to English. */
@@ -470,6 +484,12 @@ export function pickLocalized<T extends { id: string }>(
 	locale: Locale,
 ): T {
 	if (locale === 'en') return englishEntry;
-	const localizedId = `${locale}/${englishEntry.id}`;
-	return entries.find((e) => e.id === localizedId) ?? englishEntry;
+	// Try sibling-file convention first (`<id>.<locale>`), then subdirectory (`<locale>/<id>`).
+	const siblingId = `${englishEntry.id}.${locale}`;
+	const subdirId = `${locale}/${englishEntry.id}`;
+	return (
+		entries.find((e) => e.id === siblingId) ??
+		entries.find((e) => e.id === subdirId) ??
+		englishEntry
+	);
 }

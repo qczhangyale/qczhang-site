@@ -30,7 +30,7 @@ const papers = defineCollection({
 		doi: z.string(),
 		date: z.coerce.date(),
 		order: z.number(),
-		category: z.enum(['synthesis', 'cosmology', 'method', 'twistor']),
+		category: z.enum(['synthesis', 'cosmology', 'method', 'twistor', 'foundations']),
 		precision: z.string().optional(),
 		description: z.string(),
 		keyFormula: z.string().optional(),
