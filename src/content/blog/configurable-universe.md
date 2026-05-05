@@ -2,7 +2,6 @@
 title: "What If the Constants of Physics Aren't Free Parameters?"
 description: "A new geometric framework offers a third path between multiverse selection and brute coincidence — and it makes a falsifiable prediction. An introduction to Twistor Configuration Geometry and the Configurable Universe research program."
 pubDate: 2026-05-03
-pinned: true
 ---
 
 In 1951, the physicist Friedrich Lenz noticed that the proton-to-electron mass ratio is almost exactly $6\pi^5$. He wrote a letter to *Physical Review* consisting of one equation, two sentences, and one reference. He had no theory. Just an observation: $m_p/m_e \approx 6\pi^5$, accurate to all precision of his day's measurements.

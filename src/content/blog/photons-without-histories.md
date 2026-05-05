@@ -1,0 +1,66 @@
+---
+title: "Photons Without Histories: Why Delayed-Choice Experiments Don't Need Retrocausation"
+description: "A new pair of papers reframes single-photon experiments around the photon as a completed relation rather than a traveling particle — and identifies the sharp empirical question that would distinguish ordinary quantum mechanics from a genuinely predictive extension. The popular reading that 'the future changes the past' is a category error; what changes is the conditional structure of the joint data, not the past itself."
+pubDate: 2026-05-05
+pinned: true
+---
+
+In 1978, John Wheeler proposed a thought experiment that has since become a fixture of popular physics writing. A single photon is sent into an interferometer. After the photon has entered — but before it has reached the detectors — an experimenter chooses whether to recombine the two paths into an interference measurement, or leave them separate to record which-path information. The orthodox calculation is straightforward: closed configuration gives interference fringes; open configuration gives which-path statistics. The unsettling part is that the photon's "behavior" seems to depend on a choice made *after* it has already chosen which path to follow. The popular gloss has been "the future changes the past," and Wheeler's experiment has become the canonical exhibit for retrocausation in quantum mechanics.
+
+The popular gloss is wrong. The marginal detection statistics of any earlier subsystem in any version of this experiment ever performed are unchanged regardless of later choices. What changes is the *conditional* structure of the joint data — and only after classical comparison of the two records. No raw earlier statistics shift. No information about the future leaks into the past. This is not a controversial claim; it is the no-signaling theorem, and it has been verified at the $10^{-4}$ level in modern Bell tests. Yet four decades after Wheeler's proposal, the popular reading persists, and even careful interpretive papers in foundations of physics often gesture at "non-local" or "retrocausal" framings that overstate what the data show.
+
+A pair of papers I posted on Zenodo this week tries to do better. The first is interpretive. The second is a candidate predictive extension. Together they make a single argument: the puzzle of delayed-choice experiments is not a puzzle about retrocausation. It is a puzzle about *what kind of object a photon event is*. Once that question is reframed correctly, the apparent retrocausation dissolves — and a sharper empirical question takes its place.
+
+## The Photon as a Relation
+
+The standard picture treats a photon as a particle that travels from a source to a detector along some path or superposition of paths. The interpretive trouble starts the moment you ask what the photon was doing in flight. Which path did it follow? Did it interfere with itself? Did it know it was about to be measured? The picture admits no clean answer, and the operational orthodoxy is to refuse the question — to say that no path is assigned between measurements, and that any further question is ill-posed.
+
+The first paper takes a different tack. Instead of refusing the question, it refuses the picture that generates it. A single-photon event is *not* a traveler with a private history. It is a **null spacetime relation** between two events: the emission event $\sigma$ and the absorption event $\delta$. The relation is the basic ontological entity. The "photon in flight" is a description that has no Lorentz-invariant correlate; the geometry of the null interval connecting $\sigma$ to $\delta$ has no preferred zero of its affine parameter, and there is no observer comoving with the photon in whose frame "the photon at time $t$" is even definable.
+
+We call this the **boundary-defined null connection** view, or BDNC. The label is a mouthful, but the idea is simple: a photon event is *fixed by its boundary* — the source, the absorber, and everything between them that distinguishes one path from another. In a two-slit experiment with no marker, the slits are constituents of the boundary, and both contribute coherently. With a marker, the boundary now distinguishes the alternatives, and the screen pattern reduces to the incoherent sum. There is no time-evolving traveler making decisions; there is only a completed relation whose observable behavior is governed by the boundary that completes it.
+
+This is not a new idea. It appears in Kastner's relativistic transactional interpretation, in Sorkin's causal-set null-link program, in the all-at-once formulations of Wharton and Adlam, and in the two-state vector formalism of Aharonov and Vaidman. The contribution of the first paper is not a new ontology but a *unifying language*: BDNC compresses several time-symmetric and boundary-relational interpretations into a single null-relation primitive, and identifies one explicit operational criterion that distinguishes them from any predictively distinct alternative.
+
+## The Operational Criterion
+
+Here is what the criterion is. Standard quantum mechanics predicts — and every experiment confirms — that the *unsorted marginal* detection distribution at any earlier subsystem is invariant under any later operation on a spacelike-separated correlated subsystem. Sort the data by the later outcome, and you find interference subensembles and anti-interference subensembles that sum back to the original unsorted pattern. Don't sort, and you see no fingerprint of the later choice at all. This is what the no-signaling theorem says, and it is what Wheeler's experiment, the delayed-choice quantum eraser, and entanglement-swapping experiments have always shown.
+
+A predictively distinct extension of standard quantum mechanics — *any* extension, not just BDNC — would have to violate this. It would have to predict that the unsorted earlier marginal *does* depend on the later setting, not just the conditional. This is the empirical signature that would distinguish a genuinely new physical theory from an interpretive reading of existing physics.
+
+> Future boundary settings either alter unsorted earlier marginal statistics, or they only alter post-selected correlations. Existing experiments are consistent with the latter alone.
+
+The first paper identifies this as a **diagnostic** — the place where a predictively distinct extension would have to operate — without claiming that any current candidate (including BDNC's own minimal form) actually delivers such an extension. A generic future-state weighting ansatz, parameterized by some small coupling $\varepsilon$, *would* produce a marginal-stability violation, but the same ansatz is shared by any beyond-quantum-mechanics theory that violates no-signaling. It is not BDNC-specific. The first paper is honest about this: in its conservative form, BDNC is interpretive, not predictive. Its principal contribution at that level is to compress an existing landscape of boundary-relational interpretations into one vocabulary, and to name the diagnostic question precisely.
+
+## A Candidate Predictive Law
+
+The second paper is the predictive extension that the first paper said would be needed. The strategic move there is to abandon raw-marginal violation entirely. Instead of predicting that future settings change earlier statistics — which is generic to any beyond-quantum theory and immediately exposed to the no-signaling objection — the second paper proposes a small antisymmetric correction to *joint coincidence statistics* that preserves the marginal exactly by construction.
+
+The setup is a phase-scanned delayed-choice quantum eraser. Two coherent paths, a position-resolving signal detector, an idler photon routed to a delayed measurement station with two complementary post-selection channels. Standard quantum mechanics predicts that the coincidence-difference between the two channels, scanned in path-phase $\Delta\phi$, traces out a clean cosine: $P(x, +) - P(x, -) \propto \cos\Delta\phi(x)$. The second paper predicts an additional small in-quadrature residual:
+
+$$P(x, +) - P(x, -) \propto \cos\Delta\phi(x) + \varepsilon\, \eta(\theta)\, W(D)\, \sin\Delta\phi(x)$$
+
+with a six-feature fingerprint. The residual is antisymmetric across complementary post-selection channels. It vanishes in the unsorted marginal — by construction; the no-signaling theorem is preserved exactly, not merely approximately. It vanishes when path distinguishability is zero or full; only the partial-distinguishability regime supports it. It scales as a specific window function $W(D) = D\sqrt{1 - D^2}$, peaking at $D = 1/\sqrt{2}$. And the angular dependence on the post-selection-basis angle commits to a linear envelope $f(\alpha_A, \alpha_B) = \alpha_A - \alpha_B$ as the primary ansatz.
+
+That last commitment matters. A retreat to "some richer microstructure would give a different envelope" is explicitly ruled out as an acceptable defense. If the linear envelope fails the experimental scan, the proposed law fails — not merely the simplest case of it. The second paper is concrete about what would constitute confirmation, what would constitute confounding, and what would constitute falsification.
+
+## What Would Confirm It, What Would Kill It
+
+The decisive observation is the in-quadrature residual at the canonical post-selection basis. Standard quantum mechanics predicts pure $\cos\Delta\phi(x)$ at that basis; a $\sin\Delta\phi(x)$ residual is the first signature. But signature alone is not enough. Three further checks are required:
+
+- the residual must vanish in the unsorted marginal (no-signaling preserved);
+- the residual must vanish at zero distinguishability and at full distinguishability, and peak in between with the specific $W(D)$ shape;
+- the residual must depend on the post-selection-basis angle in a definite way determined by the linear envelope.
+
+A positive in-quadrature signal that fails any of those checks identifies a *non*-BDNC effect — detector bias, basis miscalibration, generic no-signaling violation, or a richer microstructure that requires its own separate motivation.
+
+Sensitivity is a separate question. With $\sim 10^8$ pair detections, statistical reach approaches the $10^{-4}$ level on fractional marginal shifts; the actual experimental bound is dominated by detector calibration and phase stability, with basis-calibration to $\sim 5 \times 10^{-4}$ rad as the principal systematic. None of this requires instrumental advance. The required components — a spontaneous parametric down-conversion source, a two-path interferometer, a tunable path-marker, a post-selection-basis angle controllable to $\sim 10^{-4}$ rad, and sub-nanosecond coincidence timing — are within reach of existing quantum-optics laboratories. The novelty is the scan structure and the pre-registered analysis pipeline targeting this specific residual as the primary observable.
+
+## Why It Matters
+
+If the experiment returns a null result, the second paper's proposed extension is constrained or ruled out. The first paper still stands: BDNC remains a clarifying interpretive synthesis of a landscape of boundary-relational accounts, the popular "future changes the past" reading is still wrong, and the diagnostic is still the right diagnostic. The framework returns no new physics, but it dissolves a confusion that has run in popular accounts of quantum mechanics for forty years.
+
+If the experiment returns a positive result with the full six-feature fingerprint, that would be evidence of a genuinely predictively distinct extension of standard quantum mechanics — not just generic no-signaling violation, but a specific structured deviation tied to the path-frame geometry of the boundary completion. That would be a serious finding, and would require careful follow-up to distinguish from the various confounders the second paper enumerates.
+
+Either outcome would be informative. The popular framing — *the future changes the past* — is the only one neither outcome would support. The past in delayed-choice experiments was never independent of the full boundary specification, and the appearance of retrocausal mechanism dissolves once that is recognized. What the experiments actually show is that a photon event is a relation, not a traveler. The relation is fixed by its boundary; the boundary includes everything from emission to absorption, including the post-selection structure on the absorber side. There is nothing for retrocausation to do, because there was never anything traveling that could be retroactively edited.
+
+The two papers — *Boundary-Defined Null Connections* and *Null-Boundary Response* — are on Zenodo (DOIs [10.5281/zenodo.20032379](https://doi.org/10.5281/zenodo.20032379) and [10.5281/zenodo.20032415](https://doi.org/10.5281/zenodo.20032415), CC-BY-4.0). The first is a 16-page interpretive synthesis with a closing outlook on a possible mathematical language (Twistor-Boundary Phase Geometry) compatible with the framework. The second is a 12-page predictive companion with a concrete experimental protocol. They are paired, but read in either order; the first establishes the diagnostic, the second offers a candidate that meets the diagnostic. Whether the diagnostic resolves to a null or a positive is, at this point, an experimental question.
