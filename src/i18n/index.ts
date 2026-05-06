@@ -91,7 +91,7 @@ const en: Dict = {
 	// Papers index
 	'papers.eyebrow': 'Bibliography',
 	'papers.title': 'Papers',
-	'papers.intro': 'All sixteen papers in the Twistor Configuration Geometry program. Published on Zenodo under CC-BY-4.0. The four synthesis papers (May 2026) are the recommended starting point; the twelve development papers are listed in research-marathon order.',
+	'papers.intro': 'Nineteen papers in total: a sixteen-paper Twistor Configuration Geometry arc plus a three-paper foundations workstream (BDNC ontology, NBR predictive companion, and the TCG → Pati–Salam wall-deletion bridge). Published on Zenodo under CC-BY-4.0. The four TCG synthesis papers (May 2026) are the recommended starting point; foundations papers stand on their own.',
 	'papers.statPapers': 'Papers',
 	'papers.statRelations': 'Empirical relations',
 	'papers.statOoM': 'Orders of magnitude',
@@ -108,9 +108,9 @@ const en: Dict = {
 	'papers.section.twistor': 'Twistor Framework Discoveries',
 	'papers.section.twistorSubtitle': 'April 2026 — the geometric breakthrough',
 	'papers.section.twistorNote': '1/α as a chamber-weighted Fubini–Study sum, the stratified Penrose-volume integral, the electron-Yukawa closed form, the super-flag construction, lepton golden-ratio scaling, and the super-CY reading of Λ.',
-	'papers.section.foundations': 'Foundations of Single-Photon Physics',
+	'papers.section.foundations': 'Foundations and Structural Extensions',
 	'papers.section.foundationsSubtitle': 'May 2026 — separate workstream',
-	'papers.section.foundationsNote': 'Boundary-defined null connection ontology for photon events, paired with a no-signaling-preserving predictive companion. A standalone foundations workstream distinct from the 16-paper TCG arc, with its own Zenodo records.',
+	'papers.section.foundationsNote': 'Two thematic threads adjacent to the TCG empirical arc: a boundary-defined null-connection interpretation of single-photon events paired with a no-signaling-preserving predictive companion (papers 17–18), and a wall-deletion bridge from TCG chamber data to a Pati–Salam (B−L)/2 sub-algebra (paper 19). Each has independent Zenodo records and stands distinct from the sixteen-paper TCG arc.',
 
 	// Blog index
 	'blog.eyebrow': 'Posts',
@@ -224,7 +224,7 @@ const zhCN: Dict = {
 
 	'papers.eyebrow': '文献',
 	'papers.title': '论文',
-	'papers.intro': '扭量构型几何研究计划中的全部十六篇论文,发表于 Zenodo,CC-BY-4.0 许可。四篇综合论文(2026 年 5 月)是建议的入门起点;十二篇开发期论文按研究马拉松顺序排列。',
+	'papers.intro': '总计十九篇论文:十六篇扭量构型几何论文系列,加三篇基础工作线论文(BDNC 本体论、NBR 预测扩展、以及 TCG → Pati–Salam 壁删除桥梁)。在 Zenodo 上以 CC-BY-4.0 协议发布。四篇 TCG 综合论文(2026 年 5 月)是建议的入门起点;基础工作线论文各自独立。',
 	'papers.statPapers': '篇论文',
 	'papers.statRelations': '条经验关系',
 	'papers.statOoM': '个数量级',
@@ -241,9 +241,9 @@ const zhCN: Dict = {
 	'papers.section.twistor': '扭量框架发现',
 	'papers.section.twistorSubtitle': '2026 年 4 月 — 几何突破',
 	'papers.section.twistorNote': '1/α 作为腔室加权 Fubini–Study 体积之和、分层 Penrose 体积积分、电子 Yukawa 闭式、超旗构造、轻子黄金比例缩放,以及对 Λ 的超 Calabi–Yau 解读。',
-	'papers.section.foundations': '单光子物理基础',
+	'papers.section.foundations': '基础与结构扩展',
 	'papers.section.foundationsSubtitle': '2026 年 5 月 — 独立工作线',
-	'papers.section.foundationsNote': '光子事件的边界定义零联络本体论,配以保持无信号传递的可预测性扩展。独立于 16 篇 TCG 论文系列的基础研究工作线,在 Zenodo 上有其独立记录。',
+	'papers.section.foundationsNote': '与 TCG 经验弧相邻的两条主题线索:单光子事件的边界定义零联络诠释,配以保持无信号传递的可预测性扩展(论文 17–18);以及从 TCG 腔室数据到 Pati–Salam (B−L)/2 子代数的壁删除桥梁(论文 19)。各自在 Zenodo 上有独立记录,独立于 16 篇 TCG 论文系列。',
 
 	'blog.eyebrow': '文章',
 	'blog.title': '长文写作',
@@ -352,7 +352,7 @@ const zhTW: Dict = {
 
 	'papers.eyebrow': '文獻',
 	'papers.title': '論文',
-	'papers.intro': '扭量構型幾何研究計畫中的全部十六篇論文,發表於 Zenodo,CC-BY-4.0 授權。四篇綜合論文(2026 年 5 月)是建議的入門起點;十二篇開發期論文按研究馬拉松順序排列。',
+	'papers.intro': '總計十九篇論文:十六篇扭量構型幾何論文系列,加三篇基礎工作線論文(BDNC 本體論、NBR 預測擴展、以及 TCG → Pati–Salam 壁刪除橋樑)。在 Zenodo 上以 CC-BY-4.0 授權發布。四篇 TCG 綜合論文(2026 年 5 月)是建議的入門起點;基礎工作線論文各自獨立。',
 	'papers.statPapers': '篇論文',
 	'papers.statRelations': '條經驗關係',
 	'papers.statOoM': '個數量級',
@@ -369,9 +369,9 @@ const zhTW: Dict = {
 	'papers.section.twistor': '扭量框架發現',
 	'papers.section.twistorSubtitle': '2026 年 4 月 — 幾何突破',
 	'papers.section.twistorNote': '1/α 作為腔室加權 Fubini–Study 體積之和、分層 Penrose 體積積分、電子 Yukawa 閉式、超旗構造、輕子黃金比例縮放,以及對 Λ 的超 Calabi–Yau 解讀。',
-	'papers.section.foundations': '單光子物理基礎',
+	'papers.section.foundations': '基礎與結構擴展',
 	'papers.section.foundationsSubtitle': '2026 年 5 月 — 獨立工作線',
-	'papers.section.foundationsNote': '光子事件的邊界定義零聯絡本體論,配以保持無信號傳遞的可預測性擴展。獨立於 16 篇 TCG 論文系列的基礎研究工作線,在 Zenodo 上有其獨立記錄。',
+	'papers.section.foundationsNote': '與 TCG 經驗弧相鄰的兩條主題線索:單光子事件的邊界定義零聯絡詮釋,配以保持無信號傳遞的可預測性擴展(論文 17–18);以及從 TCG 腔室數據到 Pati–Salam (B−L)/2 子代數的壁刪除橋樑(論文 19)。各自在 Zenodo 上有獨立記錄,獨立於 16 篇 TCG 論文系列。',
 
 	'blog.eyebrow': '文章',
 	'blog.title': '長文寫作',
