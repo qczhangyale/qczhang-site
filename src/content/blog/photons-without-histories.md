@@ -2,7 +2,6 @@
 title: "Photons Without Histories: Why Delayed-Choice Experiments Don't Need Retrocausation"
 description: "A new pair of papers reframes single-photon experiments around the photon as a completed relation rather than a traveling particle — and identifies the sharp empirical question that would distinguish ordinary quantum mechanics from a genuinely predictive extension. The popular reading that 'the future changes the past' is a category error; what changes is the conditional structure of the joint data, not the past itself."
 pubDate: 2026-05-05
-pinned: true
 ---
 
 In 1978, John Wheeler proposed a thought experiment that has since become a fixture of popular physics writing. A single photon is sent into an interferometer. After the photon has entered — but before it has reached the detectors — an experimenter chooses whether to recombine the two paths into an interference measurement, or leave them separate to record which-path information. The orthodox calculation is straightforward: closed configuration gives interference fringes; open configuration gives which-path statistics. The unsettling part is that the photon's "behavior" seems to depend on a choice made *after* it has already chosen which path to follow. The popular gloss has been "the future changes the past," and Wheeler's experiment has become the canonical exhibit for retrocausation in quantum mechanics.
