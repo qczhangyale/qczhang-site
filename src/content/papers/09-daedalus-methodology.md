@@ -1,11 +1,11 @@
 ---
 title: "DAEDALUS: A Dimensional-Analysis Engine for Discovering Algebraic Links Among Fundamental Constants"
 shortTitle: "DAEDALUS methodology"
-doi: "10.5281/zenodo.20059636"
-date: 2026-05-06
+doi: "10.5281/zenodo.20062462"
+date: 2026-05-07
 order: 9
 category: method
-description: "The methodological apparatus underlying the DAEDALUS empirical body. Discovery engine + saturation-problem analysis + numerical and structural filters + Monte-Carlo permutation tests calibrated against Rydberg and Bohr radius."
+description: "The methodological apparatus underlying the DAEDALUS empirical body. Discovery engine + saturation-problem analysis + numerical and structural filters + Monte-Carlo permutation tests calibrated against Rydberg and Bohr radius. v2 adds a multi-relation look-elsewhere audit with trial-space cardinality estimates, independence reduction, three procedural safeguards, and Bayes-factor calculation."
 ---
 
 ## Abstract
@@ -16,6 +16,8 @@ A Monte Carlo permutation test (100 trials with scrambled $\Lambda$ values) yiel
 
 We report the engine's track record: four published relations, six systematic null results, and a clear map of where dimensional analysis succeeds and fails. The structural filter is specified algorithmically, but we emphasize that it encodes physical priors that are themselves choices — different priors would yield different survivors.
 
+In v2 (May 2026), we extend the look-elsewhere analysis from the single-relation case to the multi-relation case (Section 7), providing trial-space cardinality estimates under three formula-grammar levels, an independence reduction of the broader empirical body to ~5–6 statistically independent matches, three procedural safeguards that pre-register the strict grammar, and Bayes-factor calculations giving $3 \times 10^2$ to $3 \times 10^5$ in favor of the framework being non-trivial. The audit refines the program's headline claim and converts the informal look-elsewhere narrative into a formal pre-registration mechanism.
+
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20059636](https://doi.org/10.5281/zenodo.20059636)
+[https://doi.org/10.5281/zenodo.20062462](https://doi.org/10.5281/zenodo.20062462)
