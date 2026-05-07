@@ -4,7 +4,7 @@ shortTitle: "Predictions and No-Go"
 doi: "10.5281/zenodo.19990779"
 date: 2026-05-01
 order: 4
-category: synthesis
+category: foundations
 description: "Predictive ledger: one forward prediction (spin-1 fifth force at α_Y ≈ 1.88×10⁴), one no-go theorem (60σ on-shell weak-angle exclusion), three structural constraints, and an I[f] guardrail."
 ---
 
