@@ -2,7 +2,7 @@
 title: "The Falsifiable Prediction: A Spin-1 Fifth Force, Testable on a Tabletop"
 description: "The TCG framework's principal forward prediction is a spin-1 fifth force coupled at α_Y ≈ 1.88×10⁴ in the 5–10 μm range. Unlike most ambitious theoretical frameworks, this prediction can be killed in the next two to three iterations of tabletop optomechanical experiments — most of which are already in design."
 pubDate: 2026-05-08
-pinned: true
+featured: true
 ---
 
 Theoretical physics works at scales where forward predictions are hard to come by. Frameworks that try to address foundational questions — the structure of spacetime, the origin of mass, the values of the dimensionless constants — typically operate at energies or distances far beyond what laboratory experiments can probe. This is not a failure of imagination on the theorists' part; it is the geometry of the problem. The deeper one reaches, the harder it gets to find a quantity that is both calculable from the framework and measurable on a benchtop.

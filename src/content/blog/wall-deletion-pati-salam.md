@@ -2,7 +2,7 @@
 title: "Why Quark Charges Come in Thirds: A Geometric Bridge to Pati–Salam Unification"
 description: "A new paper finds that the Pati–Salam (B−L)/2 generator hides inside Twistor Configuration Geometry — the first time TCG produces gauge-algebraic content of any kind. The bridge falls one rung short of the full Standard Model, but the missing rung is sharply identified."
 pubDate: 2026-05-05
-pinned: true
+featured: true
 ---
 
 In 1973, Jogesh Pati and Abdus Salam noticed something striking. The Standard Model treats quarks and leptons as fundamentally distinct objects — quarks come in three colors, leptons come in none. But what if those three colors and the lepton's "no-color" were really four versions of the same thing? Then $SU(3)$ color, plus a fourth slot for the lepton, would extend to $SU(4)$. They proposed exactly this: a unification group $SU(4) \times SU(2)_L \times SU(2)_R$ in which the lepton is "the fourth color." Their proposal predicted a new abelian charge, $(B-L)/2$, that takes a specific value: $+1/6$ for quarks and $-1/2$ for leptons. Half a century later, the Pati–Salam construction remains one of the cleanest motivations for the strange fractional charges of the Standard Model — a quark's $+2/3$ and $-1/3$ are not random integers in disguise; they are pieces of a deeper unification structure.

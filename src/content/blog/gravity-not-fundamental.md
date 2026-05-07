@@ -2,7 +2,6 @@
 title: "What If Gravity Isn't a Fundamental Force?"
 description: "Newton's G and the cosmological constant Λ — physics's two deepest hierarchy puzzles — both reduce to combinations of the fine-structure constant α and the electron Yukawa coupling y_e. Gravity, in this reading, isn't fundamental; it's a derived expression of QED and the electron's coupling to the Higgs field."
 pubDate: 2026-05-04
-featured: true
 ---
 
 Of the four fundamental forces, gravity is by far the strangest.
