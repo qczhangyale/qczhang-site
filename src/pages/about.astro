@@ -3,8 +3,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+import { getPaperCounts } from '../lib/paper-stats';
+import { t } from '../i18n';
 
 const description = 'About Q.C. Zhang and the TCG / Configurable Universe research program.';
+const counts = await getPaperCounts();
+const corpusBody = t('en', 'about.corpusBody', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
 
 // JSON-LD Person schema — feeds Google Knowledge Graph
 const personSchema = {
@@ -139,10 +143,7 @@ const personSchema = {
 
 			<h2>The corpus</h2>
 			<p>
-				Twenty-one papers on Zenodo, CC-BY-4.0: a seventeen-paper Twistor Configuration
-				Geometry arc (synthesis, framework architecture, specific empirical predictions,
-				and methodology) plus four adjacent workstreams. See the
-				<a href="/papers/">full list</a>.
+				{corpusBody} See the <a href="/papers/">full list</a>.
 			</p>
 
 			<div class="contact-card">

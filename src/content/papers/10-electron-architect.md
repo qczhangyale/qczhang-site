@@ -4,7 +4,7 @@ shortTitle: "Electron-architect"
 doi: "10.5281/zenodo.19711054"
 date: 2025-12-01
 order: 10
-category: synthesis
+category: foundations
 description: "Why the electron mass m_e appears across so many of the closed-form relations. Five simultaneous constraints — stability, charge, elementarity, Higgs coupling, minimality — that uniquely select the electron."
 ---
 

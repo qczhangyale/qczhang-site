@@ -3,8 +3,11 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { t } from '../../i18n';
+import { getPaperCounts } from '../../lib/paper-stats';
 
 const locale = 'zh-cn';
+const counts = await getPaperCounts();
+const corpusBody = t(locale, 'about.corpusBody', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
 ---
 
 <!doctype html>
@@ -51,7 +54,7 @@ const locale = 'zh-cn';
 
 			<h2>{t(locale, 'about.corpus')}</h2>
 			<p>
-				{t(locale, 'about.corpusBody')} 详见<a href="/zh-cn/papers/">{t(locale, 'about.corpusList')}</a>。
+				{corpusBody} 详见<a href="/zh-cn/papers/">{t(locale, 'about.corpusList')}</a>。
 			</p>
 
 			<div class="contact-card">

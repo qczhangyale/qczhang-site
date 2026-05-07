@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { filterEnglishOnly } from '../i18n';
+import { getPaperCounts } from '../lib/paper-stats';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -8,6 +9,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const papers = filterEnglishOnly(await getCollection('papers')).sort((a, b) => a.data.order - b.data.order);
 const synthesis = papers.filter((p) => p.data.category === 'synthesis');
+const counts = await getPaperCounts();
 
 // Provenance (per the DAEDALUS Review §2):
 //   'original' — first identified in this research program
@@ -414,12 +416,13 @@ const originalCount = relations.filter((r) => r.provenance === 'original').lengt
 		<div class="section">
 			<div class="lead">
 				<p>
-					Across twenty Zenodo papers — anchored in a sixteen-paper Twistor Configuration
-					Geometry arc, with four adjacent workstreams on photon ontology, gauge-algebra
-					structure, and quantum-gravity dimensional flow — this program proposes that the dimensionless
-					constants — α, Λ, α<sub>G</sub>, Yukawa couplings, sin²θ<sub>W</sub>,
-					and others — are not free parameters but structural invariants of a
-					combinatorial geometry built on Penrose's projective twistor space CP³.
+					Across {counts.total} Zenodo papers — anchored in a {counts.tcgArc}-paper
+					Twistor Configuration Geometry arc, with {counts.adjacent} adjacent workstreams
+					on photon ontology, gauge-algebra structure, and quantum-gravity dimensional
+					flow — this program proposes that the dimensionless constants — α, Λ,
+					α<sub>G</sub>, Yukawa couplings, sin²θ<sub>W</sub>, and others — are not free
+					parameters but structural invariants of a combinatorial geometry built on
+					Penrose's projective twistor space CP³.
 				</p>
 				<p>
 					The framework is <strong>Twistor Configuration Geometry (TCG)</strong>;
@@ -449,10 +452,10 @@ const originalCount = relations.filter((r) => r.provenance === 'original').lengt
 
 		<div class="section">
 			<div class="section-eyebrow">Start here</div>
-			<h2>The four synthesis papers</h2>
+			<h2>The synthesis papers</h2>
 			<p class="section-intro">
-				Published May 2026. Read these four together for the full program: the empirical
-				body, the philosophical reading, the mathematical framework, and the predictive ledger.
+				Read these together for the top-level synthesis: the empirical body and the
+				philosophical companion.
 			</p>
 			<div class="synth-grid">
 				{

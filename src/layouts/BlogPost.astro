@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { t, type Locale, localeFromPath } from '../i18n';
+import { getPaperCounts } from '../lib/paper-stats';
 
 type Props = CollectionEntry<'blog'>['data'] & { minutes?: number; locale?: Locale };
 
@@ -13,6 +14,8 @@ const { title, description, pubDate, updatedDate, heroImage, minutes } = Astro.p
 const locale: Locale = (Astro.props as any).locale ?? localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
 const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
+const counts = await getPaperCounts();
+const articleFooter = t(locale, 'article.footer', { tcgArc: counts.tcgArc });
 
 // JSON-LD BlogPosting — eligible for Google's article rich-result card
 const schema = {
@@ -278,7 +281,7 @@ const schema = {
 
 			<div class="article-footer">
 				<p>
-					{t(locale, 'article.footer')}
+					{articleFooter}
 					<a href={localePrefix + '/papers/'}>{t(locale, 'article.footer.bibliography')}</a>
 				</p>
 			</div>

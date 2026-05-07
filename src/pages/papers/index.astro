@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import { filterEnglishOnly } from '../../i18n';
+import { filterEnglishOnly, t } from '../../i18n';
+import { getPaperCounts } from '../../lib/paper-stats';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -16,6 +17,10 @@ const method = papers.filter((p) => p.data.category === 'method');
 const twistor = papers.filter((p) => p.data.category === 'twistor');
 const foundations = papers.filter((p) => p.data.category === 'foundations');
 
+const counts = await getPaperCounts();
+const intro = t('en', 'papers.intro', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
+const foundationsNote = t('en', 'papers.section.foundationsNote', { tcgArc: counts.tcgArc });
+
 const description =
 	'All papers in the Twistor Configuration Geometry / Configurable Universe research program.';
 
@@ -23,8 +28,8 @@ const sections = [
 	{
 		key: 'synthesis',
 		title: 'Synthesis',
-		subtitle: 'Empirical body, philosophical reading, and architectural-particle argument',
-		note: 'Three consolidation papers: the empirical body (DAEDALUS Review, May 2026), the philosophical companion (Configurable Universe, May 2026), and the structural argument that the electron is the framework\'s architectural particle.',
+		subtitle: 'Empirical body and philosophical reading',
+		note: 'Two top-level consolidation papers: the empirical body (DAEDALUS Review, May 2026) and the philosophical companion (Configurable Universe, May 2026).',
 		papers: synthesis,
 	},
 	{
@@ -52,7 +57,7 @@ const sections = [
 		key: 'foundations',
 		title: 'Foundations and Adjacent Workstreams',
 		subtitle: 'Independent of the TCG empirical arc',
-		note: 'TCG framework architecture papers (the construction reference, the predictive ledger, the electroweak-boundary postulate update) together with three independent threads adjacent to the TCG arc: (i) a boundary-defined null-connection interpretation of single-photon events paired with a no-signaling-preserving predictive companion (papers 17–18); (ii) a wall-deletion bridge from TCG chamber data to a Pati–Salam (B−L)/2 sub-algebra (paper 19); (iii) a phenomenological running-fractional-Laplacian model for spectral dimension flow in quantum spacetime (paper 20). The adjacent workstreams have independent Zenodo records and stand distinct from the seventeen-paper TCG arc.',
+		note: foundationsNote,
 		papers: foundations,
 	},
 ];
@@ -206,17 +211,10 @@ const sections = [
 		<div class="page-header">
 			<div class="page-eyebrow">Bibliography</div>
 			<h1>Papers</h1>
-			<p class="page-intro">
-				Twenty-one papers in total: a seventeen-paper Twistor Configuration Geometry arc
-				plus four adjacent workstreams (BDNC ontology, NBR predictive companion, the TCG →
-				Pati–Salam wall-deletion bridge, and a spectral-dimension-flow study of quantum
-				spacetime). Published on Zenodo under CC-BY-4.0. The TCG synthesis papers (May
-				2026) are the recommended starting point; the adjacent workstreams stand on their
-				own.
-			</p>
+			<p class="page-intro">{intro}</p>
 			<div class="page-summary">
 				<div class="summary-stat">
-					<span class="num">21</span>
+					<span class="num">{counts.total}</span>
 					<span class="label">Papers</span>
 				</div>
 				<div class="summary-stat">

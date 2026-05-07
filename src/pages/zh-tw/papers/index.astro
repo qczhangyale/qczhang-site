@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { filterEnglishOnly, pickLocalized } from '../../../i18n';
+import { getPaperCounts } from '../../../lib/paper-stats';
 import BaseHead from '../../../components/BaseHead.astro';
 import Footer from '../../../components/Footer.astro';
 import Header from '../../../components/Header.astro';
@@ -16,19 +17,23 @@ const method = papers.filter((p) => p.english.data.category === 'method');
 const twistor = papers.filter((p) => p.english.data.category === 'twistor');
 const foundations = papers.filter((p) => p.english.data.category === 'foundations');
 
+const counts = await getPaperCounts();
+const intro = t(locale, 'papers.intro', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
+const foundationsNote = t(locale, 'papers.section.foundationsNote', { tcgArc: counts.tcgArc });
+
 const sections = [
 	{ key: 'synthesis', title: t(locale, 'papers.section.synthesis'), subtitle: t(locale, 'papers.section.synthesisSubtitle'), note: t(locale, 'papers.section.synthesisNote'), papers: synthesis },
 	{ key: 'cosmology', title: t(locale, 'papers.section.cosmology'), subtitle: t(locale, 'papers.section.cosmologySubtitle'), note: t(locale, 'papers.section.cosmologyNote'), papers: cosmology },
 	{ key: 'method', title: t(locale, 'papers.section.method'), subtitle: t(locale, 'papers.section.methodSubtitle'), note: t(locale, 'papers.section.methodNote'), papers: method },
 	{ key: 'twistor', title: t(locale, 'papers.section.twistor'), subtitle: t(locale, 'papers.section.twistorSubtitle'), note: t(locale, 'papers.section.twistorNote'), papers: twistor },
-	{ key: 'foundations', title: t(locale, 'papers.section.foundations'), subtitle: t(locale, 'papers.section.foundationsSubtitle'), note: t(locale, 'papers.section.foundationsNote'), papers: foundations },
+	{ key: 'foundations', title: t(locale, 'papers.section.foundations'), subtitle: t(locale, 'papers.section.foundationsSubtitle'), note: foundationsNote, papers: foundations },
 ];
 ---
 
 <!doctype html>
 <html lang="zh-TW" data-theme="warm">
 	<head>
-		<BaseHead title={`${t(locale, 'papers.title')} — Q.C. Zhang`} description={t(locale, 'papers.intro')} />
+		<BaseHead title={`${t(locale, 'papers.title')} — Q.C. Zhang`} description={intro} />
 		<style>
 			.page-header { max-width: var(--page-width-wide); margin: 0 auto; padding: 3rem 1rem 1.5rem; }
 			.page-eyebrow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
@@ -58,9 +63,9 @@ const sections = [
 		<div class="page-header">
 			<div class="page-eyebrow">{t(locale, 'papers.eyebrow')}</div>
 			<h1>{t(locale, 'papers.title')}</h1>
-			<p class="page-intro">{t(locale, 'papers.intro')}</p>
+			<p class="page-intro">{intro}</p>
 			<div class="page-summary">
-				<div class="summary-stat"><span class="num">21</span><span class="label">{t(locale, 'papers.statPapers')}</span></div>
+				<div class="summary-stat"><span class="num">{counts.total}</span><span class="label">{t(locale, 'papers.statPapers')}</span></div>
 				<div class="summary-stat"><span class="num">9</span><span class="label">{t(locale, 'papers.statRelations')}</span></div>
 				<div class="summary-stat"><span class="num">124</span><span class="label">{t(locale, 'papers.statOoM')}</span></div>
 				<div class="summary-stat"><span class="num">1</span><span class="label">{t(locale, 'papers.statPrediction')}</span></div>
