@@ -91,7 +91,7 @@ const en: Dict = {
 	// Papers index
 	'papers.eyebrow': 'Bibliography',
 	'papers.title': 'Papers',
-	'papers.intro': 'Twenty papers in total: a sixteen-paper Twistor Configuration Geometry arc plus four adjacent workstreams (BDNC ontology, NBR predictive companion, the TCG → Pati–Salam wall-deletion bridge, and a spectral-dimension-flow study of quantum spacetime). Published on Zenodo under CC-BY-4.0. The four TCG synthesis papers (May 2026) are the recommended starting point; the adjacent workstreams stand on their own.',
+	'papers.intro': 'Twenty-one papers in total: a seventeen-paper Twistor Configuration Geometry arc plus four adjacent workstreams (BDNC ontology, NBR predictive companion, the TCG → Pati–Salam wall-deletion bridge, and a spectral-dimension-flow study of quantum spacetime). Published on Zenodo under CC-BY-4.0. The TCG synthesis papers (May 2026) are the recommended starting point; the adjacent workstreams stand on their own.',
 	'papers.statPapers': 'Papers',
 	'papers.statRelations': 'Empirical relations',
 	'papers.statOoM': 'Orders of magnitude',
@@ -110,7 +110,7 @@ const en: Dict = {
 	'papers.section.twistorNote': '1/α as a chamber-weighted Fubini–Study sum, the stratified Penrose-volume integral, the electron-Yukawa closed form, the super-flag construction, lepton golden-ratio scaling, and the super-CY reading of Λ.',
 	'papers.section.foundations': 'Foundations and Adjacent Workstreams',
 	'papers.section.foundationsSubtitle': 'Independent of the TCG empirical arc',
-	'papers.section.foundationsNote': 'Three independent threads adjacent to the TCG arc: (i) a boundary-defined null-connection interpretation of single-photon events paired with a no-signaling-preserving predictive companion (papers 17–18); (ii) a wall-deletion bridge from TCG chamber data to a Pati–Salam (B−L)/2 sub-algebra (paper 19); (iii) a phenomenological running-fractional-Laplacian model for spectral dimension flow in quantum spacetime (paper 20). Each has independent Zenodo records and stands distinct from the sixteen-paper TCG arc.',
+	'papers.section.foundationsNote': 'TCG framework architecture papers (the construction reference, the predictive ledger, the electroweak-boundary postulate update) together with three independent threads adjacent to the TCG arc: (i) a boundary-defined null-connection interpretation of single-photon events paired with a no-signaling-preserving predictive companion (papers 17–18); (ii) a wall-deletion bridge from TCG chamber data to a Pati–Salam (B−L)/2 sub-algebra (paper 19); (iii) a phenomenological running-fractional-Laplacian model for spectral dimension flow in quantum spacetime (paper 20). The adjacent workstreams have independent Zenodo records and stand distinct from the seventeen-paper TCG arc.',
 
 	// Blog index
 	'blog.eyebrow': 'Posts',
@@ -129,7 +129,7 @@ const en: Dict = {
 	'article.eyebrow': 'Long read',
 	'article.byline.by': 'By',
 	'article.byline.updated': 'updated',
-	'article.footer': 'This essay accompanies a sixteen-paper publication arc on Zenodo (CC-BY-4.0).',
+	'article.footer': 'This essay accompanies a seventeen-paper publication arc on Zenodo (CC-BY-4.0).',
 	'article.footer.bibliography': 'See the full bibliography →',
 
 	// About
@@ -224,7 +224,7 @@ const zhCN: Dict = {
 
 	'papers.eyebrow': '文献',
 	'papers.title': '论文',
-	'papers.intro': '总计二十篇论文:十六篇扭量构型几何论文系列,加四条相邻工作线(BDNC 本体论、NBR 预测扩展、TCG → Pati–Salam 壁删除桥梁、以及量子时空谱维数流研究)。在 Zenodo 上以 CC-BY-4.0 协议发布。四篇 TCG 综合论文(2026 年 5 月)是建议的入门起点;相邻工作线论文各自独立。',
+	'papers.intro': '总计二十一篇论文:十七篇扭量构型几何论文系列,加四条相邻工作线(BDNC 本体论、NBR 预测扩展、TCG → Pati–Salam 壁删除桥梁、以及量子时空谱维数流研究)。在 Zenodo 上以 CC-BY-4.0 协议发布。TCG 综合论文(2026 年 5 月)是建议的入门起点;相邻工作线论文各自独立。',
 	'papers.statPapers': '篇论文',
 	'papers.statRelations': '条经验关系',
 	'papers.statOoM': '个数量级',
@@ -352,7 +352,7 @@ const zhTW: Dict = {
 
 	'papers.eyebrow': '文獻',
 	'papers.title': '論文',
-	'papers.intro': '總計二十篇論文:十六篇扭量構型幾何論文系列,加四條相鄰工作線(BDNC 本體論、NBR 預測擴展、TCG → Pati–Salam 壁刪除橋樑、以及量子時空譜維數流研究)。在 Zenodo 上以 CC-BY-4.0 授權發布。四篇 TCG 綜合論文(2026 年 5 月)是建議的入門起點;相鄰工作線論文各自獨立。',
+	'papers.intro': '總計二十一篇論文:十七篇扭量構型幾何論文系列,加四條相鄰工作線(BDNC 本體論、NBR 預測擴展、TCG → Pati–Salam 壁刪除橋樑、以及量子時空譜維數流研究)。在 Zenodo 上以 CC-BY-4.0 授權發布。TCG 綜合論文(2026 年 5 月)是建議的入門起點;相鄰工作線論文各自獨立。',
 	'papers.statPapers': '篇論文',
 	'papers.statRelations': '條經驗關係',
 	'papers.statOoM': '個數量級',
