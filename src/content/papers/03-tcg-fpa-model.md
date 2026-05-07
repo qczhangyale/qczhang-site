@@ -4,7 +4,7 @@ shortTitle: "TCG / FPA Model"
 doi: "10.5281/zenodo.20076012"
 date: 2026-05-07
 order: 3
-category: synthesis
+category: foundations
 description: "Mathematical framework reference. The FPA (Framed Permuto–Associahedral) realization of TCG, with five derivation theorems (D1–D5). v3 retires the original P5 contact-scale postulate and introduces the dimensionless replacement P5'; the active postulate ledger is now P0–P4, P5', P6. A new Appendix A records the fiber-triviality of the FPA bundle over real twistor-line moduli."
 ---
 
