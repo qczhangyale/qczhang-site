@@ -76,7 +76,7 @@ The construction yields four combinatorial primitives as theorems (no extra post
 
 The fourth — the chamber-weighted volume sum at $n \le 3$ — is the same expression that matches $1/\alpha$ to 2.2 ppm.
 
-Seven structural postulates (P0–P6) plus phenomenological identifications map these primitives to the nine empirical observations. Nine independent dimensionless ratios reduce, in TCG's reading, to combinations of *four combinatorial primitives* plus a small structural-postulate set. That is the empirical compression the framework achieves.
+Seven structural postulates (active ledger P0–P4, P5', P6 as of May 2026; the original P5 contact-scale postulate has been retired and replaced by the dimensionless weak-sector boundary condition P5': $g_{2,W}^2 = 4/(3\pi)$) plus phenomenological identifications map these primitives to the nine empirical observations. Nine measured dimensionless relations reduce, in TCG's reading, to combinations of *four combinatorial primitives* plus a small structural-postulate set. That is the empirical compression the framework achieves.
 
 ## We Are in a Chamber
 
@@ -130,7 +130,7 @@ The prediction is not yet experimentally accessible. At $\lambda = 5$ µm, the c
 
 What matters is that the prediction is concrete and falsifiable. If no signal is found at the predicted strength after sensitivity is reached, the prediction — and with it postulate P6 — is falsified. If the signal is found, the framework is strongly vindicated.
 
-The framework also has one strict no-go theorem (the weak-angle relation cannot be on-shell, 60σ excluded), three structural constraints (electron-specificity in the $\Lambda$ relation, sharp 89.4 GeV contact-scale target, specific signed residual $\Delta_\alpha = -3.046 \times 10^{-4}$ in the $\alpha$ relation), and an $\mathcal{I}[f]$ guardrail against post-hoc fitting — all detailed in [the predictions paper](/papers/04-predictions-no-go/).
+The framework also has one strict no-go theorem (the weak-angle relation cannot be on-shell, 60σ excluded), three structural constraints (electron-specificity in the $\Lambda$ relation, the dimensionless gauge-kinetic-normalization target P5': $g_{2,W}^2 = 4/(3\pi)$ for the weak sector, specific signed residual $\Delta_\alpha = -3.046 \times 10^{-4}$ in the $\alpha$ relation), and an $\mathcal{I}[f]$ guardrail against post-hoc fitting — all detailed in [the predictions paper](/papers/04-predictions-no-go/).
 
 ## What's Missing — and Why the Work Matters Anyway
 

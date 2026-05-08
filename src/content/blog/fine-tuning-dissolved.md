@@ -90,7 +90,7 @@ The paper is candid about the position's status. It can take three forms.
 
 **Weak form.** No specific construction is identified, but the existence of nine sub-percent algebraic relations among independently-measured constants is offered as evidence that some structure connects them. The configurable view is a research program rather than a theory.
 
-The TCG framework, as currently developed, sits in the *medium form*. The construction exists. The relations are reproducible. But seven structural postulates (P0–P6) remain, and the dynamical content (how fields, equations of motion, gauge structure, spacetime emergence arise from the chamber) is not yet derived.
+The TCG framework, as currently developed, sits in the *medium form*. The construction exists. The relations are reproducible. But seven structural postulates remain (active ledger P0–P4, P5', P6 as of May 2026), and the dynamical content (how fields, equations of motion, gauge structure, spacetime emergence arise from the chamber) is not yet derived.
 
 Strong-form vindication awaits the dynamical-derivation gap being closed. The paper does not pretend it has been.
 
