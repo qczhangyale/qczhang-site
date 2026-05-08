@@ -1,11 +1,11 @@
 ---
 title: "Predictions and No-Go Consequences"
 shortTitle: "Predictions and No-Go"
-doi: "10.5281/zenodo.19990779"
-date: 2026-05-01
+doi: "10.5281/zenodo.20076966"
+date: 2026-05-07
 order: 4
 category: foundations
-description: "Predictive ledger: one forward prediction (spin-1 fifth force at α_Y ≈ 1.88×10⁴), one no-go theorem (60σ on-shell weak-angle exclusion), three structural constraints, and an I[f] guardrail."
+description: "Predictive ledger: one forward prediction (spin-1 fifth force at α_Y ≈ 1.88×10⁴), one no-go theorem (60σ on-shell weak-angle exclusion), three structural constraints, and an I[f] guardrail. v2 implements the P5 → P5' substitution: §3.3 recast from the contact-scale target to the dimensionless gauge-kinetic-normalization target for P5'."
 ---
 
 ## Abstract
@@ -18,7 +18,7 @@ Beyond this, **one no-go theorem and three structural constraints** sharpen the 
 
 (ii) the cosmological-constant relation $\Lambda \ell_{\rm Pl}^2 \propto (m_e/m_{\rm Pl})^5$ requires an unstated lightest-charged-lepton selection rule, since muon or tau substitution overshoots by $10^{11}$ to $10^{17}$;
 
-(iii) the contact scale $\mu_{\rm contact}$ implied by the strong-coupling identification (O4) must reproduce the central crossing scale $\mu_\star \simeq 89.4$ GeV (at fixed central $\alpha_s(M_Z)$ input) at sub-percent theoretical sharpness, ruling out $v = 246$ GeV, $v/\sqrt{2}$, $v/2$, $v/\pi$, and $v/\sqrt{2\pi}$ as the sharp target;
+(iii) the postulate P5' (Zhang 2026, Electroweak Boundary), $g_{2,W}^2 = 4/(3\pi)$ (equivalently $M_W/v = 1/\sqrt{3\pi}$), requires any future first-principles derivation to reproduce $4/(3\pi)$ at sub-percent precision from a canonical SU(2)$_L$ gauge-kinetic normalization, with the line-deformation bundle $\mathcal{E} \to G(2,4)$ as the current natural target — replacing the original dimensionful target $\mu_\star \simeq 89.4$ GeV (v1 §3.3), now retired with the closure of the original P5 in TCG v3 §6.2/§7.2;
 
 (iv) any future correction mechanism for the fine-structure relation must produce the specific residual $\Delta_\alpha = -3.046 \times 10^{-4}$ in sign and magnitude, not merely "a small correction."
 
@@ -28,4 +28,4 @@ The paper's honest summary: TCG's predictive profile is mostly defensive (one no
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.19990779](https://doi.org/10.5281/zenodo.19990779)
+[https://doi.org/10.5281/zenodo.20076966](https://doi.org/10.5281/zenodo.20076966)
