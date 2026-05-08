@@ -1,6 +1,6 @@
 ---
-title: "$M_W/v = 1/\\sqrt{3\\pi}$: Trading an Impossible Postulate for a Tractable One"
-description: "The original P5 of Twistor Configuration Geometry asked the framework to derive a dimensionful answer ($M_Z$ in GeV). It can't. A new paper closes that derivation target on three foundational obstructions and replaces it with a dimensionless boundary condition: $g_{2,W}^2 = 4/(3\\pi)$, equivalently $M_W/v = 1/\\sqrt{3\\pi}$. The match holds empirically at 0.21%. The open question shifts from one the framework cannot answer in principle to one it can in principle answer — and the paper identifies the four pieces such an answer would have to supply."
+title: "M_W/v = 1/√(3π): Trading an Impossible Postulate for a Tractable One"
+description: "The original P5 of Twistor Configuration Geometry asked the framework to derive a dimensionful answer (M_Z in GeV). It can't. A new paper closes that derivation target on three foundational obstructions and replaces it with a dimensionless boundary condition: g_{2,W}² = 4/(3π), equivalently M_W/v = 1/√(3π). The match holds empirically at 0.21%. The open question shifts from one the framework cannot answer in principle to one it can in principle answer — and the paper identifies the four pieces such an answer would have to supply."
 pubDate: 2026-05-07
 featured: true
 ---
