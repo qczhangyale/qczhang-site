@@ -66,6 +66,27 @@ The factorial of each rank counts the number of orderings — the chambers — o
 
 What this gives us, when it works, is not a derivation of $1/\alpha$ — the 2.2 ppm residual is not zero — but a *home* for the formula. The expression $\pi + \pi^2 + 4\pi^3$ is no longer a free-floating closed-form match. It is a specific calculation in Penrose's twistor flag, with the answer fixed by the geometry. The remaining 2.2 ppm gap is a *target*: any future correction mechanism (radiative, structural, or otherwise) would have to reproduce that specific gap with its specific sign and magnitude, not just "a small correction."
 
+## 137 Places to Hide
+
+There is a way to picture the formula that makes it less abstract. Imagine you are a photon traveling through twistor space, and at every moment you are deciding whether to interact with an electron. Quantum electrodynamics tells us the probability of interaction at each opportunity is, very roughly, $\alpha \approx 1/137$. Equivalently: $1/\alpha \approx 137$ is the number of *opportunities to escape* before, on average, one interaction occurs. The photon has, in this loose reading, "137 places to hide."
+
+The twistor-flag formula gives that picture a precise breakdown. Each projective space contributes a specific number of distinct hiding places, and a specific size for each:
+
+| Stratum | Channels (chambers) | Size of each (Fubini–Study volume) | Total contribution | What it represents |
+|---|---|---|---|---|
+| $\mathbb{CP}^1$ | $0! = 1$ | $\pi \approx 3.14$ | $\pi$ | Direction |
+| $\mathbb{CP}^2$ | $2! = 2$ | $\pi^2/2 \approx 4.93$ | $\pi^2 \approx 9.87$ | Polarization |
+| $\mathbb{CP}^3$ | $4! = 24$ | $\pi^3/6 \approx 5.17$ | $4\pi^3 \approx 124.0$ | Energy / scale |
+| **Total** | | | **$\approx 137.04$** | |
+
+At the first stratum ($\mathbb{CP}^1$, the Riemann sphere) there is one channel — call it *direction*, the photon's path through space. The size of that channel is $\pi$. At the second stratum ($\mathbb{CP}^2$) there are two channels — corresponding to the photon's two polarization states — and each is roughly half the size, but they sum to $\pi^2$. At the third stratum ($\mathbb{CP}^3$, twistor space proper) there are 24 channels, each of size $\pi^3/6$, summing to $4\pi^3$. These 24 are the dominant contribution; they account for about 90% of the total. They are associated with the energy and scale degrees of freedom that twistor space encodes.
+
+Sum the three: 137 hiding places. The photon is unlikely to interact, in QED, because there is so much space for it to hide.
+
+This metaphor is the framework's most compact statement of why $\alpha$ is small. Most of the 137 comes from the $4! = 24$ at the top stratum — the level whose four "fermionic directions" correspond to the four complex dimensions of spacetime. The framework's reading is that *electromagnetism is weak primarily because spacetime has enough dimensions to give photons many escape routes*. Reduce the number of dimensions and you reduce the number of channels. Reduce the channels and the photon interacts more often. $\alpha$ goes up.
+
+This is, at most, physical motivation rather than derivation. Calling $(2n-2)!$ the number of "escape channels" is a relabeling of the mathematical structure, not an independent physical argument; the framework's papers are explicit about this. But the metaphor does what good metaphors do — it lets you see why the answer is what it is, and what would have to change for it to be different. If you take only one image away from this post, take the photon hiding in 137 places, with most of them at the top of the twistor flag.
+
 ## What This Buys
 
 For the past century, derivations of $1/\alpha$ have failed because they were either too rigid (Eddington's exact 137, falsified by precision) or too loose (numerology in a flexible $\pi$-vocabulary, dismissed by sceptical accounting). The TCG reading is a third option: an approximate closed form anchored in a specific geometric structure, with a constrained vocabulary the structure doesn't choose.
