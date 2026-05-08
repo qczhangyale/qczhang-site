@@ -1,11 +1,11 @@
 ---
 title: "Boundary-Defined Null Connections"
 shortTitle: "BDNC"
-doi: "10.5281/zenodo.20032379"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090701"
+date: 2026-05-08
 order: 17
 category: foundations
-description: "Interpretive synthesis: a photon event is a null spacetime relation completed jointly by emission and absorption. Compresses Kastner's RTI, Sorkin's causal-set null links, and the all-at-once / TSVF / FPF literature into one vocabulary, with a marginal-stability diagnostic."
+description: "Interpretive synthesis: a photon event is a null spacetime relation completed jointly by emission and absorption. Compresses Kastner's RTI, Sorkin's causal-set null links, and the all-at-once / TSVF / FPF literature into one vocabulary, with a marginal-stability diagnostic. v2 adds §8.4 recording the recent Angulo et al. negative-excitation-time experiment as a boundary-conditioned weak observable consistency example."
 ---
 
 ## Abstract
@@ -18,4 +18,4 @@ The contribution is unifying language: BDNC compresses these into a single vocab
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032379](https://doi.org/10.5281/zenodo.20032379)
+[https://doi.org/10.5281/zenodo.20090701](https://doi.org/10.5281/zenodo.20090701)

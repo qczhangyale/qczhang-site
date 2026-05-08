@@ -1,11 +1,11 @@
 ---
 title: "零联络边界响应"
 shortTitle: "NBR"
-doi: "10.5281/zenodo.20032415"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090734"
+date: 2026-05-08
 order: 18
 category: foundations
-description: "BDNC 的预言性配套:一种保持无信号传递的、对重合统计的反对称修正,带有六特征实验指纹。以线性角包络 f(α_A, α_B) = α_A − α_B 作为主选假设。"
+description: "BDNC 的预言性配套:一种保持无信号传递的、对重合统计的反对称修正,带有六特征实验指纹。以线性角包络 f(α_A, α_B) = α_A − α_B 作为主选假设。v2 在 §6.3 中加入对 Angulo 等人(2026)负激发时间实验的对照说明:NBR 的预言性内容必须比一般弱值反常更尖锐。"
 auto: true
 sourceHash: "6652062cb9705db8"
 ---
@@ -24,4 +24,4 @@ sourceHash: "6652062cb9705db8"
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032415](https://doi.org/10.5281/zenodo.20032415)
+[https://doi.org/10.5281/zenodo.20090734](https://doi.org/10.5281/zenodo.20090734)

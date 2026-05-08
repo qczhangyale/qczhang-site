@@ -1,11 +1,11 @@
 ---
 title: "零聯絡邊界響應"
 shortTitle: "NBR"
-doi: "10.5281/zenodo.20032415"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090734"
+date: 2026-05-08
 order: 18
 category: foundations
-description: "BDNC 的預言性配套:一種保持無信號傳遞的、對重合統計的反對稱修正,帶有六特徵實驗指紋。以線性角包絡 f(α_A, α_B) = α_A − α_B 作為主選假設。"
+description: "BDNC 的預言性配套:一種保持無信號傳遞的、對重合統計的反對稱修正,帶有六特徵實驗指紋。以線性角包絡 f(α_A, α_B) = α_A − α_B 作為主選假設。v2 在 §6.3 中加入對 Angulo 等人(2026)負激發時間實驗的對照說明:NBR 的預言性內容必須比一般弱值反常更尖銳。"
 auto: true
 sourceHash: "6652062cb9705db8"
 ---
@@ -24,4 +24,4 @@ sourceHash: "6652062cb9705db8"
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032415](https://doi.org/10.5281/zenodo.20032415)
+[https://doi.org/10.5281/zenodo.20090734](https://doi.org/10.5281/zenodo.20090734)

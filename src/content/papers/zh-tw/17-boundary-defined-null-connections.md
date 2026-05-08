@@ -1,11 +1,11 @@
 ---
 title: "邊界定義的零聯絡"
 shortTitle: "BDNC"
-doi: "10.5281/zenodo.20032379"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090701"
+date: 2026-05-08
 order: 17
 category: foundations
-description: "詮釋性綜合:光子事件是由發射和吸收共同完成的類光時空關係。將 Kastner 的 RTI、Sorkin 的因果集零聯絡計畫,以及一體性 / TSVF / FPF 文獻壓縮進單一術語體系,並提出邊緣穩定性診斷。"
+description: "詮釋性綜合:光子事件是由發射和吸收共同完成的類光時空關係。將 Kastner 的 RTI、Sorkin 的因果集零聯絡計畫,以及一體性 / TSVF / FPF 文獻壓縮進單一術語體系,並提出邊緣穩定性診斷。v2 在 §8.4 中加入對 Angulo 等人(2026)負激發時間實驗的解讀,作為邊界條件下弱觀測量的一致性範例。"
 auto: true
 sourceHash: "396135ab85a6be93"
 ---
@@ -20,4 +20,4 @@ sourceHash: "396135ab85a6be93"
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032379](https://doi.org/10.5281/zenodo.20032379)
+[https://doi.org/10.5281/zenodo.20090701](https://doi.org/10.5281/zenodo.20090701)

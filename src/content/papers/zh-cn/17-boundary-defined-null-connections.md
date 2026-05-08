@@ -1,11 +1,11 @@
 ---
 title: "边界定义的零联络"
 shortTitle: "BDNC"
-doi: "10.5281/zenodo.20032379"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090701"
+date: 2026-05-08
 order: 17
 category: foundations
-description: "诠释性综合:光子事件是由发射和吸收共同完成的类光时空关系。将 Kastner 的 RTI、Sorkin 的因果集零联络项目,以及一体性 / TSVF / FPF 文献压缩进单一术语体系,并提出边缘稳定性诊断。"
+description: "诠释性综合:光子事件是由发射和吸收共同完成的类光时空关系。将 Kastner 的 RTI、Sorkin 的因果集零联络项目,以及一体性 / TSVF / FPF 文献压缩进单一术语体系,并提出边缘稳定性诊断。v2 在 §8.4 中加入对 Angulo 等人(2026)负激发时间实验的解读,作为边界条件下弱观测量的一致性范例。"
 auto: true
 sourceHash: "396135ab85a6be93"
 ---
@@ -20,4 +20,4 @@ sourceHash: "396135ab85a6be93"
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032379](https://doi.org/10.5281/zenodo.20032379)
+[https://doi.org/10.5281/zenodo.20090701](https://doi.org/10.5281/zenodo.20090701)

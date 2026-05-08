@@ -1,11 +1,11 @@
 ---
 title: "Null-Boundary Response"
 shortTitle: "NBR"
-doi: "10.5281/zenodo.20032415"
-date: 2026-05-05
+doi: "10.5281/zenodo.20090734"
+date: 2026-05-08
 order: 18
 category: foundations
-description: "Predictive companion to BDNC: a no-signaling-preserving antisymmetric correction to coincidence statistics with a six-feature experimental fingerprint. Linear angular envelope f(α_A, α_B) = α_A − α_B as primary ansatz."
+description: "Predictive companion to BDNC: a no-signaling-preserving antisymmetric correction to coincidence statistics with a six-feature experimental fingerprint. Linear angular envelope f(α_A, α_B) = α_A − α_B as primary ansatz. v2 adds a §6.3 control-case discussion of the Angulo et al. negative-excitation-time experiment, emphasizing that NBR's predictive content must be sharper than ordinary weak-value anomalies."
 ---
 
 ## Abstract
@@ -22,4 +22,4 @@ We sketch the experimental protocol, identify basis-calibration as the principal
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20032415](https://doi.org/10.5281/zenodo.20032415)
+[https://doi.org/10.5281/zenodo.20090734](https://doi.org/10.5281/zenodo.20090734)
