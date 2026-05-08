@@ -1,5 +1,5 @@
 ---
-title: "Boundary-Defined Null Connections"
+title: "边界定义的零联络"
 shortTitle: "BDNC"
 doi: "10.5281/zenodo.20032379"
 date: 2026-05-05

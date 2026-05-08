@@ -1,5 +1,5 @@
 ---
-title: "Null-Boundary Response"
+title: "零聯絡邊界響應"
 shortTitle: "NBR"
 doi: "10.5281/zenodo.20032415"
 date: 2026-05-05
