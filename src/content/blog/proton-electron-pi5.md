@@ -4,21 +4,23 @@ description: "The proton-to-electron mass ratio is almost exactly 6π⁵. Friedr
 pubDate: 2026-05-08
 ---
 
-The proton is about 1836 times heavier than the electron. The exact ratio, measured to twelve significant figures, is
+In the spring of 1951, the German physicist Friedrich Lenz wrote one of the strangest letters ever published in *Physical Review*. The entire submission was three sentences long. The first introduced the observation; the second gave the equation; the third was a citation. He had no theory. He had no derivation. He just noticed that the proton-to-electron mass ratio — a number that had been measured to about three or four significant figures by then — was almost exactly $6\pi^5$.
+
+The match was striking enough at 1951 precision. With seventy-five years of additional measurement it has only sharpened. The CODATA 2022 recommended value is
 
 $$
-\frac{m_p}{m_e} \;=\; 1836.152\,673\,426(32).
+\frac{m_p}{m_e} \;=\; 1836.152\,673\,426(32),
 $$
 
-Now compute $6\pi^5$:
+measured to twelve significant figures. Computing the geometric expression Lenz wrote down:
 
 $$
 6\pi^5 \;=\; 1836.118\,108\ldots
 $$
 
-The two agree to about two parts in a hundred thousand. That is not a typo.
+The two agree to about two parts in a hundred thousand. That is not a typo. And in seventy-five years, despite the proton mass being one of the most studied quantities in physics — the entire industry of lattice QCD computes it from the strong interaction with sub-percent precision — no one has explained why the ratio sits so close to such a clean closed form in $\pi$.
 
-In 1951 the German physicist Friedrich Lenz noticed this in a two-sentence letter to *Physical Review*. He wrote down one equation, two sentences, and one reference, then stopped. He had no theory; he just made the observation. Seventy-five years later, no one has explained it. The Standard Model treats $m_p/m_e$ as an input; lattice QCD computes the proton mass numerically with sub-percent precision but does not derive *why* the ratio sits so close to a closed form in $\pi$.
+The Standard Model treats $m_p/m_e$ as an input. Lattice QCD computes the proton mass numerically but does not derive *why* the answer is what it is. Lenz's observation has, for three quarters of a century, been a kind of footnote: a numerical curiosity that the field has been unable to either dismiss as coincidence or absorb into theory.
 
 A new paper I posted to Zenodo today does not derive Lenz's formula. It does something narrower but useful: it gives the formula a sharp address inside Twistor Configuration Geometry — the program for organizing the constants of nature as invariants of a stratified configuration space over twistor space. The paper is honest about the limits: the address is structural, not derivational. But the framework now has a place for $6\pi^5$ that it did not have last week.
 

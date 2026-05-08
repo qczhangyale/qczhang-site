@@ -5,17 +5,19 @@ pubDate: 2026-05-07
 featured: true
 ---
 
-Take the $W$ boson mass and divide it by the Higgs VEV. The Particle Data Group's world average is $M_W = 80.3692 \pm 0.0133$ GeV; the Higgs VEV, extracted from muon decay via $v = (\sqrt{2}\, G_F)^{-1/2}$, is $246.22$ GeV. The ratio is
+In January 1983, a CERN team led by Carlo Rubbia announced the discovery of the W boson. After years of preparation — building the Super Proton Synchrotron, developing stochastic cooling, designing the UA1 detector — they had finally produced the carrier of the weak nuclear force, the particle that mediates radioactive beta decay. Its mass came out near 80 GeV, in agreement with the Standard Model's prediction. Rubbia and Simon van der Meer received the Nobel Prize the following year. The Standard Model, then a still-young theoretical structure, gained one of its most decisive experimental confirmations.
+
+Today the W mass is among the most precisely measured quantities in particle physics. The Particle Data Group's 2024 world average is $M_W = 80.3692 \pm 0.0133$ GeV, an uncertainty of about one part in $6{,}000$. Compare this to a second number — the Higgs vacuum expectation value $v$, extracted from muon decay via the Fermi constant, $v = (\sqrt{2}\, G_F)^{-1/2} = 246.22$ GeV. The ratio of the two is
 
 $$\frac{M_W}{v} \;=\; 0.32636 \pm 0.00005.$$
 
-Now compute $1/\sqrt{3\pi}$. You get
+Now compute $1/\sqrt{3\pi}$:
 
 $$\frac{1}{\sqrt{3\pi}} \;=\; 0.32574.$$
 
-The two numbers agree to about 0.21%. That is not a typo. The $W$-mass-to-VEV ratio of the Standard Model and a particular dimensionless number built from $\pi$ alone agree to two parts in a thousand.
+The two numbers agree to about 0.21%. That is not a typo. The $W$-mass-to-Higgs-VEV ratio of the Standard Model — one of the most thoroughly measured combinations in particle physics — and a particular dimensionless number built from $\pi$ alone agree to two parts in a thousand. There is no theoretical reason, in the conventional reading of the Standard Model, that this should be true.
 
-A new paper I posted to Zenodo today proposes that this is not a coincidence. The number $1/\sqrt{3\pi}$ has a specific origin inside Twistor Configuration Geometry — the program for deriving the constants of nature from a stratified configuration space over twistor space. The paper takes a hard look at how that origin works, identifies what the framework can honestly claim, and identifies what would still have to be done to upgrade the claim from "noticed" to "derived."
+A new paper I posted to Zenodo today proposes that it isn't a coincidence. The number $1/\sqrt{3\pi}$ has a specific origin inside Twistor Configuration Geometry — the program for deriving the constants of nature from a stratified configuration space over Penrose's twistor space. The paper takes a hard look at how that origin works, identifies what the framework can honestly claim, and identifies what would still have to be done to upgrade the claim from "noticed" to "derived."
 
 The headline result is not "TCG predicts $M_W$." It's something more architectural, and more honest. TCG's *original* approach to the electroweak scale — a postulate called P5 in the framework's ledger — was to derive the $Z$ mass directly: $\mu_{\rm contact} \simeq M_Z$. The paper shows that this approach cannot work. P5 in its original form is *retired*. In its place, the paper introduces P5′:
 
