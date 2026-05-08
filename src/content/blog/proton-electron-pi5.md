@@ -1,6 +1,6 @@
 ---
-title: "$m_p/m_e \\approx 6\\pi^5$: A 75-Year-Old Coincidence, Reframed"
-description: "The proton-to-electron mass ratio is almost exactly $6\\pi^5$. Friedrich Lenz noticed this in 1951; nothing has explained it in seventy-five years. A new paper shows the formula has a home — not as an extension of the TCG flag, but as a Pati–Salam representation-volume invariant. The naive geometric reading fails; a representation-theoretic one works. The Lenz coefficient is the chamber-weighted volume of $\\mathbb{P}(\\wedge^2\\mathbf{4})$, the projective space of antisymmetric color-lepton states. This is not a derivation, but it gives the formula a sharp address inside the program."
+title: "m_p/m_e ≈ 6π⁵: A 75-Year-Old Coincidence, Reframed"
+description: "The proton-to-electron mass ratio is almost exactly 6π⁵. Friedrich Lenz noticed this in 1951; nothing has explained it in seventy-five years. A new paper shows the formula has a home — not as an extension of the TCG flag, but as a Pati–Salam representation-volume invariant. The naive geometric reading fails; a representation-theoretic one works. The Lenz coefficient is the chamber-weighted volume of P(∧²4), the projective space of antisymmetric color-lepton states. This is not a derivation, but it gives the formula a sharp address inside the program."
 pubDate: 2026-05-08
 ---
 
