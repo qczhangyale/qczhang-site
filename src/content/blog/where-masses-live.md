@@ -22,7 +22,7 @@ $$\text{gauge couplings} \;\longleftrightarrow\; r_n!, \qquad \text{lepton masse
 
 The combinatorics on each side is theorem-level. The *assignment* — which combinatorial structure gets identified with which physical observable — is not. The framework's reference paper itself flags this; the DAEDALUS Review and the Methodology audit both record the sector-assignment as the framework's deepest open structural question. It is distinct from the individual numerical gaps the framework already has — the gauge-kinetic boundary condition $g_{2,W}^2 = 4/(3\pi)$, or the hadronic identity $m_p / m_e \approx 6\pi^5$ — and it is distinct from the recent gauge-algebraic completion arc that closes the framework's $\mathfrak{su}(2)_R$ gap with a Spin(10) envelope. Those are problems about specific numbers. The sector assignment is a problem about *organization*. Why should one combinatorial output describe couplings and the other describe masses, and not the other way around?
 
-After two years of structural work on the framework, the answer was always the same: it works because we declare it to. That is not a derivation. It is the deepest postulate burden the framework carries.
+After repeated structural passes on the framework, the answer has always been the same: it works because we declare it to. That is not a derivation. It is the deepest postulate burden the framework carries.
 
 ## Two algebras on one space
 
