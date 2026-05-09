@@ -1,0 +1,23 @@
+---
+title: "The Spin(10) Envelope of Twistor Configuration Geometry: A Postulate-Equivalent Completion of the SU(2)_R Gap"
+shortTitle: "Spin(10) Envelope"
+doi: "10.5281/zenodo.20091562"
+date: 2026-05-08
+order: 24
+category: foundations
+description: "After three negative results in the TCG unification arc — wall-deletion (#19) lands at Pati–Salam Levi missing $\\mathfrak{su}(2)_R$; middle-deletion of $A_3$ (#23) gives Lorentz spinors via $SL_4/P_{\\alpha_2} \\cong G(2,4)$, not internal weak-isospin; chiral doubling of the $n=2$ stratum's $A_1$ fails because the simple-root $\\mathfrak{sl}_2$'s of $A_2$ do not commute (closure $= \\mathfrak{sl}_3$) — the cleanest available completion is the Spin(10) / $D_5$ envelope. The regular maximal subalgebra branching $D_5 \\supset D_3 \\oplus D_2$ (with $D_3 \\cong A_3$ and $D_2 \\cong A_1 \\oplus A_1$) gives $\\mathfrak{so}(10) \\supset \\mathfrak{su}(4)_C \\oplus \\mathfrak{su}(2)_L \\oplus \\mathfrak{su}(2)_R$ exactly. The chiral spinor $\\mathbf{16} \\to (\\mathbf{4},\\mathbf{2},\\mathbf{1}) \\oplus (\\bar{\\mathbf{4}},\\mathbf{1},\\mathbf{2})$ supplies one Standard Model family including $\\nu_R$. The vector $\\mathbf{10} \\to (\\mathbf{6},\\mathbf{1},\\mathbf{1}) \\oplus (\\mathbf{1},\\mathbf{2},\\mathbf{2})$ recovers the antisymmetric $\\wedge^2\\mathbf{4} = \\mathbf{6}$ used by $P_{H'}$ as its electroweak-singlet block. New postulate $P_{SO(10)}$ (with spinorial $P_{SO(10)}^{\\rm spin}$ as preferred motivation): postulate-equivalent, not theorem; $P_7$ is parabolic-Levi machinery while Spin(10) is a maximal-subalgebra envelope outside its scope. No new numerical observable proposed; six explicit gaps G1–G6. Active ledger: $P_0$–$P_4$, $P_{5'}$, $P_6$, $P_7$, $P_{H'}$, $P_{SO(10)}$."
+---
+
+## Abstract
+
+The wall-deletion paper [Zhang Wall Deletion, DOI:10.5281/zenodo.20045987] introduces the Weyl-lift postulate $P_7$ and shows that the un-broken $A_3$ root datum at the top stratum of Twistor Configuration Geometry carries the Pati–Salam algebra $\mathfrak{su}(4)$, while end-root parabolic Levi reduction yields the Pati–Salam Levi sub-algebra $\mathfrak{su}(3)_C \oplus \mathfrak{u}(1)_{(B-L)/2}$. Combined with the $n=2$ stratum's $A_1 \cong \mathfrak{su}(2)_L$, the framework supplies four of the five rank generators of full Pati–Salam $\mathfrak{su}(4)_C \oplus \mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$. The single missing factor is $\mathfrak{su}(2)_R$. The parabolic note [Zhang Parabolic, DOI:10.5281/zenodo.20090828] closes middle-root deletion of $A_3$ as a candidate source: the two $\mathfrak{sl}_2$ factors are the left and right Lorentz spinor algebras of complexified spacetime via $SL_4 / P_{\alpha_2} \cong G(2,4)$, not internal weak-isospin. Chiral doubling of the $n=2$ stratum's $A_1$ likewise fails: the two simple-root $A_1$'s of $A_2$ do not commute, with closure equal to $\mathfrak{sl}_3 = A_2$.
+
+The cleanest available completion is the **Spin(10) envelope**: the regular maximal subalgebra branching $D_5 \supset D_3 \oplus D_2$, with $D_3 \cong A_3$ and $D_2 \cong A_1 \oplus A_1$, gives in compact form
+$$\mathfrak{so}(10) \supset \mathfrak{so}(6) \oplus \mathfrak{so}(4) \cong \mathfrak{su}(4)_C \oplus \mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$$
+exactly. The chiral spinor $\mathbf{16}$ branches under Pati–Salam as $(\mathbf{4}, \mathbf{2}, \mathbf{1}) \oplus (\bar{\mathbf{4}}, \mathbf{1}, \mathbf{2})$, supplying one Standard Model family in all-left-handed Weyl notation including a right-handed neutrino. The vector $\mathbf{10}$ branches as $(\mathbf{6}, \mathbf{1}, \mathbf{1}) \oplus (\mathbf{1}, \mathbf{2}, \mathbf{2})$, with $\mathbf{6} = \wedge^2 \mathbf{4}$ recovering the antisymmetric Pati–Salam representation of $P_{H'}$ [Zhang Hadronic, DOI:10.5281/zenodo.20077931].
+
+We state the completion as a new postulate $P_{SO(10)}$ (with stronger spinorial reading $P_{SO(10)}^{\rm spin}$ as preferred motivation) and emphasize that this is **postulate-equivalent**, not a derivation: the existing $P_7$ machinery is parabolic-Levi-based, while the Spin(10) step is a maximal-subalgebra envelope completion outside $P_7$'s scope. No new numerical constant relation is proposed; the chiral spinor $\mathbf{16}$ is used as structural motivation, not as a representation-volume observable. $P_{SO(10)}$ extends the gauge-structure ledger, not the dimensionless-constant formula grammar of the framework's empirical body. Six explicit gaps are listed (G1–G6). The active TCG/FPA postulate ledger is updated to read **$P_0$–$P_4$, $P_{5'}$, $P_6$, $P_7$, $P_{H'}$, $P_{SO(10)}$**.
+
+## DOI
+
+[https://doi.org/10.5281/zenodo.20091562](https://doi.org/10.5281/zenodo.20091562)
