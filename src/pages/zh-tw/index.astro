@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { filterEnglishOnly, pickLocalized } from '../../i18n';
+import { getPaperCounts } from '../../lib/paper-stats';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -11,6 +12,7 @@ const all = await getCollection('papers');
 const englishOnly = filterEnglishOnly(all).sort((a, b) => a.data.order - b.data.order);
 const papers = englishOnly.map((e) => ({ english: e, localized: pickLocalized(all, e, 'zh-tw') }));
 const synthesis = papers.filter((p) => p.english.data.category === 'synthesis');
+const counts = await getPaperCounts();
 
 const relations = [
 	{ id: 'O1', formula: '1/α ≈ π + π² + 4π³', precision: '2.2 ppm', sector: '電磁', provenance: 'partial', originLabel: t(locale, 'rel.twistorOrigin') },
@@ -67,6 +69,9 @@ const relations = [
 			.origin-badge { display: inline-flex; align-items: center; gap: 0.3em; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500; color: var(--text-muted); white-space: nowrap; }
 			.origin-badge.yes { color: var(--text); }
 			.origin-badge .check { font-size: 0.9em; line-height: 1; color: var(--text-faint); }
+			.relations-legend { margin-top: 1rem; padding: 0.9em 1.1em; font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); background: var(--bg-subtle); border-radius: 6px; line-height: 1.7; }
+			.relations-legend p { margin: 0 0 0.4em 0; }
+			.relations-legend p:last-child { margin-bottom: 0; }
 			.contact-block { margin-top: 2.5rem; padding: 1.5em 1.5em; background: var(--bg-subtle); border-radius: 8px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
 			.contact-block strong { color: var(--text); }
 			@media (max-width: 720px) {
@@ -101,9 +106,11 @@ const relations = [
 		<div class="section">
 			<div class="lead">
 				<p>
-					物理學的無量綱常數 — α、Λ、α<sub>G</sub>、Yukawa 耦合、sin²θ<sub>W</sub> 等 —
-					一向被當作可調的自由參數。本研究計畫提議另一種解讀:它們其實是建立在
-					彭羅斯射影扭量空間 CP³ 上的某種組合幾何中,某個<strong>特定腔室的結構不變量</strong>。
+					橫跨 {counts.total} 篇 Zenodo 論文 — 以 {counts.tcgArc} 篇構成的扭量構型幾何弧為核心,
+					加上 {counts.adjacent} 條相鄰工作流(光子本體論、規範代數結構、量子重力維度流) —
+					本研究計畫提出:無量綱常數 — α、Λ、α<sub>G</sub>、Yukawa 耦合、sin²θ<sub>W</sub> 等 —
+					並非自由參數,而是建立在彭羅斯射影扭量空間 CP³ 上的某種組合幾何中,
+					某個<strong>特定腔室的結構不變量</strong>。
 				</p>
 				<p>
 					框架稱為<strong>扭量構型幾何 (TCG)</strong>;哲學詮釋稱為
@@ -184,6 +191,22 @@ const relations = [
 						})}
 					</tbody>
 				</table>
+			</div>
+			<div class="relations-legend">
+				<p>
+					<strong>✓ 是</strong> — 該關係首次在本研究計畫中被識別(9 條中有 7 條)。
+				</p>
+				<p>
+					<strong>扭量來源</strong>(O1,<code>1/α ≈ π + π² + 4π³</code>) — 這條裸的數值近似任何人用計算器都能驗證。
+					本研究計畫的貢獻是把它推導為彭羅斯扭量空間 CP³ 上的腔權重 Fubini–Study 體積和,
+					從而唯一固定了環境維數 N = 3。
+				</p>
+				<p>
+					<strong>南部,重新表述</strong>(O4,<code>m_π/m_e ≈ 2(π + π² + 4π³)</code>) —
+					南部 1952 年的恆等式 <code>m_π/m_e ≈ 2/α</code> 在本研究計畫之前已經存在。
+					本研究計畫的原創貢獻:把因子 2 重新解釋為 n=2 層上的斐波那契匹配數 <code>F₃ = 2</code>
+					(超旗構造,論文 #14),並以 <code>1/α</code> 的 π-冪展開(O1)替換 <code>1/α</code>。
+				</p>
 			</div>
 		</div>
 

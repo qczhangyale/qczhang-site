@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { filterEnglishOnly, pickLocalized } from '../../i18n';
+import { getPaperCounts } from '../../lib/paper-stats';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -11,6 +12,7 @@ const all = await getCollection('papers');
 const englishOnly = filterEnglishOnly(all).sort((a, b) => a.data.order - b.data.order);
 const papers = englishOnly.map((e) => ({ english: e, localized: pickLocalized(all, e, 'zh-cn') }));
 const synthesis = papers.filter((p) => p.english.data.category === 'synthesis');
+const counts = await getPaperCounts();
 
 const relations = [
 	{ id: 'O1', formula: '1/α ≈ π + π² + 4π³', precision: '2.2 ppm', sector: '电磁', provenance: 'partial', originLabel: t(locale, 'rel.twistorOrigin') },
@@ -93,6 +95,9 @@ const relations = [
 			}
 			.origin-badge.yes { color: var(--text); }
 			.origin-badge .check { font-size: 0.9em; line-height: 1; color: var(--text-faint); }
+			.relations-legend { margin-top: 1rem; padding: 0.9em 1.1em; font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); background: var(--bg-subtle); border-radius: 6px; line-height: 1.7; }
+			.relations-legend p { margin: 0 0 0.4em 0; }
+			.relations-legend p:last-child { margin-bottom: 0; }
 			.contact-block { margin-top: 2.5rem; padding: 1.5em 1.5em; background: var(--bg-subtle); border-radius: 8px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
 			.contact-block strong { color: var(--text); }
 
@@ -128,9 +133,11 @@ const relations = [
 		<div class="section">
 			<div class="lead">
 				<p>
-					物理学的无量纲常数 — α、Λ、α<sub>G</sub>、Yukawa 耦合、sin²θ<sub>W</sub> 等 —
-					一向被当作可调的自由参数。本研究计划提议另一种解读:它们其实是建立在
-					彭罗斯射影扭量空间 CP³ 上的某种组合几何中,某个**特定腔室的结构不变量**。
+					横跨 {counts.total} 篇 Zenodo 论文 — 以 {counts.tcgArc} 篇构成的扭量构型几何弧为核心,
+					加上 {counts.adjacent} 条相邻工作流(光子本体论、规范代数结构、量子引力维度流) —
+					本研究计划提出:无量纲常数 — α、Λ、α<sub>G</sub>、Yukawa 耦合、sin²θ<sub>W</sub> 等 —
+					并非自由参数,而是建立在彭罗斯射影扭量空间 CP³ 上的某种组合几何中,
+					某个<strong>特定腔室的结构不变量</strong>。
 				</p>
 				<p>
 					框架称为<strong>扭量构型几何 (TCG)</strong>;哲学诠释称为
@@ -211,6 +218,22 @@ const relations = [
 						})}
 					</tbody>
 				</table>
+			</div>
+			<div class="relations-legend">
+				<p>
+					<strong>✓ 是</strong> — 该关系首次在本研究计划中被识别(9 条中有 7 条)。
+				</p>
+				<p>
+					<strong>扭量来源</strong>(O1,<code>1/α ≈ π + π² + 4π³</code>) — 这条裸的数值近似任何人用计算器都能验证。
+					本研究计划的贡献是把它推导为彭罗斯扭量空间 CP³ 上的腔权重 Fubini–Study 体积和,
+					从而唯一固定了环境维数 N = 3。
+				</p>
+				<p>
+					<strong>南部,重新表述</strong>(O4,<code>m_π/m_e ≈ 2(π + π² + 4π³)</code>) —
+					南部 1952 年的恒等式 <code>m_π/m_e ≈ 2/α</code> 在本研究计划之前已经存在。
+					本研究计划的原创贡献:把因子 2 重新解释为 n=2 层上的斐波那契匹配数 <code>F₃ = 2</code>
+					(超旗构造,论文 #14),并以 <code>1/α</code> 的 π-幂展开(O1)替换 <code>1/α</code>。
+				</p>
 			</div>
 		</div>
 
