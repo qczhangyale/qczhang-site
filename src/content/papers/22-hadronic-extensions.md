@@ -1,11 +1,11 @@
 ---
 title: "Pati-Salam Representation Volumes and the Lenz Proton-Electron Ratio in TCG"
 shortTitle: "Pati-Salam / Lenz $6\\pi^5$"
-doi: "10.5281/zenodo.20077931"
-date: 2026-05-07
+doi: "10.5281/zenodo.20102322"
+date: 2026-05-09
 order: 22
 category: foundations
-description: "The 1951 Lenz observation $m_p/m_e \\approx 6\\pi^5$ (1.88×10⁻⁵ accuracy) reframed via the Pati–Salam SU(4) Weyl-lift of Paper #19. The naive $n=4$ stratum extension closes negatively; the projectivized antisymmetric two-index Pati–Salam representation $\\mathbb{P}(\\wedge^2\\mathbf{4}) \\cong \\mathbb{CP}^5$ — the Plücker ambient space for $G(2,4)$ — supplies the structural reading. Introduces postulate $P_H'$: $\\dim(\\wedge^2\\mathbf{4})! \\cdot \\mathrm{Vol}_{\\mathrm{FS}}(\\mathbb{P}(\\wedge^2\\mathbf{4})) = 6\\pi^5$, identified phenomenologically with $m_p/m_e$. Five open gaps. Active ledger updated to P0–P4, P5', P6, P7, $P_H'$."
+description: "The 1951 Lenz observation $m_p/m_e \\approx 6\\pi^5$ (1.88×10⁻⁵ accuracy) reframed via the Pati–Salam SU(4) Weyl-lift of Paper #19. The naive $n=4$ stratum extension closes negatively; the projectivized antisymmetric two-index Pati–Salam representation $\\mathbb{P}(\\wedge^2\\mathbf{4}) \\cong \\mathbb{CP}^5$ — the Plücker ambient space for $G(2,4)$ — supplies the structural reading. Introduces postulate $P_H'$: $\\dim(\\wedge^2\\mathbf{4})! \\cdot \\mathrm{Vol}_{\\mathrm{FS}}(\\mathbb{P}(\\wedge^2\\mathbf{4})) = 6\\pi^5$, identified phenomenologically with $m_p/m_e$. v2 closes the 'absence of a second hadronic prediction' gap negatively via a pre-registered audit of the strict $d \\pi^{d-1}$ grammar against three candidates (kaon/pion $\\sqrt{4\\pi}$, Schwinger $\\alpha/(2\\pi)$, top Yukawa $y_t \\approx 1$); none survives without post-hoc generalization. $P_H'$ reclassified from candidate generative representation-volume rule to single-anchor phenomenological structural reading of the Lenz ratio. Three derivation gaps remain (electron normalization, baryon-state construction, $S_6$ representation-slot chamber rule) plus one audit-discipline constraint. Active ledger unchanged at P0–P4, P5', P6, P7, $P_H'$."
 ---
 
 ## Abstract
@@ -20,10 +20,10 @@ $$
 
 We propose this as the postulate **$P_H'$**: the first hadronic representation-volume invariant in TCG. Like the dimensionless replacement P5' for the original electroweak P5 [Zhang EW], $P_H'$ is a phenomenological boundary condition with a sharply specified derivation target — in this case, a Pati–Salam-based hadronic state-sum or boundary action whose representation-slot weighted Fubini–Study measure produces $\dim(\wedge^2\mathbf{4})! \cdot \mathrm{Vol}_{\mathrm{FS}}(\mathbb{P}(\wedge^2\mathbf{4}))$ and whose normalization yields the proton-electron ratio with the electron as the lepton-sector reference.
 
-$P_H'$ is not yet a theorem: **five explicit gaps** remain — electron normalization; baryon-state construction from $\wedge^2\mathbf{4}$; the $S_6$ representation-slot chamber rule; absence of a second hadronic prediction under the same $P_H'$ grammar; and audit-side pre-registration discipline. The paper's contribution is to close the naive $n=4$ extension negatively, supply the Pati–Salam representation-theoretic reframing, and identify the four pieces a derivation would have to supply.
+$P_H'$ is not yet a theorem. In v2, a pre-registered second-observable audit closes the "absence of a second hadronic prediction" gap negatively: the strict grammar $X_R = \dim(R) \cdot \pi^{\dim(R)-1}$ is tested against kaon/pion $(m_K/m_\pi)^2 \approx 4\pi$, Schwinger $\alpha/(2\pi)$, and top Yukawa $y_t \approx 1$, and none survives without post-hoc generalization. $P_H'$ is reclassified from candidate generative representation-volume rule to **single-anchor phenomenological structural reading of the Lenz ratio**. Three derivation gaps remain (electron normalization, baryon-state construction from $\wedge^2\mathbf{4}$, the $S_6$ representation-slot chamber rule), plus one ongoing audit-discipline constraint.
 
 The active TCG/FPA postulate ledger is updated to read **P0–P4, P5', P6, P7, $P_H'$**.
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20077931](https://doi.org/10.5281/zenodo.20077931)
+[https://doi.org/10.5281/zenodo.20102322](https://doi.org/10.5281/zenodo.20102322)

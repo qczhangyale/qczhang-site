@@ -104,7 +104,7 @@ $$
 
 **為什麼是 $S_6$,不是 Weyl 群。** Lenz 表示式中的腔室計數 $6! = 720$ *不是* Pati–Salam Weyl 群的階,後者是 $|S_4| = 24$。這個階乘是框架所謂的"表示-槽計數"——把 $\wedge^2 \mathbf{4}$ 的六個基底向量當作有標號的 FPA 構型槽,你就得到這個。為什麼是這個,而不是 Weyl 群在六個二元子集上的作用,這是開放的推導問題之一。
 
-**還沒有第二個強子預言。** 公設 $P_H'$ 目前組織一個數,$m_p/m_e$。要超過一個漂亮的單一解讀,它應該在同一種語法下組織至少第二個強子比率。候選物存在(K 介子-π 介子比率可疑地接近 $\sqrt{4\pi}$,比方說),但沒有第二個匹配被宣告。
+**第二個強子預測的審計以否定方式關閉(v2)。** 公設 $P_H'$ 組織一個數,$m_p/m_e$。要超過一個漂亮的單一解讀,它應該在同一種嚴格語法 $X_R = \dim(R) \cdot \pi^{\dim(R)-1}$ 下組織至少第二個強子比率。論文 v2 中的預註冊審計測試了三個候選 — K 介子/π 介子 $(m_K/m_\pi)^2 \approx 4\pi$(殘差 $-0.44\%$)、Schwinger $\alpha/(2\pi)$ 與頂夸克湯川 $y_t \approx 1$ — 沒有任何一個在不引入事後語法推廣的情況下通過。$P_H'$ 因此被重新歸類為 Lenz 比的*單一錨點現象學結構性解讀*,而非候選生成規則。K 介子/π 介子 $\sqrt{4\pi}$ 匹配在經驗上仍然有趣,但不是 $P_H'$ 的命中。
 
 **別處看的紀律。** 論文明確承諾把*恰好一個*新物件——$P_H'$ 的表示-體積不變量——加到框架審計端的嚴格語法,而不是任意 $SU(4)$ 表示體積。審計先前的試空間估計被保留。
 
@@ -120,4 +120,4 @@ $$
 
 ---
 
-*論文"Pati-Salam Representation Volumes and the Lenz Proton-Electron Ratio in Twistor Configuration Geometry"於 2026-05-07 在 Zenodo 發表,DOI [10.5281/zenodo.20077931](https://doi.org/10.5281/zenodo.20077931)。這是 DAEDALUS / TCG 弧線中的第十八篇論文,以 CC-BY-4.0 許可釋出。*
+*論文"Pati-Salam Representation Volumes and the Lenz Proton-Electron Ratio in Twistor Configuration Geometry"於 2026-05-07 在 Zenodo 發表,DOI [10.5281/zenodo.20102322](https://doi.org/10.5281/zenodo.20102322)。這是 DAEDALUS / TCG 弧線中的第十八篇論文,以 CC-BY-4.0 許可釋出。*

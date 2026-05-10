@@ -104,7 +104,7 @@ The paper is explicit about five things it does not derive.
 
 **Why $S_6$ and not the Weyl group.** The chamber count $6! = 720$ in the Lenz expression is *not* the order of the Pati–Salam Weyl group, which is $|S_4| = 24$. The factorial is what the framework calls a "representation-slot count" — what you get if you treat the six basis vectors of $\wedge^2 \mathbf{4}$ as labeled FPA configuration slots. Why this and not the Weyl-group action on the six two-subsets is one of the open derivation questions.
 
-**No second hadronic prediction yet.** The postulate $P_H'$ currently organizes one number, $m_p/m_e$. To become more than a beautiful one-off reading, it should organize at least one second hadronic ratio under the same grammar. Candidates exist (the kaon-to-pion ratio sits suspiciously close to $\sqrt{4\pi}$, for instance), but no second match is claimed.
+**Second-hadronic-prediction audit closed negatively (v2).** The postulate $P_H'$ organizes one number, $m_p/m_e$. To become more than a beautiful one-off reading, it should organize at least one second hadronic ratio under the same strict grammar $X_R = \dim(R) \cdot \pi^{\dim(R)-1}$. A pre-registered audit in v2 of the paper tested three candidates — kaon/pion $(m_K/m_\pi)^2 \approx 4\pi$ at $-0.44\%$, Schwinger $\alpha/(2\pi)$, and top Yukawa $y_t \approx 1$ — and none survives without post-hoc grammar generalization. $P_H'$ is therefore reclassified as a *single-anchor phenomenological structural reading of the Lenz ratio* rather than a candidate generative rule. The kaon/pion $\sqrt{4\pi}$ match remains empirically interesting but is not a $P_H'$ hit.
 
 **Look-elsewhere discipline.** The paper commits explicitly to adding *exactly one* new object to the framework's audit-side strict grammar — the representation-volume invariant of $P_H'$ — not arbitrary $SU(4)$ representation volumes. The audit's prior trial-space estimate is preserved.
 
@@ -120,4 +120,4 @@ For now, the formula has an address.
 
 ---
 
-*The paper "Pati-Salam Representation Volumes and the Lenz Proton-Electron Ratio in Twistor Configuration Geometry" was posted to Zenodo on 2026-05-07 under DOI [10.5281/zenodo.20077931](https://doi.org/10.5281/zenodo.20077931). It is the eighteenth paper in the DAEDALUS / TCG arc, available CC-BY-4.0.*
+*The paper "Pati-Salam Representation Volumes and the Lenz Proton-Electron Ratio in Twistor Configuration Geometry" was posted to Zenodo on 2026-05-07 under DOI [10.5281/zenodo.20102322](https://doi.org/10.5281/zenodo.20102322). It is the eighteenth paper in the DAEDALUS / TCG arc, available CC-BY-4.0.*
