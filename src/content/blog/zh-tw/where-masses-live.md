@@ -74,4 +74,4 @@ $$0 \;\to\; \Omega^\bullet \;\to\; \Omega^\bullet(\log D) \;\xrightarrow{\;\oper
 
 改變的是關於假設性負擔坐落何處的診斷。短文之前,負擔是被分散的:指派的腔計數側說耦合,匹配計數側說質量,而兩半是分別規定的。短文之後,負擔被集中到兩個具體的地方 — 硬核相鄰殘數邊界理論的選擇(它是被 FM/AS 幾何所強制,還是被用手強加),與邊緣對相關算符的 BV–BFV 定域化(威爾遜區分的構型空間版本是否可證,還是僅具暗示性)。兩者都是精確問題。任一者都可能被回答。
 
-論文 *Bulk–Boundary Localization in Twistor Configuration Geometry: A Conjecture for the Coupling/Mass Sector Split*(《扭量構型幾何中的體–邊界定域化:耦合/質量扇區分配的一個猜想》)已發表於 Zenodo(DOI [10.5281/zenodo.20097223](https://doi.org/10.5281/zenodo.20097223);CC-BY-4.0)。它很短 — 十頁,十四條參考文獻,兩條定理,一條猜想,五項失敗模式。它並未閉合該框架最難的缺口。它把這個缺口從一個任意的指派轉換為一個帶有具體證偽路徑的定域化原理。這是該計畫欠它自己的那種進展,也是未來結構性工作可以嚴肅對待的那種。
+論文 *Bulk–Boundary Localization in Twistor Configuration Geometry: A Conjecture for the Coupling/Mass Sector Split*(《扭量構型幾何中的體–邊界定域化:耦合/質量扇區分配的一個猜想》)已發表於 Zenodo(DOI [10.5281/zenodo.20102027](https://doi.org/10.5281/zenodo.20102027);CC-BY-4.0)。它很短 — 十六頁,十四條參考文獻,兩條定理,一條猜想,五項失敗模式(其中 F1 和 F5 被明確研究,結果均為部分肯定,並命名了較小的殘餘子假設)。它並未閉合該框架最難的缺口。它把這個缺口從一個任意的指派轉換為一個帶有具體證偽路徑的定域化原理。這是該計畫欠它自己的那種進展,也是未來結構性工作可以嚴肅對待的那種。

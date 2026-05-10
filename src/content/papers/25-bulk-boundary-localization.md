@@ -1,11 +1,11 @@
 ---
 title: "Bulk–Boundary Localization in Twistor Configuration Geometry: A Conjecture for the Coupling/Mass Sector Split"
 shortTitle: "Bulk–Boundary Localization"
-doi: "10.5281/zenodo.20097223"
+doi: "10.5281/zenodo.20102027"
 date: 2026-05-09
 order: 25
 category: foundations
-description: "Derivation-program note attacking the framework's hardest open structural question — the sector-assignment postulates $P_2/P_3$: why bulk chambers carry gauge couplings and boundary matchings carry lepton masses. Theorem-level: $\\dim \\mathcal{A}_{\\rm bulk}(r) = r!$ (chamber idempotent algebra) and $\\dim \\mathcal{A}_\\partial^{\\rm hc}(r) = F_{r+1}$ (hard-core adjacent-residue algebra; square-free / exterior-face Stanley–Reisner-type quotient of the path-matching complex). Conjecture-level: logarithmic BV–BFV Bulk–Boundary Sector Localization Conjecture identifying marginal couplings with interior BV classes and chirality-changing relevant mass/Yukawa deformations with hard-core boundary BFV residue classes. Five failure modes $F_1$–$F_5$; $F_1$ (full-boundary dominance) flagged as structurally decisive. Side application to $\\langle B_e \\rangle = 1 - 1/(2\\pi)$ via the normal-circle phase of a complexified collision divisor, conditional on a complex-normal enhancement of the FPA boundary theory. Active TCG/FPA postulate ledger UNCHANGED: $P_0$–$P_4$, $P_{5'}$, $P_6$, $P_7$, $P_{H'}$, $P_{SO(10)}$. The conjecture targets $P_2/P_3$ specifically; does not by itself derive other postulates. Conjectural slogan: *mass is a logarithmic residue of collision*."
+description: "Derivation-program note attacking the framework's hardest open structural question — the sector-assignment postulates $P_2/P_3$: why bulk chambers carry gauge couplings and boundary matchings carry lepton masses. Theorem-level: $\\dim \\mathcal{A}_{\\rm bulk}(r) = r!$ (chamber idempotent algebra) and $\\dim \\mathcal{A}_\\partial^{\\rm hc}(r) = F_{r+1}$ (hard-core adjacent-residue algebra; square-free / exterior-face Stanley–Reisner-type quotient of the path-matching complex). Conjecture-level: logarithmic BV–BFV Bulk–Boundary Sector Localization Conjecture identifying marginal couplings with interior BV classes and chirality-changing relevant mass/Yukawa deformations with hard-core boundary BFV residue classes. v2 (16 pages, was 10) folds in explicit investigations of failure modes F1 and F5: F1 derives the algebraic relations $b_i^2 = 0$ and $b_i b_{i+1} = 0$ from FM/AS / wonderful boundary geometry, with the hard-core selection captured as residual sub-postulate $P_\\partial^{\\rm hc}$ motivated by the binary relevant-residue principle; F5 derives the polar $S^1$ phase from complex-normal enhancement, with $\\phi = 0$ as the Poincaré-dual real-slice direction (sub-postulate $P_\\partial^{\\mathbb{C}\\text{-norm}}$). Single-edge nilpotency $b_e^2 = 0 \\Rightarrow e^{-b_e \\delta_0(\\phi_e)} = 1 - b_e \\delta_0(\\phi_e)$ derives the linear form on one edge; multi-edge requires the connected-projection sub-postulate $P_e^{\\rm conn}$, empirically supported within the TCG formula ledger by the existing 0.09% $y_e$ match (vs 0.51% for the full exponential). Original $P_4$ thereby decomposes into four sub-postulates, three with physical/geometric motivation and one empirically supported. Active TCG/FPA postulate ledger UNCHANGED: $P_0$–$P_4$, $P_{5'}$, $P_6$, $P_7$, $P_{H'}$, $P_{SO(10)}$. The conjecture targets $P_2/P_3$ specifically; does not by itself derive other postulates. Conjectural slogan: *mass is a logarithmic residue of collision*."
 ---
 
 ## Abstract
@@ -22,4 +22,4 @@ The note does not derive the Standard Model sector assignment. It proves that th
 
 ## DOI
 
-[https://doi.org/10.5281/zenodo.20097223](https://doi.org/10.5281/zenodo.20097223)
+[https://doi.org/10.5281/zenodo.20102027](https://doi.org/10.5281/zenodo.20102027)
