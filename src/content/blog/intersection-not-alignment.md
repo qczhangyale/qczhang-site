@@ -6,7 +6,7 @@ pubDate: 2026-05-11
 
 The Spin(10) envelope paper that landed in this program a week ago closed a specific algebraic question: the framework's $A_3 \oplus A_1$ gauge data sit inside $D_5 \supset D_3 \oplus D_2 \cong A_3 \oplus A_1^L \oplus A_1^R$, equivalently $\mathfrak{so}(10) \supset \mathfrak{su}(4)_C \oplus \mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$. The missing internal $\mathfrak{su}(2)_R$ that the framework needs for the Standard Model hypercharge formula $Y = T_{3R} + (B-L)/2$ is supplied as a postulate-equivalent algebraic completion. The chiral spinor $\mathbf{16}$ packages exactly one Standard Model family.
 
-The downstream paper that followed it (Paper #29 v2) split the remaining open content into two residual labels outside the active TCG/FPA framework ledger: $P_{SO(10)}^{\rm br}$ (the breaking vacuum + weak-boundary asymmetry) and $P_{\rm fam}$ (family triplication). The breaking residual asks the dynamical question: once $SU(2)_R$ is supplied algebraically, what mechanism actually breaks it at low energy and produces the observed gauge group?
+The downstream paper that followed it ([Paper #29 v2](/papers/29-spin10-downstream-breaking-family/)) split the remaining open content into two residual labels outside the active TCG/FPA framework ledger: $P_{SO(10)}^{\rm br}$ (the breaking vacuum + weak-boundary asymmetry) and $P_{\rm fam}$ (family triplication). The breaking residual asks the dynamical question: once $SU(2)_R$ is supplied algebraically, what mechanism actually breaks it at low energy and produces the observed gauge group?
 
 The natural first attempt is a Spin(10)-invariant Higgs potential on the TCG-native fields $\mathbf{10}_H$ and $\mathbf{16}_H/\overline{\mathbf{16}}_H$. The hope: that the vacuum equations select a right-handed-neutrino-like VEV direction in $(\bar{\mathbf{4}}, \mathbf{1}, \mathbf{2}) \subset \mathbf{16}$, breaking $SU(4)_C \times SU(2)_L \times SU(2)_R$ down to $SU(3)_C \times SU(2)_L \times U(1)_Y$ while preserving the hypercharge combination.
 
@@ -101,7 +101,7 @@ $$
 
 Its minima obey $\lambda^T C \Gamma^a \lambda = 0$ (purity) and $\lambda^\dagger \lambda = v_R^2$ (normalization). The bilinear $\lambda^T C \Gamma^a \lambda$ is the projection of $\mathbf{16} \otimes \mathbf{16}$ onto the $\mathbf{10}$ representation, available because the standard branching $\mathbf{16}_s \otimes \mathbf{16}_s = \mathbf{10} \oplus \mathbf{120} \oplus \mathbf{126}$ contains the symmetric vector channel.
 
-So the construction uses *only* the two representations already identified in Paper #29 v2's audit as TCG-native: the spinor $\mathbf{16}$ and the vector $\mathbf{10}$. No import of the standard heavy $SO(10)$ breaking representations $\mathbf{45}$, $\mathbf{54}$, $\mathbf{126}$, $\overline{\mathbf{126}}$, $\mathbf{210}$. The $\mathbf{10}$ also contains the $P_{H'}$ pair-channel object $\mathbf{6} = \wedge^2 \mathbf{4}$ and the electroweak bidoublet $(\mathbf{1}, \mathbf{2}, \mathbf{2})$, so the same vector representation supports both hadronic and weak Higgs sector compatibility.
+So the construction uses *only* the two representations already identified in [Paper #29 v2](/papers/29-spin10-downstream-breaking-family/)'s audit as TCG-native: the spinor $\mathbf{16}$ and the vector $\mathbf{10}$. No import of the standard heavy $SO(10)$ breaking representations $\mathbf{45}$, $\mathbf{54}$, $\mathbf{126}$, $\overline{\mathbf{126}}$, $\mathbf{210}$. The $\mathbf{10}$ also contains the $P_{H'}$ pair-channel object $\mathbf{6} = \wedge^2 \mathbf{4}$ and the electroweak bidoublet $(\mathbf{1}, \mathbf{2}, \mathbf{2})$, so the same vector representation supports both hadronic and weak Higgs sector compatibility.
 
 An auxiliary-vector form using a field $H_a \in \mathbf{10}$ is also indicated, with explicit sign-convention caveats: the positive $V_{\rm pure}$ above is the primary action-level candidate; the $H_a$ formulation only shows that the relevant invariant lives natively in the $\mathbf{10}$ channel.
 
@@ -158,9 +158,9 @@ After this paper, the three arcs of the unification map remain in symmetric matu
 
 | Arc | Closure note(s) | Named residual (NOT in active ledger) |
 |---|---|---|
-| Gauge envelope | Paper #29 v2 + this paper | $P_{\rm pol}^{D_5}$ (sharpened from $P_{SO(10)}^{\rm br}$) + $P_{\rm fam}$ |
-| Electron $P_4$ | Paper #27 | $P_{\rm BFV}^{\rm sec}$ |
-| Hadronic $P_{H'}$ | Paper #28 | G1/G2 motivated; G3/G4/F6 open |
+| Gauge envelope | [Paper #29 v2](/papers/29-spin10-downstream-breaking-family/) + this paper | $P_{\rm pol}^{D_5}$ (sharpened from $P_{SO(10)}^{\rm br}$) + $P_{\rm fam}$ |
+| Electron $P_4$ | [Paper #27](/papers/27-boundary-superselection-obstruction/) | $P_{\rm BFV}^{\rm sec}$ |
+| Hadronic $P_{H'}$ | [Paper #28](/papers/28-bitwistor-pair-channels/) | G1/G2 motivated; G3/G4/F6 open |
 
 Each arc has a specific structural target for the next genuine advance:
 - **Gauge**: derive compatible pure-spinor polarization from the chiral twistor flag
