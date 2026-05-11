@@ -6,7 +6,7 @@ pubDate: 2026-05-11
 
 一周前落在本计划中的 Spin(10) 包络论文闭合了一个具体的代数问题:该框架的 $A_3 \oplus A_1$ 规范资料位于 $D_5 \supset D_3 \oplus D_2 \cong A_3 \oplus A_1^L \oplus A_1^R$ 之中,等价地 $\mathfrak{so}(10) \supset \mathfrak{su}(4)_C \oplus \mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$。标准模型超荷公式 $Y = T_{3R} + (B-L)/2$ 所需的缺失内部 $\mathfrak{su}(2)_R$ 作为假设等价代数完成被提供。手征旋量 $\mathbf{16}$ 恰好打包一个标准模型世代。
 
-紧接其后的下游论文([Paper #29 v2](/zh-cn/papers/29-spin10-downstream-breaking-family/))将剩余开放内容分裂为两个位于活跃 TCG/FPA 框架清单之外的残余标签:$P_{SO(10)}^{\rm br}$(破缺真空 + 弱边界不对称性)和 $P_{\rm fam}$(世代三化)。破缺残余提出动力学问题:一旦 $SU(2)_R$ 在代数层面被提供,什么机制在低能下实际破缺它并产生观测到的规范群?
+[紧接其后的下游论文](/zh-cn/papers/29-spin10-downstream-breaking-family/)将剩余开放内容分裂为两个位于活跃 TCG/FPA 框架清单之外的残余标签:$P_{SO(10)}^{\rm br}$(破缺真空 + 弱边界不对称性)和 $P_{\rm fam}$(世代三化)。破缺残余提出动力学问题:一旦 $SU(2)_R$ 在代数层面被提供,什么机制在低能下实际破缺它并产生观测到的规范群?
 
 最自然的首次尝试是在 TCG-本土场 $\mathbf{10}_H$ 和 $\mathbf{16}_H/\overline{\mathbf{16}}_H$ 上的 Spin(10)-不变希格斯势。希望:真空方程在 $(\bar{\mathbf{4}}, \mathbf{1}, \mathbf{2}) \subset \mathbf{16}$ 中选择一个类右手中微子的真空期望值方向,把 $SU(4)_C \times SU(2)_L \times SU(2)_R$ 破缺至 $SU(3)_C \times SU(2)_L \times U(1)_Y$,同时保留超荷组合。
 
@@ -101,7 +101,7 @@ $$
 
 其极小点服从 $\lambda^T C \Gamma^a \lambda = 0$(纯性)和 $\lambda^\dagger \lambda = v_R^2$(归一化)。双线性 $\lambda^T C \Gamma^a \lambda$ 是 $\mathbf{16} \otimes \mathbf{16}$ 到 $\mathbf{10}$ 表示的投影,可用因为标准分支 $\mathbf{16}_s \otimes \mathbf{16}_s = \mathbf{10} \oplus \mathbf{120} \oplus \mathbf{126}$ 包含对称矢量通道。
 
-所以该构造*只*使用 [Paper #29 v2](/zh-cn/papers/29-spin10-downstream-breaking-family/) 审计中已识别为 TCG-本土的两个表示:旋量 $\mathbf{16}$ 和矢量 $\mathbf{10}$。不引入标准重 $SO(10)$ 破缺表示 $\mathbf{45}$、$\mathbf{54}$、$\mathbf{126}$、$\overline{\mathbf{126}}$、$\mathbf{210}$。$\mathbf{10}$ 还包含 $P_{H'}$ 配对通道对象 $\mathbf{6} = \wedge^2 \mathbf{4}$ 和电弱双重态 $(\mathbf{1}, \mathbf{2}, \mathbf{2})$,所以同一矢量表示支持强子和弱希格斯扇区的兼容性。
+所以该构造*只*使用[下游论文的审计](/zh-cn/papers/29-spin10-downstream-breaking-family/)中已识别为 TCG-本土的两个表示:旋量 $\mathbf{16}$ 和矢量 $\mathbf{10}$。不引入标准重 $SO(10)$ 破缺表示 $\mathbf{45}$、$\mathbf{54}$、$\mathbf{126}$、$\overline{\mathbf{126}}$、$\mathbf{210}$。$\mathbf{10}$ 还包含 $P_{H'}$ 配对通道对象 $\mathbf{6} = \wedge^2 \mathbf{4}$ 和电弱双重态 $(\mathbf{1}, \mathbf{2}, \mathbf{2})$,所以同一矢量表示支持强子和弱希格斯扇区的兼容性。
 
 也指示了使用场 $H_a \in \mathbf{10}$ 的辅助矢量形式,带有明确的符号约定告诫:上面的正定 $V_{\rm pure}$ 是首要作用量级候选;$H_a$ 形式只表明相关不变量本土地处于 $\mathbf{10}$ 通道中。
 
@@ -158,9 +158,9 @@ $P_{\rm pol}^{D_5}$ 是此清单之外的残余标签,而非新框架公理。
 
 | 弧 | 闭合短文 | 命名残余(不在活跃清单) |
 |---|---|---|
-| 规范包络 | [Paper #29 v2](/zh-cn/papers/29-spin10-downstream-breaking-family/) + 本论文 | $P_{\rm pol}^{D_5}$(由 $P_{SO(10)}^{\rm br}$ 锐化)+ $P_{\rm fam}$ |
-| 电子 $P_4$ | [Paper #27](/zh-cn/papers/27-boundary-superselection-obstruction/) | $P_{\rm BFV}^{\rm sec}$ |
-| 强子 $P_{H'}$ | [Paper #28](/zh-cn/papers/28-bitwistor-pair-channels/) | G1/G2 有动机;G3/G4/F6 开放 |
+| 规范包络 | [Spin(10) 下游破缺短文](/zh-cn/papers/29-spin10-downstream-breaking-family/) + 本论文 | $P_{\rm pol}^{D_5}$(由 $P_{SO(10)}^{\rm br}$ 锐化)+ $P_{\rm fam}$ |
+| 电子 $P_4$ | [边界超选择阻断短文](/zh-cn/papers/27-boundary-superselection-obstruction/) | $P_{\rm BFV}^{\rm sec}$ |
+| 强子 $P_{H'}$ | [双扭量配对通道短文](/zh-cn/papers/28-bitwistor-pair-channels/) | G1/G2 有动机;G3/G4/F6 开放 |
 
 每条弧有下一个真正进展的具体结构性目标:
 - **规范**:从手征扭量旗推导兼容纯旋量极化
