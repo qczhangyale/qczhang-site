@@ -1,0 +1,13 @@
+---
+title: "扭量构型几何 Spin(10) 包络中由 P7 端壁资料得到的兼容纯旋量极化"
+shortTitle: "兼容纯旋量极化"
+doi: "10.5281/zenodo.20129212"
+date: 2026-05-12
+order: 31
+category: foundations
+description: "Paper #30(纯旋量极化,DOI:10.5281/zenodo.20116476)的直接后续。Paper #30 建立了条件性的交集机制 $G_{\\rm SM} = G_{\\rm PS} \\cap G_\\lambda$,需要兼容的纯旋量极化 — 残余 $P_{\\rm pol}^{D_5}$。本论文**仅**使用现有 TCG 资料攻击兼容性部分 — 不引入新假设。两个结构性输入:(a) P7 端壁假设 [Zhang Wall Deletion, DOI:10.5281/zenodo.20045987] 提供轻子线 $\\ell \\subset \\mathbf{4}$ 及色/轻子分裂 $\\mathbf{4} = C \\oplus \\ell$;(b) 可见 $SU(2)_L$ 的保持(来自 $P_{5'}$ 左手性的兼容性输入,**非此处推导**)强制极化的弱部分形式为 $\\mathbf{2}_L \\otimes r$。**命题 1**:$W_3^+ = \\ell \\wedge C \\subset \\wedge^2 \\mathbf{4}$ 是对楔积配对二次型的 3 维极大各向同性子空间。**引理**:$L \\otimes R$ 的任何 $SU(2)_L$ 不变复 2 维子空间形式为 $L \\otimes r$ 且在 $\\mathbb{C}$ 上自动极大各向同性。**定理 3**:极化 $W_+ = (\\ell \\wedge C) \\oplus (\\mathbf{2}_L \\otimes r_+)$ 是 $V_{10,\\mathbb{C}}$ 中的极大各向同性 5 平面,因此决定一个射影纯旋量。**命题 5(行列式约简)**:$g_4 = \\mathrm{diag}(A, a) \\in SU(4)_C$ 保持 $\\mathbf{4} = C \\oplus \\ell$,$g_R \\in SU(2)_R$ 以相位 $b$ 保持 $r_+$;$SU(5)_{W_+}$ 稳定子条件强制 $a^2 b^2 = 1$,将两个 $U(1)$ 相位约简为一个 $U(1)_Y$。**命题 6(超荷)**:剩余的阿贝尔生成元为 $Y = T_{3R} + (B-L)/2$,Pati-Salam 归一化(其中 $Q_{\\rm EM} = T_{3L} + Y$)。稳定子交集 $SU(5)_{W_+} \\cap (SU(4)_C \\times SU(2)_L \\times SU(2)_R) \\simeq S(U(3) \\times U(2))$ 即标准模型群(在标准有限商之内)。电荷分解 $W_+ \\cong (\\mathbf{3}, \\mathbf{1})_{-1/3} \\oplus (\\mathbf{1}, \\mathbf{2})_{+1/2}$ 匹配 $SU(5)$ 基本 $\\mathbf{5}$(零迹检验 $3(-1/3) + 2(+1/2) = 0$)。物质内容(§5 澄清备注)仍在 $\\mathrm{Spin}(10)$ 的手征旋量 $\\mathbf{16}$ 中,其在 $SU(5) \\supset G_{\\rm SM}$ 下的分解为通常的 $\\overline{\\mathbf{5}} \\oplus \\mathbf{10} \\oplus \\mathbf{1}$ 打包一个完整世代;在 $W_+$ 中出现的 $\\mathbf{5}$ 是**极化**的基本表示,而非物质多重态。**判定:部分肯定 — 兼容性残余被大幅约束,凝聚/作用量仍开放。** 残余从 $P_{\\rm pol}^{D_5}$(『推导任意兼容极化』)锐化为『推导一个在端壁与可见 $SU(2)_L$ 兼容轨道中的纯旋量凝聚』。五个开放缺口 G1-G5(纯旋量凝聚、兼容性作为定理、共轭取向 $W_+$ 对 $W_-$、破缺尺度与 $P_{5'}$、世代三化不变)。活跃 TCG/FPA 假设清单**不变**:$P_0$-$P_4$、$P_{5'}$、$P_6$、$P_7$、$P_{H'}$、$P_{SO(10)}$。$P_{\\rm pol}^{D_5}$ 仍是活跃清单之外的残余标签,**非**新框架公理。与 Paper #28(双扭量配对通道)和 Paper #30(纯旋量极化)同一成熟度记录:命名残余上的部分肯定机制进展,非推导,无活跃清单变更。"
+---
+
+## DOI
+
+[https://doi.org/10.5281/zenodo.20129212](https://doi.org/10.5281/zenodo.20129212)
