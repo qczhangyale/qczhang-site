@@ -1,6 +1,6 @@
 ---
 title: "What Lives Below CP³?"
-description: "It took thirty-six papers to ask where CP³ comes from. The Twistor Configuration Geometry corpus takes complex projective three-space as a starting datum throughout: every postulate in the active ledger (P_0–P_4, P_{5'}, P_6, P_7, P_H', P_{SO(10)}) presupposes it; every dimensionless invariant uses its Fubini-Study volumes; the within-TCG obstruction trilogy works inside structures that already presuppose it. The substrate question — can CP³ be derived from a more primitive relational substrate rather than postulated? — is the question one structural level below the corpus. Today's paper takes that question seriously and proves at theorem level that under minimal twistor-incidence data (C, R, Φ) no canonical CP³ attractor is determined. Four sequential obstructions combine: SU(4) target degeneracy across flag varieties; twistor-space presupposition requiring a 4D conformal anchor; projective-rank degeneracy; order-parameter ambiguity among the Fubini-Study form, AHS twistor-fibration, projective-incidence, and conformal SU(2,2). Names labeled successor target P_sub^{CP³} = P_tw^{CP³} + P_ord^{CP³} outside the active ledger. Two framings of 'why CP³?' made explicit: configurable framing (Paper #02) dissolves the question by declining its presupposition; substrate-derivation framing (today) grants the question and proves it obstructed — complementary defenses. Positioning against Quantum Graphity, Causal Sets, Group Field Theory, twistorial loop quantum gravity, Wolfram Physics. Partial positive: substrate-level obstruction theorem; no derivation of CP³; no active-ledger change."
+description: "It took thirty-six papers to ask where CP³ comes from. The Twistor Configuration Geometry corpus takes complex projective three-space as a starting datum throughout: every postulate in the active ledger (P_0–P_4, P_{5'}, P_6, P_7, P_H', P_{SO(10)}) presupposes it; every dimensionless invariant uses its Fubini-Study volumes; the within-TCG obstruction trilogy works inside structures that already presuppose it. The substrate question — can CP³ be derived from a more primitive relational substrate rather than postulated? — is the question one structural level below the corpus. Today's paper takes that question seriously and proves at theorem level that under minimal twistor-incidence data (C, R, Φ) no canonical CP³ attractor is determined. Four sequential obstructions combine: SU(4) target degeneracy across flag varieties; twistor-space presupposition requiring a 4D conformal anchor; projective-rank degeneracy; order-parameter ambiguity among the Fubini-Study form, AHS twistor-fibration, projective-incidence, and conformal SU(2,2). Names labeled successor target P_sub^{CP³} = P_tw^{CP³} + P_ord^{CP³} outside the active ledger. Two framings of 'why CP³?' made explicit: the configurable framing dissolves the question by declining its presupposition; substrate-derivation framing (today) grants the question and proves it obstructed — complementary defenses. Positioning against Quantum Graphity, Causal Sets, Group Field Theory, twistorial loop quantum gravity, Wolfram Physics. Partial positive: substrate-level obstruction theorem; no derivation of CP³; no active-ledger change."
 pubDate: 2026-06-15
 ---
 
@@ -18,7 +18,7 @@ Pre-geometric quantum gravity proposes a particular kind of move. Quantum Graphi
 
 There are two ways to handle that question.
 
-[The Configurable Universe paper](/blog/configurable-universe/) (Paper #02) refuses it. It reads TCG's constants as structural invariants of a chamber inside a fixed configuration space $\bigsqcup_{n=1}^{3} \mathbb{CP}^n \times \mathcal{K}_{r_n}(I)$. The chamber is part of the structural specification, not something the framework is trying to derive. The question "why this chamber rather than another?" is held to be ill-posed because it presupposes alternatives the configurable view does not require. On that framing, the substrate question is dissolved by refusing its presupposition.
+[The Configurable Universe paper](/blog/configurable-universe/) refuses it. It reads TCG's constants as structural invariants of a chamber inside a fixed configuration space $\bigsqcup_{n=1}^{3} \mathbb{CP}^n \times \mathcal{K}_{r_n}(I)$. The chamber is part of the structural specification, not something the framework is trying to derive. The question "why this chamber rather than another?" is held to be ill-posed because it presupposes alternatives the configurable view does not require. On that framing, the substrate question is dissolved by refusing its presupposition.
 
 The other handling is to grant the question and see what happens. That is what today's paper does.
 
@@ -68,7 +68,7 @@ Both are **labeled successor-construction targets outside the active ledger**. N
 
 ## Two defenses, not one argument
 
-Paper #02 and Paper #37 are not steps in a single argument. They are two stances toward the same question.
+The configurable framing and today's substrate-derivation framing are not steps in a single argument. They are two stances toward the same question.
 
 The configurable framing declines the question. The substrate-derivation framing grants the question and finds it obstructed. Either route concludes that $\mathbb{CP}^3$ stays as TCG's primitive datum. Combined, the two protections are multiplicative: a reader who finds one defense unconvincing can fall back on the other; a reader who finds both unconvincing has identified a question outside the framework's current scope, not a defect within it.
 
@@ -78,9 +78,9 @@ The substrate residual completes the named-residual table.
 
 | Arc | Residual | Source |
 |---|---|---|
-| Electron $P_4$ | $P_{\rm BFV}^{\rm sec}$ | Paper #27 |
-| Gauge envelope | $X_{\rm wall\text{-}pol}$ | Paper #32 |
-| Hadronic $P_{H'}$ | $P_{\rm pair}^{\rm wall\text{-}res} + P_{\rm pair}^{\rm phys} + P_{\rm pair}^{\rm ord}$ | Papers #35, [#36](/blog/residue-not-relabeling/) |
+| Electron $P_4$ | $P_{\rm BFV}^{\rm sec}$ | [Boundary Superselection Obstruction](/papers/27-boundary-superselection-obstruction/) |
+| Gauge envelope | $X_{\rm wall\text{-}pol}$ | [Pure-Spinor Condensation Obstruction](/papers/32-pure-spinor-condensation-obstruction/) |
+| Hadronic $P_{H'}$ | $P_{\rm pair}^{\rm wall\text{-}res} + P_{\rm pair}^{\rm phys} + P_{\rm pair}^{\rm ord}$ | [Hadronic Six-Slot Resolution](/papers/35-hadronic-six-slot-resolution/) → [Pair-Channel Root-Wall Residue Addresses](/papers/36-pair-channel-root-wall-residue-addresses/) |
 | **Substrate** | $P_{\rm sub}^{\mathbb{CP}^3}$ | **Today** |
 
 The first three arcs work inside structures presupposing $\mathbb{CP}^3$. The fourth arc asks where that presupposition comes from. Each carries a named successor target outside the active TCG/τCG ledger. None is a new framework axiom.
