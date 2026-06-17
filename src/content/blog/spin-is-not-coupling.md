@@ -4,7 +4,7 @@ description: "Today's paper is a short empirical-posture companion to the princi
 pubDate: 2026-06-17
 ---
 
-The framework has a principal forward-falsifiable prediction. It is the [spin-1 short-range fifth force](/papers/17-predictions-and-no-go/) at $\alpha_Y = \alpha^{-2} \approx 1.88 \times 10^4$ relative to gravity. The cleanly surviving region — narrowed by the framework's own internal analysis — is $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$, $m \gtrsim 25\text{--}28\,{\rm meV}$.
+The framework has a principal forward-falsifiable prediction. It is the [spin-1 short-range fifth force](/papers/04-predictions-no-go/) at $\alpha_Y = \alpha^{-2} \approx 1.88 \times 10^4$ relative to gravity. The cleanly surviving region — narrowed by the framework's own internal analysis — is $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$, $m \gtrsim 25\text{--}28\,{\rm meV}$.
 
 Today's short paper is an empirical-posture companion to that prediction. It does three things, in increasing order of structural sharpness.
 
@@ -71,7 +71,7 @@ The sensitivity gap is closable. The Venugopalan 2026 result demonstrates that t
 
 ## Verdict
 
-**Empirical-posture companion note** — no new TCG postulate, no new active-ledger residual, no operator-coupling derivation, no experimental protocol, no claim of detection. The empirical posture of the [Predictions and No-Go consequences note](/papers/17-predictions-and-no-go/) is internally consistent and is anchored here to primary-source laboratory bounds and a structural astrophysical-viability statement. Active TCG/τCG postulate ledger UNCHANGED.
+**Empirical-posture companion note** — no new TCG postulate, no new active-ledger residual, no operator-coupling derivation, no experimental protocol, no claim of detection. The empirical posture of the [Predictions and No-Go consequences note](/papers/04-predictions-no-go/) is internally consistent and is anchored here to primary-source laboratory bounds and a structural astrophysical-viability statement. Active TCG/τCG postulate ledger UNCHANGED.
 
 The companion is *Empirical Posture of the TCG Spin-1 Short-Range Force: Bound Overlay and Astrophysical Viability*, on Zenodo (DOI [10.5281/zenodo.20738542](https://doi.org/10.5281/zenodo.20738542); CC-BY-4.0). Nine pages, eleven references.
 

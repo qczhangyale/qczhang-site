@@ -4,13 +4,13 @@ shortTitle: "Spin-1 Empirical Posture"
 doi: "10.5281/zenodo.20738542"
 date: 2026-06-17
 order: 40
-category: empirical-posture
+category: foundations
 description: "Standalone short empirical-posture companion to the Predictions and No-Go consequences note. Anchors the cleanly surviving region λ ≲ 7–8 μm, m ≳ 25–28 meV to primary-source laboratory bounds (Geraci 2008 microcantilever |α| > 14,000 excluded at λ = 10 μm; Blakemore 2021 levitated microsphere |α| ≳ 10⁸ for λ > 10 μm; Venugopalan 2026 optomechanical vector sensing |α| ~ 10⁷ at λ ≃ 5 μm with ~100× improvement). Coupling translation g_X² = 4πGm_X²α_Y/(ℏc) yields TCG-required gauge couplings g_B ≈ 3.7×10⁻¹⁷ (baryon), g_e ≈ 2.0×10⁻²⁰ (electron), kinetic-mixing equivalent ε ≈ 6.7×10⁻²⁰. Documents structural protection from SN 1987A, red-giant cooling, BBN/CMB thermalization, and long-range EP exclusion by 7–10 orders of magnitude in representative vector and effective-mixing channels at the gravity-normalized coupling scale. Operator-coupling status: P_6 fixes spin s = 1 and strength α_Y = α⁻² but does NOT derive the operator coupling J^μ_Y. Spin-independent Yukawa searches (Channel A: mass, number, B−L currents) test the TCG prediction directly; spin-dependent searches (Channel B: spin or axial currents) are exploratory adjacent tests outside the TCG falsification chain unless a TCG-internal operator derivation is supplied. P_Y^op is named as a diagnostic empirical-posture bookkeeping label, NOT a new active-ledger residual, NOT an extension of the four-arc named-residual pattern. Only viable falsification path is direct short-range laboratory measurement in the cleanly surviving window. Six failure modes F1–F6 guard the common overreach drifts. Introduces NO new TCG postulate, NO new active-ledger residual, NO operator-coupling derivation, NO experimental protocol, NO claim of detection. Maturity register: predictions-and-no-go successor / empirical-posture consolidation, distinct from theorem-level construction/obstruction notes and from the synthesis review. Active TCG/τCG postulate ledger UNCHANGED."
 ---
 
 ## Abstract
 
-The [Predictions and No-Go consequences note](/papers/17-predictions-and-no-go/) identifies a spin-1 short-range mediator with effective Yukawa strength $\alpha_Y \equiv \alpha^{-2} \approx 1.88 \times 10^4$ relative to gravity — fixed by the integer-spin tower postulate $P_6$ of the [TCG Construction (FPA Model)](/papers/14-tcg-construction-fpa-model/) and normalized against the gravitational sector of [Emergent Gravity](/papers/04-emergent-gravity/) — as the principal forward-falsifiable empirical prediction of the corpus. The cleanly surviving region narrows to $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$, $m \gtrsim 25\text{--}28\,{\rm meV}$.
+The [Predictions and No-Go consequences note](/papers/04-predictions-no-go/) identifies a spin-1 short-range mediator with effective Yukawa strength $\alpha_Y \equiv \alpha^{-2} \approx 1.88 \times 10^4$ relative to gravity — fixed by the integer-spin tower postulate $P_6$ of the [TCG Construction (FPA Model)](/papers/03-tcg-fpa-model/) and normalized against the gravitational sector of [Emergent Gravity](/papers/08-emergent-gravity/) — as the principal forward-falsifiable empirical prediction of the corpus. The cleanly surviving region narrows to $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$, $m \gtrsim 25\text{--}28\,{\rm meV}$.
 
 This short companion note anchors that surviving-region statement to primary-source laboratory bounds and documents the structural protection of the prediction from astrophysical, cosmological, and equivalence-principle exclusion.
 
@@ -65,11 +65,11 @@ For empirical-posture bookkeeping, the operator-coupling question is denoted by 
 - **Channel A (spin-independent Yukawa).** Sensitive to $J^\mu_{\rm mass}$, $J^\mu_{\rm number}$, $J^\mu_{B-L}$ on neutral test bodies. Tests the TCG $P_6$ prediction **directly**. A null result at the TCG target sensitivity falsifies the spin-1 entry in the surviving window.
 - **Channel B (spin-dependent).** Sensitive to $J^\mu_{\rm spin}$ or $J^\mu_5$. Tests a sub-hypothesis $P_6$ plus a spin or axial coupling, **strictly stronger** than the $P_6$ prediction alone. A Channel B null does not falsify TCG; a Channel B signal does not confirm TCG. Spin-dependent searches are **exploratory adjacent tests outside the TCG falsification chain**, unless a TCG-internal derivation of $J^\mu_Y$ as a spin or axial current is supplied.
 
-The [configurable-framing complement](/papers/16-configurable-universe/) is preserved unchanged.
+The [configurable-framing complement](/papers/02-configurable-universe/) is preserved unchanged.
 
 ## Verdict
 
-**Empirical-posture companion note** — no new TCG postulate, no new active-ledger residual, no operator-coupling derivation, no experimental protocol, no claim of detection. The empirical posture of the [Predictions and No-Go consequences note](/papers/17-predictions-and-no-go/) is internally consistent and is anchored here to primary-source laboratory bounds and a structural astrophysical-viability statement.
+**Empirical-posture companion note** — no new TCG postulate, no new active-ledger residual, no operator-coupling derivation, no experimental protocol, no claim of detection. The empirical posture of the [Predictions and No-Go consequences note](/papers/04-predictions-no-go/) is internally consistent and is anchored here to primary-source laboratory bounds and a structural astrophysical-viability statement.
 
 Active TCG/τCG postulate ledger UNCHANGED:
 $$P_0\text{--}P_4, \quad P_{5'}, \quad P_6, \quad P_7, \quad P_{H'}, \quad P_{SO(10)}.$$

@@ -4,7 +4,7 @@ description: "今天的論文是框架核心前向可證偽預言的簡短經驗
 pubDate: 2026-06-17
 ---
 
-框架有一個核心的、前向可證偽的預言。它是 [自旋-1 短程第五力](/zh-tw/papers/17-predictions-and-no-go/) 在 $\alpha_Y = \alpha^{-2} \approx 1.88 \times 10^4$ 相對於引力。清潔存活區域 — 由框架自身的內部分析所窄化 — 為 $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$、$m \gtrsim 25\text{--}28\,{\rm meV}$。
+框架有一個核心的、前向可證偽的預言。它是 [自旋-1 短程第五力](/zh-tw/papers/04-predictions-no-go/) 在 $\alpha_Y = \alpha^{-2} \approx 1.88 \times 10^4$ 相對於引力。清潔存活區域 — 由框架自身的內部分析所窄化 — 為 $\lambda \lesssim 7\text{--}8\,\mu{\rm m}$、$m \gtrsim 25\text{--}28\,{\rm meV}$。
 
 今天的短文是該預言的經驗立場伴隨短文。它做了三件事,按結構銳利度遞增排列。
 
@@ -71,7 +71,7 @@ $$J^\mu_Y \in \{J^\mu_{\rm mass},\; J^\mu_{\rm number},\; J^\mu_{B-L},\; J^\mu_{
 
 ## 判定
 
-**經驗立場伴隨短文** — 無新 TCG 假設、無新活躍清單殘餘、無算符耦合導出、無實驗協議、無檢測主張。[預測與禁戒後果論文](/zh-tw/papers/17-predictions-and-no-go/) 的經驗立場內部一致,且在此被錨定於一手實驗界限與結構性天體物理可行性陳述。活躍 TCG/τCG 假設清單不變。
+**經驗立場伴隨短文** — 無新 TCG 假設、無新活躍清單殘餘、無算符耦合導出、無實驗協議、無檢測主張。[預測與禁戒後果論文](/zh-tw/papers/04-predictions-no-go/) 的經驗立場內部一致,且在此被錨定於一手實驗界限與結構性天體物理可行性陳述。活躍 TCG/τCG 假設清單不變。
 
 伴隨短文為 *TCG 自旋-1 短程力的經驗立場:界限疊加與天體物理可行性*,載於 Zenodo(DOI [10.5281/zenodo.20738542](https://doi.org/10.5281/zenodo.20738542);CC-BY-4.0)。九頁,十一篇引用。
 
