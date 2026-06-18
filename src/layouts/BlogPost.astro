@@ -15,7 +15,7 @@ const locale: Locale = (Astro.props as any).locale ?? localeFromPath(Astro.url.p
 const localePrefix = locale === 'en' ? '' : '/' + locale;
 const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
 const counts = await getPaperCounts();
-const articleFooter = t(locale, 'article.footer', { tcgArc: counts.tcgArc });
+const articleFooter = t(locale, 'article.footer', { total: counts.total });
 
 // JSON-LD BlogPosting — eligible for Google's article rich-result card
 const schema = {

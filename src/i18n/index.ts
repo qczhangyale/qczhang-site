@@ -129,7 +129,7 @@ const en: Dict = {
 	'article.eyebrow': 'Long read',
 	'article.byline.by': 'By',
 	'article.byline.updated': 'updated',
-	'article.footer': 'This essay accompanies a {tcgArc}-paper publication arc on Zenodo (CC-BY-4.0).',
+	'article.footer': 'This essay accompanies a {total}-paper publication arc on Zenodo (CC-BY-4.0).',
 	'article.footer.bibliography': 'See the full bibliography →',
 
 	// About
@@ -260,7 +260,7 @@ const zhCN: Dict = {
 	'article.eyebrow': '深度长文',
 	'article.byline.by': '作者',
 	'article.byline.updated': '更新于',
-	'article.footer': '本文配套 Zenodo 上 {tcgArc} 篇论文系列(CC-BY-4.0 许可)。',
+	'article.footer': '本文配套 Zenodo 上 {total} 篇论文系列(CC-BY-4.0 许可)。',
 	'article.footer.bibliography': '查看完整文献列表 →',
 
 	'about.eyebrow': '关于',
@@ -388,7 +388,7 @@ const zhTW: Dict = {
 	'article.eyebrow': '深度長文',
 	'article.byline.by': '作者',
 	'article.byline.updated': '更新於',
-	'article.footer': '本文配套 Zenodo 上 {tcgArc} 篇論文系列(CC-BY-4.0 授權)。',
+	'article.footer': '本文配套 Zenodo 上 {total} 篇論文系列(CC-BY-4.0 授權)。',
 	'article.footer.bibliography': '查看完整文獻列表 →',
 
 	'about.eyebrow': '關於',
