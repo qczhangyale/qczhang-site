@@ -1,0 +1,187 @@
+---
+// TCG arc tree — the index for the Twistor Configuration Geometry page.
+//
+// Grouping comes from the Paper #39 structural-state review, whose central
+// claim is the four-arc named-residual pattern. Each arc shows the named
+// residual it leaves OUTSIDE the active postulate ledger, plus its own
+// closure note: #39 is explicit that the arcs sit at different maturity
+// registers and that flattening them into one status word is a failure mode.
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, type Locale } from '../i18n';
+import { ARCS, ACTIVE_LEDGER, arcTitle, arcBlurb, arcClosure } from '../lib/tcg-arcs';
+import TreeRow from './TreeRow.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+
+const tcg = filterEnglishOnly(await getCollection('papers')).filter((p) => p.data.series === 'tcg');
+const byId = new Map(tcg.map((p) => [p.id, p]));
+
+const s = (v: any) => v[locale] ?? v.en;
+const copy = {
+	note: {
+		en: 'Grouped by the four-arc structure named in the structural-state review. Hover a row for its summary; the title opens Zenodo.',
+		'zh-cn': '按结构状态综述所命名的四弧结构分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。',
+		'zh-tw': '按結構狀態綜述所命名的四弧結構分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。',
+	},
+	ledger: { en: 'Active ledger', 'zh-cn': '活跃公设账目', 'zh-tw': '活躍公設帳目' },
+	residual: { en: 'Named residual', 'zh-cn': '具名残余', 'zh-tw': '具名殘餘' },
+	post: { en: 'post-review', 'zh-cn': '综述之后', 'zh-tw': '綜述之後' },
+};
+---
+
+<p class="tree-note">{s(copy.note)}</p>
+<p class="ledger">
+	<span class="ledger-label">{s(copy.ledger)}</span>
+	<code>{ACTIVE_LEDGER}</code>
+</p>
+
+<div class="arcs">
+	{
+		ARCS.map((arc) => (
+			<section class={`arc arc-${arc.key}`}>
+				<header class="arc-head">
+					<h3>{arcTitle(locale, arc)}</h3>
+					<p class="arc-blurb">{arcBlurb(locale, arc)}</p>
+					{arc.residual && (
+						<p class="arc-residual">
+							<span class="arc-residual-label">{s(copy.residual)}</span>
+							<code>{arc.residual}</code>
+						</p>
+					)}
+					{arcClosure(locale, arc) && <p class="arc-closure">{arcClosure(locale, arc)}</p>}
+				</header>
+				<ul class="tree">
+					{arc.papers.map((id) => {
+						const p = byId.get(id);
+						return p ? (
+							<li class="node">
+								<TreeRow
+									paper={p}
+									locale={locale}
+									flag={arc.postReview?.includes(id) ? s(copy.post) : undefined}
+								/>
+							</li>
+						) : null;
+					})}
+				</ul>
+			</section>
+		))
+	}
+</div>
+
+<style>
+	.tree-note {
+		margin: 0 0 0.8rem;
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		line-height: 1.6;
+		max-width: 78ch;
+	}
+	.ledger {
+		margin: 0 0 1.8rem;
+		font-family: var(--font-sans);
+		font-size: 0.82rem;
+		color: var(--text-muted);
+	}
+	.ledger-label {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--text-faint);
+		margin-right: 0.6em;
+	}
+	.ledger code {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+	}
+
+	.arcs {
+		display: flex;
+		flex-direction: column;
+		gap: 2.2rem;
+	}
+	.arc-head {
+		border-left: 3px solid var(--border-strong);
+		padding-left: 0.9rem;
+		margin-bottom: 0.7rem;
+	}
+	.arc-electron .arc-head,
+	.arc-gauge .arc-head,
+	.arc-hadronic .arc-head,
+	.arc-substrate .arc-head {
+		border-left-color: var(--accent);
+	}
+	.arc-head h3 {
+		margin: 0 0 0.35em;
+		font-size: 1.12rem;
+		font-family: var(--font-sans);
+	}
+	.arc-blurb {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.55;
+		color: var(--text-muted);
+		max-width: 74ch;
+	}
+	.arc-residual {
+		margin: 0.6em 0 0;
+		font-size: 0.82rem;
+	}
+	.arc-residual-label {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.68rem;
+		font-weight: 700;
+		color: var(--text-faint);
+		margin-right: 0.55em;
+		font-family: var(--font-sans);
+	}
+	.arc-residual code {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		color: var(--accent);
+	}
+	.arc-closure {
+		margin: 0.5em 0 0;
+		font-size: 0.82rem;
+		line-height: 1.55;
+		color: var(--text-faint);
+		font-style: italic;
+		max-width: 74ch;
+	}
+
+	.tree {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 0.9rem;
+	}
+	.node :global(.row)::before {
+		content: '';
+		position: absolute;
+		left: -0.55rem;
+		top: 50%;
+		width: 0.35rem;
+		height: 1px;
+		background: var(--border-strong);
+	}
+	.node :global(.row)::after {
+		content: '';
+		position: absolute;
+		left: -0.55rem;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: var(--border-strong);
+	}
+	.node:first-child :global(.row)::after {
+		top: 50%;
+	}
+	.node:last-child :global(.row)::after {
+		bottom: 50%;
+	}
+</style>

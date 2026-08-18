@@ -29,8 +29,31 @@ const papers = defineCollection({
 		shortTitle: z.string().optional(),
 		doi: z.string(),
 		date: z.coerce.date(),
+		// Sort key WITHIN a series. TCG uses 1..42 (research-marathon order);
+		// Complementarity-First uses 1..10 (Release I reading order). Always
+		// filter by series before sorting on this field.
 		order: z.number(),
-		category: z.enum(['synthesis', 'cosmology', 'method', 'twistor', 'foundations']),
+		// Which research series the paper belongs to. Defaults to 'tcg' so the
+		// 42 pre-existing stubs need no frontmatter change.
+		series: z.enum(['cf', 'tcg']).optional().default('tcg'),
+		// Internal release code (CF-F1, CFQF-Q4, CUD-G1, ...). Complementarity-First
+		// papers cross-reference each other by these codes in the release overview,
+		// so they are shown on cards and detail pages. TCG papers have none.
+		code: z.string().optional(),
+		category: z.enum([
+			// TCG series
+			'synthesis',
+			'cosmology',
+			'method',
+			'twistor',
+			'foundations',
+			// Complementarity-First series
+			'cf-foundation',
+			'cf-quantum',
+			'cf-gravity',
+			'cf-synthesis',
+			'cf-overview',
+		]),
 		precision: z.string().optional(),
 		description: z.string(),
 		keyFormula: z.string().optional(),

@@ -102,9 +102,9 @@ const recent = allPosts.filter((x) => !x.english.data.pinned && !x.english.data.
 			</div>
 			{recent.length > 0 ? (
 				<ul class="posts">
-					{recent.map(({ post, minutes }) => (
+					{recent.map(({ english, post, minutes }) => (
 						<li>
-							<a href={`/zh-tw/blog/${post.id}/`} class="post-card">
+							<a href={`/zh-tw/blog/${english.id}/`} class="post-card">
 								<div class="post-meta">
 									<FormattedDate date={post.data.pubDate} />
 									<span class="meta-sep">·</span>

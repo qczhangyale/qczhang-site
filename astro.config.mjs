@@ -7,6 +7,16 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+	// The Complementarity-First hub was merged into the homepage; its former
+	// URLs (and the standalone provenance-tree page) redirect there.
+	redirects: {
+		'/complementarity-first': '/',
+		'/complementarity-first/tree': '/',
+		'/zh-cn/complementarity-first': '/zh-cn/',
+		'/zh-cn/complementarity-first/tree': '/zh-cn/',
+		'/zh-tw/complementarity-first': '/zh-tw/',
+		'/zh-tw/complementarity-first/tree': '/zh-tw/',
+	},
 	site: 'https://qczhang.com',
 	integrations: [mdx(), sitemap()],
 	i18n: {

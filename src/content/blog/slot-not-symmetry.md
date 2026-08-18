@@ -26,7 +26,7 @@ The $6!$ appears only when one uses the unnormalized top monomial $\eta^6$. The 
 
 ## Two more escape routes, both closed
 
-The paper checks two further routes that might rescue $6!$ from canonical data: geometric quantization, and the $P_7$ wall structure inherited from [the wall-deletion note](/papers/19-wall-deletion-tcg/).
+The paper checks two further routes that might rescue $6!$ from canonical data: geometric quantization, and the $P_7$ wall structure inherited from [the wall-deletion note](/papers/19-wall-deletion-pati-salam/).
 
 Geometric quantization of $\mathbb{CP}^5$ with the hyperplane bundle $\mathcal{O}(k)$ gives $\dim H^0(\mathbb{CP}^5, \mathcal{O}(k)) = \binom{k+5}{5}$ — degree-$k$ homogeneous polynomials in six variables. The representation-level choice $k = 1$ gives $6$ (the dimension of $\wedge^2 \mathbf{4}$), not $720$. Around $720$ the sequence jumps from $\binom{11}{5} = 462$ to $\binom{12}{5} = 792$, so no integer $k$ produces $6!$ as a holomorphic-section count.
 

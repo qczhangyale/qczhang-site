@@ -5,10 +5,12 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { t, type Locale, localeFromPath } from '../i18n';
+import { categoryLabel, seriesHref, seriesName, type Series } from '../lib/series';
 
 type Props = CollectionEntry<'papers'>['data'] & { locale?: Locale };
 
-const { title, description, doi, date, category, precision, keyFormula } = Astro.props;
+const { title, description, doi, date, category, precision, keyFormula, code } = Astro.props;
+const series: Series = Astro.props.series ?? 'tcg';
 const locale: Locale = Astro.props.locale ?? localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
 const htmlLang = locale === 'zh-cn' ? 'zh-CN' : locale === 'zh-tw' ? 'zh-TW' : 'en';
@@ -198,8 +200,11 @@ const schema = {
 		<header class="paper-header">
 			<div class="paper-header-inner">
 				<div class="paper-meta-top">
-					<a href={localePrefix + '/papers/'} class="paper-back">{t(locale, 'paper.back')}</a>
-					<span class={`badge badge-${category}`}>{category}</span>
+					<a href={seriesHref(locale, series)} class="paper-back">
+						← {seriesName(locale, series)}
+					</a>
+					<span class={`badge badge-${category}`}>{categoryLabel(locale, category)}</span>
+					{code && <span class="badge-code">{code}</span>}
 					{precision && <span class="badge-precision">{precision}</span>}
 				</div>
 

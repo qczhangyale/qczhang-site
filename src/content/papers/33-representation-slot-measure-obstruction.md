@@ -14,7 +14,7 @@ The Lenz observation $m_p/m_e \approx 6\pi^5$ has a compact hadronic reading in 
 $$6\pi^5 = 6! \cdot \mathrm{Vol}_{FS}\bigl(\mathbb{P}(\wedge^2 \mathbf{4})\bigr), \quad \mathbb{P}(\wedge^2 \mathbf{4}) \cong \mathbb{CP}^5, \quad \mathrm{Vol}_{FS}(\mathbb{CP}^5) = \frac{\pi^5}{5!}.$$
 The projective space is the antisymmetric two-bitwistor pair-channel space of the Pati–Salam $SU(4)$ sector, as developed in [the bitwistor pair-channel note](/papers/28-bitwistor-pair-channels/). This note asks whether the remaining factor $6!$ is forced by the same canonical geometry or is an additional labeled-slot input.
 
-**The answer is theorem-level obstructed.** Under the TCG/FPA Fubini–Study normalization convention $[\omega_{FS}] = \pi H$ inherited from [the Pati–Salam representation-volumes note](/papers/18-pati-salam-representation-volumes/), the geometric half $\pi^5/5!$ is canonical (within that convention). The factorial half is not.
+**The answer is theorem-level obstructed.** Under the TCG/FPA Fubini–Study normalization convention $[\omega_{FS}] = \pi H$ inherited from [the Pati–Salam representation-volumes note](/papers/22-hadronic-extensions/), the geometric half $\pi^5/5!$ is canonical (within that convention). The factorial half is not.
 
 **Theorem 1 (Weyl-symmetry / $S_4$-versus-$S_6$ obstruction, §3).** The actual weights of $\wedge^2 \mathbf{4}$ live in the $A_3$ weight lattice; their pair-channel coordinate labels, inherited from a choice of basis of $\mathbf{4}$, are the unordered pairs $\{12, 13, 14, 23, 24, 34\}$. The Weyl group action canonically induced on these six labels is the image of $S_4$ acting on two-element subsets of $\{1,2,3,4\}$, a faithful but proper embedding
 $$S_4 \hookrightarrow \mathrm{Sym}\{12,13,14,23,24,34\} \cong S_6$$

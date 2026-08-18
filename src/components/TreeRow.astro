@@ -1,0 +1,199 @@
+---
+// One row of a tree index, shared by the Complementarity-First provenance
+// tree and the TCG arc tree so both behave identically.
+//
+// The title links OUT to the paper's Zenodo record; a quieter link goes to
+// the local paper page. Hovering or keyboard-focusing the row reveals a
+// summary card. On devices without hover the card renders inline instead,
+// so nothing is unreachable. No JavaScript.
+import type { CollectionEntry } from 'astro:content';
+import { t, type Locale } from '../i18n';
+import { categoryLabel } from '../lib/series';
+
+interface Props {
+	paper: CollectionEntry<'papers'>;
+	locale?: Locale;
+	/** Italic annotation after the title (edge class, or arc note). */
+	via?: string;
+	/** Extra provenance edges the nesting cannot express. */
+	also?: { fromCode: string; via: string }[];
+	/** Marks a paper published after the source that defines the grouping. */
+	flag?: string;
+}
+const { paper: p, locale = 'en', via, also = [], flag } = Astro.props;
+const prefix = locale === 'en' ? '' : '/' + locale;
+
+const alsoLabel = { en: 'also from', 'zh-cn': '另有来源', 'zh-tw': '另有來源' }[locale];
+const detailsLabel = { en: 'details', 'zh-cn': '详情', 'zh-tw': '詳情' }[locale];
+---
+
+<div class="row">
+	<slot name="rails" />
+	<span class={`badge badge-${p.data.category}`}>{categoryLabel(locale, p.data.category)}</span>
+	{p.data.code && <span class="code">{p.data.code}</span>}
+	{!p.data.code && <span class="code">№ {String(p.data.order).padStart(2, '0')}</span>}
+	<a class="title" href={`https://doi.org/${p.data.doi}`} target="_blank" rel="noopener">
+		{p.data.shortTitle ?? p.data.title}
+		<span class="ext" aria-hidden="true">↗</span>
+	</a>
+	{via && <span class="via">{via}</span>}
+	{flag && <span class="flag">{flag}</span>}
+	<a class="local" href={`${prefix}/papers/${p.id}/`}>{detailsLabel} →</a>
+	<div class="tip" role="note">
+		<div class="tip-title">{p.data.title}</div>
+		<p class="tip-desc">{p.data.description}</p>
+		<div class="tip-doi">{p.data.doi}</div>
+		{
+			also.length > 0 && (
+				<div class="tip-also">
+					{alsoLabel}: {also.map((a) => `${a.fromCode} (${a.via})`).join(' · ')}
+				</div>
+			)
+		}
+	</div>
+</div>
+
+<style>
+	.row {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+		flex-wrap: wrap;
+		padding: 0.5em 0.7em;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition: background 0.12s, border-color 0.12s;
+	}
+	.row:hover,
+	.row:focus-within {
+		background: var(--bg-elevated);
+		border-color: var(--border);
+	}
+	.code {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: var(--text-faint);
+		white-space: nowrap;
+	}
+	.title {
+		font-family: var(--font-sans);
+		font-size: 0.96rem;
+		font-weight: 600;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.title:hover,
+	.title:focus {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.ext {
+		font-size: 0.75em;
+		color: var(--text-faint);
+		margin-left: 0.25em;
+	}
+	.title:hover .ext {
+		color: var(--accent);
+	}
+	.via {
+		font-family: var(--font-sans);
+		font-size: 0.74rem;
+		color: var(--text-faint);
+		font-style: italic;
+	}
+	.flag {
+		font-family: var(--font-mono);
+		font-size: 0.66rem;
+		letter-spacing: 0.03em;
+		color: var(--text-faint);
+		border: 1px dashed var(--border-strong);
+		border-radius: 3px;
+		padding: 0.05em 0.35em;
+		white-space: nowrap;
+	}
+	.local {
+		margin-left: auto;
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		color: var(--text-muted);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.local:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	.tip {
+		border-radius: 8px;
+		background: var(--bg-elevated);
+		border: 1px solid var(--border-strong);
+		box-shadow: var(--shadow-md);
+		padding: 0.9em 1.05em;
+	}
+	.tip-title {
+		font-family: var(--font-sans);
+		font-size: 0.88rem;
+		font-weight: 600;
+		margin-bottom: 0.45em;
+		line-height: 1.35;
+	}
+	.tip-desc {
+		margin: 0;
+		font-size: 0.86rem;
+		line-height: 1.55;
+		color: var(--text-muted);
+	}
+	.tip-doi {
+		margin-top: 0.6em;
+		padding-top: 0.5em;
+		border-top: 1px solid var(--border);
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		color: var(--text-faint);
+	}
+	.tip-also {
+		margin-top: 0.5em;
+		font-family: var(--font-sans);
+		font-size: 0.74rem;
+		color: var(--text-faint);
+	}
+
+	/* Pointer devices: float the card on hover / keyboard focus. */
+	@media (hover: hover) and (pointer: fine) {
+		.tip {
+			position: absolute;
+			z-index: 40;
+			top: calc(100% + 0.3rem);
+			left: 2.5rem;
+			width: min(46ch, 80vw);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-3px);
+			transition: opacity 0.13s, transform 0.13s, visibility 0.13s;
+		}
+		.row:hover .tip,
+		.row:focus-within .tip {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
+
+	/* No hover available: render the summary inline, always visible. */
+	@media not all and (hover: hover) {
+		.row {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.local {
+			margin-left: 0;
+		}
+		.tip {
+			margin-top: 0.5em;
+			width: 100%;
+			box-shadow: none;
+		}
+	}
+</style>

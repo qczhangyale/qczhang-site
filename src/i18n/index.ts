@@ -23,7 +23,7 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
 	// Site identity
-	'site.brandTag': 'Twistor Configuration Geometry',
+	'site.brandTag': 'Complementarity-First · TCG',
 	'site.tagline': 'A research program on the dimensionless constants of physics.',
 
 	// Nav
@@ -91,7 +91,8 @@ const en: Dict = {
 	// Papers index
 	'papers.eyebrow': 'Bibliography',
 	'papers.title': 'Papers',
-	'papers.intro': '{total} papers in total: a {tcgArc}-paper Twistor Configuration Geometry arc plus {adjacent} adjacent workstreams (BDNC ontology, NBR predictive companion, the TCG → Pati–Salam wall-deletion bridge, and a spectral-dimension-flow study of quantum spacetime). Published on Zenodo under CC-BY-4.0. The TCG synthesis papers (May 2026) are the recommended starting point; the adjacent workstreams stand on their own.',
+	'papers.intro': '{total} papers across two research series: {cf} records in Complementarity-First Foundational Release I, which proposes a completed relation as the primitive and audits what it does not determine, and {tcg} papers in Twistor Configuration Geometry, which treats the dimensionless constants as structural invariants. Complementarity-First supplies the relational foundation beneath TCG. All published on Zenodo under CC-BY-4.0.',
+	'papers.metaDescription': 'Complete bibliography for the Complementarity-First and Twistor Configuration Geometry research series.',
 	'papers.statPapers': 'Papers',
 	'papers.statRelations': 'Empirical relations',
 	'papers.statOoM': 'Orders of magnitude',
@@ -160,10 +161,78 @@ const en: Dict = {
 	'paper.cta': 'Read the full paper on Zenodo (CC-BY-4.0):',
 	'paper.back': '← All papers',
 	'paper.backFull': '← Back to all papers',
+
+	// ---- Series navigation ----
+	'nav.cf': 'Complementarity-First',
+	'nav.tcg': 'TCG',
+	'series.cf.name': 'Complementarity-First',
+	'series.tcg.name': 'Twistor Configuration Geometry',
+
+	// ---- Category badge labels ----
+	'cat.cf-foundation': 'Foundation',
+	'cat.cf-quantum': 'Quantum',
+	'cat.cf-gravity': 'Gravity',
+	'cat.cf-synthesis': 'Synthesis',
+	'cat.cf-overview': 'Overview',
+	'cat.synthesis': 'Synthesis',
+	'cat.cosmology': 'Cosmology',
+	'cat.method': 'Method',
+	'cat.twistor': 'Twistor',
+	'cat.foundations': 'Foundations',
+
+	// ---- Complementarity-First hub ----
+	'cf.eyebrow': 'Foundational Release I',
+	'cf.title': 'Complementarity-First',
+	'cf.tagline': 'Building physics from relations before objects',
+	'cf.lead1': 'Most physical theories begin with nouns: particles move through space, fields occupy spacetime, states belong to systems. Complementarity-First reverses that order. Its proposed primitive is a <em>completed relation</em> whose distinguishable roles exist only through that completion — and it asks how much of physics can be rebuilt from there.',
+	'cf.lead2': 'The programme\u2019s most important rule is restraint: nothing is allowed to emerge by verbal suggestion alone. Probability, complex numbers, dimensionality, geometry, transport, dynamics and scale must each be derived or explicitly supplied. The added choices are called <em>selectors</em>, and exposing them is treated as part of the scientific result.',
+	'cf.stat.records': 'Records',
+	'cf.stat.technical': 'Technical papers',
+	'cf.stat.pages': 'Manuscript pages',
+	'cf.stat.open': 'Open problems',
+	'cf.branches.title': 'Four branches',
+	'cf.branches.note': 'The release is organised as a foundation, two parallel reconstruction tests, and a synthesis that records what each branch did and did not close.',
+	'cf.papers.title': 'The ten records',
+	'cf.paths.title': 'Reading paths',
+	'cf.paths.note': 'Navigation only. These arrows point from a recommended entry paper toward the next reading step; they carry no source-control or derivation meaning.',
+	'cf.open.title': 'Open-problem ledger',
+	'cf.open.note': 'The ledger is part of the scientific output: it identifies where the architecture still depends on selectors rather than derivations. Statuses are kept distinct — nine OPEN, two OPEN/HOLD, and external validation NOT YET PERFORMED.',
+	'cf.discipline.title': 'The anti-flattening rule',
+	'cf.discipline.quote': 'Every release-level summary must preserve whether the source is a conceptual proposal, definition, conditional theorem, exact finite countermodel, exact symbolic calculation, finite retrospective census, prospective test, negative result, source-controlled synthesis, or open/hold statement.',
+	'cf.discipline.body': 'A single scale from "speculative" to "proved" is too coarse for this corpus. An exact countermodel and a conditional theorem may both be rigorous while answering different questions. A failed transfer is preserved rather than rewritten as a success, and a construction discovered after a response was seen is never retroactively described as prospective.',
+	'cf.bridge.title': 'Where TCG connects',
+	'cf.bridge.body': 'Twistor Configuration Geometry is the older programme; Complementarity-First supplies the relational foundation beneath it. The bridge is explicit and has its own paper — TCG-F1 belongs to Release I and is the parent architecture for both discrete-gravity descendants.',
+	'cf.readOverview': 'Read the release overview',
+	'cf.treeCta': 'Provenance tree',
+	'cf.essay.cta': 'Read the popular-science essay',
+	'cf.notPeerReviewed': 'Foundational Release I is a coordinated preprint corpus. Its AI-assisted internal reviews and internal audit lanes are not external human peer review or independent replication.',
+
+	// ---- TCG hub ----
+	'tcg.eyebrow': 'Research series',
+	'tcg.title': 'Twistor Configuration Geometry',
+	'tcg.tagline': 'The dimensionless constants of physics as structural invariants',
+	'tcg.lead1': 'TCG treats the dimensionless constants of physics as structural invariants of a twistor configuration space rather than as free parameters. The arc runs from an empirical search programme through a geometric framework to a structural-state review at four-arc completeness.',
+	'tcg.lead2': 'Its relational foundation is supplied by the {cf} series: TCG-F1 asks what finite gravitational structure follows once a rank-two paired-chiral carrier is chosen and every further selector is kept explicit.',
+	'tcg.papers.title': 'The {n} papers',
+	'tcg.relations.title': 'Empirical relations',
+	'tcg.backToCf': 'See the relational foundation',
+
+	// ---- Homepage: series blocks ----
+	'home.cf.badge': 'Primary focus',
+	'home.cf.cta': 'Explore Release I',
+	'home.tcg.eyebrow': 'Second series',
+	'home.tcg.cta': 'Explore TCG',
+	'home.tcg.blurb': 'The older programme: {n} papers treating the dimensionless constants as structural invariants of a twistor configuration space, with nine empirical relations spanning 124 orders of magnitude and one falsifiable spin-1 prediction.',
+
+	// ---- Bibliography series headings ----
+	'papers.series.cf': 'Complementarity-First',
+	'papers.series.cfNote': 'Foundational Release I — {n} records: a conceptual-formal primitive, four quantum-foundations studies, three gravity papers, and a synthesis, mapped by a release overview.',
+	'papers.series.tcg': 'Twistor Configuration Geometry',
+	'papers.series.tcgNote': '{n} papers treating the dimensionless constants as structural invariants of a twistor configuration space.',
 };
 
 const zhCN: Dict = {
-	'site.brandTag': '扭量构型几何',
+	'site.brandTag': '互补性优先 · 扭量构型几何',
 	'site.tagline': '关于物理学无量纲常数的研究计划。',
 
 	'nav.home': '首页',
@@ -224,7 +293,8 @@ const zhCN: Dict = {
 
 	'papers.eyebrow': '文献',
 	'papers.title': '论文',
-	'papers.intro': '总计 {total} 篇论文:{tcgArc} 篇扭量构型几何论文系列,加 {adjacent} 条相邻工作线(BDNC 本体论、NBR 预测扩展、TCG → Pati–Salam 壁删除桥梁、以及量子时空谱维数流研究)。在 Zenodo 上以 CC-BY-4.0 协议发布。TCG 综合论文(2026 年 5 月)是建议的入门起点;相邻工作线论文各自独立。',
+	'papers.intro': '横跨两个研究系列的 {total} 篇论文：互补性优先基础性发布 I 的 {cf} 条记录——提出以「已完成关系」为原语，并审计它并不决定什么；以及扭量构型几何的 {tcg} 篇论文——把无量纲常数视为结构不变量。互补性优先为扭量构型几何提供关系性基础。全部以 CC-BY-4.0 协议发布于 Zenodo。',
+	'papers.metaDescription': '互补性优先与扭量构型几何两个研究系列的完整文献目录。',
 	'papers.statPapers': '篇论文',
 	'papers.statRelations': '条经验关系',
 	'papers.statOoM': '个数量级',
@@ -288,10 +358,78 @@ const zhCN: Dict = {
 	'paper.cta': '在 Zenodo 阅读完整论文(CC-BY-4.0 许可):',
 	'paper.back': '← 全部论文',
 	'paper.backFull': '← 返回论文列表',
+
+	// ---- Series navigation ----
+	'nav.cf': '互补性优先',
+	'nav.tcg': '扭量构型几何',
+	'series.cf.name': '互补性优先',
+	'series.tcg.name': '扭量构型几何',
+
+	// ---- Category badge labels ----
+	'cat.cf-foundation': '基础',
+	'cat.cf-quantum': '量子',
+	'cat.cf-gravity': '引力',
+	'cat.cf-synthesis': '综合',
+	'cat.cf-overview': '总览',
+	'cat.synthesis': '综合',
+	'cat.cosmology': '宇宙学',
+	'cat.method': '方法',
+	'cat.twistor': '扭量',
+	'cat.foundations': '基础',
+
+	// ---- Complementarity-First hub ----
+	'cf.eyebrow': '基础性发布 I',
+	'cf.title': '互补性优先',
+	'cf.tagline': '先有关系，后有对象：由此重建物理',
+	'cf.lead1': '大多数物理理论都从名词开始：粒子在空间中运动，场占据时空，量子态属于系统。互补性优先颠倒了这一顺序。它提出的原语是一个<em>已完成的关系</em>，其中可区分的角色只有通过该完成才得以存在——并追问：从这里出发，物理学能被重建到何种程度？',
+	'cf.lead2': '该纲领最重要的规则是克制：任何结构都不得仅凭措辞暗示而“涌现”。概率、复数、维数、几何、输运、动力学与标度，每一项都必须被推导出来或被明确地补充进去。这些额外的选择被称为<em>选择子</em>，而把它们暴露出来本身就被视为科学成果的一部分。',
+	'cf.stat.records': '条记录',
+	'cf.stat.technical': '篇技术论文',
+	'cf.stat.pages': '页正文',
+	'cf.stat.open': '个未决问题',
+	'cf.branches.title': '四个分支',
+	'cf.branches.note': '本次发布的组织方式是：一个基础、两条并行的重构检验，以及一份记录各分支闭合了什么、未闭合什么的综合。',
+	'cf.papers.title': '十条记录',
+	'cf.paths.title': '阅读路径',
+	'cf.paths.note': '仅供导航。这些箭头由建议的入门论文指向下一步阅读，不承载任何来源控制或推导含义。',
+	'cf.open.title': '未决问题清单',
+	'cf.open.note': '该清单本身即科学产出的一部分：它指明架构在何处仍依赖选择子而非推导。各状态被严格区分——九项 OPEN、两项 OPEN/HOLD，外部验证为 NOT YET PERFORMED。',
+	'cf.discipline.title': '反扁平化规则',
+	'cf.discipline.quote': '任何发布层级的摘述都必须保留其来源究竟是概念性提案、定义、条件性定理、精确有限反模型、精确符号计算、有限回溯普查、前瞻性检验、否定结果、来源受控综合，还是未决／暂缓声明。',
+	'cf.discipline.body': '对这一语料库而言，从“推测”到“已证明”的单一标尺过于粗糙。一个精确反模型与一个条件性定理可以同样严谨，却回答着不同的问题。失败的迁移被保留，而不是改写为成功；在看到响应之后才发现的构造，绝不会被追溯性地描述为前瞻性的。',
+	'cf.bridge.title': '与扭量构型几何的衔接',
+	'cf.bridge.body': '扭量构型几何是更早的纲领；互补性优先为其提供关系性的基础。这一衔接是明确的，并有专文承载——TCG-F1 属于发布 I，同时是两项离散引力后继工作的母架构。',
+	'cf.readOverview': '阅读发布总览',
+	'cf.treeCta': '来源关系树',
+	'cf.essay.cta': '阅读科普长文',
+	'cf.notPeerReviewed': '基础性发布 I 是一个协调发布的预印本语料库。其 AI 辅助的内部评审与内部审计通道，不构成外部同行评审或独立复现。',
+
+	// ---- TCG hub ----
+	'tcg.eyebrow': '研究系列',
+	'tcg.title': '扭量构型几何',
+	'tcg.tagline': '把物理学的无量纲常数视为结构不变量',
+	'tcg.lead1': '扭量构型几何把物理学的无量纲常数视为扭量构型空间的结构不变量，而非自由参数。整条主线从一项经验搜索纲领出发，经由几何框架，抵达四弧完备处的结构状态综述。',
+	'tcg.lead2': '其关系性基础由{cf}系列提供：TCG-F1 追问——一旦选定秩二配对手征载体、并把其后每一个选择子都显式列出，能够得到怎样的有限引力结构。',
+	'tcg.papers.title': '{n} 篇论文',
+	'tcg.relations.title': '经验关系',
+	'tcg.backToCf': '查看其关系性基础',
+
+	// ---- Homepage: series blocks ----
+	'home.cf.badge': '当前重点',
+	'home.cf.cta': '进入发布 I',
+	'home.tcg.eyebrow': '第二个系列',
+	'home.tcg.cta': '进入扭量构型几何',
+	'home.tcg.blurb': '更早的纲领：{n} 篇论文，把无量纲常数视为扭量构型空间的结构不变量，含九条跨越 124 个数量级的经验关系与一项可证伪的自旋 1 预测。',
+
+	// ---- Bibliography series headings ----
+	'papers.series.cf': '互补性优先',
+	'papers.series.cfNote': '基础性发布 I——共 {n} 条记录：一份概念-形式原语、四项量子基础研究、三篇引力论文与一份综合，并由一份发布总览统一编图。',
+	'papers.series.tcg': '扭量构型几何',
+	'papers.series.tcgNote': '{n} 篇论文，把无量纲常数视为扭量构型空间的结构不变量。',
 };
 
 const zhTW: Dict = {
-	'site.brandTag': '扭量構型幾何',
+	'site.brandTag': '互補性優先 · 扭量構型幾何',
 	'site.tagline': '關於物理學無量綱常數的研究計畫。',
 
 	'nav.home': '首頁',
@@ -352,7 +490,8 @@ const zhTW: Dict = {
 
 	'papers.eyebrow': '文獻',
 	'papers.title': '論文',
-	'papers.intro': '總計 {total} 篇論文:{tcgArc} 篇扭量構型幾何論文系列,加 {adjacent} 條相鄰工作線(BDNC 本體論、NBR 預測擴展、TCG → Pati–Salam 壁刪除橋樑、以及量子時空譜維數流研究)。在 Zenodo 上以 CC-BY-4.0 授權發布。TCG 綜合論文(2026 年 5 月)是建議的入門起點;相鄰工作線論文各自獨立。',
+	'papers.intro': '橫跨兩個研究系列的 {total} 篇論文：互補性優先基礎性發布 I 的 {cf} 條紀錄——提出以「已完成關係」為原語，並稽核它並不決定什麼；以及扭量構型幾何的 {tcg} 篇論文——把無量綱常數視為結構不變量。互補性優先為扭量構型幾何提供關係性基礎。全部以 CC-BY-4.0 協議發布於 Zenodo。',
+	'papers.metaDescription': '互補性優先與扭量構型幾何兩個研究系列的完整文獻目錄。',
 	'papers.statPapers': '篇論文',
 	'papers.statRelations': '條經驗關係',
 	'papers.statOoM': '個數量級',
@@ -416,6 +555,74 @@ const zhTW: Dict = {
 	'paper.cta': '在 Zenodo 閱讀完整論文(CC-BY-4.0 授權):',
 	'paper.back': '← 全部論文',
 	'paper.backFull': '← 返回論文列表',
+
+	// ---- Series navigation ----
+	'nav.cf': '互補性優先',
+	'nav.tcg': '扭量構型幾何',
+	'series.cf.name': '互補性優先',
+	'series.tcg.name': '扭量構型幾何',
+
+	// ---- Category badge labels ----
+	'cat.cf-foundation': '基礎',
+	'cat.cf-quantum': '量子',
+	'cat.cf-gravity': '重力',
+	'cat.cf-synthesis': '綜合',
+	'cat.cf-overview': '總覽',
+	'cat.synthesis': '綜合',
+	'cat.cosmology': '宇宙學',
+	'cat.method': '方法',
+	'cat.twistor': '扭量',
+	'cat.foundations': '基礎',
+
+	// ---- Complementarity-First hub ----
+	'cf.eyebrow': '基礎性發布 I',
+	'cf.title': '互補性優先',
+	'cf.tagline': '先有關係，後有對象：由此重建物理',
+	'cf.lead1': '大多數物理理論都從名詞開始：粒子在空間中運動，場佔據時空，量子態屬於系統。互補性優先顛倒了這一順序。它提出的原語是一個<em>已完成的關係</em>，其中可區分的角色只有透過該完成才得以存在——並追問：從這裡出發，物理學能被重建到何種程度？',
+	'cf.lead2': '該綱領最重要的規則是克制：任何結構都不得僅憑措辭暗示而「湧現」。機率、複數、維數、幾何、輸運、動力學與尺度，每一項都必須被推導出來或被明確地補充進去。這些額外的選擇被稱為<em>選擇子</em>，而把它們暴露出來本身就被視為科學成果的一部分。',
+	'cf.stat.records': '條紀錄',
+	'cf.stat.technical': '篇技術論文',
+	'cf.stat.pages': '頁正文',
+	'cf.stat.open': '個未決問題',
+	'cf.branches.title': '四個分支',
+	'cf.branches.note': '本次發布的組織方式是：一個基礎、兩條並行的重構檢驗，以及一份記錄各分支閉合了什麼、未閉合什麼的綜合。',
+	'cf.papers.title': '十條紀錄',
+	'cf.paths.title': '閱讀路徑',
+	'cf.paths.note': '僅供導航。這些箭頭由建議的入門論文指向下一步閱讀，不承載任何來源控制或推導含義。',
+	'cf.open.title': '未決問題清單',
+	'cf.open.note': '該清單本身即科學產出的一部分：它指明架構在何處仍依賴選擇子而非推導。各狀態被嚴格區分——九項 OPEN、兩項 OPEN/HOLD，外部驗證為 NOT YET PERFORMED。',
+	'cf.discipline.title': '反扁平化規則',
+	'cf.discipline.quote': '任何發布層級的摘述都必須保留其來源究竟是概念性提案、定義、條件性定理、精確有限反模型、精確符號計算、有限回溯普查、前瞻性檢驗、否定結果、來源受控綜合，還是未決／暫緩聲明。',
+	'cf.discipline.body': '對這一語料庫而言，從「推測」到「已證明」的單一標尺過於粗糙。一個精確反模型與一個條件性定理可以同樣嚴謹，卻回答著不同的問題。失敗的遷移被保留，而不是改寫為成功；在看到響應之後才發現的構造，絕不會被追溯性地描述為前瞻性的。',
+	'cf.bridge.title': '與扭量構型幾何的銜接',
+	'cf.bridge.body': '扭量構型幾何是更早的綱領；互補性優先為其提供關係性的基礎。這一銜接是明確的，並有專文承載——TCG-F1 屬於發布 I，同時是兩項離散重力後繼工作的母架構。',
+	'cf.readOverview': '閱讀發布總覽',
+	'cf.treeCta': '來源關係樹',
+	'cf.essay.cta': '閱讀科普長文',
+	'cf.notPeerReviewed': '基礎性發布 I 是一個協調發布的預印本語料庫。其 AI 輔助的內部評審與內部稽核通道，不構成外部同行評審或獨立複現。',
+
+	// ---- TCG hub ----
+	'tcg.eyebrow': '研究系列',
+	'tcg.title': '扭量構型幾何',
+	'tcg.tagline': '把物理學的無量綱常數視為結構不變量',
+	'tcg.lead1': '扭量構型幾何把物理學的無量綱常數視為扭量構型空間的結構不變量，而非自由參數。整條主線從一項經驗搜尋綱領出發，經由幾何框架，抵達四弧完備處的結構狀態綜述。',
+	'tcg.lead2': '其關係性基礎由{cf}系列提供：TCG-F1 追問——一旦選定秩二配對手徵載體、並把其後每一個選擇子都顯式列出，能夠得到怎樣的有限重力結構。',
+	'tcg.papers.title': '{n} 篇論文',
+	'tcg.relations.title': '經驗關係',
+	'tcg.backToCf': '查看其關係性基礎',
+
+	// ---- Homepage: series blocks ----
+	'home.cf.badge': '當前重點',
+	'home.cf.cta': '進入發布 I',
+	'home.tcg.eyebrow': '第二個系列',
+	'home.tcg.cta': '進入扭量構型幾何',
+	'home.tcg.blurb': '更早的綱領：{n} 篇論文，把無量綱常數視為扭量構型空間的結構不變量，含九條跨越 124 個數量級的經驗關係與一項可證偽的自旋 1 預測。',
+
+	// ---- Bibliography series headings ----
+	'papers.series.cf': '互補性優先',
+	'papers.series.cfNote': '基礎性發布 I——共 {n} 條紀錄：一份概念-形式原語、四項量子基礎研究、三篇重力論文與一份綜合，並由一份發布總覽統一編圖。',
+	'papers.series.tcg': '扭量構型幾何',
+	'papers.series.tcgNote': '{n} 篇論文，把無量綱常數視為扭量構型空間的結構不變量。',
 };
 
 const dictionaries: Record<Locale, Dict> = {

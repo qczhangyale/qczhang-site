@@ -67,7 +67,7 @@ All three are labeled successor-construction targets outside the active TCG/τCG
 Active TCG/τCG postulate ledger UNCHANGED:
 $$P_0\text{–}P_4, \quad P_{5'}, \quad P_6, \quad P_7, \quad P_{H'}, \quad P_{SO(10)}.$$
 
-The 2026-05-01 framework closure verdict is preserved. Same maturity register as [the bitwistor pair-channel note](/papers/25-bitwistor-pair-channels/), [the compatible-polarization note](/papers/28-compatible-pure-spinor-polarizations/), and [the τCG specification](/papers/34-tau-cg-specification/): partial-positive mechanism note that names what successor theory must construct, without claiming the construction has been performed.
+The 2026-05-01 framework closure verdict is preserved. Same maturity register as [the bitwistor pair-channel note](/papers/28-bitwistor-pair-channels/), [the compatible-polarization note](/papers/31-compatible-pure-spinor-polarizations/), and [the τCG specification](/papers/34-tau-cg-specification/): partial-positive mechanism note that names what successor theory must construct, without claiming the construction has been performed.
 
 **$P_{\rm pair}^{\rm addr}$ is a labeled successor-construction target, NOT a new framework axiom.**
 

@@ -1,0 +1,170 @@
+---
+// Complementarity-First provenance tree, embedded as the index of the CF page.
+//
+// Nesting follows CF-OV1's frozen provenance ledger: an edge points from a
+// controlling source toward the paper it controls. The graph is a DAG, so
+// nesting picks a primary parent and every remaining edge is recorded in the
+// row's summary card; the two fan-in nodes are listed separately.
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, type Locale } from '../i18n';
+import { PROVENANCE_TREE, FAN_IN, TOTAL_EDGES, edgeLabel, type TreeNode } from '../lib/cf-release';
+import TreeRow from './TreeRow.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+
+const cf = filterEnglishOnly(await getCollection('papers')).filter((p) => p.data.series === 'cf');
+const byId = new Map(cf.map((p) => [p.id, p]));
+
+interface Row {
+	id: string;
+	depth: number;
+	via: string;
+	also: { fromCode: string; via: string }[];
+	guides: number[];
+	hasNext: boolean;
+}
+// open[i] describes the node at depth i+1 on this path: did it have siblings
+// after it? A rail is needed at ancestor depth L (1..depth-1) iff open[L-1].
+function flatten(node: TreeNode, depth = 0, open: boolean[] = [], hasNext = false, out: Row[] = []) {
+	out.push({
+		id: node.id,
+		depth,
+		via: edgeLabel(locale, node.via),
+		also: (node.also ?? []).map((a) => ({ fromCode: a.fromCode, via: edgeLabel(locale, a.via) })),
+		guides: open
+			.slice(0, Math.max(0, depth - 1))
+			.map((cont, i) => (cont ? i + 1 : -1))
+			.filter((lvl) => lvl > 0),
+		hasNext,
+	});
+	const kids = node.children ?? [];
+	kids.forEach((k, i) =>
+		flatten(k, depth + 1, [...open, i < kids.length - 1], i < kids.length - 1, out),
+	);
+	return out;
+}
+const rows = flatten(PROVENANCE_TREE);
+const INDENT = 1.6;
+
+const s = (v: any) => v[locale] ?? v.en;
+const copy = {
+	note: {
+		en: `Nested by provenance: an edge points from a controlling source toward the paper it controls. Not a reading order. Hover a row for its summary; the title opens Zenodo. ${TOTAL_EDGES} directed edges in the frozen ledger.`,
+		'zh-cn': `按来源关系嵌套：边由控制性源头指向它所控制的论文。这不是阅读顺序。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。冻结清单中共 ${TOTAL_EDGES} 条有向边。`,
+		'zh-tw': `按來源關係嵌套：邊由控制性源頭指向它所控制的論文。這不是閱讀順序。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。凍結清單中共 ${TOTAL_EDGES} 條有向邊。`,
+	},
+	fan: {
+		en: 'Fan-in — these receive edges from every upstream paper, so nesting them under one parent would misrepresent the graph.',
+		'zh-cn': '汇入节点——它们接收来自上游每一篇论文的边，因此嵌套在单一父节点之下会歪曲该图。',
+		'zh-tw': '匯入節點——它們接收來自上游每一篇論文的邊，因此嵌套在單一父節點之下會歪曲該圖。',
+	},
+	sources: { en: 'sources', 'zh-cn': '个来源', 'zh-tw': '個來源' },
+};
+---
+
+<p class="tree-note">{s(copy.note)}</p>
+
+<ul class="tree">
+	{
+		rows.map((r) => (
+			<li class={`node depth-${r.depth}${r.hasNext ? ' has-next' : ''}`}>
+				<TreeRow paper={byId.get(r.id)!} locale={locale} via={r.via} also={r.also}>
+					<Fragment slot="rails">
+						{r.guides.map((lvl) => (
+							<span class="guide" aria-hidden="true" style={`left:${(lvl - r.depth) * INDENT - 0.9}rem`} />
+						))}
+					</Fragment>
+				</TreeRow>
+			</li>
+		))
+	}
+</ul>
+
+<p class="tree-note fan-note">{s(copy.fan)}</p>
+<ul class="tree">
+	{
+		FAN_IN.map((f) => (
+			<li class="node depth-0">
+				<TreeRow
+					paper={byId.get(f.id)!}
+					locale={locale}
+					via={`${edgeLabel(locale, f.via)} ← ${f.sources} ${s(copy.sources)}`}
+				/>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.tree-note {
+		margin: 0 0 1rem;
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		line-height: 1.6;
+		max-width: 78ch;
+	}
+	.fan-note {
+		margin-top: 1.6rem;
+	}
+	.tree {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.node :global(.row) {
+		margin-left: calc(var(--d, 0) * 1.6rem);
+	}
+	.depth-1 :global(.row) {
+		margin-left: 1.6rem;
+	}
+	.depth-2 :global(.row) {
+		margin-left: 3.2rem;
+	}
+	/* Elbow joining a row to its parent's rail. */
+	.node :global(.row)::before {
+		content: '';
+		position: absolute;
+		left: -0.9rem;
+		top: 50%;
+		width: 0.6rem;
+		height: 1px;
+		background: var(--border-strong);
+	}
+	.node :global(.row)::after {
+		content: '';
+		position: absolute;
+		left: -0.9rem;
+		top: 0;
+		width: 1px;
+		height: 50%;
+		background: var(--border-strong);
+	}
+	.depth-0 :global(.row)::before,
+	.depth-0 :global(.row)::after {
+		display: none;
+	}
+	.node.has-next :global(.row)::after {
+		height: 100%;
+	}
+	.guide {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: var(--border-strong);
+		pointer-events: none;
+	}
+
+	@media not all and (hover: hover) {
+		.depth-1 :global(.row) {
+			margin-left: 0.8rem;
+		}
+		.depth-2 :global(.row) {
+			margin-left: 1.6rem;
+		}
+	}
+</style>

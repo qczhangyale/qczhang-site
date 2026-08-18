@@ -1,0 +1,446 @@
+---
+// Homepage = the Complementarity-First page.
+//
+// CF supplies the relational foundation beneath TCG and is the current
+// focus, so it is the front door rather than a section one click in. The
+// provenance tree is this page's index — there is no separate paper-grid
+// or separate CF-hub layer.
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, t, type Locale } from '../i18n';
+import { getPaperCounts } from '../lib/paper-stats';
+import {
+	RELEASE,
+	RELEASE_ABSTRACT,
+	READING_PATHS,
+	OPEN_PROBLEMS,
+	abstractText,
+	pathName,
+	problemText,
+	statusClass,
+} from '../lib/cf-release';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import CfTree from './CfTree.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const prefix = locale === 'en' ? '' : '/' + locale;
+const counts = await getPaperCounts();
+
+// Release date read from the corpus so the strapline cannot drift.
+const cfPapers = filterEnglishOnly(await getCollection('papers')).filter(
+	(p) => p.data.series === 'cf',
+);
+const released = new Date(Math.max(...cfPapers.map((p) => p.data.date.getTime())));
+const fmt = (loc: string) =>
+	released.toLocaleDateString(loc, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+const CODE_OF: Record<string, string> = {
+	'cf-01-relational-unity': 'CF-F1',
+	'cf-02-complementarity-before-quantum': 'CFQF-Q4',
+	'cf-03-two-rebit-readout': 'CFQF-Q1',
+	'cf-04-certificate-objectivity': 'CFQF-Q3',
+	'cf-05-relational-time': 'CFQF-Q2',
+	'cf-06-tcg-paired-incidence': 'TCG-F1',
+	'cf-07-h2r-regge-transfer': 'CUD-G1',
+	'cf-08-six-sector-reynolds': 'CUD-G2',
+	'cf-09-unified-dynamics': 'CUD-U1',
+	'cf-10-release-i-overview': 'CF-OV1',
+};
+
+const s = (v: any) => v[locale] ?? v.en;
+const copy = {
+	index: { en: 'The ten records', 'zh-cn': '十条记录', 'zh-tw': '十條紀錄' },
+	strapline: {
+		en: `${RELEASE.records} records · ${RELEASE.technical} technical papers · ${RELEASE.technicalPages} pages · published ${fmt('en-GB')} on Zenodo, CC-BY-4.0`,
+		'zh-cn': `${RELEASE.records} 条记录 · ${RELEASE.technical} 篇技术论文 · ${RELEASE.technicalPages} 页 · ${fmt('zh-CN')}发布于 Zenodo，CC-BY-4.0`,
+		'zh-tw': `${RELEASE.records} 條紀錄 · ${RELEASE.technical} 篇技術論文 · ${RELEASE.technicalPages} 頁 · ${fmt('zh-TW')}發布於 Zenodo，CC-BY-4.0`,
+	},
+	contactTitle: { en: 'About this site.', 'zh-cn': '关于本站。', 'zh-tw': '關於本站。' },
+	contactBody: {
+		en: "Q.C. Zhang's research site. All papers are on Zenodo under CC-BY-4.0.",
+		'zh-cn': '张庆春的研究站点。全部论文以 CC-BY-4.0 协议发布于 Zenodo。',
+		'zh-tw': '張慶春的研究站點。全部論文以 CC-BY-4.0 協議發布於 Zenodo。',
+	},
+	contactCta: {
+		en: 'Open to criticism, collaboration, and pointers to related work. Contact',
+		'zh-cn': '欢迎批评、合作，以及相关工作的线索。联系：',
+		'zh-tw': '歡迎批評、合作，以及相關工作的線索。聯絡：',
+	},
+	allPapers: {
+		en: `→ Full bibliography, both series (${counts.total})`,
+		'zh-cn': `→ 两个系列的完整文献目录（${counts.total} 篇）`,
+		'zh-tw': `→ 兩個系列的完整文獻目錄（${counts.total} 篇）`,
+	},
+};
+---
+
+<Header />
+
+<section class="hero">
+	<div class="hero-inner">
+		<div class="hero-eyebrow">{t(locale, 'cf.eyebrow')}</div>
+		<h1>{t(locale, 'cf.title')}</h1>
+		<p class="hero-tagline">{t(locale, 'cf.tagline')}</p>
+	</div>
+</section>
+
+<div class="section">
+	<div class="lead">
+		{RELEASE_ABSTRACT.map((para) => <p>{abstractText(locale, para)}</p>)}
+	</div>
+
+	<p class="strapline">{s(copy.strapline)}</p>
+</div>
+
+<div class="section">
+	<h2>{s(copy.index)}</h2>
+	<CfTree locale={locale} />
+</div>
+
+<div class="section">
+	<h2>{t(locale, 'cf.paths.title')}</h2>
+	<p class="section-intro">{t(locale, 'cf.paths.note')}</p>
+	<div class="paths">
+		{
+			READING_PATHS.map((p) => (
+				<div class="path">
+					<div class="path-name">{pathName(locale, p)}</div>
+					<ol class="path-steps">
+						{p.steps.map((id) => (
+							<li>
+								<a href={`${prefix}/papers/${id}/`}>{CODE_OF[id]}</a>
+							</li>
+						))}
+					</ol>
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<div class="section">
+	<h2>{t(locale, 'cf.open.title')}</h2>
+	<p class="section-intro">{t(locale, 'cf.open.note')}</p>
+	<div class="op-wrapper">
+		<table class="op-table">
+			<tbody>
+				{
+					OPEN_PROBLEMS.map((p) => (
+						<tr>
+							<td class="op-id">{p.id}</td>
+							<td class="op-status">
+								<span class={`op-pill ${statusClass(p.status)}`}>{p.status}</span>
+							</td>
+							<td class="op-problem">{problemText(locale, p)}</td>
+							<td class="op-owners">{p.owners.join(' · ')}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+	<p class="rule-note">{t(locale, 'cf.discipline.body')}</p>
+</div>
+
+<div class="section">
+	<div class="series-block">
+		<div class="series-eyebrow">{t(locale, 'home.tcg.eyebrow')}</div>
+		<h2>{t(locale, 'series.tcg.name')}</h2>
+		<p>{t(locale, 'home.tcg.blurb', { n: counts.tcg })}</p>
+		<p>{t(locale, 'cf.bridge.body')}</p>
+		<p class="series-links">
+			<a href={`${prefix}/tcg/`} class="btn btn-secondary">{t(locale, 'home.tcg.cta')}</a>
+		</p>
+	</div>
+	<p class="all-papers-link">
+		<a href={`${prefix}/papers/`}>{s(copy.allPapers)}</a>
+	</p>
+</div>
+
+<div class="section">
+	<div class="contact-block">
+		<p>
+			<strong>{s(copy.contactTitle)}</strong>
+			{s(copy.contactBody)}
+		</p>
+		<p class="disclaimer">{t(locale, 'cf.notPeerReviewed')}</p>
+		<p style="margin-bottom: 0;">
+			{s(copy.contactCta)}
+			<a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a>.
+		</p>
+	</div>
+</div>
+
+<Footer />
+
+<style>
+	.hero {
+		padding: 2.6rem 1rem 2.2rem;
+		background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+		border-bottom: 1px solid var(--border);
+	}
+	.hero-inner {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+	}
+	.hero-eyebrow {
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--accent);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin-bottom: 0.6rem;
+	}
+	.hero h1 {
+		font-size: 2.15rem;
+		line-height: 1.15;
+		margin: 0 0 0.35em 0;
+		letter-spacing: -0.03em;
+	}
+	.hero-tagline {
+		font-family: var(--font-serif);
+		font-size: 1.08rem;
+		color: var(--text-muted);
+		font-style: italic;
+		margin-bottom: 0;
+	}
+
+	.section {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+		padding: 1.9rem 1rem 0.5rem;
+	}
+	.section h2 {
+		margin-top: 0;
+		font-size: 1.55rem;
+	}
+	.section-intro {
+		color: var(--text-muted);
+		margin-bottom: 1.5rem;
+		line-height: 1.6;
+		max-width: 78ch;
+	}
+	.lead {
+		font-size: 1.08rem;
+		line-height: 1.6;
+		/* Single column at a generous measure (~86 characters). */
+		max-width: 44em;
+	}
+	.lead p {
+		margin-bottom: 1.1em;
+	}
+
+	/* Replaces the old stat block: same facts, a fraction of the height. */
+	.strapline {
+		margin: 1.6rem 0 0;
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		letter-spacing: 0.01em;
+	}
+
+			
+			
+	/* Reading paths, compressed to code chips now that the tree carries titles. */
+	.paths {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 0.9rem;
+	}
+	.path {
+		padding: 0.9em 1.1em;
+		background: var(--bg-elevated);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+	}
+	.path-name {
+		font-family: var(--font-sans);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 0.6em;
+	}
+	.path-steps {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.3em;
+	}
+	.path-steps li:not(:last-child)::after {
+		content: '→';
+		color: var(--text-faint);
+		margin-left: 0.35em;
+		font-size: 0.8em;
+	}
+	.path-steps a {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: var(--text-muted);
+		text-decoration: none;
+	}
+	.path-steps a:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	.op-wrapper {
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--bg-elevated);
+	}
+	.op-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.92rem;
+	}
+	.op-table td {
+		padding: 0.65em 1em;
+		border-bottom: 1px solid var(--border);
+		vertical-align: top;
+	}
+	.op-table tr:last-child td {
+		border-bottom: none;
+	}
+	.op-id {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: var(--text-faint);
+		width: 1%;
+		white-space: nowrap;
+	}
+	.op-status {
+		width: 1%;
+		white-space: nowrap;
+	}
+	.op-pill {
+		display: inline-block;
+		padding: 0.12em 0.5em;
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		letter-spacing: 0.03em;
+		border-radius: 3px;
+		border: 1px solid var(--border-strong);
+		color: var(--text-muted);
+	}
+	.op-pill.op-hold {
+		border-style: dashed;
+	}
+	.op-pill.op-none {
+		opacity: 0.75;
+	}
+	.op-owners {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		color: var(--text-faint);
+		text-align: right;
+		white-space: nowrap;
+		width: 1%;
+	}
+	.rule-note {
+		margin: 1.2rem 0 0;
+		font-size: 0.86rem;
+		line-height: 1.6;
+		color: var(--text-faint);
+		max-width: 78ch;
+	}
+
+	.series-block {
+		padding: 1.8em 1.8em;
+		background: var(--bg-subtle);
+		border-radius: 10px;
+		border: 1px solid var(--border);
+	}
+	.series-eyebrow {
+		font-family: var(--font-sans);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--text-faint);
+		margin-bottom: 0.5rem;
+	}
+	.series-block h2 {
+		margin: 0 0 0.6rem;
+	}
+	.series-block p {
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+	.series-links {
+		margin-bottom: 0;
+		margin-top: 1.2rem;
+	}
+
+	.all-papers-link {
+		margin: 1.4rem 0 0;
+		text-align: right;
+		font-family: var(--font-sans);
+		font-size: 0.95rem;
+	}
+	.all-papers-link a {
+		color: var(--accent);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.contact-block {
+		margin-top: 2.5rem;
+		padding: 1.5em 1.5em;
+		background: var(--bg-subtle);
+		border-radius: 8px;
+		color: var(--text-muted);
+		font-size: 0.95rem;
+	}
+	.contact-block strong {
+		color: var(--text);
+	}
+	.disclaimer {
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		line-height: 1.6;
+	}
+
+	@media (max-width: 640px) {
+		.hero h1 {
+			font-size: 1.75rem;
+		}
+		.hero-tagline {
+			font-size: 1.08rem;
+		}
+		.op-table,
+		.op-table tbody,
+		.op-table tr,
+		.op-table td {
+			display: block;
+		}
+		.op-table tr {
+			padding: 0.8em 1em;
+			border-bottom: 1px solid var(--border);
+		}
+		.op-table td {
+			padding: 0.15em 0;
+			border: none;
+			width: auto;
+			text-align: left;
+		}
+		.op-id,
+		.op-status {
+			display: inline-block;
+			margin-right: 0.5em;
+		}
+		.op-owners {
+			text-align: left;
+			margin-top: 0.3em;
+		}
+	}
+</style>

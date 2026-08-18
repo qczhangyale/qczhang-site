@@ -49,6 +49,17 @@
 	--cat-twistor-bg: #f0e2ca;
 	--cat-foundations: #2c5f6f;
 	--cat-foundations-bg: #d6e3e7;
+	/* Complementarity-First series categories */
+	--cat-cf-foundation: #4a2d6b;
+	--cat-cf-foundation-bg: #e5ddef;
+	--cat-cf-quantum: #1e5a7a;
+	--cat-cf-quantum-bg: #d8e8ef;
+	--cat-cf-gravity: #7a4218;
+	--cat-cf-gravity-bg: #f2e3d2;
+	--cat-cf-synthesis: #2f5d3a;
+	--cat-cf-synthesis-bg: #dceadf;
+	--cat-cf-overview: #55504a;
+	--cat-cf-overview-bg: #e7e2d8;
 
 	/* Header/effects — shadows slightly tinted brown */
 	--header-bg: rgba(250, 245, 234, 0.85);
@@ -95,6 +106,17 @@
 	--cat-twistor-bg: #fce7f3;
 	--cat-foundations: #0369a1;
 	--cat-foundations-bg: #e0f2fe;
+	/* Complementarity-First series categories */
+	--cat-cf-foundation: #4338ca;
+	--cat-cf-foundation-bg: #e0e7ff;
+	--cat-cf-quantum: #0e7490;
+	--cat-cf-quantum-bg: #cffafe;
+	--cat-cf-gravity: #b45309;
+	--cat-cf-gravity-bg: #fef3c7;
+	--cat-cf-synthesis: #15803d;
+	--cat-cf-synthesis-bg: #dcfce7;
+	--cat-cf-overview: #52525b;
+	--cat-cf-overview-bg: #e4e4e7;
 
 	--header-bg: rgba(245, 247, 249, 0.85);
 	--shadow-sm: 0 1px 2px rgba(20, 30, 45, 0.05);
@@ -140,6 +162,17 @@
 	--cat-twistor-bg: #2a1f3d;
 	--cat-foundations: #7dd3fc;
 	--cat-foundations-bg: #0c2a3d;
+	/* Complementarity-First series categories */
+	--cat-cf-foundation: #a5b4fc;
+	--cat-cf-foundation-bg: #1e1b4b;
+	--cat-cf-quantum: #67e8f9;
+	--cat-cf-quantum-bg: #083344;
+	--cat-cf-gravity: #fbbf24;
+	--cat-cf-gravity-bg: #3a2a08;
+	--cat-cf-synthesis: #86efac;
+	--cat-cf-synthesis-bg: #052e16;
+	--cat-cf-overview: #a1a1aa;
+	--cat-cf-overview-bg: #27272a;
 
 	--header-bg: rgba(37, 44, 56, 0.9);  /* matches lifted --bg */
 	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -402,6 +435,46 @@ th {
 .badge-twistor {
 	background: var(--cat-twistor-bg);
 	color: var(--cat-twistor);
+}
+
+/* Complementarity-First series badges */
+.badge-cf-foundation {
+	background: var(--cat-cf-foundation-bg);
+	color: var(--cat-cf-foundation);
+}
+
+.badge-cf-quantum {
+	background: var(--cat-cf-quantum-bg);
+	color: var(--cat-cf-quantum);
+}
+
+.badge-cf-gravity {
+	background: var(--cat-cf-gravity-bg);
+	color: var(--cat-cf-gravity);
+}
+
+.badge-cf-synthesis {
+	background: var(--cat-cf-synthesis-bg);
+	color: var(--cat-cf-synthesis);
+}
+
+.badge-cf-overview {
+	background: var(--cat-cf-overview-bg);
+	color: var(--cat-cf-overview);
+}
+
+/* Release-code chip (CF-F1, CFQF-Q4, ...) shown next to CF paper titles */
+.badge-code {
+	display: inline-block;
+	padding: 0.15em 0.55em;
+	font-family: var(--font-mono);
+	font-size: 0.74rem;
+	letter-spacing: 0.02em;
+	background: var(--bg-subtle);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	color: var(--text-muted);
+	white-space: nowrap;
 }
 
 .badge-precision {

@@ -19,7 +19,7 @@ $$P_{\rm pol}^{D_5}: \text{ 推导一个与 } D_3 \oplus D_2 \text{ 分裂兼容
 
 ## P7 端壁已经提供我们所需
 
-TCG 框架的 P7 假设([TCG 中的壁删除与 Pati-Salam Levi 子代数](/zh-cn/papers/19-wall-deletion/))提供 $SU(4)_C$ 基本表示的 Pati-Salam 色/轻子分裂:
+TCG 框架的 P7 假设([TCG 中的壁删除与 Pati-Salam Levi 子代数](/zh-cn/papers/19-wall-deletion-pati-salam/))提供 $SU(4)_C$ 基本表示的 Pati-Salam 色/轻子分裂:
 $$\mathbf{4} = C \oplus \ell, \qquad \dim C = 3, \quad \dim \ell = 1.$$
 这里轻子线 $\ell \subset \mathbf{4}$ 不是新引入的 — 它是 P7 端壁结构已经选出的同一条轻子作第四色线。
 

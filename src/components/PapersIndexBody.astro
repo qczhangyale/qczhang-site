@@ -1,0 +1,195 @@
+---
+// Complete bibliography, split by series: Complementarity-First first
+// (it supplies the relational foundation), then Twistor Configuration
+// Geometry grouped by its five categories.
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, t, type Locale } from '../i18n';
+import { getPaperCounts } from '../lib/paper-stats';
+import { SERIES_CATEGORIES, categoryLabel } from '../lib/series';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import PaperGrid from './PaperGrid.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const prefix = locale === 'en' ? '' : '/' + locale;
+
+const counts = await getPaperCounts();
+const all = filterEnglishOnly(await getCollection('papers'));
+
+const bySeries = (series: 'cf' | 'tcg') =>
+	all.filter((p) => p.data.series === series).sort((a, b) => a.data.order - b.data.order);
+
+const seriesBlocks = [
+	{
+		key: 'cf' as const,
+		title: t(locale, 'papers.series.cf'),
+		note: t(locale, 'papers.series.cfNote', { n: counts.cf }),
+		href: `${prefix}/`,
+		papers: bySeries('cf'),
+		showNumber: false,
+	},
+	{
+		key: 'tcg' as const,
+		title: t(locale, 'papers.series.tcg'),
+		note: t(locale, 'papers.series.tcgNote', { n: counts.tcg }),
+		href: `${prefix}/tcg/`,
+		papers: bySeries('tcg'),
+		showNumber: true,
+	},
+].map((b) => ({
+	...b,
+	groups: SERIES_CATEGORIES[b.key]
+		.map((cat) => ({ cat, papers: b.papers.filter((p) => p.data.category === cat) }))
+		.filter((g) => g.papers.length > 0),
+}));
+---
+
+<Header />
+
+<div class="page-header">
+	<div class="page-eyebrow">{t(locale, 'papers.eyebrow')}</div>
+	<h1>{t(locale, 'papers.title')}</h1>
+	<p class="page-intro">{t(locale, 'papers.intro', { total: counts.total, cf: counts.cf, tcg: counts.tcg })}</p>
+	<div class="page-summary">
+		<div class="summary-stat">
+			<span class="num">{counts.total}</span>
+			<span class="label">{t(locale, 'papers.statPapers')}</span>
+		</div>
+		<div class="summary-stat">
+			<span class="num">{counts.cf}</span>
+			<span class="label">{t(locale, 'series.cf.name')}</span>
+		</div>
+		<div class="summary-stat">
+			<span class="num">{counts.tcg}</span>
+			<span class="label">{t(locale, 'series.tcg.name')}</span>
+		</div>
+	</div>
+</div>
+
+{
+	seriesBlocks.map((b) => (
+		<div class="series-section">
+			<div class="series-header">
+				<h2>
+					<a href={b.href}>{b.title}</a>
+				</h2>
+				<p class="series-note">{b.note}</p>
+			</div>
+			{b.groups.map((g) => (
+				<div class="group">
+					<h3 class="group-title">{categoryLabel(locale, g.cat)}</h3>
+					<PaperGrid papers={g.papers} locale={locale} showNumber={b.showNumber} />
+				</div>
+			))}
+		</div>
+	))
+}
+
+<Footer />
+
+<style>
+	.page-header {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+		padding: 3rem 1rem 1.5rem;
+	}
+	.page-eyebrow {
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--accent);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin-bottom: 0.8rem;
+	}
+	.page-header h1 {
+		font-size: 2.2rem;
+		margin: 0 0 0.5em;
+		letter-spacing: -0.025em;
+	}
+	.page-intro {
+		color: var(--text-muted);
+		max-width: 62ch;
+		line-height: 1.6;
+	}
+	.page-summary {
+		display: flex;
+		gap: 2.5rem;
+		flex-wrap: wrap;
+		margin-top: 1.8rem;
+		padding: 1.1em 1.3em;
+		background: var(--bg-subtle);
+		border-radius: 8px;
+	}
+	.summary-stat .num {
+		display: block;
+		font-family: var(--font-sans);
+		font-size: 1.7rem;
+		font-weight: 700;
+		color: var(--accent);
+		line-height: 1.1;
+	}
+	.summary-stat .label {
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+
+	.series-section {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+		padding: 2.5rem 1rem 0;
+	}
+	.series-header {
+		margin-bottom: 1.6rem;
+		padding-bottom: 0.9rem;
+		border-bottom: 2px solid var(--border-strong);
+	}
+	.series-header h2 {
+		margin: 0 0 0.4em;
+		font-size: 1.75rem;
+		letter-spacing: -0.02em;
+	}
+	.series-header h2 a {
+		color: var(--text);
+		text-decoration: none;
+	}
+	.series-header h2 a:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.series-note {
+		margin: 0;
+		color: var(--text-muted);
+		max-width: 68ch;
+		line-height: 1.6;
+		font-size: 0.95rem;
+	}
+
+	.group {
+		margin-bottom: 2.2rem;
+	}
+	.group-title {
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--text-faint);
+		margin: 0 0 0.9rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	@media (max-width: 640px) {
+		.page-header h1 {
+			font-size: 1.8rem;
+		}
+		.page-summary {
+			gap: 1.4rem;
+		}
+	}
+</style>

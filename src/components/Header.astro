@@ -23,7 +23,11 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 		</a>
 		<div class="header-right">
 			<nav class="nav-links">
-				<HeaderLink href={localePrefix + '/'}>{t(locale, 'nav.home')}</HeaderLink>
+				{/* The homepage IS the Complementarity-First page, so it is named
+				    as such rather than "Home" — otherwise the primary series has
+				    no visible entry in the nav. */}
+				<HeaderLink href={localePrefix + '/'}>{t(locale, 'nav.cf')}</HeaderLink>
+				<HeaderLink href={localePrefix + '/tcg'}>{t(locale, 'nav.tcg')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/papers'}>{t(locale, 'nav.papers')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/blog'}>{t(locale, 'nav.posts')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/about'}>{t(locale, 'nav.about')}</HeaderLink>
@@ -118,6 +122,8 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 	.nav-links :global(a) {
 		font-family: var(--font-sans);
 		font-size: 0.92rem;
+		/* Keep multi-word series names ("Complementarity-First") on one line. */
+		white-space: nowrap;
 		padding: 0.4em 0.85em;
 		color: var(--text-muted);
 		text-decoration: none;

@@ -1,12 +1,12 @@
 ---
 import BaseHead from '../../../components/BaseHead.astro';
-import PapersIndexBody from '../../../components/PapersIndexBody.astro';
+import TcgHubBody from '../../../components/TcgHubBody.astro';
 import { t } from '../../../i18n';
 import { SITE_TITLE } from '../../../consts';
 
 const locale = 'zh-cn' as const;
-const title = `${t(locale, 'papers.title')} — ${SITE_TITLE}`;
-const description = t(locale, 'papers.metaDescription');
+const title = `${t(locale, 'tcg.title')} — ${SITE_TITLE}`;
+const description = t(locale, 'tcg.tagline');
 ---
 
 <!doctype html>
@@ -15,6 +15,6 @@ const description = t(locale, 'papers.metaDescription');
 		<BaseHead title={title} description={description} />
 	</head>
 	<body>
-		<PapersIndexBody locale={locale} />
+		<TcgHubBody locale={locale} />
 	</body>
 </html>

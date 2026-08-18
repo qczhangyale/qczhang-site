@@ -1,0 +1,309 @@
+---
+// The nine TCG empirical relations, as a locale-aware table.
+//
+// Previously this data + markup was duplicated across the three homepage
+// locale variants; it now lives here and is used by the TCG series hub.
+//
+// Provenance (per the DAEDALUS Review §2):
+//   'original' — first identified in this research program
+//   'partial'  — bare numerical relation pre-existing; the twistor-geometric
+//                reading is the contribution
+import { t, type Locale } from '../i18n';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+
+type L3 = { en: string; 'zh-cn': string; 'zh-tw': string };
+const s = (v: L3) => v[locale] ?? v.en;
+
+const relations = [
+	{
+		id: 'O1',
+		formula: '1/α ≈ π + π² + 4π³',
+		precision: '2.2 ppm',
+		sector: { en: 'electromagnetic', 'zh-cn': '电磁', 'zh-tw': '電磁' },
+		provenance: 'partial',
+		originLabel: t(locale, 'rel.twistorOrigin'),
+	},
+	{
+		id: 'O2',
+		formula: '1/α_s(M_Z) ≈ (π + 4π² + 36π³) / (π + π² + 4π³)',
+		precision: '0.3%',
+		sector: { en: 'strong', 'zh-cn': '强', 'zh-tw': '強' },
+		provenance: 'original',
+	},
+	{
+		id: 'O3',
+		formula: 'sin²θ_W(0) ≈ 3/(4π)',
+		precision: '0.03%',
+		sector: { en: 'weak (Thomson)', 'zh-cn': '弱（汤姆孙）', 'zh-tw': '弱（湯姆孫）' },
+		provenance: 'original',
+	},
+	{
+		id: 'O4',
+		formula: 'm_π / m_e ≈ 2(π + π² + 4π³)',
+		precision: '0.4%',
+		sector: { en: 'hadronic', 'zh-cn': '强子', 'zh-tw': '強子' },
+		provenance: 'partial',
+		originLabel: t(locale, 'rel.nambuRecast'),
+	},
+	{
+		id: 'O5',
+		formula: 'y_e ≈ (1 − 1/(2π)) · e^(−4π)',
+		precision: '0.09%',
+		sector: { en: 'leptonic Yukawa', 'zh-cn': '轻子汤川', 'zh-tw': '輕子湯川' },
+		provenance: 'original',
+	},
+	{
+		id: 'O6',
+		formula: 'L_τ/L_μ ≈ L_μ/L_e ≈ φ   (L_ℓ = ln 1/y_ℓ)',
+		precision: '0.24% / 0.54%',
+		sector: { en: 'lepton mass ratios', 'zh-cn': '轻子质量比', 'zh-tw': '輕子質量比' },
+		provenance: 'original',
+	},
+	{
+		id: 'O7',
+		formula: 'M_W / v ≈ 1/√(3π)',
+		precision: '0.21%',
+		sector: { en: 'electroweak', 'zh-cn': '电弱', 'zh-tw': '電弱' },
+		provenance: 'original',
+	},
+	{
+		id: 'O8',
+		formula: 'α_G ≡ G m_e² / (ℏc) ≈ α⁸ y_e⁵',
+		precision: '0.024%',
+		sector: { en: 'gravitational', 'zh-cn': '引力', 'zh-tw': '重力' },
+		provenance: 'original',
+	},
+	{
+		id: 'O9',
+		formula: 'Λ ℓ_Pl² ≈ (α⁴ / 4π)(m_e / m_Pl)⁵',
+		precision: '1.9%',
+		sector: { en: 'cosmological', 'zh-cn': '宇宙学', 'zh-tw': '宇宙學' },
+		provenance: 'original',
+	},
+];
+
+const originalCount = relations.filter((r) => r.provenance === 'original').length;
+
+const legend = {
+	yes: {
+		en: `<strong>✓ Yes</strong> — the relation was first identified in this research program (${originalCount} of ${relations.length}).`,
+		'zh-cn': `<strong>✓ 是</strong> — 该关系首次由本研究纲领识别（${relations.length} 条中的 ${originalCount} 条）。`,
+		'zh-tw': `<strong>✓ 是</strong> — 該關係首次由本研究綱領識別（${relations.length} 條中的 ${originalCount} 條）。`,
+	},
+	twistor: {
+		en: "<strong>Twistor origin</strong> (O1, <code>1/α ≈ π + π² + 4π³</code>) — the bare numerical approximation can be checked by anyone with a calculator. The contribution is its derivation as a chamber-weighted Fubini–Study volume sum on Penrose's twistor space CP³, fixing the ambient dimension N = 3 uniquely.",
+		'zh-cn':
+			'<strong>扭量起源</strong>（O1，<code>1/α ≈ π + π² + 4π³</code>）— 这个纯数值近似任何人用计算器都能核对。本纲领的贡献在于把它推导为彭罗斯扭量空间 CP³ 上按腔室加权的 Fubini–Study 体积和，并由此唯一地定出环境维数 N = 3。',
+		'zh-tw':
+			'<strong>扭量起源</strong>（O1，<code>1/α ≈ π + π² + 4π³</code>）— 這個純數值近似任何人用計算機都能核對。本綱領的貢獻在於把它推導為彭羅斯扭量空間 CP³ 上按腔室加權的 Fubini–Study 體積和，並由此唯一地定出環境維數 N = 3。',
+	},
+	nambu: {
+		en: "<strong>Nambu, recast</strong> (O4, <code>m_π/m_e ≈ 2(π + π² + 4π³)</code>) — Nambu's 1952 identity <code>m_π/m_e ≈ 2/α</code> predates this work. Original here: the factor 2 is reinterpreted as the Fibonacci matching count <code>F₃ = 2</code> at the n=2 stratum, and <code>1/α</code> is substituted with its π-power expansion (O1).",
+		'zh-cn':
+			'<strong>南部关系的重述</strong>（O4，<code>m_π/m_e ≈ 2(π + π² + 4π³)</code>）— 南部 1952 年的恒等式 <code>m_π/m_e ≈ 2/α</code> 早于本工作。此处的原创之处是：因子 2 被重新诠释为 n=2 层上的斐波那契匹配数 <code>F₃ = 2</code>，并把 <code>1/α</code> 代换为其 π 幂展开（O1）。',
+		'zh-tw':
+			'<strong>南部關係的重述</strong>（O4，<code>m_π/m_e ≈ 2(π + π² + 4π³)</code>）— 南部 1952 年的恆等式 <code>m_π/m_e ≈ 2/α</code> 早於本工作。此處的原創之處是：因子 2 被重新詮釋為 n=2 層上的費波那契匹配數 <code>F₃ = 2</code>，並把 <code>1/α</code> 代換為其 π 冪展開（O1）。',
+	},
+};
+---
+
+<div class="relations-wrapper">
+	<table class="relations-table">
+		<thead>
+			<tr>
+				<th class="col-id">{t(locale, 'rel.id')}</th>
+				<th class="col-formula">{t(locale, 'rel.formula')}</th>
+				<th class="col-sector">{t(locale, 'rel.sector')}</th>
+				<th class="col-precision">{t(locale, 'rel.precision')}</th>
+				<th class="col-origin">{t(locale, 'rel.original')}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				relations.map((r) => {
+					const isOriginal = r.provenance === 'original';
+					const originText = r.originLabel ?? t(locale, 'rel.yes');
+					return (
+						<tr class={r.provenance}>
+							<td class="col-id">{r.id}</td>
+							<td class="col-formula"><code>{r.formula}</code></td>
+							<td class="col-sector">{s(r.sector as any)}</td>
+							<td class="col-precision"><span class="badge-precision">{r.precision}</span></td>
+							<td class="col-origin">
+								<span class={`origin-badge ${isOriginal ? 'yes' : 'partial'}`}>
+									{isOriginal && <span class="check">✓</span>}
+									{originText}
+								</span>
+							</td>
+						</tr>
+					);
+				})
+			}
+		</tbody>
+	</table>
+</div>
+<div class="relations-legend">
+	<p set:html={s(legend.yes as any)} />
+	<p set:html={s(legend.twistor as any)} />
+	<p set:html={s(legend.nambu as any)} />
+</div>
+
+<style>
+	.relations-wrapper {
+		margin-top: 1rem;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--bg-elevated);
+	}
+	.relations-table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 0;
+		font-size: 0.95rem;
+	}
+	.relations-table thead th {
+		padding: 0.7em 1.1em;
+		background: var(--bg-subtle);
+		border-bottom: 1px solid var(--border);
+		font-family: var(--font-sans);
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--text-faint);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		text-align: left;
+		white-space: nowrap;
+	}
+	.relations-table tbody td {
+		padding: 0.85em 1.1em;
+		border-bottom: 1px solid var(--border);
+		vertical-align: middle;
+		background: inherit;
+	}
+	.relations-table tbody tr:last-child td {
+		border-bottom: none;
+	}
+	.relations-table .col-id {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		color: var(--text-faint);
+		font-weight: 600;
+		width: 1%;
+		white-space: nowrap;
+	}
+	.relations-table .col-formula {
+		font-family: var(--font-mono);
+		font-size: 0.92rem;
+	}
+	.relations-table .col-sector {
+		font-family: var(--font-sans);
+		font-size: 0.82rem;
+		color: var(--text-faint);
+		white-space: nowrap;
+		width: 1%;
+	}
+	.relations-table .col-precision,
+	.relations-table .col-origin {
+		white-space: nowrap;
+		width: 1%;
+		text-align: right;
+	}
+
+	.origin-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3em;
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 500;
+		color: var(--text-muted);
+		white-space: nowrap;
+		letter-spacing: 0.01em;
+	}
+	.origin-badge.yes {
+		color: var(--text);
+	}
+	.origin-badge .check {
+		font-size: 0.9em;
+		line-height: 1;
+		color: var(--text-faint);
+	}
+
+	.relations-legend {
+		margin-top: 1rem;
+		padding: 0.9em 1.1em;
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		background: var(--bg-subtle);
+		border-radius: 6px;
+		line-height: 1.6;
+	}
+	.relations-legend p {
+		margin: 0 0 0.4em 0;
+	}
+	.relations-legend p:last-child {
+		margin-bottom: 0;
+	}
+
+	/* Mobile: collapse table into stacked cards */
+	@media (max-width: 720px) {
+		.relations-wrapper {
+			border: none;
+			border-radius: 0;
+			background: transparent;
+			overflow: visible;
+		}
+		.relations-table {
+			display: block;
+		}
+		.relations-table thead {
+			display: none;
+		}
+		.relations-table tbody,
+		.relations-table tr,
+		.relations-table td {
+			display: block;
+		}
+		.relations-table tr {
+			margin-bottom: 0.7rem;
+			padding: 0.9em 1em;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			background: var(--bg-elevated);
+		}
+		.relations-table tbody td {
+			padding: 0.25em 0;
+			border: none;
+			text-align: left;
+			width: auto;
+		}
+		.relations-table .col-id {
+			display: inline-block;
+			margin-right: 0.6em;
+		}
+		.relations-table .col-id::after {
+			content: ' · ';
+			color: var(--text-faint);
+			margin: 0 0.2em;
+		}
+		.relations-table .col-sector {
+			display: inline-block;
+		}
+		.relations-table .col-formula {
+			font-size: 0.88rem;
+			margin: 0.4em 0 0.5em;
+			overflow-x: auto;
+		}
+		.relations-table .col-precision,
+		.relations-table .col-origin {
+			display: inline-block;
+			margin-right: 0.5em;
+		}
+	}
+</style>

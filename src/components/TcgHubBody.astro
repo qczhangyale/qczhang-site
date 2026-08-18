@@ -1,0 +1,227 @@
+---
+// Body of the Twistor Configuration Geometry series hub. Carries the
+// empirical content that previously lived on the homepage (the nine
+// relations, the 124-orders anchor, the spin-1 prediction) plus the
+// full category-grouped paper list.
+import { t, type Locale } from '../i18n';
+import { getPaperCounts } from '../lib/paper-stats';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import TcgTree from './TcgTree.astro';
+import RelationsTable from './RelationsTable.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const prefix = locale === 'en' ? '' : '/' + locale;
+
+const counts = await getPaperCounts();
+const facts = {
+	anchorLabel: {
+		en: 'Empirical anchor',
+		'zh-cn': '经验锚点',
+		'zh-tw': '經驗錨點',
+	},
+	anchor: {
+		en: 'Nine sub-percent algebraic relations across six physical sectors, spanning <strong>124 orders of magnitude</strong>.',
+		'zh-cn':
+			'跨越六个物理部门的九条亚百分比代数关系，横跨 <strong>124 个数量级</strong>。',
+		'zh-tw':
+			'跨越六個物理部門的九條亞百分比代數關係，橫跨 <strong>124 個數量級</strong>。',
+	},
+	predLabel: {
+		en: 'Falsifiable prediction',
+		'zh-cn': '可证伪预测',
+		'zh-tw': '可證偽預測',
+	},
+	pred: {
+		en: 'Spin-1 short-range fifth force at α<sub>Y</sub> ≈ 1.88×10⁴, λ ≲ 5–10 μm — about 500× from current bounds.',
+		'zh-cn':
+			'自旋 1 短程第五种力，α<sub>Y</sub> ≈ 1.88×10⁴，λ ≲ 5–10 μm — 距当前实验界限约 500 倍。',
+		'zh-tw':
+			'自旋 1 短程第五種力，α<sub>Y</sub> ≈ 1.88×10⁴，λ ≲ 5–10 μm — 距當前實驗界限約 500 倍。',
+	},
+};
+const s = (v: any) => v[locale] ?? v.en;
+
+// The CF series name inside lead2 is a link back to the foundation hub.
+const cfLink = `<a href="${prefix}/">${t(locale, 'series.cf.name')}</a>`;
+const lead2 = t(locale, 'tcg.lead2', { cf: cfLink });
+---
+
+<Header />
+
+<section class="hero">
+	<div class="hero-inner">
+		<div class="hero-eyebrow">{t(locale, 'tcg.eyebrow')}</div>
+		<h1>{t(locale, 'tcg.title')}</h1>
+		<p class="hero-tagline">{t(locale, 'tcg.tagline')}</p>
+	</div>
+</section>
+
+<div class="section">
+	<div class="lead">
+		<p>{t(locale, 'tcg.lead1')}</p>
+		<p set:html={lead2} />
+	</div>
+
+	<div class="fact-grid">
+		<div class="fact">
+			<div class="fact-label">{s(facts.anchorLabel)}</div>
+			<div class="fact-value" set:html={s(facts.anchor)} />
+		</div>
+		<div class="fact">
+			<div class="fact-label">{s(facts.predLabel)}</div>
+			<div class="fact-value" set:html={s(facts.pred)} />
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<h2>{t(locale, 'tcg.relations.title')}</h2>
+	<RelationsTable locale={locale} />
+</div>
+
+<div class="section">
+	<h2>{t(locale, 'tcg.papers.title', { n: counts.tcg })}</h2>
+	<TcgTree locale={locale} />
+</div>
+
+<div class="section">
+	<div class="bridge">
+		<p>{t(locale, 'cf.bridge.body')}</p>
+		<p class="bridge-links">
+			<a href={`${prefix}/`}>{t(locale, 'tcg.backToCf')} →</a>
+		</p>
+	</div>
+</div>
+
+<Footer />
+
+<style>
+	.hero {
+		padding: 2.6rem 1rem 2.2rem;
+		background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+		border-bottom: 1px solid var(--border);
+	}
+	.hero-inner {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+	}
+	.hero-eyebrow {
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--accent);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin-bottom: 0.6rem;
+	}
+	.hero h1 {
+		font-size: 2.15rem;
+		line-height: 1.15;
+		margin: 0 0 0.35em 0;
+		letter-spacing: -0.025em;
+	}
+	.hero-tagline {
+		font-family: var(--font-serif);
+		font-size: 1.08rem;
+		color: var(--text-muted);
+		font-style: italic;
+		margin-bottom: 0;
+	}
+
+	.section {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+		padding: 1.9rem 1rem 0.5rem;
+	}
+	.section h2 {
+		margin-top: 0;
+		font-size: 1.55rem;
+	}
+	.lead {
+		font-size: 1.05rem;
+		line-height: 1.6;
+		max-width: 44em;
+	}
+	.lead p {
+		margin-bottom: 1.1em;
+	}
+	.lead a {
+		color: var(--accent);
+	}
+
+	.fact-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin: 1.5rem 0;
+	}
+	.fact {
+		padding: 1.1em 1.2em;
+		background: var(--bg-elevated);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+	}
+	.fact-label {
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--accent);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		margin-bottom: 0.3em;
+	}
+	.fact-value {
+		font-family: var(--font-serif);
+		font-size: 0.98rem;
+		color: var(--text);
+		line-height: 1.45;
+	}
+
+	.group {
+		margin-bottom: 2.5rem;
+	}
+	.group-title {
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--text-faint);
+		margin: 0 0 0.9rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.bridge {
+		padding: 1.4em 1.6em;
+		background: var(--bg-subtle);
+		border-radius: 8px;
+	}
+	.bridge p {
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+	.bridge-links {
+		margin-bottom: 0;
+		font-family: var(--font-sans);
+		font-size: 0.95rem;
+	}
+	.bridge-links a {
+		color: var(--accent);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	@media (max-width: 640px) {
+		.fact-grid {
+			grid-template-columns: 1fr;
+		}
+		.hero h1 {
+			font-size: 1.75rem;
+		}
+	}
+</style>

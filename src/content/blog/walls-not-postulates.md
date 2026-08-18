@@ -19,7 +19,7 @@ A new note today shows the compatibility residual is substantially narrowed by e
 
 ## The P7 wall already supplies what we need
 
-The TCG framework's P7 postulate ([Wall Deletion and the Pati-Salam Levi Subalgebra in TCG](/papers/19-wall-deletion/)) supplies the Pati-Salam color/lepton split of the $SU(4)_C$ fundamental:
+The TCG framework's P7 postulate ([Wall Deletion and the Pati-Salam Levi Subalgebra in TCG](/papers/19-wall-deletion-pati-salam/)) supplies the Pati-Salam color/lepton split of the $SU(4)_C$ fundamental:
 $$\mathbf{4} = C \oplus \ell, \qquad \dim C = 3, \quad \dim \ell = 1.$$
 The lepton line $\ell \subset \mathbf{4}$ is not introduced anew here — it is the same lepton-as-fourth-color line already selected by the P7 wall structure.
 

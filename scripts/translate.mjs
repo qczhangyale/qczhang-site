@@ -170,19 +170,27 @@ async function walk(dir) {
 	const out = [];
 	for (const entry of await readdir(dir, { withFileTypes: true })) {
 		const full = join(dir, entry.name);
-		if (entry.isDirectory()) out.push(...(await walk(full)));
-		else if (entry.isFile() && /\.(md|mdx)$/.test(entry.name)) out.push(full);
+		// zh-cn/ and zh-tw/ hold OUTPUT, not English sources. Descending into
+		// them made the script plan Chinese-to-Chinese translations.
+		if (entry.isDirectory()) {
+			if (LOCALES.some((l) => l.code === entry.name)) continue;
+			out.push(...(await walk(full)));
+		} else if (entry.isFile() && /\.(md|mdx)$/.test(entry.name)) out.push(full);
 	}
 	return out;
 }
 
 function isLocaleVariant(filename) {
-	return /\.(zh-cn|zh-tw)\.(md|mdx)$/.test(filename);
+	// Matches both conventions: `foo.zh-cn.md` and `zh-cn/foo.md`.
+	return /\.(zh-cn|zh-tw)\.(md|mdx)$/.test(filename) || /\/(zh-cn|zh-tw)\//.test(filename);
 }
 
 function localePathFor(englishPath, locale) {
-	const ext = extname(englishPath);
-	return englishPath.slice(0, -ext.length) + '.' + locale + ext;
+	// Repo convention is a locale SUBDIRECTORY next to the English file:
+	//   src/content/blog/foo.md  ->  src/content/blog/zh-cn/foo.md
+	// (src/i18n resolves the sibling form too, but every existing translation
+	// uses the subdirectory form, so new output must match it.)
+	return join(dirname(englishPath), locale, basename(englishPath));
 }
 
 async function translateFile(englishPath, locale) {
@@ -209,12 +217,23 @@ async function translateFile(englishPath, locale) {
 	const isBlog = englishPath.includes('/content/blog/');
 	const systemPrompt = buildSystemPrompt(locale, isBlog).replace('{HASH_PLACEHOLDER}', sourceHash);
 
-	const response = await client.messages.create({
-		model: 'claude-opus-4-7',
-		max_tokens: 8192,
+	const stream = client.messages.stream({
+		model: 'claude-opus-5',
+		// Long-form posts translate to well over 8192 output tokens, and on
+		// Claude Opus 5 adaptive thinking is on by default and draws from the
+		// same budget — an 8192 cap truncated long articles mid-translation.
+		// Streaming keeps a large cap from hitting the SDK HTTP timeout.
+		max_tokens: 32000,
 		system: systemPrompt,
 		messages: [{ role: 'user', content: sourceContent }],
 	});
+	const response = await stream.finalMessage();
+
+	if (response.stop_reason === 'max_tokens') {
+		throw new Error(
+			`translation truncated (hit max_tokens) for ${englishPath} → ${locale}; raise max_tokens`,
+		);
+	}
 
 	let translated = response.content
 		.filter((b) => b.type === 'text')
@@ -241,6 +260,7 @@ async function translateFile(englishPath, locale) {
 		});
 	}
 
+	await mkdir(dirname(targetPath), { recursive: true });
 	await writeFile(targetPath, translated, 'utf8');
 	return { status: 'wrote', path: targetPath, hash: sourceHash };
 }
