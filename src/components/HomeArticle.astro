@@ -1,0 +1,160 @@
+---
+// The popular-science guide, embedded on the front page.
+//
+// Rendered from the SAME content-collection entry that backs
+// /blog/from-relation-to-reality/, so the article has exactly one source of
+// truth and the blog copy and the front-page copy can never drift apart.
+// Locale resolution matches the blog routes (pickLocalized), so the
+// Simplified and Traditional editions render on their own locale routes.
+import { getCollection, render } from 'astro:content';
+import { filterEnglishOnly, pickLocalized, type Locale } from '../i18n';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+
+const SLUG = 'from-relation-to-reality';
+const all = await getCollection('blog');
+const english = filterEnglishOnly(all).find((e) => e.id === SLUG);
+const entry = english ? pickLocalized(all, english, locale) : undefined;
+const rendered = entry ? await render(entry) : undefined;
+
+// The article closes with its own annotated Zenodo link index. On the front
+// page that index would sit directly above the record trees, which list the
+// same eighteen records with summaries and detail pages — so it is cut here
+// and kept only in the blog copy. All three editions carry the same
+// <hr id="zenodo-index" /> marker at that point; the cut is a truncation, not
+// a CSS hide, so the duplicate links never reach the page at all.
+const MARKER = '<hr id="zenodo-index"';
+const full = (entry as any)?.rendered?.html ?? '';
+const cut = full.indexOf(MARKER);
+const html = cut === -1 ? full : full.slice(0, cut);
+const Content = html ? null : rendered?.Content;
+---
+
+{
+	(html || Content) && (
+		<div class="home-article">
+			<div class="prose">
+				{html ? <Fragment set:html={html} /> : Content && <Content />}
+			</div>
+		</div>
+	)
+}
+
+<style>
+	.home-article {
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+		background: var(--bg);
+	}
+	.prose {
+		max-width: var(--page-width);
+		margin: 0 auto;
+		padding: 2.6rem 1rem 2.4rem;
+		color: var(--text);
+		font-size: 1.05rem;
+		line-height: 1.65;
+	}
+	.prose :global(p) {
+		margin: 0 0 1.2em;
+	}
+
+	/* Drop cap on the opening paragraph, matching the blog layout. */
+	.prose :global(> p:first-of-type::first-letter) {
+		font-family: var(--font-serif);
+		font-size: 4.2em;
+		font-weight: 700;
+		float: left;
+		line-height: 0.85;
+		margin: 0.05em 0.1em 0 0;
+		color: var(--accent);
+	}
+
+	/* h2 = the article's part dividers (Part I / Part II / synthesis). */
+	.prose :global(h2) {
+		font-family: var(--font-sans);
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		margin: 2.8em 0 0.8em;
+		padding-bottom: 0.5em;
+		border-bottom: 2px solid var(--border-strong);
+		color: var(--text);
+	}
+	/* h3 = section headings, in the small-caps eyebrow style. */
+	.prose :global(h3) {
+		font-family: var(--font-sans);
+		font-size: 1.1rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 2.4em 0 0.7em;
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid var(--border);
+	}
+	.prose :global(h4) {
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		margin: 1.8em 0 0.5em;
+	}
+
+	.prose :global(blockquote) {
+		font-family: var(--font-serif);
+		font-size: 1.28rem;
+		line-height: 1.45;
+		font-style: italic;
+		color: var(--text);
+		border-left: none;
+		border-top: 2px solid var(--accent);
+		border-bottom: 2px solid var(--accent);
+		margin: 2.2em 0;
+		padding: 1.2em 0.5em;
+		text-align: center;
+	}
+	.prose :global(blockquote p) {
+		margin: 0;
+	}
+
+	.prose :global(ul),
+	.prose :global(ol) {
+		margin: 0 0 1.2em;
+		padding-left: 1.3em;
+	}
+	.prose :global(li) {
+		margin: 0.4em 0;
+	}
+	.prose :global(a) {
+		color: var(--accent);
+	}
+	.prose :global(strong) {
+		color: var(--text);
+	}
+	.prose :global(hr) {
+		border: none;
+		border-top: 1px solid var(--border);
+		margin: 2.4em 0;
+	}
+
+	/* Display math can overflow on narrow screens — let it scroll itself
+	   rather than widening the page. */
+	.prose :global(.katex-display) {
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: 0.2em 0;
+	}
+
+	@media (max-width: 640px) {
+		.prose {
+			font-size: 1rem;
+			padding: 2rem 1rem 1.8rem;
+		}
+		.prose :global(> p:first-of-type::first-letter) {
+			font-size: 3.2em;
+		}
+	}
+</style>

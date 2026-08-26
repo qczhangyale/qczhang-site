@@ -11,16 +11,15 @@ import { getPaperCounts } from '../lib/paper-stats';
 import {
 	RELEASE,
 	RELEASE_II,
-	RELEASE_ABSTRACT,
 	READING_PATHS,
 	OPEN_PROBLEMS,
-	abstractText,
 	pathName,
 	problemText,
 	statusClass,
 } from '../lib/cf-release';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import HomeArticle from './HomeArticle.astro';
 import CfTree from './CfTree.astro';
 import CfReleaseIITree from './CfReleaseIITree.astro';
 
@@ -54,6 +53,24 @@ const CODE_OF: Record<string, string> = {
 
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
+	indexEyebrow: { en: 'The records', 'zh-cn': '记录', 'zh-tw': '紀錄' },
+	// The article is a long read; this is the one affordance for readers who
+	// arrived looking for a paper rather than for the essay.
+	skipToIndex: {
+		en: 'Skip to the record index ↓',
+		'zh-cn': '跳至记录索引 ↓',
+		'zh-tw': '跳至紀錄索引 ↓',
+	},
+	indexTitle: {
+		en: 'Browse the corpus',
+		'zh-cn': '浏览语料库',
+		'zh-tw': '瀏覽語料庫',
+	},
+	indexNote: {
+		en: 'The records the article describes, arranged by structure rather than by narrative. Hover any row for its summary; titles open Zenodo.',
+		'zh-cn': '文章所述的那些记录，按结构而非叙事排列。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。',
+		'zh-tw': '文章所述的那些紀錄，按結構而非敘事排列。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。',
+	},
 	relI: {
 		en: 'Release I — building the grammar',
 		'zh-cn': '发布 I —— 建立语法',
@@ -105,15 +122,19 @@ const copy = {
 		<div class="hero-eyebrow">{t(locale, 'cf.eyebrow')}</div>
 		<h1>{t(locale, 'cf.title')}</h1>
 		<p class="hero-tagline">{t(locale, 'cf.tagline')}</p>
+		<p class="strapline">
+			{s(copy.strapline)}
+			<a class="skip" href="#records">{s(copy.skipToIndex)}</a>
+		</p>
 	</div>
 </section>
 
-<div class="section">
-	<div class="lead">
-		{RELEASE_ABSTRACT.map((para) => <p>{abstractText(locale, para)}</p>)}
-	</div>
+<HomeArticle locale={locale} />
 
-	<p class="strapline">{s(copy.strapline)}</p>
+<div class="section" id="records">
+	<div class="section-eyebrow">{s(copy.indexEyebrow)}</div>
+	<h2>{s(copy.indexTitle)}</h2>
+	<p class="section-intro">{s(copy.indexNote)}</p>
 </div>
 
 <div class="section">
@@ -252,27 +273,24 @@ const copy = {
 		line-height: 1.6;
 		max-width: 78ch;
 	}
-	.lead {
-		font-size: 1.08rem;
-		line-height: 1.6;
-		/* Single column at a generous measure (~86 characters). */
-		max-width: 44em;
-	}
-	.lead p {
-		margin-bottom: 1.1em;
-	}
-
 	/* Replaces the old stat block: same facts, a fraction of the height. */
 	.strapline {
-		margin: 1.6rem 0 0;
+		margin: 1.3rem 0 0;
 		font-family: var(--font-sans);
 		font-size: 0.85rem;
 		color: var(--text-faint);
 		letter-spacing: 0.01em;
 	}
+	.skip {
+		margin-left: 0.9em;
+		color: var(--accent);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.skip:hover {
+		text-decoration: underline;
+	}
 
-			
-			
 	/* Reading paths, compressed to code chips now that the tree carries titles. */
 	.paths {
 		display: grid;

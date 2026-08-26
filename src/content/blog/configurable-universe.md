@@ -162,7 +162,7 @@ All sixteen papers are on Zenodo under CC-BY-4.0. See [the full bibliography](/p
 9. [DAEDALUS methodology](/papers/09-daedalus-methodology/)
 10. [The electron as architectural particle](/papers/10-electron-architect/)
 11. [α twistor-volume note](/papers/11-alpha-twistor-volume/)
-12. [Stratified Penrose-volume integral](/papers/12-alpha-s-sin2thetaW/) — α_s and sin²θ_W from one CP³
+12. [Stratified Penrose-volume integral](/papers/12-alpha-s-sin2thetaw/) — α_s and sin²θ_W from one CP³
 13. [Electron Yukawa observation](/papers/13-electron-yukawa/)
 14. [Super-flag construction on CP^(3|4)](/papers/14-super-flag-construction/)
 15. [Lepton-mass golden-ratio predictions](/papers/15-lepton-golden-ratio/)

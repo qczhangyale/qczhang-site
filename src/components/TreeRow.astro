@@ -6,8 +6,8 @@
 // the local paper page. Hovering or keyboard-focusing the row reveals a
 // summary card. On devices without hover the card renders inline instead,
 // so nothing is unreachable. No JavaScript.
-import type { CollectionEntry } from 'astro:content';
-import { t, type Locale } from '../i18n';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { pickLocalized, t, type Locale } from '../i18n';
 import { categoryLabel } from '../lib/series';
 
 interface Props {
@@ -23,6 +23,12 @@ interface Props {
 const { paper: p, locale = 'en', via, also = [], flag } = Astro.props;
 const prefix = locale === 'en' ? '' : '/' + locale;
 
+// Callers pass the English entry (it carries the canonical id, order and
+// provenance keys). Titles and summaries come from the locale variant when one
+// exists, so the trees read in the reader's language and fall back cleanly when
+// a paper has not been translated yet.
+const d = pickLocalized(await getCollection('papers'), p, locale).data;
+
 const alsoLabel = { en: 'also from', 'zh-cn': '另有来源', 'zh-tw': '另有來源' }[locale];
 const detailsLabel = { en: 'details', 'zh-cn': '详情', 'zh-tw': '詳情' }[locale];
 ---
@@ -33,15 +39,15 @@ const detailsLabel = { en: 'details', 'zh-cn': '详情', 'zh-tw': '詳情' }[loc
 	{p.data.code && <span class="code">{p.data.code}</span>}
 	{!p.data.code && <span class="code">№ {String(p.data.order).padStart(2, '0')}</span>}
 	<a class="title" href={`https://doi.org/${p.data.doi}`} target="_blank" rel="noopener">
-		{p.data.shortTitle ?? p.data.title}
+		{d.shortTitle ?? d.title}
 		<span class="ext" aria-hidden="true">↗</span>
 	</a>
 	{via && <span class="via">{via}</span>}
 	{flag && <span class="flag">{flag}</span>}
 	<a class="local" href={`${prefix}/papers/${p.id}/`}>{detailsLabel} →</a>
 	<div class="tip" role="note">
-		<div class="tip-title">{p.data.title}</div>
-		<p class="tip-desc">{p.data.description}</p>
+		<div class="tip-title">{d.title}</div>
+		<p class="tip-desc">{d.description}</p>
 		<div class="tip-doi">{p.data.doi}</div>
 		{
 			also.length > 0 && (

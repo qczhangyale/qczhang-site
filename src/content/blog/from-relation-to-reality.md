@@ -26,7 +26,7 @@ The program is ambitious, but it follows a strict rule:
 
 A poetic resemblance is not a derivation. A mathematical possibility is not a law of nature. A finite computation is not automatically a continuum theorem. Every step must say what was present, what was added, what followed, what failed, and what remains open.
 
-## Relation before object
+### Relation before object
 
 Complementarity-First represents its proposed primitive schematically as
 
@@ -60,9 +60,9 @@ $$
 
 A selector does not create everything that appears afterward. A door does not manufacture the person who walks through it; it only makes passage possible. The discipline of naming each door is the common method of both releases.
 
-# Part I — Release I: building the grammar
+## Part I — Release I: building the grammar
 
-## Release I at a glance
+### Release I at a glance
 
 Release I is the broad foundation of the program. Its nine technical papers ask different questions and use different kinds of evidence:
 
@@ -80,7 +80,7 @@ Release I is the broad foundation of the program. Its nine technical papers ask 
 
 The important point is not that all nine papers have the same status. They do not. Release I deliberately keeps conceptual proposals, conditional theorems, exact countermodels, finite calculations, prospective tests, negative results, and open selectors separate.
 
-## How the two releases grow out of classic TCG
+### How the two releases grow out of classic TCG
 
 Before the Complementarity-First releases, the project had already developed a substantial body of work under **Twistor Configuration Geometry (TCG)**. This earlier, “classic TCG” phase began from twistor and configuration spaces—especially $\mathbb{CP}^3$—and organized candidate gauge, representation, geometric, and numerical structures through explicit postulates, named residuals, and obstruction–construction arcs. Its June 2026 structural review mapped that corpus; it did not claim that TCG was experimentally confirmed or complete.
 
@@ -96,7 +96,7 @@ The project has tested both ends of that bridge, but it has not proved that inci
 
 Release II extends selected lessons rather than the whole classic TCG apparatus. It carries paired roles, typed carriers, complement operations, and selector discipline into new conditional studies of one-time geometry, quantum clocks, Hodge structure, Maxwell theory, radiation, and quantization. In this chronology, **classic TCG is the geometric ancestor; Release I is the audited bridge and finite/local consolidation; Release II is a controlled extension into time and electromagnetism.**
 
-## The missing step from “Two” to “the myriad things”
+### The missing step from “Two” to “the myriad things”
 
 The foundational paper does more than introduce the notation $\mathcal C=[a\dashv b]$. It asks what would make such a primitive scientifically useful. Four tests are proposed for a candidate completed relation: its roles must be distinguishable; the relation must constrain them; neither role should exhaust the target description by itself; and the completion must add something nontrivial beyond simply listing two labels.
 
@@ -106,7 +106,7 @@ This is a crucial boundary in the opening paper. The Tao-inspired sequence “On
 
 That honesty shapes the rest of Release I. Rather than pretending that one primitive symbol contains every later structure, the release treats quantum theory and gravity as parallel reconstruction tests. Each branch asks how much can be built once the missing composition, carrier, geometry, dynamics, and empirical interface are supplied explicitly.
 
-## Why quantum theory does not fall out of a pair
+### Why quantum theory does not fall out of a pair
 
 The quantum-reconstruction paper begins by asking what the word *quantum* requires before it has precise content. A bare complementary relation does not yet supply preparations, effects, probabilities, reversible transformations, composites, purification, local tomography, or a rule for combining systems. It does not decide whether amplitudes are real, complex, or quaternionic.
 
@@ -134,7 +134,7 @@ $$
 
 The first arrow represents restricted access, marginalization, or a quotient-like passage. The second is the evaluation of the accessible state by a measurement. This “projection of a projection” picture is suggestive, but Release I does not promote it into a derivation of objective chance or the Born rule. It remains a research direction.
 
-## A quantum coordinate that waits for reunion
+### A quantum coordinate that waits for reunion
 
 The most vivid exact result in Release I concerns **rebits**, the real-number counterparts of qubits.
 
@@ -160,7 +160,7 @@ Copy depth and reference structure add another layer. Two separated copies can r
 
 Control topology, number of copies, shared orientation, and the allowed final measurement can determine whether a real physical coordinate is invisible, partially visible, or exactly readable.
 
-## Objective facts without complete knowledge
+### Objective facts without complete knowledge
 
 A companion paper asks whether public agreement implies a complete description of reality.
 
@@ -177,7 +177,7 @@ The first does not imply the second. A map can be reliable without being one-to-
 
 This is one of Release I’s most important conceptual results because it reframes “hidden information.” Missing information need not be mystical or unknowable in principle. It may be perfectly well defined yet inaccessible to a particular public architecture.
 
-## A clock is not an arrow
+### A clock is not an arrow
 
 Relational time can describe one subsystem changing with respect to another without assuming an external universal clock. But a variable that orders events does not explain why time appears directed.
 
@@ -191,7 +191,7 @@ The result is not a universal lifetime formula for every memory. It is a structu
 
 The past is not merely what comes earlier in an ordering. It is what has left stable evidence.
 
-## Records as a bridge from time to geometry
+### Records as a bridge from time to geometry
 
 Release I also asks what stable, calibrated records can reveal about geometry. Suppose a finite network preserves enough information about which signals or displacements are null-related, how local frames are aligned, and how comparisons change around loops. Under the admitted reconstruction conditions, those records can recover a finite Lorentzian geometry.
 
@@ -199,7 +199,7 @@ That does not mean a memory device creates spacetime. The records are evidence c
 
 This is the geometric counterpart of the objectivity result. A public record can be sufficient for one target—such as a finite metric reconstruction—without being a complete description of the total carrier. Release I repeatedly replaces the question “Is the description complete?” with the more precise question “Complete for which operational target, under which interface?”
 
-## From incidence to finite/local gravity
+### From incidence to finite/local gravity
 
 The gravity branch asks whether geometry can be reconstructed from **incidence**—which elements meet, overlap, or satisfy a null relation—rather than assumed from the start.
 
@@ -213,7 +213,7 @@ On one frozen periodic lattice, the physical metric quotient has six components 
 
 These are exact finite/local achievements. They are not quantum gravitons, an arbitrary-mesh theorem, a continuum limit, or a full derivation of nonlinear Einstein gravity. Their value lies in showing how far an incidence-and-transport architecture can be carried while every selector remains visible.
 
-## When failure becomes part of the result
+### When failure becomes part of the result
 
 Release I records failed routes instead of rewriting them as successes.
 
@@ -227,7 +227,7 @@ A separate gravity paper studies the opposite phenomenon: when symmetry forces a
 
 The two results answer different questions. One asks what information is sufficient for a nonzero response. The other identifies a symmetry that forces zero. Their coexistence is a model of the release’s “anti-flattening” rule: success, failure, and exact cancellation must not be summarized as one vague statement that “the gravity calculations worked.”
 
-## A common grammar for quantum theory and gravity
+### A common grammar for quantum theory and gravity
 
 The Unified Dynamics paper asks whether the quantum and gravity branches can live inside one finite relational architecture.
 
@@ -249,7 +249,7 @@ The Unified Dynamics synthesis is consequently substantial but bounded. It provi
 
 The synthesis does not derive Newton’s constant, the cosmological constant, particle masses, an absolute length or duration, a continuum unification, or a parameter-free prediction.
 
-## What Release I handed forward
+### What Release I handed forward
 
 Release I’s deepest achievement is architectural. It converts broad foundational questions into typed, testable problems:
 
@@ -262,9 +262,9 @@ Release I’s deepest achievement is architectural. It converts broad foundation
 
 Release II does not retroactively close these questions. It takes a selected subset—especially the rank-two carrier, complement operations, clock structure, and field-form architecture—and follows them into time and electromagnetism.
 
-# Part II — Release II: from one-time structure to electromagnetism
+## Part II — Release II: from one-time structure to electromagnetism
 
-## One time direction, not two role labels
+### One time direction, not two role labels
 
 Release II begins with a common misunderstanding: if the primitive relation contains two roles, does that imply two dimensions of time?
 
@@ -276,7 +276,7 @@ Within that declared framework, there is one timelike direction and $m$ spacelik
 
 The same complement can perform another job on another carrier. Applied to one leg of a suitable identity-pairing tensor, it produces a singlet-like state; on the selected complex-qubit carrier, this is the Bell singlet. That result is not electromagnetism, and the exchange dynamics is not gauge symmetry. It illustrates a principle that becomes central in Release II: **the meaning of an operation depends on the carrier on which it acts.**
 
-## From a causal carrier to a readable clock
+### From a causal carrier to a readable clock
 
 A one-time carrier is not automatically a clock. Release II distinguishes a raw relational magnitude, a normalized interval, a supplied proper interval, a shared comparison parameter, quantum phase, a readable transition, and the thermodynamic arrow.
 
@@ -286,7 +286,7 @@ For clock comparisons, the observed endpoint signal separates into propagation a
 
 A two-level clock can also hide certain perturbations behind a simple rescaling, while a connected three-level system can expose a change in spectral shape. This motivates a possible multiclock experiment, but Release II does not claim that such an experiment has been performed or that a numerical redshift anomaly has been predicted.
 
-## Why three spatial dimensions appear—conditionally
+### Why three spatial dimensions appear—conditionally
 
 The first Electromagnetism paper imports the one-time carrier with $m$ spatial directions and then supplies a decisive extra choice: field-like objects are represented by two-forms.
 
@@ -309,7 +309,7 @@ $$
 
 The result is a conditional one-time-plus-three-space balance. Time alone did not select three space dimensions; the argument also used the two-form degree and the invertible sector exchange. Nor does equal dimension choose a unique metric, orientation, constitutive law, or Hodge operator.
 
-## From a Hodge arena to Maxwell theory
+### From a Hodge arena to Maxwell theory
 
 A Hodge operator relates complementary two-forms. In a suitable four-dimensional Lorentzian setting, applying it twice gives a minus sign, so the two-form space behaves in one limited sense like a complex vector space.
 
@@ -329,7 +329,7 @@ A principal-bundle connection can be described as a horizontal/vertical compleme
 
 The paper also constructs an exact finite Abelian descendant after supplying a periodic cochain complex, a constitutive matrix, a central phase, and a Maxwell branch. It has finite gauge invariance, Bianchi closure, current conservation, flat holonomies, and topological sectors. It is a controlled descendant, not a derivation of continuum electromagnetism from the primitive relation alone.
 
-## Light, helicity, and the boundary before QED
+### Light, helicity, and the boundary before QED
 
 For a nonzero source-free null plane wave, the real electric and magnetic fields are transverse, orthogonal, equal in magnitude, and jointly determine the energy-flow direction. This is a genuine modewise complementary relation.
 
@@ -353,9 +353,9 @@ Release II therefore reaches a carefully marked QED boundary. It develops condit
 
 Its companion dataset, CEM-D1, links the Electromagnetism papers to exact finite certificates, fixtures, scripts, and claim-to-evidence maps. Those checks strengthen traceability; they do not replace manuscript proofs, prior literature, external peer review, or independent replication.
 
-# What the two releases show together
+## What the two releases show together
 
-## Similar-looking operations are not automatically the same
+### Similar-looking operations are not automatically the same
 
 Across the two releases, many operations look alike: role complement, time reversal, tensor-leg complement, quantum orthocomplement, Lorentz parity, Hodge duality, electric–magnetic duality, gauge transformation, positive-frequency complex structure, and a clock generator.
 
@@ -365,7 +365,7 @@ Each operation has a carrier and an algebra. An involution on a rank-two causal 
 
 This **carrier-and-algebra firewall** is one of the program’s most useful conceptual tools. It prevents analogy from silently becoming identity.
 
-## Failures belong in the map
+### Failures belong in the map
 
 The releases also argue for an unusual standard of scientific maturity: the boundary of a result is part of the result.
 
@@ -373,7 +373,7 @@ A conceptual inspiration is labeled as inspiration. A theorem keeps its assumpti
 
 This “anti-flattening” discipline matters especially in a large foundations program, where a chain of conditional results can easily be retold as a single unconditional derivation.
 
-## One program, two distinct releases
+### One program, two distinct releases
 
 Release I builds the grammar: primitive relation, selector discipline, quantum assumption audits, interface-relative observability, record-based time asymmetry, finite/local gravity, explicit failed transfers, exact cancellation mechanisms, and a common but branch-incomplete dynamics kernel.
 
@@ -401,7 +401,7 @@ $$
 
 Nearly every arrow contains an explicit selector. That is not a weakness to hide; it is the diagnostic output of the program.
 
-## The frontier
+### The frontier
 
 The two releases turn several broad mysteries into sharper questions:
 
@@ -417,7 +417,7 @@ The two releases turn several broad mysteries into sharper questions:
 
 These are not decorative questions left after a completed theory. They are the frontier exposed by making the dependencies explicit.
 
-## A different kind of foundational ambition
+### A different kind of foundational ambition
 
 Complementarity-First does not presently offer a completed theory of everything. Its ambition is methodological as well as physical: reconstruct as much as possible from a relation-first starting point, while refusing to hide the assumptions that make each step work.
 
@@ -433,13 +433,13 @@ That is the wager connecting the two releases:
 
 *Scientific-status note: This article is a popular-science synthesis, not a technical paper in either release. Foundational Releases I and II are author-controlled preprint and data corpora. Their internal AI-assisted reviews, exact certificates, and separated audit lanes are not external human peer review or external independent replication. The program does not claim that primitive complementarity has already derived probability, spacetime, electromagnetism, matter, or quantum electrodynamics without additional assumptions.*
 
----
+<hr id="zenodo-index" />
 
-## Read the papers on Zenodo
+### Read the papers on Zenodo
 
 The titles below link directly to the official Zenodo records. Foundational Release I contains nine technical papers and one overview; Foundational Release II contains six technical papers, one reproducibility dataset, and one overview. A final, separately labeled link points to the classic TCG structural review that predates both releases and is not counted as part of either corpus.
 
-### Foundational Release I
+#### Foundational Release I
 
 1. [Complementarity-First: Relational Unity and the Genesis of Physical Structure](https://zenodo.org/records/21925967) — Introduces the completed relation as the program’s primitive and separates philosophical inspiration, selectors, and scientific derivation.
 2. [Real-Gate Readout of the Two-Rebit Tomographic Defect: Connected Pulses, CNOT Parity, and Copy-Depth Resources](https://zenodo.org/records/21926013) — Gives exact real-gate protocols for reading a globally present two-rebit coordinate that separated local measurements cannot directly access.
@@ -452,7 +452,7 @@ The titles below link directly to the official Zenodo records. Foundational Rele
 9. [Complementarity-First Unified Dynamics](https://zenodo.org/records/21926087) — Synthesizes finite/local quantum and gravity branches around a common BF-type kernel while retaining unresolved physical selectors.
 10. [Complementarity-First Foundational Release I: Architecture, Paper Map, Claims, and Open Problems](https://zenodo.org/records/21926095) — Maps the ten-record release, its dependencies, evidence levels, claim boundaries, artifacts, and open problems.
 
-### Foundational Release II
+#### Foundational Release II
 
 1. [Complementarity-First Time: Binary Completion, the Unique Temporal Direction, and Relational Duration](https://zenodo.org/records/22072846) — Develops a conditional rank-two route to one timelike direction, relational duration, and the unresolved absolute-scale boundary.
 2. [Complement-Twisted Positive Duality: From One-Time Signature to Singlet Completion and Exchange Dynamics](https://zenodo.org/records/22072861) — Uses complement-twisted positive duality to connect the one-time carrier with singlet completion and exchange dynamics.
@@ -462,6 +462,6 @@ The titles below link directly to the official Zenodo records. Foundational Rele
 6. [Radiation, Helicity, and Quantization: The QED Boundary of Complementarity-First Electromagnetism](https://zenodo.org/records/22072894) — Analyzes radiation, chirality, frequency, helicity, and quantization, and marks the precise boundary before full QED.
 7. [Exact Certificates and Reproducibility Archive for Complementarity-First Electromagnetism](https://zenodo.org/records/22072901) — Provides exact certificates, reproducibility files, claim-to-evidence maps, and verification tools for the three electromagnetism papers.
 8. [Complementarity-First Foundational Release II: Time, Electromagnetism, and the Limits of Structural Reconstruction](https://zenodo.org/records/22072908) — Maps Release II’s dependencies, theorem ownership, countermodels, nonclaims, reproducibility structure, and remaining selectors.
-### Historical classic TCG precursor
+#### Historical classic TCG precursor
 
 1. [Twistor Configuration Geometry: A Structural-State Review at Four-Arc Completeness](https://zenodo.org/records/20710679) — Maps the earlier classic TCG corpus, its postulate ledger, four obstruction–construction arcs, and named residuals; preserved as historical background rather than counted as a paper in either Foundational Release.
