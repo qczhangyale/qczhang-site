@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926050"
 date: 2026-08-18
 order: 2
 series: cf
+release: 1
 code: CFQF-Q4
 category: cf-quantum
 description: "The premise ledger for the quantum branch. Separates ten distinct passages from a completion relation to quantum theory, and shows that complex closure runs through an external reconstruction theorem requiring two selectors — local equivalence and equivalent-system purification — neither of which is derived from primitive complementarity."

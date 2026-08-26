@@ -36,6 +36,10 @@ const papers = defineCollection({
 		// Which research series the paper belongs to. Defaults to 'tcg' so the
 		// 42 pre-existing stubs need no frontmatter change.
 		series: z.enum(['cf', 'tcg']).optional().default('tcg'),
+		// Which Foundational Release a Complementarity-First paper belongs to.
+		// Release I (2026-08-18) is the grammar; Release II (2026-08-26) extends
+		// it into time and electromagnetism. TCG papers have no release.
+		release: z.union([z.literal(1), z.literal(2)]).optional(),
 		// Internal release code (CF-F1, CFQF-Q4, CUD-G1, ...). Complementarity-First
 		// papers cross-reference each other by these codes in the release overview,
 		// so they are shown on cards and detail pages. TCG papers have none.
@@ -53,6 +57,10 @@ const papers = defineCollection({
 			'cf-gravity',
 			'cf-synthesis',
 			'cf-overview',
+			// Complementarity-First — Release II
+			'cf-time',
+			'cf-electromagnetism',
+			'cf-dataset',
 		]),
 		precision: z.string().optional(),
 		description: z.string(),

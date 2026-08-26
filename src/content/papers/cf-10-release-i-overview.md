@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926095"
 date: 2026-08-18
 order: 10
 series: cf
+release: 1
 code: CF-OV1
 category: cf-overview
 description: "The release-level map. Supplies the paper map, dependency graph, claim/evidence classification, artifact register and open-problem ledger for all ten records — organized around an anti-flattening rule that refuses to let conditional theorems, exact countermodels and conceptual proposals read as interchangeable evidence."

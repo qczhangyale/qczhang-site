@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926033"
 date: 2026-08-18
 order: 5
 series: cf
+release: 1
 code: CFQF-Q2
 category: cf-quantum
 description: "A relational clock can order change without an external time parameter — but ordering is not yet a thermodynamic arrow. This paper separates the resources an arrow actually requires: writable capacity, kinetic persistence, active repair, syndrome disposal, controller order, fuel, waste, and an open boundary."

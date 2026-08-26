@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926054"
 date: 2026-08-18
 order: 6
 series: cf
+release: 1
 code: TCG-F1
 category: cf-gravity
 description: "The bridge between the two series. Asks what finite, conditional gravitational structure follows once a rank-two paired-chiral carrier is chosen and every further selector is kept explicit — reaching a Palatini–Regge architecture with two null polarizations on the lattice characteristic cone."

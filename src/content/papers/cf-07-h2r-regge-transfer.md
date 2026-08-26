@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926066"
 date: 2026-08-18
 order: 7
 series: cf
+release: 1
 code: CUD-G1
 category: cf-gravity
 description: "Which finite local data suffice to determine a Regge response when simplicial incidence changes? Begins from a preserved negative result — a broad transfer that failed by order-one margins — and ends at a conditional descriptor-local mixed-Hessian identity admitted on 1,818 authenticated occurrences."

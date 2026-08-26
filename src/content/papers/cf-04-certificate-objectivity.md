@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926143"
 date: 2026-08-18
 order: 4
 series: cf
+release: 1
 code: CFQF-Q3
 category: cf-quantum
 description: "Does successful public agreement guarantee that the underlying state has been identified? An exact two-rebit countermodel says no: the same complete public record passes a six-requirement audit certificate for two distinct states, which a separately declared global measurement then distinguishes with total-variation distance 3/5."

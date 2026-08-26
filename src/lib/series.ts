@@ -11,7 +11,16 @@ export const SERIES_ORDER: Series[] = ['cf', 'tcg'];
 
 /** Category slugs belonging to each series, in display order. */
 export const SERIES_CATEGORIES: Record<Series, string[]> = {
-	cf: ['cf-foundation', 'cf-quantum', 'cf-gravity', 'cf-synthesis', 'cf-overview'],
+	cf: [
+		'cf-foundation',
+		'cf-quantum',
+		'cf-gravity',
+		'cf-synthesis',
+		'cf-time',
+		'cf-electromagnetism',
+		'cf-dataset',
+		'cf-overview',
+	],
 	tcg: ['synthesis', 'cosmology', 'method', 'twistor', 'foundations'],
 };
 

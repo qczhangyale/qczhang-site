@@ -10,6 +10,7 @@ import { filterEnglishOnly, t, type Locale } from '../i18n';
 import { getPaperCounts } from '../lib/paper-stats';
 import {
 	RELEASE,
+	RELEASE_II,
 	RELEASE_ABSTRACT,
 	READING_PATHS,
 	OPEN_PROBLEMS,
@@ -21,6 +22,7 @@ import {
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import CfTree from './CfTree.astro';
+import CfReleaseIITree from './CfReleaseIITree.astro';
 
 interface Props {
 	locale?: Locale;
@@ -52,11 +54,30 @@ const CODE_OF: Record<string, string> = {
 
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
-	index: { en: 'The ten records', 'zh-cn': '十条记录', 'zh-tw': '十條紀錄' },
+	relI: {
+		en: 'Release I — building the grammar',
+		'zh-cn': '发布 I —— 建立语法',
+		'zh-tw': '發布 I —— 建立語法',
+	},
+	relIsub: {
+		en: 'Ten records: the primitive relation, quantum foundations, finite/local gravity, and a bounded synthesis.',
+		'zh-cn': '十条记录：原始关系、量子基础、有限／局域引力，以及一份有界的综合。',
+		'zh-tw': '十條紀錄：原始關係、量子基礎、有限／局域重力，以及一份有界的綜合。',
+	},
+	relII: {
+		en: 'Release II — time and electromagnetism',
+		'zh-cn': '发布 II —— 时间与电磁学',
+		'zh-tw': '發布 II —— 時間與電磁學',
+	},
+	relIIsub: {
+		en: 'Eight records published 26 August 2026: three papers on time, three on electromagnetism, a reproducibility dataset, and an overview.',
+		'zh-cn': '2026 年 8 月 26 日发布的八条记录：三篇时间论文、三篇电磁学论文、一份可复现数据集与一份总览。',
+		'zh-tw': '2026 年 8 月 26 日發布的八條紀錄：三篇時間論文、三篇電磁學論文、一份可重現資料集與一份總覽。',
+	},
 	strapline: {
-		en: `${RELEASE.records} records · ${RELEASE.technical} technical papers · ${RELEASE.technicalPages} pages · published ${fmt('en-GB')} on Zenodo, CC-BY-4.0`,
-		'zh-cn': `${RELEASE.records} 条记录 · ${RELEASE.technical} 篇技术论文 · ${RELEASE.technicalPages} 页 · ${fmt('zh-CN')}发布于 Zenodo，CC-BY-4.0`,
-		'zh-tw': `${RELEASE.records} 條紀錄 · ${RELEASE.technical} 篇技術論文 · ${RELEASE.technicalPages} 頁 · ${fmt('zh-TW')}發布於 Zenodo，CC-BY-4.0`,
+		en: `${RELEASE.records + RELEASE_II.records} records across two Foundational Releases · published on Zenodo, CC-BY-4.0`,
+		'zh-cn': `两次基础性发布共 ${RELEASE.records + RELEASE_II.records} 条记录 · 发布于 Zenodo，CC-BY-4.0`,
+		'zh-tw': `兩次基礎性發布共 ${RELEASE.records + RELEASE_II.records} 條紀錄 · 發布於 Zenodo，CC-BY-4.0`,
 	},
 	contactTitle: { en: 'About this site.', 'zh-cn': '关于本站。', 'zh-tw': '關於本站。' },
 	contactBody: {
@@ -96,8 +117,15 @@ const copy = {
 </div>
 
 <div class="section">
-	<h2>{s(copy.index)}</h2>
+	<h2>{s(copy.relI)}</h2>
+	<p class="section-intro">{s(copy.relIsub)}</p>
 	<CfTree locale={locale} />
+</div>
+
+<div class="section">
+	<h2>{s(copy.relII)}</h2>
+	<p class="section-intro">{s(copy.relIIsub)}</p>
+	<CfReleaseIITree locale={locale} />
 </div>
 
 <div class="section">

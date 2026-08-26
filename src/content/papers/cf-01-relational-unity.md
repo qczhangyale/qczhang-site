@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21925967"
 date: 2026-08-18
 order: 1
 series: cf
+release: 1
 code: CF-F1
 category: cf-foundation
 description: "The foundational paper of the series. States the primitive semantic proposal — a completed relation whose distinguishable roles exist only through that completion — together with four classification criteria and a strict motivation–derivation firewall. Elementary independence models then show what the primitive does not determine: symmetry, unique complement, continuity, probability, scalar field, geometry, dynamics, or standard complex quantum theory."

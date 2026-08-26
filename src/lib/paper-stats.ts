@@ -26,8 +26,12 @@ const ADJACENT_WORKSTREAM_ORDERS = [17, 18, 19, 20];
 export interface PaperCounts {
 	/** Every paper on the site, both series. */
 	total: number;
-	/** Papers in the Complementarity-First series (Foundational Release I). */
+	/** Papers in the Complementarity-First series (both releases). */
 	cf: number;
+	/** Complementarity-First records in Foundational Release I. */
+	cfRelease1: number;
+	/** Complementarity-First records in Foundational Release II. */
+	cfRelease2: number;
 	/** Papers in the TCG series. */
 	tcg: number;
 	/** TCG papers in the main arc (TCG total minus adjacent workstreams). */
@@ -63,6 +67,8 @@ export async function getPaperCounts(): Promise<PaperCounts> {
 	return {
 		total: papers.length,
 		cf: cfPapers.length,
+		cfRelease1: cfPapers.filter((p) => p.data.release === 1).length,
+		cfRelease2: cfPapers.filter((p) => p.data.release === 2).length,
 		tcg: tcgPapers.length,
 		tcgArc: tcgPapers.length - adjacent,
 		adjacent,

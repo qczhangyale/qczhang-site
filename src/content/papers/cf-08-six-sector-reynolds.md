@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926078"
 date: 2026-08-18
 order: 8
 series: cf
+release: 1
 code: CUD-G2
 category: cf-gravity
 description: "The opposite question to its companion: why must a local Regge response be exactly zero? For a complete simply-transitive S₃ orbit of six incident sectors with exact equivariance, Reynolds averaging isolates the invariant component — cancellation is equivalent to absence of a trivial-isotype component."

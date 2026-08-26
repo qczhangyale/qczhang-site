@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926087"
 date: 2026-08-18
 order: 9
 series: cf
+release: 1
 code: CUD-U1
 category: cf-synthesis
 description: "The synthesis paper. A real dual-pair carrier and a common BF-type kernel support both a gravity and a compact relational descendant — but the two branches require different variation spaces. That gap is named as the controlling obstruction to completed dynamical unification."

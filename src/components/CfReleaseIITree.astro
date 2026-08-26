@@ -1,0 +1,150 @@
+---
+// Foundational Release II index, grouped by arc.
+//
+// Deliberately NOT drawn as a provenance tree: CF-OV1 publishes a frozen
+// 26-edge ledger, but Release II's overview does not, so presenting one
+// here would invent structure the corpus doesn't assert. Each arc instead
+// carries its own boundary note — what that arc explicitly does not claim.
+import { getCollection } from 'astro:content';
+import { filterEnglishOnly, type Locale } from '../i18n';
+import {
+	RELEASE_II_ARCS,
+	arcIITitle,
+	arcIIBlurb,
+	arcIIBoundary,
+} from '../lib/cf-release';
+import TreeRow from './TreeRow.astro';
+
+interface Props {
+	locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+
+const cf2 = filterEnglishOnly(await getCollection('papers')).filter(
+	(p) => p.data.series === 'cf' && p.data.release === 2,
+);
+const byId = new Map(cf2.map((p) => [p.id, p]));
+
+const s = (v: any) => v[locale] ?? v.en;
+const copy = {
+	note: {
+		en: 'Grouped by arc. Hover a row for its summary; the title opens Zenodo. Release II does not revise Release I retroactively.',
+		'zh-cn': '按弧分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。发布 II 不会追溯性地修改发布 I。',
+		'zh-tw': '按弧分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。發布 II 不會追溯性地修改發布 I。',
+	},
+	boundary: { en: 'Boundary', 'zh-cn': '边界', 'zh-tw': '邊界' },
+};
+---
+
+<p class="tree-note">{s(copy.note)}</p>
+
+<div class="arcs">
+	{
+		RELEASE_II_ARCS.map((arc) => (
+			<section class={`arc arc-${arc.key}`}>
+				<header class="arc-head">
+					<h3>{arcIITitle(locale, arc)}</h3>
+					<p class="arc-blurb">{arcIIBlurb(locale, arc)}</p>
+					{arcIIBoundary(locale, arc) && (
+						<p class="arc-boundary">
+							<span class="arc-boundary-label">{s(copy.boundary)}</span>
+							{arcIIBoundary(locale, arc)}
+						</p>
+					)}
+				</header>
+				<ul class="tree">
+					{arc.papers.map((id) => {
+						const p = byId.get(id);
+						return p ? (
+							<li class="node">
+								<TreeRow paper={p} locale={locale} />
+							</li>
+						) : null;
+					})}
+				</ul>
+			</section>
+		))
+	}
+</div>
+
+<style>
+	.tree-note {
+		margin: 0 0 1.4rem;
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		line-height: 1.6;
+		max-width: 78ch;
+	}
+	.arcs {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+	.arc-head {
+		border-left: 3px solid var(--accent);
+		padding-left: 0.9rem;
+		margin-bottom: 0.7rem;
+	}
+	.arc-evidence .arc-head,
+	.arc-overview2 .arc-head {
+		border-left-color: var(--border-strong);
+	}
+	.arc-head h3 {
+		margin: 0 0 0.35em;
+		font-size: 1.12rem;
+		font-family: var(--font-sans);
+	}
+	.arc-blurb {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.55;
+		color: var(--text-muted);
+		max-width: 74ch;
+	}
+	.arc-boundary {
+		margin: 0.5em 0 0;
+		font-size: 0.82rem;
+		line-height: 1.55;
+		color: var(--text-faint);
+		max-width: 74ch;
+	}
+	.arc-boundary-label {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.68rem;
+		font-weight: 700;
+		margin-right: 0.55em;
+		font-family: var(--font-sans);
+	}
+
+	.tree {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 0.9rem;
+	}
+	.node :global(.row)::before {
+		content: '';
+		position: absolute;
+		left: -0.55rem;
+		top: 50%;
+		width: 0.35rem;
+		height: 1px;
+		background: var(--border-strong);
+	}
+	.node :global(.row)::after {
+		content: '';
+		position: absolute;
+		left: -0.55rem;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: var(--border-strong);
+	}
+	.node:first-child :global(.row)::after {
+		top: 50%;
+	}
+	.node:last-child :global(.row)::after {
+		bottom: 50%;
+	}
+</style>

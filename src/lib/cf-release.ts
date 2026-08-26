@@ -356,6 +356,108 @@ export const RELEASE_ABSTRACT: L10n[] = [
 
 export const abstractText = (locale: Locale, p: L10n) => pick(locale, p);
 
+/* ------------------------------------------------------------------ */
+/* Foundational Release II (CF-OV2, 2026-08-26)                        */
+/* ------------------------------------------------------------------ */
+//
+// Release II extends selected Release-I threads into time and
+// electromagnetism. It does NOT revise Release I retroactively — a later
+// result may illuminate an earlier open problem without changing what the
+// earlier paper proved (CF-OV2).
+//
+// Structure is by arc rather than by provenance edges: unlike CF-OV1,
+// Release II's overview does not publish a frozen edge ledger, so the
+// grouping here follows its own arc description and is deliberately
+// presented as a grouped index, not as a provenance graph.
+
+export const RELEASE_II = {
+	records: 8,
+	preprints: 7,
+	datasets: 1,
+	published: '2026-08-26',
+};
+
+export interface ReleaseIIArc {
+	key: string;
+	category: string;
+	papers: string[];
+	title: L10n;
+	blurb: L10n;
+	/** What the arc explicitly does NOT establish, per its own papers. */
+	boundary?: L10n;
+}
+
+export const RELEASE_II_ARCS: ReleaseIIArc[] = [
+	{
+		key: 'time',
+		category: 'cf-time',
+		papers: [
+			'cf-11-complementarity-first-time',
+			'cf-12-complement-twisted-duality',
+			'cf-13-quantum-clocks',
+		],
+		title: { en: 'Time', 'zh-cn': '时间', 'zh-tw': '時間' },
+		blurb: {
+			en: 'Whether a relation-first theory forces more than one timelike dimension, how a one-time carrier reaches singlet completion and exchange dynamics, and how relational interval, clock phase, redshift and matter coupling come apart.',
+			'zh-cn': '关系优先的理论是否会迫使出现不止一个类时维度；单一时间载体如何抵达单态完成与交换动力学；以及关系性间隔、时钟相位、红移与物质耦合如何彼此分离。',
+			'zh-tw': '關係優先的理論是否會迫使出現不止一個類時維度；單一時間載體如何抵達單態完成與交換動力學；以及關係性間隔、時鐘相位、紅移與物質耦合如何彼此分離。',
+		},
+		boundary: {
+			en: 'Conditional throughout. Spacetime is not derived from bare complementarity, and the absolute time scale remains unresolved.',
+			'zh-cn': '全程均为条件性结果。时空并非由裸互补性推导而来，绝对时间标度仍未解决。',
+			'zh-tw': '全程均為條件性結果。時空並非由裸互補性推導而來，絕對時間尺度仍未解決。',
+		},
+	},
+	{
+		key: 'electromagnetism',
+		category: 'cf-electromagnetism',
+		papers: [
+			'cf-14-complementarity-before-electromagnetism',
+			'cf-15-conditional-maxwell-reconstruction',
+			'cf-16-radiation-helicity-quantization',
+		],
+		title: { en: 'Electromagnetism', 'zh-cn': '电磁学', 'zh-tw': '電磁學' },
+		blurb: {
+			en: 'From a conditional one-time-plus-three-space balance for two-form sectors, through a step-by-step Maxwell reconstruction with an exact Abelian descendant, to radiation, helicity and quantization.',
+			'zh-cn': '从二形式部分的条件性「一时加三空」平衡出发，经由逐步的 Maxwell 重构（含一个精确的阿贝尔后继），抵达辐射、螺旋度与量子化。',
+			'zh-tw': '從二形式部分的條件性「一時加三空」平衡出發，經由逐步的 Maxwell 重構（含一個精確的阿貝爾後繼），抵達輻射、螺旋度與量子化。',
+		},
+		boundary: {
+			en: 'Stops at the QED boundary: no vacuum, matter, renormalization, infrared dressing, or full quantum electrodynamics is claimed.',
+			'zh-cn': '止步于 QED 边界：不主张真空、物质、重整化、红外缀饰，也不主张完整的量子电动力学。',
+			'zh-tw': '止步於 QED 邊界：不主張真空、物質、重整化、紅外綴飾，也不主張完整的量子電動力學。',
+		},
+	},
+	{
+		key: 'evidence',
+		category: 'cf-dataset',
+		papers: ['cf-17-electromagnetism-certificates-archive'],
+		title: { en: 'Evidence archive', 'zh-cn': '证据存档', 'zh-tw': '證據存檔' },
+		blurb: {
+			en: 'Exact certificates, claim-to-evidence maps and verification tools for the three electromagnetism papers. The only Release II record published as a Zenodo Dataset.',
+			'zh-cn': '三篇电磁学论文的精确证书、主张—证据对照与验证工具。这是发布 II 中唯一以 Zenodo 数据集形式发布的记录。',
+			'zh-tw': '三篇電磁學論文的精確證書、主張—證據對照與驗證工具。這是發布 II 中唯一以 Zenodo 資料集形式發布的紀錄。',
+		},
+	},
+	{
+		key: 'overview2',
+		category: 'cf-overview',
+		papers: ['cf-18-release-ii-overview'],
+		title: { en: 'Overview', 'zh-cn': '总览', 'zh-tw': '總覽' },
+		blurb: {
+			en: 'Dependencies, theorem ownership, countermodels, nonclaims, reproducibility structure and the selectors that remain open across all eight records.',
+			'zh-cn': '覆盖全部八条记录的依赖关系、定理归属、反模型、非主张、可复现结构，以及仍然未决的选择子。',
+			'zh-tw': '涵蓋全部八條紀錄的相依關係、定理歸屬、反模型、非主張、可重現結構，以及仍然未決的選擇子。',
+		},
+	},
+];
+
+export const arcIITitle = (locale: Locale, a: ReleaseIIArc) => pick(locale, a.title);
+export const arcIIBlurb = (locale: Locale, a: ReleaseIIArc) => pick(locale, a.blurb);
+export const arcIIBoundary = (locale: Locale, a: ReleaseIIArc) =>
+	a.boundary ? pick(locale, a.boundary) : undefined;
+
+
 
 /* ------------------------------------------------------------------ */
 /* Provenance graph (CF-OV1, exact frozen 26-edge ledger)              */

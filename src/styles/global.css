@@ -60,6 +60,13 @@
 	--cat-cf-synthesis-bg: #dceadf;
 	--cat-cf-overview: #55504a;
 	--cat-cf-overview-bg: #e7e2d8;
+	/* Complementarity-First — Release II */
+	--cat-cf-time: #6b3a5c;
+	--cat-cf-time-bg: #efdfe9;
+	--cat-cf-electromagnetism: #1f5c56;
+	--cat-cf-electromagnetism-bg: #d8ebe7;
+	--cat-cf-dataset: #5a5230;
+	--cat-cf-dataset-bg: #e9e5cf;
 
 	/* Header/effects — shadows slightly tinted brown */
 	--header-bg: rgba(250, 245, 234, 0.85);
@@ -117,6 +124,13 @@
 	--cat-cf-synthesis-bg: #dcfce7;
 	--cat-cf-overview: #52525b;
 	--cat-cf-overview-bg: #e4e4e7;
+	/* Complementarity-First — Release II */
+	--cat-cf-time: #a21caf;
+	--cat-cf-time-bg: #fae8ff;
+	--cat-cf-electromagnetism: #0f766e;
+	--cat-cf-electromagnetism-bg: #ccfbf1;
+	--cat-cf-dataset: #854d0e;
+	--cat-cf-dataset-bg: #fef9c3;
 
 	--header-bg: rgba(245, 247, 249, 0.85);
 	--shadow-sm: 0 1px 2px rgba(20, 30, 45, 0.05);
@@ -173,6 +187,13 @@
 	--cat-cf-synthesis-bg: #052e16;
 	--cat-cf-overview: #a1a1aa;
 	--cat-cf-overview-bg: #27272a;
+	/* Complementarity-First — Release II */
+	--cat-cf-time: #f0abfc;
+	--cat-cf-time-bg: #3b0764;
+	--cat-cf-electromagnetism: #5eead4;
+	--cat-cf-electromagnetism-bg: #042f2e;
+	--cat-cf-dataset: #fde047;
+	--cat-cf-dataset-bg: #3a3208;
 
 	--header-bg: rgba(37, 44, 56, 0.9);  /* matches lifted --bg */
 	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -461,6 +482,21 @@ th {
 .badge-cf-overview {
 	background: var(--cat-cf-overview-bg);
 	color: var(--cat-cf-overview);
+}
+
+.badge-cf-time {
+	background: var(--cat-cf-time-bg);
+	color: var(--cat-cf-time);
+}
+
+.badge-cf-electromagnetism {
+	background: var(--cat-cf-electromagnetism-bg);
+	color: var(--cat-cf-electromagnetism);
+}
+
+.badge-cf-dataset {
+	background: var(--cat-cf-dataset-bg);
+	color: var(--cat-cf-dataset);
 }
 
 /* Release-code chip (CF-F1, CFQF-Q4, ...) shown next to CF paper titles */

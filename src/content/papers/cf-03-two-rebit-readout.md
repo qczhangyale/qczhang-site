@@ -5,6 +5,7 @@ doi: "10.5281/zenodo.21926013"
 date: 2026-08-18
 order: 3
 series: cf
+release: 1
 code: CFQF-Q1
 category: cf-quantum
 description: "For two rebits, real product effects span only nine of the ten dimensions of the state carrier, leaving one product-invisible coordinate. This paper treats access to it as a copy-depth, control-topology and orientation-resource problem — and gives two exact meters that read it out after reunion."

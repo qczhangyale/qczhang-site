@@ -16,6 +16,11 @@ export default defineConfig({
 		'/zh-cn/complementarity-first/tree': '/zh-cn/',
 		'/zh-tw/complementarity-first': '/zh-tw/',
 		'/zh-tw/complementarity-first/tree': '/zh-tw/',
+		// The Release I-only essay is superseded by the combined Releases I & II
+		// guide, which also carries the classic-TCG lineage section.
+		'/blog/what-if-reality-begins-with-a-relationship': '/blog/from-relation-to-reality/',
+		'/zh-cn/blog/what-if-reality-begins-with-a-relationship': '/zh-cn/blog/from-relation-to-reality/',
+		'/zh-tw/blog/what-if-reality-begins-with-a-relationship': '/zh-tw/blog/from-relation-to-reality/',
 	},
 	site: 'https://qczhang.com',
 	integrations: [mdx(), sitemap()],
