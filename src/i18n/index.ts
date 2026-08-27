@@ -186,7 +186,7 @@ const en: Dict = {
 	// ---- Complementarity-First hub ----
 	'cf.eyebrow': 'Foundational Releases I & II',
 	'cf.title': 'Complementarity-First',
-	'cf.tagline': 'Building physics from relations before objects',
+	'cf.tagline': 'Building physics from complementary relations before objects',
 	'cf.lead1': 'Most physical theories begin with nouns: particles move through space, fields occupy spacetime, states belong to systems. Complementarity-First reverses that order. Its proposed primitive is a <em>completed relation</em> whose distinguishable roles exist only through that completion — and it asks how much of physics can be rebuilt from there.',
 	'cf.lead2': 'The programme\u2019s most important rule is restraint: nothing is allowed to emerge by verbal suggestion alone. Probability, complex numbers, dimensionality, geometry, transport, dynamics and scale must each be derived or explicitly supplied. The added choices are called <em>selectors</em>, and exposing them is treated as part of the scientific result.',
 	'cf.stat.records': 'Records',

@@ -263,6 +263,16 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
+	/* The header is sticky at top: 0, so an in-page jump would otherwise park
+	   its target underneath it — the reader lands on whatever follows the
+	   heading they asked for. Offset every anchor by the header's height. */
+	scroll-padding-top: 6rem;
+}
+
+@media (max-width: 720px) {
+	html {
+		scroll-padding-top: 5rem;
+	}
 }
 
 body {
