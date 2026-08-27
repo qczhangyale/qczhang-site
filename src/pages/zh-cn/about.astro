@@ -7,7 +7,19 @@ import { getPaperCounts } from '../../lib/paper-stats';
 
 const locale = 'zh-cn';
 const counts = await getPaperCounts();
-const corpusBody = t(locale, 'about.corpusBody', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
+// Every number on this page is read from the content collection, so the prose
+// cannot drift as records are added.
+const vars = {
+	total: counts.total,
+	cf: counts.cf,
+	cfRelease1: counts.cfRelease1,
+	cfRelease2: counts.cfRelease2,
+	tcg: counts.tcg,
+	tcgArc: counts.tcgArc,
+	adjacent: counts.adjacent,
+};
+const bold = (key: string) =>
+	t(locale, key, vars).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 ---
 
 <!doctype html>
@@ -39,22 +51,28 @@ const corpusBody = t(locale, 'about.corpusBody', { total: counts.total, tcgArc: 
 		</div>
 
 		<main>
-			<p>{t(locale, 'about.intro')}</p>
-			<p set:html={t(locale, 'about.framework').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')}></p>
+			<p set:html={bold('about.intro')}></p>
+
+			<h2>{t(locale, 'about.cf')}</h2>
+			<p set:html={bold('about.cfBody')}></p>
+			<p><a href="/zh-cn/">浏览互补性优先的记录 →</a></p>
+
+			<h2>{t(locale, 'about.tcg')}</h2>
+			<p set:html={bold('about.framework')}></p>
+			<p><a href="/zh-cn/tcg/">浏览扭量构型几何的弧 →</a></p>
 
 			<h2>{t(locale, 'about.empiricalAnchor')}</h2>
-			<p set:html={t(locale, 'about.empiricalAnchorBody').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')}></p>
+			<p set:html={bold('about.empiricalAnchorBody')}></p>
 
 			<h2>{t(locale, 'about.prediction')}</h2>
 			<p>
-				{t(locale, 'about.predictionBody')} 框架还包含一条不可行定理(壳上弱角不可能,
-				60σ 排除)和三条结构性约束,详见
-				<a href="/zh-cn/papers/04-predictions-no-go/">预测与不可行性论文</a>。
+				{t(locale, 'about.predictionBody')} {t(locale, 'about.predictionExtra')}
+				详见<a href="/zh-cn/papers/04-predictions-no-go/">预测与不可行性论文</a>。
 			</p>
 
 			<h2>{t(locale, 'about.corpus')}</h2>
 			<p>
-				{corpusBody} 详见<a href="/zh-cn/papers/">{t(locale, 'about.corpusList')}</a>。
+				{t(locale, 'about.corpusBody', vars)} 详见<a href="/zh-cn/papers/">完整列表</a>。
 			</p>
 
 			<div class="contact-card">

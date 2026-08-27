@@ -23,7 +23,7 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
 	// Site identity
-	'site.brandTag': 'Complementarity-First · Twistor Configuration Geometry',
+	'site.brandTag': 'From Relation to Reality',
 	'site.tagline': 'A research program on the dimensionless constants of physics.',
 
 	// Nav
@@ -137,14 +137,18 @@ const en: Dict = {
 	'about.eyebrow': 'About',
 	'about.title': 'Q.C. Zhang',
 	'about.lede': 'Independent researcher in theoretical physics.',
-	'about.intro': "My work proposes that the dimensionless constants of physics — α, Λ, α_G, Yukawa couplings, sin²θ_W, and others — are not free parameters but structural invariants of a combinatorial geometry built on Penrose's projective twistor space CP³.",
-	'about.framework': "The framework is **Twistor Configuration Geometry (TCG)**; the philosophical reading is the **Configurable Universe** — constants are chamber invariants, in the same sense that the dimension of a vector space is.",
+	'about.intro': 'I work on two connected research series. **Complementarity-First** asks how much of physics can be rebuilt when a completed relation — rather than an object, a field, or a spacetime point — is taken as the primitive. **Twistor Configuration Geometry** asks whether the dimensionless constants are structural invariants of a combinatorial geometry on Penrose’s projective twistor space CP³. Complementarity-First supplies the relational foundation beneath TCG, and is the current focus.',
+	'about.cf': 'Complementarity-First',
+	'about.cfBody': '{cf} records across two Foundational Releases. Release I ({cfRelease1} records) states the primitive and carries it into quantum foundations and finite/local gravity; Release II ({cfRelease2} records) extends the reconstruction through relational time and electromagnetism, stopping at the QED boundary. The governing rule is anti-flattening: each result records what had to be supplied rather than derived, and countermodels and negative results are kept at equal standing with the constructions. It is not a completed theory of physics.',
+	'about.tcg': 'Twistor Configuration Geometry',
+	'about.framework': '{tcg} papers reading the dimensionless constants — α, Λ, α_G, Yukawa couplings, sin²θ_W and others — as **chamber invariants**, in the same sense that the dimension of a vector space is. The philosophical reading is the **Configurable Universe**.',
 	'about.empiricalAnchor': 'Empirical anchor',
 	'about.empiricalAnchorBody': 'Nine sub-percent algebraic relations among independently-measured constants, spanning **124 orders of magnitude** across six physical sectors — none currently derivable from the Standard Model or general relativity.',
 	'about.prediction': 'Falsifiable prediction',
 	'about.predictionBody': 'A spin-1 mediated short-range fifth force at α_Y ≈ 1.88×10⁴, λ ≲ 5–10 μm — about 500× from current short-range gravity bounds.',
 	'about.corpus': 'The corpus',
-	'about.corpusBody': '{total} papers on Zenodo, CC-BY-4.0: a {tcgArc}-paper Twistor Configuration Geometry arc (synthesis, framework architecture, specific empirical predictions, and methodology) plus {adjacent} adjacent workstreams.',
+	'about.corpusBody': '{total} records on Zenodo, CC-BY-4.0: {cf} in Complementarity-First and {tcg} in Twistor Configuration Geometry — the latter a {tcgArc}-paper arc (synthesis, framework architecture, empirical predictions, methodology) plus {adjacent} adjacent workstreams.',
+	'about.predictionExtra': 'The framework also carries one no-go theorem (60σ on-shell weak-angle exclusion) and three structural constraints.',
 	'about.corpusList': 'See the full list',
 	'about.contact': 'Contact',
 	'about.contactEmail': 'Email',
@@ -235,7 +239,7 @@ const en: Dict = {
 };
 
 const zhCN: Dict = {
-	'site.brandTag': '互补性优先 · 扭量构型几何',
+	'site.brandTag': '从关系到万物',
 	'site.tagline': '关于物理学无量纲常数的研究计划。',
 
 	'nav.home': '首页',
@@ -339,14 +343,18 @@ const zhCN: Dict = {
 	'about.eyebrow': '关于',
 	'about.title': '张庆春',
 	'about.lede': '理论物理独立研究者。',
-	'about.intro': '我的工作提议:物理学的无量纲常数 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 并非自由参数,而是建立在彭罗斯射影扭量空间 CP³ 上的某种组合几何的结构不变量。',
-	'about.framework': '框架称为**扭量构型几何 (TCG)**;哲学诠释为**可配置宇宙** — 常数即腔室不变量,正如向量空间的维度是其结构不变量一样。',
+	'about.intro': '我的研究包含两个彼此相连的系列。**互补性优先**追问:若以一个「已完成的关系」——而非对象、场或时空点——作为原语,物理能被重建到什么程度。**扭量构型几何**追问:无量纲常数是否是建立在彭罗斯射影扭量空间 CP³ 上的某种组合几何的结构不变量。互补性优先为扭量构型几何提供关系性基础,也是当前的重心。',
+	'about.cf': '互补性优先',
+	'about.cfBody': '两次基础性发布共 {cf} 条记录。发布 I({cfRelease1} 条)陈述原语,并将其带入量子基础与有限／局域引力;发布 II({cfRelease2} 条)把重建推进到关系性时间与电磁学,止步于 QED 边界。其准则是反扁平化:每项结果都记录下什么是必须被提供而非被推导的,反模型与否定结果与正面构造享有同等地位。它不是一套完成的物理理论。',
+	'about.tcg': '扭量构型几何',
+	'about.framework': '{tcg} 篇论文,把无量纲常数 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 读作**腔室不变量**,正如向量空间的维度是其结构不变量一样。哲学诠释为**可配置宇宙**。',
 	'about.empiricalAnchor': '经验锚点',
 	'about.empiricalAnchorBody': '独立测得常数之间的九条亚百分位代数关系,横跨六个物理领域,涵盖 **124 个数量级** — 当前没有一条可从标准模型或广义相对论推导得出。',
 	'about.prediction': '可证伪预测',
 	'about.predictionBody': '一种自旋-1 介导的短程第五力,α_Y ≈ 1.88×10⁴,λ ≲ 5–10 μm — 距当前短程引力实验限约 500 倍。',
 	'about.corpus': '文集',
-	'about.corpusBody': '{total} 篇论文,Zenodo 发表,CC-BY-4.0 许可:{tcgArc} 篇扭量构型几何论文系列(综合、框架架构、具体经验预测与方法论)加 {adjacent} 条相邻工作线。',
+	'about.corpusBody': 'Zenodo 上共 {total} 条记录,CC-BY-4.0 许可:互补性优先 {cf} 条,扭量构型几何 {tcg} 篇——后者包含 {tcgArc} 篇的主线(综合、框架架构、经验预测与方法论)加 {adjacent} 条相邻工作线。',
+	'about.predictionExtra': '框架还包含一条不可行定理(壳上弱角不可能,60σ 排除)与三条结构性约束。',
 	'about.corpusList': '查看完整列表',
 	'about.contact': '联系',
 	'about.contactEmail': '邮箱',
@@ -435,7 +443,7 @@ const zhCN: Dict = {
 };
 
 const zhTW: Dict = {
-	'site.brandTag': '互補性優先 · 扭量構型幾何',
+	'site.brandTag': '從關係到萬物',
 	'site.tagline': '關於物理學無量綱常數的研究計畫。',
 
 	'nav.home': '首頁',
@@ -539,14 +547,18 @@ const zhTW: Dict = {
 	'about.eyebrow': '關於',
 	'about.title': '張慶春',
 	'about.lede': '理論物理獨立研究者。',
-	'about.intro': '我的工作提議:物理學的無量綱常數 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 並非自由參數,而是建立在彭羅斯射影扭量空間 CP³ 上的某種組合幾何的結構不變量。',
-	'about.framework': '框架稱為**扭量構型幾何 (TCG)**;哲學詮釋為**可配置宇宙** — 常數即腔室不變量,正如向量空間的維度是其結構不變量一樣。',
+	'about.intro': '我的研究包含兩個彼此相連的系列。**互補性優先**追問:若以一個「已完成的關係」——而非對象、場或時空點——作為原語,物理能被重建到什麼程度。**扭量構型幾何**追問:無量綱常數是否是建立在彭羅斯射影扭量空間 CP³ 上的某種組合幾何的結構不變量。互補性優先為扭量構型幾何提供關係性基礎,也是當前的重心。',
+	'about.cf': '互補性優先',
+	'about.cfBody': '兩次基礎性發布共 {cf} 條紀錄。發布 I({cfRelease1} 條)陳述原語,並將其帶入量子基礎與有限／局域重力;發布 II({cfRelease2} 條)把重建推進到關係性時間與電磁學,止步於 QED 邊界。其準則是反扁平化:每項結果都記錄下什麼是必須被提供而非被推導的,反模型與否定結果與正面構造享有同等地位。它不是一套完成的物理理論。',
+	'about.tcg': '扭量構型幾何',
+	'about.framework': '{tcg} 篇論文,把無量綱常數 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 讀作**腔室不變量**,正如向量空間的維度是其結構不變量一樣。哲學詮釋為**可配置宇宙**。',
 	'about.empiricalAnchor': '經驗錨點',
 	'about.empiricalAnchorBody': '獨立測得常數之間的九條亞百分位代數關係,橫跨六個物理領域,涵蓋 **124 個數量級** — 當前沒有一條可從標準模型或廣義相對論推導得出。',
 	'about.prediction': '可證偽預測',
 	'about.predictionBody': '一種自旋-1 介導的短程第五力,α_Y ≈ 1.88×10⁴,λ ≲ 5–10 μm — 距當前短程重力實驗限約 500 倍。',
 	'about.corpus': '文集',
-	'about.corpusBody': '{total} 篇論文,Zenodo 發表,CC-BY-4.0 授權:{tcgArc} 篇扭量構型幾何論文系列(綜合、框架架構、具體經驗預測與方法論)加 {adjacent} 條相鄰工作線。',
+	'about.corpusBody': 'Zenodo 上共 {total} 條紀錄,CC-BY-4.0 授權:互補性優先 {cf} 條,扭量構型幾何 {tcg} 篇——後者包含 {tcgArc} 篇的主線(綜合、框架架構、經驗預測與方法論)加 {adjacent} 條相鄰工作線。',
+	'about.predictionExtra': '框架還包含一條不可行定理(殼上弱角不可能,60σ 排除)與三條結構性約束。',
 	'about.corpusList': '查看完整列表',
 	'about.contact': '聯絡',
 	'about.contactEmail': '電子郵件',

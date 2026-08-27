@@ -18,12 +18,7 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 			<Image src={avatar} alt="" width={72} height={72} class="brand-avatar" loading="eager" />
 			<div class="brand-text">
 				<span class="brand-name">{SITE_TITLE}</span>
-				{/* One series per line: joined with a separator the pair ran too
-				    long for the bar, and the two names read as one label. */}
-				<span class="brand-tag">
-					<span>{t(locale, 'nav.cf')}</span>
-					<span>{t(locale, 'nav.tcg')}</span>
-				</span>
+				<span class="brand-tag">{t(locale, 'site.brandTag')}</span>
 			</div>
 		</a>
 		<div class="header-right">
@@ -125,12 +120,8 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 		font-weight: 500;
 		letter-spacing: 0.02em;
 		margin-top: 0.1em;
-		line-height: 1.35;
-	}
-	.brand-tag span {
-		display: block;
-		/* Each series name holds its own line — without this the flex bar
-		   squeezes the brand column and both names fragment. */
+		/* Short enough for one line — without this the flex bar squeezes the
+		   brand column and the phrase fragments. */
 		white-space: nowrap;
 	}
 
@@ -182,11 +173,10 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 	/* Both series names are spelled out twice in this bar — once in the brand
 	   block, once in the nav. Below laptop width the spacing tightens; the
 	   brand tagline only drops on phones, where the nav wraps anyway. */
-	/* Below laptop width the English bar cannot hold both spelled-out series
-	   names in the nav plus the brand tagline plus the three control groups on
-	   one row, so it is allowed to wrap and the tagline (which the nav already
-	   repeats) steps aside. */
-	@media (max-width: 1080px) {
+	/* Below this width the English bar cannot hold both spelled-out series
+	   names in the nav plus the tagline plus the three control groups on one
+	   row, so it wraps and the tagline steps aside. */
+	@media (max-width: 980px) {
 		.brand-tag {
 			display: none;
 		}

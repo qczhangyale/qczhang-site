@@ -6,9 +6,23 @@ import { SITE_TITLE } from '../consts';
 import { getPaperCounts } from '../lib/paper-stats';
 import { t } from '../i18n';
 
-const description = 'About Q.C. Zhang and the TCG / Configurable Universe research program.';
+const description =
+	'About Q.C. Zhang and the two research series: Complementarity-First and Twistor Configuration Geometry.';
+const locale = 'en';
 const counts = await getPaperCounts();
-const corpusBody = t('en', 'about.corpusBody', { total: counts.total, tcgArc: counts.tcgArc, adjacent: counts.adjacent });
+// Every number on this page is read from the content collection, so the prose
+// cannot drift as records are added.
+const vars = {
+	total: counts.total,
+	cf: counts.cf,
+	cfRelease1: counts.cfRelease1,
+	cfRelease2: counts.cfRelease2,
+	tcg: counts.tcg,
+	tcgArc: counts.tcgArc,
+	adjacent: counts.adjacent,
+};
+const bold = (key: string) =>
+	t(locale, key, vars).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
 // JSON-LD Person schema — feeds Google Knowledge Graph
 const personSchema = {
@@ -22,15 +36,19 @@ const personSchema = {
 	email: 'mailto:qczhang@aya.yale.edu',
 	knowsAbout: [
 		'Theoretical physics',
+		'Foundations of physics',
+		'Foundations of quantum mechanics',
+		'Complementarity-First',
+		'Relational time',
 		'Twistor theory',
 		'Quantum gravity',
 		'Cosmological constant',
-		'Foundations of physics',
 		'Configurable Universe',
 		'Twistor Configuration Geometry',
 	],
 	subjectOf: [
-		{ '@type': 'CreativeWork', name: 'Twistor Configuration Geometry research program', url: new URL('/papers/', Astro.site).toString() },
+		{ '@type': 'CreativeWork', name: 'Complementarity-First research series', url: new URL('/', Astro.site).toString() },
+		{ '@type': 'CreativeWork', name: 'Twistor Configuration Geometry research series', url: new URL('/tcg/', Astro.site).toString() },
 	],
 };
 ---
@@ -103,56 +121,48 @@ const personSchema = {
 		<Header />
 		<div class="page-header">
 			<div class="page-header-inner">
-				<div class="page-eyebrow">About</div>
-				<h1>Q.C. Zhang</h1>
-				<p class="lede">
-					Independent researcher in theoretical physics.
-				</p>
+				<div class="page-eyebrow">{t(locale, 'about.eyebrow')}</div>
+				<h1>{t(locale, 'about.title')}</h1>
+				<p class="lede">{t(locale, 'about.lede')}</p>
 			</div>
 		</div>
 
 		<main>
+			<p set:html={bold('about.intro')}></p>
+
+			<h2>{t(locale, 'about.cf')}</h2>
+			<p set:html={bold('about.cfBody')}></p>
 			<p>
-				My work proposes that the dimensionless constants of physics — α, Λ, α<sub>G</sub>,
-				Yukawa couplings, sin²θ<sub>W</sub>, and others — are not free parameters but
-				structural invariants of a combinatorial geometry built on Penrose's projective
-				twistor space CP³.
+				<a href="/">Browse the Complementarity-First records →</a>
 			</p>
 
+			<h2>{t(locale, 'about.tcg')}</h2>
+			<p set:html={bold('about.framework')}></p>
 			<p>
-				The framework is <strong>Twistor Configuration Geometry (TCG)</strong>; the
-				philosophical reading is the <strong>Configurable Universe</strong> — constants
-				are chamber invariants, in the same sense that the dimension of a vector space is.
+				<a href="/tcg/">Browse the Twistor Configuration Geometry arcs →</a>
 			</p>
 
-			<h2>Empirical anchor</h2>
+			<h2>{t(locale, 'about.empiricalAnchor')}</h2>
+			<p set:html={bold('about.empiricalAnchorBody')}></p>
+
+			<h2>{t(locale, 'about.prediction')}</h2>
 			<p>
-				Nine sub-percent algebraic relations among independently-measured constants,
-				spanning <strong>124 orders of magnitude</strong> across six physical sectors —
-				none currently derivable from the Standard Model or general relativity.
+				{t(locale, 'about.predictionBody')} {t(locale, 'about.predictionExtra')}
+				{' '}See the <a href="/papers/04-predictions-no-go/">Predictions ledger</a>.
 			</p>
 
-			<h2>Falsifiable prediction</h2>
+			<h2>{t(locale, 'about.corpus')}</h2>
 			<p>
-				A spin-1 mediated short-range fifth force at α<sub>Y</sub> ≈ 1.88×10⁴, λ ≲ 5–10 μm —
-				about 500× from current short-range gravity bounds. The framework also includes
-				one no-go theorem (60σ on-shell weak-angle exclusion) and three structural
-				constraints, listed in the <a href="/papers/04-predictions-no-go/">Predictions
-				ledger</a>.
-			</p>
-
-			<h2>The corpus</h2>
-			<p>
-				{corpusBody} See the <a href="/papers/">full list</a>.
+				{t(locale, 'about.corpusBody', vars)} See the <a href="/papers/">full list</a>.
 			</p>
 
 			<div class="contact-card">
-				<h3>Contact</h3>
+				<h3>{t(locale, 'about.contact')}</h3>
 				<p>
-					Email: <a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a>
+					{t(locale, 'about.contactEmail')}: <a href="mailto:qczhang@aya.yale.edu">qczhang@aya.yale.edu</a>
 				</p>
 				<p style="margin-bottom: 0;">
-					Open to criticism, collaboration, and pointers to related work.
+					{t(locale, 'about.contactOpen')}
 				</p>
 			</div>
 		</main>
