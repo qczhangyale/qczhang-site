@@ -119,7 +119,12 @@ const copy = {
 
 <section class="hero">
 	<div class="hero-inner">
-		<div class="hero-eyebrow">{t(locale, 'cf.eyebrow')}</div>
+		<div class="hero-eyebrow">
+			{/* Jumps past the essay to the record index — the same target as
+			    the strapline's skip link, for readers who read the eyebrow as
+			    the name of what they came to browse. */}
+			<a href="#records">{t(locale, 'cf.eyebrow')}<span class="eyebrow-arrow" aria-hidden="true">↓</span></a>
+		</div>
 		<h1>{t(locale, 'cf.title')}</h1>
 		<p class="hero-tagline">{t(locale, 'cf.tagline')}</p>
 		<p class="strapline">
@@ -243,6 +248,29 @@ const copy = {
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		margin-bottom: 0.6rem;
+	}
+	.hero-eyebrow a {
+		color: inherit;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.4em;
+	}
+	.hero-eyebrow a:hover,
+	.hero-eyebrow a:focus-visible {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+	}
+	.eyebrow-arrow {
+		font-size: 0.9em;
+		opacity: 0;
+		transform: translateY(-2px);
+		transition: opacity 0.14s, transform 0.14s;
+	}
+	.hero-eyebrow a:hover .eyebrow-arrow,
+	.hero-eyebrow a:focus-visible .eyebrow-arrow {
+		opacity: 1;
+		transform: translateY(0);
 	}
 	.hero h1 {
 		font-size: 2.15rem;
