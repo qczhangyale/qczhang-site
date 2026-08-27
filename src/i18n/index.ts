@@ -23,7 +23,7 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
 	// Site identity
-	'site.brandTag': 'Complementarity-First · TCG',
+	'site.brandTag': 'Complementarity-First · Twistor Configuration Geometry',
 	'site.tagline': 'A research program on the dimensionless constants of physics.',
 
 	// Nav
@@ -164,7 +164,7 @@ const en: Dict = {
 
 	// ---- Series navigation ----
 	'nav.cf': 'Complementarity-First',
-	'nav.tcg': 'TCG',
+	'nav.tcg': 'Twistor Configuration Geometry',
 	'series.cf.name': 'Complementarity-First',
 	'series.tcg.name': 'Twistor Configuration Geometry',
 

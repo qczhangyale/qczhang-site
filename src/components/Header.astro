@@ -18,7 +18,12 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 			<Image src={avatar} alt="" width={72} height={72} class="brand-avatar" loading="eager" />
 			<div class="brand-text">
 				<span class="brand-name">{SITE_TITLE}</span>
-				<span class="brand-tag">{t(locale, 'site.brandTag')}</span>
+				{/* One series per line: joined with a separator the pair ran too
+				    long for the bar, and the two names read as one label. */}
+				<span class="brand-tag">
+					<span>{t(locale, 'nav.cf')}</span>
+					<span>{t(locale, 'nav.tcg')}</span>
+				</span>
 			</div>
 		</a>
 		<div class="header-right">
@@ -26,8 +31,8 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 				{/* The homepage IS the Complementarity-First page, so it is named
 				    as such rather than "Home" — otherwise the primary series has
 				    no visible entry in the nav. */}
-				<HeaderLink href={localePrefix + '/'}>{t(locale, 'nav.cf')}</HeaderLink>
-				<HeaderLink href={localePrefix + '/tcg'}>{t(locale, 'nav.tcg')}</HeaderLink>
+				<HeaderLink href={localePrefix + '/'} class="nav-series-cf">{t(locale, 'nav.cf')}</HeaderLink>
+				<HeaderLink href={localePrefix + '/tcg'} class="nav-series-tcg">{t(locale, 'nav.tcg')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/papers'}>{t(locale, 'nav.papers')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/blog'}>{t(locale, 'nav.posts')}</HeaderLink>
 				<HeaderLink href={localePrefix + '/about'}>{t(locale, 'nav.about')}</HeaderLink>
@@ -51,21 +56,29 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 	.header-right {
 		display: flex;
 		align-items: center;
-		gap: 0.7rem;
+		gap: 0.55rem;
+	}
+	/* The pickers keep their size; if the bar ever runs out of room the nav
+	   is what gives, rather than the controls silently compressing. */
+	.header-right > :global(*:not(.nav-links)) {
+		flex-shrink: 0;
 	}
 
 	.header-inner {
-		max-width: var(--page-width-wide);
+		/* Wider than --page-width-wide on purpose: the bar carries both series
+		   names twice (brand block and nav) and does not fit the text measure. */
+		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0.9em 1.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 2rem;
+		gap: 1.2rem;
 	}
 
 	.brand {
 		display: flex;
+		flex-shrink: 0;
 		flex-direction: row;
 		align-items: center;
 		gap: 0.7rem;
@@ -112,23 +125,47 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 		font-weight: 500;
 		letter-spacing: 0.02em;
 		margin-top: 0.1em;
+		line-height: 1.35;
+	}
+	.brand-tag span {
+		display: block;
+		/* Each series name holds its own line — without this the flex bar
+		   squeezes the brand column and both names fragment. */
+		white-space: nowrap;
 	}
 
 	.nav-links {
 		display: flex;
+		align-items: center;
 		gap: 0.3em;
 	}
 
 	.nav-links :global(a) {
 		font-family: var(--font-sans);
 		font-size: 0.92rem;
-		/* Keep multi-word series names ("Complementarity-First") on one line. */
-		white-space: nowrap;
-		padding: 0.4em 0.85em;
+		/* The two series names are long enough that holding them on one line
+		   runs the bar off the edge. They wrap onto two balanced lines instead;
+		   the short tabs stay single-line and centre against them. */
+		text-wrap: balance;
+		text-align: center;
+		line-height: 1.2;
+		/* Fixed widths above decide the line breaks; letting flex shrink them
+		   further fragments the labels into three and four lines. */
+		flex-shrink: 0;
+		padding: 0.4em 0.7em;
 		color: var(--text-muted);
 		text-decoration: none;
 		border-radius: 4px;
 		transition: color 0.15s, background 0.15s;
+	}
+
+	/* Only the two series names are long enough to need wrapping; the caps are
+	   in em so the Chinese labels (five and six characters) never reach them. */
+	.nav-links :global(a.nav-series-cf) {
+		max-width: 11.2em;
+	}
+	.nav-links :global(a.nav-series-tcg) {
+		max-width: 13.2em;
 	}
 
 	.nav-links :global(a:hover) {
@@ -140,6 +177,41 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 	.nav-links :global(a.active) {
 		color: var(--accent);
 		font-weight: 600;
+	}
+
+	/* Both series names are spelled out twice in this bar — once in the brand
+	   block, once in the nav. Below laptop width the spacing tightens; the
+	   brand tagline only drops on phones, where the nav wraps anyway. */
+	/* Below laptop width the English bar cannot hold both spelled-out series
+	   names in the nav plus the brand tagline plus the three control groups on
+	   one row, so it is allowed to wrap and the tagline (which the nav already
+	   repeats) steps aside. */
+	@media (max-width: 1080px) {
+		.brand-tag {
+			display: none;
+		}
+		.header-inner,
+		.header-right,
+		.nav-links {
+			flex-wrap: wrap;
+		}
+		.header-right {
+			justify-content: flex-end;
+			row-gap: 0.4rem;
+		}
+	}
+
+	@media (max-width: 1280px) {
+		.header-inner {
+			gap: 1rem;
+		}
+		.nav-links :global(a) {
+			padding: 0.4em 0.55em;
+			font-size: 0.87rem;
+		}
+		.header-right {
+			gap: 0.5rem;
+		}
 	}
 
 	@media (max-width: 720px) {

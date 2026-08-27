@@ -1,6 +1,6 @@
 ---
 title: "From Relation to Reality"
-description: "A Popular-Science Guide to Complementarity-First Foundational Releases I and II"
+description: "A popular-science guide to Releases I and II"
 pubDate: 2026-08-26
 pinned: true
 ---
