@@ -261,16 +261,10 @@ const copy = {
 		text-decoration: underline;
 		text-underline-offset: 0.25em;
 	}
+	/* Arrow always visible, matching the strapline skip link — the eyebrow
+	   should read as a jump link at rest, not only on hover. */
 	.eyebrow-arrow {
 		font-size: 0.9em;
-		opacity: 0;
-		transform: translateY(-2px);
-		transition: opacity 0.14s, transform 0.14s;
-	}
-	.hero-eyebrow a:hover .eyebrow-arrow,
-	.hero-eyebrow a:focus-visible .eyebrow-arrow {
-		opacity: 1;
-		transform: translateY(0);
 	}
 	.hero h1 {
 		font-size: 2.15rem;
