@@ -184,6 +184,8 @@ const pageDescription = "Long-form writing on the Twistor Configuration Geometry
 				font-size: 0.98rem;
 				line-height: 1.55;
 				flex: 1;
+				/* Never leave a single short word alone on the last line. */
+				text-wrap: balance;
 			}
 			.post-card:hover h2 {
 				color: var(--accent);
