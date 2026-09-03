@@ -91,7 +91,7 @@ const en: Dict = {
 	// Papers index
 	'papers.eyebrow': 'Bibliography',
 	'papers.title': 'Papers',
-	'papers.intro': '{total} papers across two research series: {cf} records in Complementarity-First Foundational Releases I and II, which propose a completed relation as the primitive, audit what it does not determine, and carry the reconstruction through relational time and electromagnetism, and {tcg} papers in Twistor Configuration Geometry, which treats the dimensionless constants as structural invariants. Complementarity-First supplies the relational foundation beneath TCG. All published on Zenodo under CC-BY-4.0.',
+	'papers.intro': '{total} papers across two research series: {cf} records in Complementarity-First Foundational Releases I–III, which propose a completed relation as the primitive, audit what it does not determine, and carry the reconstruction through relational time, electromagnetism and the quantum whole, and {tcg} papers in Twistor Configuration Geometry, which treats the dimensionless constants as structural invariants. Complementarity-First supplies the relational foundation beneath TCG. All published on Zenodo under CC-BY-4.0.',
 	'papers.metaDescription': 'Complete bibliography for the Complementarity-First and Twistor Configuration Geometry research series.',
 	'papers.statPapers': 'Papers',
 	'papers.statRelations': 'Empirical relations',
@@ -139,7 +139,7 @@ const en: Dict = {
 	'about.lede': 'Independent researcher in theoretical physics.',
 	'about.intro': 'I work on two connected research series. **Complementarity-First** asks how much of physics can be rebuilt when a completed relation — rather than an object, a field, or a spacetime point — is taken as the primitive. **Twistor Configuration Geometry** asks whether the dimensionless constants are structural invariants of a combinatorial geometry on Penrose’s projective twistor space CP³. Complementarity-First supplies the relational foundation beneath TCG, and is the current focus.',
 	'about.cf': 'Complementarity-First',
-	'about.cfBody': '{cf} records across two Foundational Releases. Release I ({cfRelease1} records) states the primitive and carries it into quantum foundations and finite/local gravity; Release II ({cfRelease2} records) extends the reconstruction through relational time and electromagnetism, stopping at the QED boundary. The governing rule is anti-flattening: each result records what had to be supplied rather than derived, and countermodels and negative results are kept at equal standing with the constructions. It is not a completed theory of physics.',
+	'about.cfBody': '{cf} records across three Foundational Releases. Release I ({cfRelease1} records) states the primitive and carries it into quantum foundations and finite/local gravity; Release II ({cfRelease2} records) extends the reconstruction through relational time and electromagnetism, stopping at the QED boundary; Release III opens with Wave A ({cfRelease3} records) on reciprocal internal complementarity, entanglement and finite Born-form readout. The governing rule is anti-flattening: each result records what had to be supplied rather than derived, and countermodels and negative results are kept at equal standing with the constructions. It is not a completed theory of physics.',
 	'about.tcg': 'Twistor Configuration Geometry',
 	'about.framework': '{tcg} papers reading the dimensionless constants — α, Λ, α_G, Yukawa couplings, sin²θ_W and others — as **chamber invariants**, in the same sense that the dimension of a vector space is. The philosophical reading is the **Configurable Universe**.',
 	'about.empiricalAnchor': 'Empirical anchor',
@@ -180,6 +180,7 @@ const en: Dict = {
 	'cat.cf-overview': 'Overview',
 	'cat.cf-time': 'Time',
 	'cat.cf-electromagnetism': 'Electromagnetism',
+	'cat.cf-ric': 'Reciprocal complementarity',
 	'cat.cf-dataset': 'Dataset',
 	'cat.synthesis': 'Synthesis',
 	'cat.cosmology': 'Cosmology',
@@ -188,7 +189,7 @@ const en: Dict = {
 	'cat.foundations': 'Foundations',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': 'Foundational Releases I & II',
+	'cf.eyebrow': 'Foundational Releases I–III',
 	'cf.title': 'Complementarity-First',
 	'cf.tagline': 'Building physics from complementary relations before objects',
 	'cf.lead1': 'Most physical theories begin with nouns: particles move through space, fields occupy spacetime, states belong to systems. Complementarity-First reverses that order. Its proposed primitive is a <em>completed relation</em> whose distinguishable roles exist only through that completion — and it asks how much of physics can be rebuilt from there.',
@@ -212,7 +213,7 @@ const en: Dict = {
 	'cf.readOverview': 'Read the release overview',
 	'cf.treeCta': 'Provenance tree',
 	'cf.essay.cta': 'Read the popular-science essay',
-	'cf.notPeerReviewed': 'Foundational Releases I and II are coordinated preprint corpora. Their AI-assisted internal reviews and internal audit lanes are not external human peer review or independent replication.',
+	'cf.notPeerReviewed': 'Foundational Releases I–III are coordinated preprint corpora. Their AI-assisted internal reviews and internal audit lanes are not external human peer review or independent replication.',
 
 	// ---- TCG hub ----
 	'tcg.eyebrow': 'Research series',
@@ -233,7 +234,7 @@ const en: Dict = {
 
 	// ---- Bibliography series headings ----
 	'papers.series.cf': 'Complementarity-First',
-	'papers.series.cfNote': 'Foundational Releases I and II — {n} records. Release I: a conceptual-formal primitive, four quantum-foundations studies, three gravity papers, and a synthesis. Release II: three papers on time, three on electromagnetism, and a reproducibility dataset. Each release is mapped by its own overview.',
+	'papers.series.cfNote': 'Foundational Releases I–III — {n} records. Release I: a conceptual-formal primitive, four quantum-foundations studies, three gravity papers, and a synthesis. Release II: three papers on time, three on electromagnetism, and a reproducibility dataset. Release III, Wave A: two papers on reciprocal internal complementarity and a reproducibility dataset.',
 	'papers.series.tcg': 'Twistor Configuration Geometry',
 	'papers.series.tcgNote': '{n} papers treating the dimensionless constants as structural invariants of a twistor configuration space.',
 };
@@ -300,7 +301,7 @@ const zhCN: Dict = {
 
 	'papers.eyebrow': '文献',
 	'papers.title': '论文',
-	'papers.intro': '横跨两个研究系列的 {total} 篇论文：互补性优先基础性发布 I 与 II 的 {cf} 条记录——提出以「已完成关系」为原语，审计它并不决定什么，并将重构推进到关系性时间与电磁学；以及扭量构型几何的 {tcg} 篇论文——把无量纲常数视为结构不变量。互补性优先为扭量构型几何提供关系性基础。全部以 CC-BY-4.0 协议发布于 Zenodo。',
+	'papers.intro': '横跨两个研究系列的 {total} 篇论文：互补性优先基础性发布 I–III 的 {cf} 条记录——提出以「已完成关系」为原语，审计它并不决定什么，并将重构推进到关系性时间、电磁学与量子整体；以及扭量构型几何的 {tcg} 篇论文——把无量纲常数视为结构不变量。互补性优先为扭量构型几何提供关系性基础。全部以 CC-BY-4.0 协议发布于 Zenodo。',
 	'papers.metaDescription': '互补性优先与扭量构型几何两个研究系列的完整文献目录。',
 	'papers.statPapers': '篇论文',
 	'papers.statRelations': '条经验关系',
@@ -345,7 +346,7 @@ const zhCN: Dict = {
 	'about.lede': '理论物理独立研究者。',
 	'about.intro': '我的研究包含两个彼此相连的系列。**互补性优先**追问:若以一个「已完成的关系」——而非对象、场或时空点——作为原语,物理能被重建到什么程度。**扭量构型几何**追问:无量纲常数是否是建立在彭罗斯射影扭量空间 CP³ 上的某种组合几何的结构不变量。互补性优先为扭量构型几何提供关系性基础,也是当前的重心。',
 	'about.cf': '互补性优先',
-	'about.cfBody': '两次基础性发布共 {cf} 条记录。发布 I({cfRelease1} 条)陈述原语,并将其带入量子基础与有限／局域引力;发布 II({cfRelease2} 条)把重建推进到关系性时间与电磁学,止步于 QED 边界。其准则是反扁平化:每项结果都记录下什么是必须被提供而非被推导的,反模型与否定结果与正面构造享有同等地位。它不是一套完成的物理理论。',
+	'about.cfBody': '三次基础性发布共 {cf} 条记录。发布 I({cfRelease1} 条)陈述原语,并将其带入量子基础与有限／局域引力;发布 II({cfRelease2} 条)把重建推进到关系性时间与电磁学,止步于 QED 边界;发布 III 以第一波({cfRelease3} 条)开启,处理互反内在互补性、纠缠与有限玻恩型读出。其准则是反扁平化:每项结果都记录下什么是必须被提供而非被推导的,反模型与否定结果与正面构造享有同等地位。它不是一套完成的物理理论。',
 	'about.tcg': '扭量构型几何',
 	'about.framework': '{tcg} 篇论文,把无量纲常数 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 读作**腔室不变量**,正如向量空间的维度是其结构不变量一样。哲学诠释为**可配置宇宙**。',
 	'about.empiricalAnchor': '经验锚点',
@@ -384,6 +385,7 @@ const zhCN: Dict = {
 	'cat.cf-overview': '总览',
 	'cat.cf-time': '时间',
 	'cat.cf-electromagnetism': '电磁学',
+	'cat.cf-ric': '互反互补',
 	'cat.cf-dataset': '数据集',
 	'cat.synthesis': '综合',
 	'cat.cosmology': '宇宙学',
@@ -392,7 +394,7 @@ const zhCN: Dict = {
 	'cat.foundations': '基础',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': '基础性发布 I 与 II',
+	'cf.eyebrow': '基础性发布 I–III',
 	'cf.title': '互补性优先',
 	'cf.tagline': '从关系到万物：由此重建物理',
 	'cf.lead1': '大多数物理理论都从名词开始：粒子在空间中运动，场占据时空，量子态属于系统。互补性优先颠倒了这一顺序。它提出的原语是一个<em>已完成的关系</em>，其中可区分的角色只有通过该完成才得以存在——并追问：从这里出发，物理学能被重建到何种程度？',
@@ -416,7 +418,7 @@ const zhCN: Dict = {
 	'cf.readOverview': '阅读发布总览',
 	'cf.treeCta': '来源关系树',
 	'cf.essay.cta': '阅读科普长文',
-	'cf.notPeerReviewed': '基础性发布 I 与 II 是协调发布的预印本语料库。其 AI 辅助的内部评审与内部审计通道，不构成外部同行评审或独立复现。',
+	'cf.notPeerReviewed': '基础性发布 I–III 是协调发布的预印本语料库。其 AI 辅助的内部评审与内部审计通道，不构成外部同行评审或独立复现。',
 
 	// ---- TCG hub ----
 	'tcg.eyebrow': '研究系列',
@@ -437,7 +439,7 @@ const zhCN: Dict = {
 
 	// ---- Bibliography series headings ----
 	'papers.series.cf': '互补性优先',
-	'papers.series.cfNote': '基础性发布 I 与 II——共 {n} 条记录。发布 I：一份概念-形式原语、四项量子基础研究、三篇引力论文与一份综合。发布 II：三篇时间论文、三篇电磁学论文与一份可复现数据集。每次发布各由其总览编图。',
+	'papers.series.cfNote': '基础性发布 I–III——共 {n} 条记录。发布 I：一份概念-形式原语、四项量子基础研究、三篇引力论文与一份综合。发布 II：三篇时间论文、三篇电磁学论文与一份可复现数据集。发布 III 第一波：两篇互反内在互补性论文与一份可复现数据集。',
 	'papers.series.tcg': '扭量构型几何',
 	'papers.series.tcgNote': '{n} 篇论文，把无量纲常数视为扭量构型空间的结构不变量。',
 };
@@ -504,7 +506,7 @@ const zhTW: Dict = {
 
 	'papers.eyebrow': '文獻',
 	'papers.title': '論文',
-	'papers.intro': '橫跨兩個研究系列的 {total} 篇論文：互補性優先基礎性發布 I 與 II 的 {cf} 條紀錄——提出以「已完成關係」為原語，稽核它並不決定什麼，並將重構推進到關係性時間與電磁學；以及扭量構型幾何的 {tcg} 篇論文——把無量綱常數視為結構不變量。互補性優先為扭量構型幾何提供關係性基礎。全部以 CC-BY-4.0 協議發布於 Zenodo。',
+	'papers.intro': '橫跨兩個研究系列的 {total} 篇論文：互補性優先基礎性發布 I–III 的 {cf} 條紀錄——提出以「已完成關係」為原語，稽核它並不決定什麼，並將重構推進到關係性時間、電磁學與量子整體；以及扭量構型幾何的 {tcg} 篇論文——把無量綱常數視為結構不變量。互補性優先為扭量構型幾何提供關係性基礎。全部以 CC-BY-4.0 協議發布於 Zenodo。',
 	'papers.metaDescription': '互補性優先與扭量構型幾何兩個研究系列的完整文獻目錄。',
 	'papers.statPapers': '篇論文',
 	'papers.statRelations': '條經驗關係',
@@ -549,7 +551,7 @@ const zhTW: Dict = {
 	'about.lede': '理論物理獨立研究者。',
 	'about.intro': '我的研究包含兩個彼此相連的系列。**互補性優先**追問:若以一個「已完成的關係」——而非對象、場或時空點——作為原語,物理能被重建到什麼程度。**扭量構型幾何**追問:無量綱常數是否是建立在彭羅斯射影扭量空間 CP³ 上的某種組合幾何的結構不變量。互補性優先為扭量構型幾何提供關係性基礎,也是當前的重心。',
 	'about.cf': '互補性優先',
-	'about.cfBody': '兩次基礎性發布共 {cf} 條紀錄。發布 I({cfRelease1} 條)陳述原語,並將其帶入量子基礎與有限／局域重力;發布 II({cfRelease2} 條)把重建推進到關係性時間與電磁學,止步於 QED 邊界。其準則是反扁平化:每項結果都記錄下什麼是必須被提供而非被推導的,反模型與否定結果與正面構造享有同等地位。它不是一套完成的物理理論。',
+	'about.cfBody': '三次基礎性發布共 {cf} 條紀錄。發布 I({cfRelease1} 條)陳述原語,並將其帶入量子基礎與有限／局域重力;發布 II({cfRelease2} 條)把重建推進到關係性時間與電磁學,止步於 QED 邊界;發布 III 以第一波({cfRelease3} 條)開啟,處理互反內在互補性、糾纏與有限玻恩型讀出。其準則是反扁平化:每項結果都記錄下什麼是必須被提供而非被推導的,反模型與否定結果與正面構造享有同等地位。它不是一套完成的物理理論。',
 	'about.tcg': '扭量構型幾何',
 	'about.framework': '{tcg} 篇論文,把無量綱常數 — α、Λ、α_G、Yukawa 耦合、sin²θ_W 等 — 讀作**腔室不變量**,正如向量空間的維度是其結構不變量一樣。哲學詮釋為**可配置宇宙**。',
 	'about.empiricalAnchor': '經驗錨點',
@@ -588,6 +590,7 @@ const zhTW: Dict = {
 	'cat.cf-overview': '總覽',
 	'cat.cf-time': '時間',
 	'cat.cf-electromagnetism': '電磁學',
+	'cat.cf-ric': '互反互補',
 	'cat.cf-dataset': '資料集',
 	'cat.synthesis': '綜合',
 	'cat.cosmology': '宇宙學',
@@ -596,7 +599,7 @@ const zhTW: Dict = {
 	'cat.foundations': '基礎',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': '基礎性發布 I 與 II',
+	'cf.eyebrow': '基礎性發布 I–III',
 	'cf.title': '互補性優先',
 	'cf.tagline': '從關係到萬物：由此重建物理',
 	'cf.lead1': '大多數物理理論都從名詞開始：粒子在空間中運動，場佔據時空，量子態屬於系統。互補性優先顛倒了這一順序。它提出的原語是一個<em>已完成的關係</em>，其中可區分的角色只有透過該完成才得以存在——並追問：從這裡出發，物理學能被重建到何種程度？',
@@ -620,7 +623,7 @@ const zhTW: Dict = {
 	'cf.readOverview': '閱讀發布總覽',
 	'cf.treeCta': '來源關係樹',
 	'cf.essay.cta': '閱讀科普長文',
-	'cf.notPeerReviewed': '基礎性發布 I 與 II 是協調發布的預印本語料庫。其 AI 輔助的內部評審與內部稽核通道，不構成外部同行評審或獨立複現。',
+	'cf.notPeerReviewed': '基礎性發布 I–III 是協調發布的預印本語料庫。其 AI 輔助的內部評審與內部稽核通道，不構成外部同行評審或獨立複現。',
 
 	// ---- TCG hub ----
 	'tcg.eyebrow': '研究系列',
@@ -641,7 +644,7 @@ const zhTW: Dict = {
 
 	// ---- Bibliography series headings ----
 	'papers.series.cf': '互補性優先',
-	'papers.series.cfNote': '基礎性發布 I 與 II——共 {n} 條紀錄。發布 I：一份概念-形式原語、四項量子基礎研究、三篇重力論文與一份綜合。發布 II：三篇時間論文、三篇電磁學論文與一份可重現資料集。每次發布各由其總覽編圖。',
+	'papers.series.cfNote': '基礎性發布 I–III——共 {n} 條紀錄。發布 I：一份概念-形式原語、四項量子基礎研究、三篇重力論文與一份綜合。發布 II：三篇時間論文、三篇電磁學論文與一份可重現資料集。發布 III 第一波：兩篇互反內在互補性論文與一份可重現資料集。',
 	'papers.series.tcg': '扭量構型幾何',
 	'papers.series.tcgNote': '{n} 篇論文，把無量綱常數視為扭量構型空間的結構不變量。',
 };

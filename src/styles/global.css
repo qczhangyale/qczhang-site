@@ -63,6 +63,8 @@
 	/* Complementarity-First — Release II */
 	--cat-cf-time: #6b3a5c;
 	--cat-cf-time-bg: #efdfe9;
+	--cat-cf-ric: #3c3f75;
+	--cat-cf-ric-bg: #dee0f2;
 	--cat-cf-electromagnetism: #1f5c56;
 	--cat-cf-electromagnetism-bg: #d8ebe7;
 	--cat-cf-dataset: #5a5230;
@@ -127,6 +129,8 @@
 	/* Complementarity-First — Release II */
 	--cat-cf-time: #a21caf;
 	--cat-cf-time-bg: #fae8ff;
+	--cat-cf-ric: #4338ca;
+	--cat-cf-ric-bg: #e0e7ff;
 	--cat-cf-electromagnetism: #0f766e;
 	--cat-cf-electromagnetism-bg: #ccfbf1;
 	--cat-cf-dataset: #854d0e;
@@ -190,6 +194,8 @@
 	/* Complementarity-First — Release II */
 	--cat-cf-time: #f0abfc;
 	--cat-cf-time-bg: #3b0764;
+	--cat-cf-ric: #a5b4fc;
+	--cat-cf-ric-bg: #1e1b4b;
 	--cat-cf-electromagnetism: #5eead4;
 	--cat-cf-electromagnetism-bg: #042f2e;
 	--cat-cf-dataset: #fde047;
@@ -502,6 +508,11 @@ th {
 .badge-cf-electromagnetism {
 	background: var(--cat-cf-electromagnetism-bg);
 	color: var(--cat-cf-electromagnetism);
+}
+
+.badge-cf-ric {
+	background: var(--cat-cf-ric-bg);
+	color: var(--cat-cf-ric);
 }
 
 .badge-cf-dataset {

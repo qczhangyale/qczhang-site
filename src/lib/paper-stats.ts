@@ -32,6 +32,8 @@ export interface PaperCounts {
 	cfRelease1: number;
 	/** Complementarity-First records in Foundational Release II. */
 	cfRelease2: number;
+	/** Complementarity-First records in Foundational Release III. */
+	cfRelease3: number;
 	/** Papers in the TCG series. */
 	tcg: number;
 	/** TCG papers in the main arc (TCG total minus adjacent workstreams). */
@@ -69,6 +71,7 @@ export async function getPaperCounts(): Promise<PaperCounts> {
 		cf: cfPapers.length,
 		cfRelease1: cfPapers.filter((p) => p.data.release === 1).length,
 		cfRelease2: cfPapers.filter((p) => p.data.release === 2).length,
+		cfRelease3: cfPapers.filter((p) => p.data.release === 3).length,
 		tcg: tcgPapers.length,
 		tcgArc: tcgPapers.length - adjacent,
 		adjacent,

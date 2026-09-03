@@ -12,18 +12,30 @@ import {
 	arcIITitle,
 	arcIIBlurb,
 	arcIIBoundary,
+	type ReleaseIIArc,
 } from '../lib/cf-release';
 import TreeRow from './TreeRow.astro';
 
 interface Props {
 	locale?: Locale;
+	/** Which Foundational Release to render. Defaults to II. */
+	release?: 2 | 3;
+	/** Arc grouping for that release. Defaults to Release II's. */
+	arcs?: ReleaseIIArc[];
+	/** Note above the tree; defaults to the Release II wording. */
+	note?: string;
 }
-const { locale = 'en' } = Astro.props;
+const {
+	locale = 'en',
+	release = 2,
+	arcs = RELEASE_II_ARCS,
+	note,
+} = Astro.props;
 
-const cf2 = filterEnglishOnly(await getCollection('papers')).filter(
-	(p) => p.data.series === 'cf' && p.data.release === 2,
+const records = filterEnglishOnly(await getCollection('papers')).filter(
+	(p) => p.data.series === 'cf' && p.data.release === release,
 );
-const byId = new Map(cf2.map((p) => [p.id, p]));
+const byId = new Map(records.map((p) => [p.id, p]));
 
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
@@ -36,11 +48,11 @@ const copy = {
 };
 ---
 
-<p class="tree-note">{s(copy.note)}</p>
+<p class="tree-note">{note ?? s(copy.note)}</p>
 
 <div class="arcs">
 	{
-		RELEASE_II_ARCS.map((arc) => (
+		arcs.map((arc) => (
 			<section class={`arc arc-${arc.key}`}>
 				<header class="arc-head">
 					<h3>{arcIITitle(locale, arc)}</h3>

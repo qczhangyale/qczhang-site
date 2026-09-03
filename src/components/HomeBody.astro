@@ -11,6 +11,8 @@ import { getPaperCounts } from '../lib/paper-stats';
 import {
 	RELEASE,
 	RELEASE_II,
+	RELEASE_III,
+	RELEASE_III_ARCS,
 	READING_PATHS,
 	OPEN_PROBLEMS,
 	pathName,
@@ -51,8 +53,34 @@ const CODE_OF: Record<string, string> = {
 	'cf-10-release-i-overview': 'CF-OV1',
 };
 
+const TOTAL_CF = RELEASE.records + RELEASE_II.records + RELEASE_III.records;
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
+	// Two essays cover three releases: the older one has a Part I and a
+	// Part II, so the tabs are anchors into it rather than separate pieces.
+	tabsLabel: {
+		en: 'Jump to a release',
+		'zh-cn': '跳至某次发布',
+		'zh-tw': '跳至某次發布',
+	},
+	tabI: { en: 'Release I', 'zh-cn': '发布 I', 'zh-tw': '發布 I' },
+	tabII: { en: 'Release II', 'zh-cn': '发布 II', 'zh-tw': '發布 II' },
+	tabIII: { en: 'Release III', 'zh-cn': '发布 III', 'zh-tw': '發布 III' },
+	relIII: {
+		en: 'Release III — Wave A',
+		'zh-cn': '发布 III —— 第一波',
+		'zh-tw': '發布 III —— 第一波',
+	},
+	relIIInote: {
+		en: 'Grouped by arc. Hover a row for its summary; the title opens Zenodo. Wave A does not revise Releases I or II retroactively.',
+		'zh-cn': '按弧分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。第一波不会追溯性地修改发布 I 或 II。',
+		'zh-tw': '按弧分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。第一波不會追溯性地修改發布 I 或 II。',
+	},
+	relIIIsub: {
+		en: `Three records published ${RELEASE_III.published}: two preprints on reciprocal internal complementarity and a reproducibility dataset. Wave A opens the release; later waves are not published yet.`,
+		'zh-cn': `${RELEASE_III.published} 发布的三条记录：两篇关于互反内在互补性的预印本与一份可复现数据集。第一波开启本次发布；后续各波尚未发布。`,
+		'zh-tw': `${RELEASE_III.published} 發布的三條紀錄：兩篇關於互反內在互補性的預印本與一份可重現資料集。第一波開啟本次發布；後續各波尚未發布。`,
+	},
 	indexEyebrow: { en: 'The records', 'zh-cn': '记录', 'zh-tw': '紀錄' },
 	// The article is a long read; this is the one affordance for readers who
 	// arrived looking for a paper rather than for the essay.
@@ -92,9 +120,9 @@ const copy = {
 		'zh-tw': '2026 年 8 月 26 日發布的八條紀錄：三篇時間論文、三篇電磁學論文、一份可重現資料集與一份總覽。',
 	},
 	strapline: {
-		en: `${RELEASE.records + RELEASE_II.records} records across two Foundational Releases · published on Zenodo, CC-BY-4.0`,
-		'zh-cn': `两次基础性发布共 ${RELEASE.records + RELEASE_II.records} 条记录 · 发布于 Zenodo，CC-BY-4.0`,
-		'zh-tw': `兩次基礎性發布共 ${RELEASE.records + RELEASE_II.records} 條紀錄 · 發布於 Zenodo，CC-BY-4.0`,
+		en: `${TOTAL_CF} records across three Foundational Releases · published on Zenodo, CC-BY-4.0`,
+		'zh-cn': `三次基础性发布共 ${TOTAL_CF} 条记录 · 发布于 Zenodo，CC-BY-4.0`,
+		'zh-tw': `三次基礎性發布共 ${TOTAL_CF} 條紀錄 · 發布於 Zenodo，CC-BY-4.0`,
 	},
 	contactTitle: { en: 'About this site.', 'zh-cn': '关于本站。', 'zh-tw': '關於本站。' },
 	contactBody: {
@@ -134,7 +162,20 @@ const copy = {
 	</div>
 </section>
 
-<HomeArticle locale={locale} />
+<nav class="release-tabs section" aria-label={s(copy.tabsLabel)}>
+	{/* Plain anchors, no JavaScript. Releases I and II land inside the same
+	    essay — its Part I is the article's opening, its Part II carries an
+	    explicit id written into all three language editions. */}
+	<a href="#cf-release-1">{s(copy.tabI)}</a>
+	<a href="#cf-release-2">{s(copy.tabII)}</a>
+	<a href="#cf-release-3">{s(copy.tabIII)}</a>
+</nav>
+
+{/* Chronological: Releases I and II first, then Release III — so the tab
+    order matches the order the essays appear in. */}
+<HomeArticle locale={locale} anchor="cf-release-1" />
+
+<HomeArticle locale={locale} slug="the-quantum-whole" anchor="cf-release-3" />
 
 <div class="section" id="records">
 	<div class="section-eyebrow">{s(copy.indexEyebrow)}</div>
@@ -152,6 +193,12 @@ const copy = {
 	<h2>{s(copy.relII)}</h2>
 	<p class="section-intro">{s(copy.relIIsub)}</p>
 	<CfReleaseIITree locale={locale} />
+</div>
+
+<div class="section">
+	<h2>{s(copy.relIII)}</h2>
+	<p class="section-intro">{s(copy.relIIIsub)}</p>
+	<CfReleaseIITree locale={locale} release={3} arcs={RELEASE_III_ARCS} note={s(copy.relIIInote)} />
 </div>
 
 <div class="section">
@@ -303,6 +350,35 @@ const copy = {
 		color: var(--text-faint);
 		letter-spacing: 0.01em;
 	}
+	/* Release tabs: three anchors into the two embedded essays. */
+	.release-tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding-top: 1.6rem;
+		padding-bottom: 1.2rem;
+	}
+	.release-tabs a {
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: var(--text-muted);
+		text-decoration: none;
+		padding: 0.45em 1.05em;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--bg-subtle);
+		transition: color 0.15s, background 0.15s, border-color 0.15s;
+	}
+	.release-tabs a:hover,
+	.release-tabs a:focus-visible {
+		color: var(--accent);
+		background: var(--bg-elevated);
+		border-color: var(--border-strong);
+		text-decoration: none;
+	}
+
 	.skip {
 		margin-left: 0.9em;
 		color: var(--accent);

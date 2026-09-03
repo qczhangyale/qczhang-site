@@ -11,10 +11,14 @@ import { filterEnglishOnly, pickLocalized, type Locale } from '../i18n';
 
 interface Props {
 	locale?: Locale;
+	/** Blog entry id to embed. */
+	slug?: string;
+	/** Anchor id, so the release tabs can jump to this essay. */
+	anchor?: string;
 }
-const { locale = 'en' } = Astro.props;
+const { locale = 'en', slug = 'from-relation-to-reality', anchor } = Astro.props;
 
-const SLUG = 'from-relation-to-reality';
+const SLUG = slug;
 const all = await getCollection('blog');
 const english = filterEnglishOnly(all).find((e) => e.id === SLUG);
 const entry = english ? pickLocalized(all, english, locale) : undefined;
@@ -35,7 +39,7 @@ const Content = html ? null : rendered?.Content;
 
 {
 	(html || Content) && (
-		<div class="home-article">
+		<div class="home-article" id={anchor}>
 			<div class="prose">
 				{html ? <Fragment set:html={html} /> : Content && <Content />}
 			</div>

@@ -262,6 +262,7 @@ Release I’s deepest achievement is architectural. It converts broad foundation
 
 Release II does not retroactively close these questions. It takes a selected subset—especially the rank-two carrier, complement operations, clock structure, and field-form architecture—and follows them into time and electromagnetism.
 
+<span id="cf-release-2"></span>
 ## Part II — Release II: from one-time structure to electromagnetism
 
 ### One time direction, not two role labels

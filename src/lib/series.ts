@@ -18,6 +18,7 @@ export const SERIES_CATEGORIES: Record<Series, string[]> = {
 		'cf-synthesis',
 		'cf-time',
 		'cf-electromagnetism',
+		'cf-ric',
 		'cf-dataset',
 		'cf-overview',
 	],

@@ -452,6 +452,64 @@ export const RELEASE_II_ARCS: ReleaseIIArc[] = [
 	},
 ];
 
+/* ------------------------------------------------------------------ */
+/* Foundational Release III — Wave A (2026-09-03)                      */
+/* ------------------------------------------------------------------ */
+//
+// Wave A opens Release III. Like Release II it is grouped by arc rather than
+// drawn as a provenance tree: no frozen edge ledger has been published for it,
+// so a graph here would invent structure the corpus does not assert.
+
+export const RELEASE_III = {
+	records: 3,
+	preprints: 2,
+	datasets: 1,
+	published: '2026-09-03',
+	wave: 'A',
+};
+
+export const RELEASE_III_ARCS: ReleaseIIArc[] = [
+	{
+		key: 'ric',
+		category: 'cf-ric',
+		papers: [
+			'cf-19-reciprocal-internal-complementarity',
+			'cf-20-synthetic-taichi-biphoton',
+		],
+		title: {
+			en: 'Reciprocal internal complementarity',
+			'zh-cn': '互反内在互补性',
+			'zh-tw': '互反內在互補性',
+		},
+		blurb: {
+			en: 'A conditional route from Taichi-like mutual inclusion to a Schrödinger normal form, an exact separability-to-entanglement orbit, and a finite Born-form readout — then a source-complete synthetic biphoton model that tests whether a recognizable quantum image determines the entanglement behind it.',
+			'zh-cn': '一条从太极式互含通往薛定谔标准形、一条从可分到最大纠缠的精确轨道，以及有限玻恩型读出的条件性路径；随后以一个源完备的合成双光子模型检验：一幅可辨认的量子图像是否确定其背后的纠缠。',
+			'zh-tw': '一條從太極式互含通往薛丁格標準形、一條從可分到最大糾纏的精確軌道，以及有限玻恩型讀出的條件性路徑；隨後以一個源完備的合成雙光子模型檢驗：一幅可辨認的量子圖像是否確定其背後的糾纏。',
+		},
+		boundary: {
+			en: 'Conditional throughout, and the picture is not the proof. No density-operator trace rule, general instruments, one actual outcome, or objective chance is established — and the visible Taichi eyes are shown not to be an entanglement witness.',
+			'zh-cn': '全程均为条件性结果，且图像不构成证明。不确立密度算符迹规则、一般仪器、单一实际结果或客观机遇——并且文中表明，可见的太极之眼并不构成纠缠见证。',
+			'zh-tw': '全程均為條件性結果，且圖像不構成證明。不確立密度算符跡規則、一般儀器、單一實際結果或客觀機遇——並且文中表明，可見的太極之眼並不構成糾纏見證。',
+		},
+	},
+	{
+		key: 'evidence3',
+		category: 'cf-dataset',
+		papers: ['cf-21-ric-exact-checks-archive'],
+		title: { en: 'Evidence archive', 'zh-cn': '证据存档', 'zh-tw': '證據存檔' },
+		blurb: {
+			en: 'Frozen fixtures, deterministic scripts, archived outputs, claim-to-evidence crosswalks and a unified verifier for both Wave A papers. Published as a Zenodo Dataset.',
+			'zh-cn': '为第一波两篇论文提供冻结的固定装置、确定性脚本、归档输出、主张—证据对照与统一验证器。以 Zenodo 数据集形式发布。',
+			'zh-tw': '為第一波兩篇論文提供凍結的固定裝置、確定性腳本、歸檔輸出、主張—證據對照與統一驗證器。以 Zenodo 資料集形式發布。',
+		},
+		boundary: {
+			en: 'Holds no experimental data from the motivating 2023 biphoton experiment. Its numbers apply to the frozen synthetic model only, and the mock protocol shows software ordering rather than experimental certification.',
+			'zh-cn': '不包含作为动机的 2023 年双光子实验的任何实验数据。其数值仅适用于那个冻结的合成模型，模拟协议展示的是软件流程的次序，而非实验认证。',
+			'zh-tw': '不包含作為動機的 2023 年雙光子實驗的任何實驗資料。其數值僅適用於那個凍結的合成模型，模擬協定展示的是軟體流程的次序，而非實驗認證。',
+		},
+	},
+];
+
 export const arcIITitle = (locale: Locale, a: ReleaseIIArc) => pick(locale, a.title);
 export const arcIIBlurb = (locale: Locale, a: ReleaseIIArc) => pick(locale, a.blurb);
 export const arcIIBoundary = (locale: Locale, a: ReleaseIIArc) =>
