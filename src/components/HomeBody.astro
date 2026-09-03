@@ -32,14 +32,6 @@ const { locale = 'en' } = Astro.props;
 const prefix = locale === 'en' ? '' : '/' + locale;
 const counts = await getPaperCounts();
 
-// Release date read from the corpus so the strapline cannot drift.
-const cfPapers = filterEnglishOnly(await getCollection('papers')).filter(
-	(p) => p.data.series === 'cf',
-);
-const released = new Date(Math.max(...cfPapers.map((p) => p.data.date.getTime())));
-const fmt = (loc: string) =>
-	released.toLocaleDateString(loc, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
-
 const CODE_OF: Record<string, string> = {
 	'cf-01-relational-unity': 'CF-F1',
 	'cf-02-complementarity-before-quantum': 'CFQF-Q4',
@@ -53,6 +45,8 @@ const CODE_OF: Record<string, string> = {
 	'cf-10-release-i-overview': 'CF-OV1',
 };
 
+// The record index below lists every Complementarity-First record, so the
+// button's count is the sum across the three releases.
 const TOTAL_CF = RELEASE.records + RELEASE_II.records + RELEASE_III.records;
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
@@ -82,9 +76,8 @@ const copy = {
 		'zh-tw': `${RELEASE_III.published} 發布的三條紀錄：兩篇關於互反內在互補性的預印本與一份可重現資料集。第一波開啟本次發布；後續各波尚未發布。`,
 	},
 	indexEyebrow: { en: 'The records', 'zh-cn': '记录', 'zh-tw': '紀錄' },
-	// Sits with the release buttons rather than in the strapline: readers who
-	// arrived looking for a paper rather than the essays get one affordance,
-	// in the row that stays on screen.
+	// Readers who arrived looking for a paper rather than the essays get one
+	// affordance, in the row that stays on screen.
 	// Names the essay that follows, so the two embedded pieces do not run
 	// together as one continuous article.
 	essayIII: {
@@ -93,9 +86,9 @@ const copy = {
 		'zh-tw': '發布 III · 第一波',
 	},
 	tabPublications: {
-		en: 'Publications',
-		'zh-cn': '论文',
-		'zh-tw': '論文',
+		en: `(${TOTAL_CF} publications)`,
+		'zh-cn': `（${TOTAL_CF} 篇论文）`,
+		'zh-tw': `（${TOTAL_CF} 篇論文）`,
 	},
 	indexTitle: {
 		en: 'Browse the corpus',
@@ -127,11 +120,6 @@ const copy = {
 		'zh-cn': '2026 年 8 月 26 日发布的八条记录：三篇时间论文、三篇电磁学论文、一份可复现数据集与一份总览。',
 		'zh-tw': '2026 年 8 月 26 日發布的八條紀錄：三篇時間論文、三篇電磁學論文、一份可重現資料集與一份總覽。',
 	},
-	strapline: {
-		en: `${TOTAL_CF} records across three Foundational Releases · published on Zenodo, CC-BY-4.0`,
-		'zh-cn': `三次基础性发布共 ${TOTAL_CF} 条记录 · 发布于 Zenodo，CC-BY-4.0`,
-		'zh-tw': `三次基礎性發布共 ${TOTAL_CF} 條紀錄 · 發布於 Zenodo，CC-BY-4.0`,
-	},
 	contactTitle: { en: 'About this site.', 'zh-cn': '关于本站。', 'zh-tw': '關於本站。' },
 	contactBody: {
 		en: "Q.C. Zhang's research site. All papers are on Zenodo under CC-BY-4.0.",
@@ -153,12 +141,19 @@ const copy = {
 
 <Header />
 
-{/* Its own bar rather than a line inside the hero: sticky only works for as
-    long as the containing block is on screen, and the hero is short enough
-    that a sticky row inside it would scroll away almost immediately. */}
+{/* Sticky bar under the header: it carries the page title and the release
+    anchors, and replaces the old hero block entirely. */}
 <div class="release-bar">
 	<div class="release-bar-inner">
-		<span class="eyebrow-label">{t(locale, 'cf.eyebrow')}</span>
+		{/* The bar carries the page's h1 now that the hero is gone, so the
+		    document still has exactly one top-level heading. */}
+		<div class="bar-title">
+			<div class="bar-title-row">
+				<h1>{t(locale, 'cf.barTitle')}</h1>
+				<a class="tab-records" href="#records">{s(copy.tabPublications)}</a>
+			</div>
+			<p>{t(locale, 'cf.tagline')}</p>
+		</div>
 		{/* Plain anchors, no JavaScript. Releases I and II land inside the
 		    same essay — its Part I is the article's opening, its Part II
 		    carries an explicit id written into all three editions. */}
@@ -166,18 +161,9 @@ const copy = {
 			<a href="#cf-release-1">{s(copy.tabI)}</a>
 			<a href="#cf-release-2">{s(copy.tabII)}</a>
 			<a href="#cf-release-3">{s(copy.tabIII)}</a>
-			<a class="tab-records" href="#records">{s(copy.tabPublications)}</a>
 		</nav>
 	</div>
 </div>
-
-<section class="hero">
-	<div class="hero-inner">
-		<h1>{t(locale, 'cf.title')}</h1>
-		<p class="hero-tagline">{t(locale, 'cf.tagline')}</p>
-		<p class="strapline">{s(copy.strapline)}</p>
-	</div>
-</section>
 
 {/* Chronological: Releases I and II first, then Release III — so the tab
     order matches the order the essays appear in. */}
@@ -291,15 +277,6 @@ const copy = {
 <Footer />
 
 <style>
-	.hero {
-		padding: 1.7rem 1rem 1.5rem;
-		background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
-		border-bottom: 1px solid var(--border);
-	}
-	.hero-inner {
-		max-width: var(--page-width-wide);
-		margin: 0 auto;
-	}
 	/* Sticky strip under the header: label on the left, release anchors on the
 	   right. Full-width so its background spans the viewport; the inner row
 	   keeps the page measure. The anchor offset in global.css counts this
@@ -311,9 +288,9 @@ const copy = {
 		background: var(--header-bg);
 		backdrop-filter: saturate(180%) blur(8px);
 		border-bottom: 1px solid var(--border);
-		/* Padding sits out here, exactly as .hero does it, so the inner row's
-		   max-width centres against the same edges as the hero and sections
-		   below. Putting it on the inner box instead shifts the label right. */
+		/* Padding sits out here so the inner row's max-width centres against
+		   the same edges as the sections below. Putting it on the inner box
+		   instead shifts the title right. */
 		padding: 0 1rem;
 	}
 	.release-bar-inner {
@@ -326,28 +303,23 @@ const copy = {
 		justify-content: space-between;
 		gap: 0.6rem;
 	}
-	.eyebrow-label {
+	.bar-title h1 {
 		font-family: var(--font-sans);
-		font-size: 0.72rem;
-		font-weight: 600;
-		color: var(--accent);
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		font-size: 0.92rem;
+		font-weight: 700;
+		line-height: 1.25;
+		letter-spacing: -0.01em;
+		color: var(--text);
+		margin: 0;
 	}
-	.hero h1 {
-		font-size: 1.85rem;
-		line-height: 1.12;
-		margin: 0 0 0.25em 0;
-		letter-spacing: -0.03em;
-	}
-	.hero-tagline {
+	.bar-title p {
 		font-family: var(--font-serif);
-		font-size: 1rem;
-		color: var(--text-muted);
+		font-size: 0.8rem;
 		font-style: italic;
-		margin-bottom: 0;
+		line-height: 1.3;
+		color: var(--text-muted);
+		margin: 0.15em 0 0;
 	}
-
 	.section {
 		max-width: var(--page-width-wide);
 		margin: 0 auto;
@@ -362,14 +334,6 @@ const copy = {
 		margin-bottom: 1.5rem;
 		line-height: 1.6;
 		max-width: 78ch;
-	}
-	/* Replaces the old stat block: same facts, a fraction of the height. */
-	.strapline {
-		margin: 0.8rem 0 0;
-		font-family: var(--font-sans);
-		font-size: 0.85rem;
-		color: var(--text-faint);
-		letter-spacing: 0.01em;
 	}
 	/* Names an embedded essay, above where it begins. Uses the article's
 	   measure (--page-width), not the wider section measure, so it sits flush
@@ -388,31 +352,46 @@ const copy = {
 		color: var(--accent);
 	}
 
-	/* Release anchors, sitting on the hero's eyebrow line. */
+	/* Release anchors, sitting opposite the title in the sticky bar. */
 	.release-tabs {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.35rem;
+		gap: 0.3rem;
 	}
 	.release-tabs a {
 		font-family: var(--font-sans);
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 		font-weight: 600;
 		letter-spacing: 0.02em;
 		color: var(--text-muted);
 		text-decoration: none;
-		padding: 0.35em 0.9em;
+		padding: 0.3em 0.75em;
 		border: 1px solid var(--border);
 		border-radius: 999px;
 		background: var(--bg-subtle);
 		transition: color 0.15s, background 0.15s, border-color 0.15s;
 	}
-	/* Goes to the record index rather than an essay, so it is set apart. */
-	.release-tabs .tab-records {
-		margin-left: 0.45rem;
+	/* Sits beside the heading, as bracketed text rather than a pill — it goes
+	   to the record index, not into an essay like the three release anchors. */
+	.bar-title-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.5rem;
+	}
+	.tab-records {
+		font-family: var(--font-sans);
+		font-size: 0.66rem;
+		font-weight: 600;
 		color: var(--accent);
-		border-color: var(--border-strong);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.tab-records:hover,
+	.tab-records:focus-visible {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 	.release-tabs a:hover,
 	.release-tabs a:focus-visible {
@@ -589,12 +568,6 @@ const copy = {
 	}
 
 	@media (max-width: 640px) {
-		.hero h1 {
-			font-size: 1.75rem;
-		}
-		.hero-tagline {
-			font-size: 1.08rem;
-		}
 		.op-table,
 		.op-table tbody,
 		.op-table tr,
