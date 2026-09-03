@@ -248,6 +248,11 @@ body, header, footer, .card, .paper-card, .relations-table,
 		system-ui, sans-serif;
 	--font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
 
+	/* Sticky-chrome heights: the header, and the release bar that sticks under
+	   it on the front page. Used for anchor offsets and the bar's own `top`,
+	   so the two can never drift apart. Measured from the rendered page. */
+	--header-h: 82px;
+	--tabs-h: 48px;
 	--page-width: 760px;
 	--page-width-wide: 960px;
 
@@ -269,15 +274,21 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
-	/* The header is sticky at top: 0, so an in-page jump would otherwise park
-	   its target underneath it — the reader lands on whatever follows the
-	   heading they asked for. Offset every anchor by the header's height. */
-	scroll-padding-top: 6rem;
+	/* The header is sticky at top: 0 and the release bar sticks beneath it, so
+	   an in-page jump would otherwise park its target under both. Offset every
+	   anchor by their combined height. */
+	scroll-padding-top: calc(var(--header-h) + var(--tabs-h) + 0.5rem);
 }
 
 @media (max-width: 720px) {
+	:root {
+		/* The header shrinks: smaller avatar, tighter padding. The bar may
+		   wrap to two rows on a narrow screen. */
+		--header-h: 64px;
+		--tabs-h: 74px;
+	}
 	html {
-		scroll-padding-top: 5rem;
+		scroll-padding-top: calc(var(--header-h) + var(--tabs-h) + 0.25rem);
 	}
 }
 

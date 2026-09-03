@@ -82,12 +82,20 @@ const copy = {
 		'zh-tw': `${RELEASE_III.published} 發布的三條紀錄：兩篇關於互反內在互補性的預印本與一份可重現資料集。第一波開啟本次發布；後續各波尚未發布。`,
 	},
 	indexEyebrow: { en: 'The records', 'zh-cn': '记录', 'zh-tw': '紀錄' },
-	// The article is a long read; this is the one affordance for readers who
-	// arrived looking for a paper rather than for the essay.
-	skipToIndex: {
-		en: 'Skip to the record index ↓',
-		'zh-cn': '跳至记录索引 ↓',
-		'zh-tw': '跳至紀錄索引 ↓',
+	// Sits with the release buttons rather than in the strapline: readers who
+	// arrived looking for a paper rather than the essays get one affordance,
+	// in the row that stays on screen.
+	// Names the essay that follows, so the two embedded pieces do not run
+	// together as one continuous article.
+	essayIII: {
+		en: 'Release III · Wave A',
+		'zh-cn': '发布 III · 第一波',
+		'zh-tw': '發布 III · 第一波',
+	},
+	tabPublications: {
+		en: 'Publications',
+		'zh-cn': '论文',
+		'zh-tw': '論文',
 	},
 	indexTitle: {
 		en: 'Browse the corpus',
@@ -145,37 +153,42 @@ const copy = {
 
 <Header />
 
+{/* Its own bar rather than a line inside the hero: sticky only works for as
+    long as the containing block is on screen, and the hero is short enough
+    that a sticky row inside it would scroll away almost immediately. */}
+<div class="release-bar">
+	<div class="release-bar-inner">
+		<span class="eyebrow-label">{t(locale, 'cf.eyebrow')}</span>
+		{/* Plain anchors, no JavaScript. Releases I and II land inside the
+		    same essay — its Part I is the article's opening, its Part II
+		    carries an explicit id written into all three editions. */}
+		<nav class="release-tabs" aria-label={s(copy.tabsLabel)}>
+			<a href="#cf-release-1">{s(copy.tabI)}</a>
+			<a href="#cf-release-2">{s(copy.tabII)}</a>
+			<a href="#cf-release-3">{s(copy.tabIII)}</a>
+			<a class="tab-records" href="#records">{s(copy.tabPublications)}</a>
+		</nav>
+	</div>
+</div>
+
 <section class="hero">
 	<div class="hero-inner">
-		<div class="hero-eyebrow">
-			{/* Jumps past the essay to the record index — the same target as
-			    the strapline's skip link, for readers who read the eyebrow as
-			    the name of what they came to browse. */}
-			<a href="#records">{t(locale, 'cf.eyebrow')}<span class="eyebrow-arrow" aria-hidden="true">↓</span></a>
-		</div>
 		<h1>{t(locale, 'cf.title')}</h1>
 		<p class="hero-tagline">{t(locale, 'cf.tagline')}</p>
-		<p class="strapline">
-			{s(copy.strapline)}
-			<a class="skip" href="#records">{s(copy.skipToIndex)}</a>
-		</p>
+		<p class="strapline">{s(copy.strapline)}</p>
 	</div>
 </section>
-
-<nav class="release-tabs section" aria-label={s(copy.tabsLabel)}>
-	{/* Plain anchors, no JavaScript. Releases I and II land inside the same
-	    essay — its Part I is the article's opening, its Part II carries an
-	    explicit id written into all three language editions. */}
-	<a href="#cf-release-1">{s(copy.tabI)}</a>
-	<a href="#cf-release-2">{s(copy.tabII)}</a>
-	<a href="#cf-release-3">{s(copy.tabIII)}</a>
-</nav>
 
 {/* Chronological: Releases I and II first, then Release III — so the tab
     order matches the order the essays appear in. */}
 <HomeArticle locale={locale} anchor="cf-release-1" />
 
-<HomeArticle locale={locale} slug="the-quantum-whole" anchor="cf-release-3" />
+{/* The anchor sits on the label, not the article, so the jump lands on the
+    "Release III · Wave A" line rather than below it. */}
+<div class="essay-label" id="cf-release-3">
+	<span>{s(copy.essayIII)}</span>
+</div>
+<HomeArticle locale={locale} slug="the-quantum-whole" />
 
 <div class="section" id="records">
 	<div class="section-eyebrow">{s(copy.indexEyebrow)}</div>
@@ -279,7 +292,7 @@ const copy = {
 
 <style>
 	.hero {
-		padding: 2.6rem 1rem 2.2rem;
+		padding: 1.7rem 1rem 1.5rem;
 		background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
 		border-bottom: 1px solid var(--border);
 	}
@@ -287,41 +300,49 @@ const copy = {
 		max-width: var(--page-width-wide);
 		margin: 0 auto;
 	}
-	.hero-eyebrow {
+	/* Sticky strip under the header: label on the left, release anchors on the
+	   right. Full-width so its background spans the viewport; the inner row
+	   keeps the page measure. The anchor offset in global.css counts this
+	   bar's height as well as the header's. */
+	.release-bar {
+		position: sticky;
+		top: var(--header-h);
+		z-index: 40;
+		background: var(--header-bg);
+		backdrop-filter: saturate(180%) blur(8px);
+		border-bottom: 1px solid var(--border);
+		/* Padding sits out here, exactly as .hero does it, so the inner row's
+		   max-width centres against the same edges as the hero and sections
+		   below. Putting it on the inner box instead shifts the label right. */
+		padding: 0 1rem;
+	}
+	.release-bar-inner {
+		max-width: var(--page-width-wide);
+		margin: 0 auto;
+		padding: 0.5rem 0;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.6rem;
+	}
+	.eyebrow-label {
 		font-family: var(--font-sans);
-		font-size: 0.78rem;
+		font-size: 0.72rem;
 		font-weight: 600;
 		color: var(--accent);
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		margin-bottom: 0.6rem;
-	}
-	.hero-eyebrow a {
-		color: inherit;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: baseline;
-		gap: 0.4em;
-	}
-	.hero-eyebrow a:hover,
-	.hero-eyebrow a:focus-visible {
-		text-decoration: underline;
-		text-underline-offset: 0.25em;
-	}
-	/* Arrow always visible, matching the strapline skip link — the eyebrow
-	   should read as a jump link at rest, not only on hover. */
-	.eyebrow-arrow {
-		font-size: 0.9em;
 	}
 	.hero h1 {
-		font-size: 2.15rem;
-		line-height: 1.15;
-		margin: 0 0 0.35em 0;
+		font-size: 1.85rem;
+		line-height: 1.12;
+		margin: 0 0 0.25em 0;
 		letter-spacing: -0.03em;
 	}
 	.hero-tagline {
 		font-family: var(--font-serif);
-		font-size: 1.08rem;
+		font-size: 1rem;
 		color: var(--text-muted);
 		font-style: italic;
 		margin-bottom: 0;
@@ -344,32 +365,54 @@ const copy = {
 	}
 	/* Replaces the old stat block: same facts, a fraction of the height. */
 	.strapline {
-		margin: 1.3rem 0 0;
+		margin: 0.8rem 0 0;
 		font-family: var(--font-sans);
 		font-size: 0.85rem;
 		color: var(--text-faint);
 		letter-spacing: 0.01em;
 	}
-	/* Release tabs: three anchors into the two embedded essays. */
+	/* Names an embedded essay, above where it begins. Uses the article's
+	   measure (--page-width), not the wider section measure, so it sits flush
+	   with the prose it labels rather than 100px to its left. */
+	.essay-label {
+		max-width: var(--page-width);
+		margin: 0 auto;
+		padding: 2rem 1rem 0.5rem;
+	}
+	.essay-label span {
+		font-family: var(--font-sans);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	/* Release anchors, sitting on the hero's eyebrow line. */
 	.release-tabs {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		padding-top: 1.6rem;
-		padding-bottom: 1.2rem;
+		align-items: center;
+		gap: 0.35rem;
 	}
 	.release-tabs a {
 		font-family: var(--font-sans);
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 		font-weight: 600;
 		letter-spacing: 0.02em;
 		color: var(--text-muted);
 		text-decoration: none;
-		padding: 0.45em 1.05em;
+		padding: 0.35em 0.9em;
 		border: 1px solid var(--border);
 		border-radius: 999px;
 		background: var(--bg-subtle);
 		transition: color 0.15s, background 0.15s, border-color 0.15s;
+	}
+	/* Goes to the record index rather than an essay, so it is set apart. */
+	.release-tabs .tab-records {
+		margin-left: 0.45rem;
+		color: var(--accent);
+		border-color: var(--border-strong);
 	}
 	.release-tabs a:hover,
 	.release-tabs a:focus-visible {
@@ -379,15 +422,6 @@ const copy = {
 		text-decoration: none;
 	}
 
-	.skip {
-		margin-left: 0.9em;
-		color: var(--accent);
-		text-decoration: none;
-		white-space: nowrap;
-	}
-	.skip:hover {
-		text-decoration: underline;
-	}
 
 	/* Reading paths, compressed to code chips now that the tree carries titles. */
 	.paths {

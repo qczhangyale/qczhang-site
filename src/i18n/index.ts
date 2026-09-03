@@ -189,7 +189,7 @@ const en: Dict = {
 	'cat.foundations': 'Foundations',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': 'Foundational Releases I–III',
+	'cf.eyebrow': 'Foundational Releases',
 	'cf.title': 'Complementarity-First',
 	'cf.tagline': 'Building physics from complementary relations before objects',
 	'cf.lead1': 'Most physical theories begin with nouns: particles move through space, fields occupy spacetime, states belong to systems. Complementarity-First reverses that order. Its proposed primitive is a <em>completed relation</em> whose distinguishable roles exist only through that completion — and it asks how much of physics can be rebuilt from there.',
@@ -394,7 +394,7 @@ const zhCN: Dict = {
 	'cat.foundations': '基础',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': '基础性发布 I–III',
+	'cf.eyebrow': '基础性发布',
 	'cf.title': '互补性优先',
 	'cf.tagline': '从关系到万物：由此重建物理',
 	'cf.lead1': '大多数物理理论都从名词开始：粒子在空间中运动，场占据时空，量子态属于系统。互补性优先颠倒了这一顺序。它提出的原语是一个<em>已完成的关系</em>，其中可区分的角色只有通过该完成才得以存在——并追问：从这里出发，物理学能被重建到何种程度？',
@@ -599,7 +599,7 @@ const zhTW: Dict = {
 	'cat.foundations': '基礎',
 
 	// ---- Complementarity-First hub ----
-	'cf.eyebrow': '基礎性發布 I–III',
+	'cf.eyebrow': '基礎性發布',
 	'cf.title': '互補性優先',
 	'cf.tagline': '從關係到萬物：由此重建物理',
 	'cf.lead1': '大多數物理理論都從名詞開始：粒子在空間中運動，場佔據時空，量子態屬於系統。互補性優先顛倒了這一順序。它提出的原語是一個<em>已完成的關係</em>，其中可區分的角色只有透過該完成才得以存在——並追問：從這裡出發，物理學能被重建到何種程度？',
