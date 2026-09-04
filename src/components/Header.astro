@@ -6,7 +6,7 @@ import ThemePicker from './ThemePicker.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import ShareButton from './ShareButton.astro';
 import { t, localeFromPath } from '../i18n';
-import avatar from '../assets/avatar.jpg';
+import emblem from '../assets/cf-emblem.png';
 
 const locale = localeFromPath(Astro.url.pathname);
 const localePrefix = locale === 'en' ? '' : '/' + locale;
@@ -15,7 +15,7 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 <header>
 	<div class="header-inner">
 		<a href={localePrefix + '/'} class="brand">
-			<Image src={avatar} alt="" width={72} height={72} class="brand-avatar" loading="eager" />
+			<Image src={emblem} alt="" width={72} height={72} class="brand-avatar" loading="eager" />
 			<div class="brand-text">
 				<span class="brand-name">{SITE_TITLE}</span>
 				<span class="brand-tag">{t(locale, 'site.brandTag')}</span>
@@ -87,12 +87,12 @@ const localePrefix = locale === 'en' ? '' : '/' + locale;
 		height: 36px;
 		border-radius: 999px;
 		object-fit: cover;
-		border: 1px solid var(--border);
 		flex-shrink: 0;
-		transition: border-color 0.15s, transform 0.15s;
+		/* No border: the emblem carries its own gold rim, and a second ring
+		   just outside it read as a double edge. */
+		transition: transform 0.15s;
 	}
 	.brand:hover .brand-avatar {
-		border-color: var(--accent);
 		transform: scale(1.04);
 	}
 
