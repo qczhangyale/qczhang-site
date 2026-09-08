@@ -453,19 +453,23 @@ export const RELEASE_II_ARCS: ReleaseIIArc[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* Foundational Release III — Wave A (2026-09-03)                      */
+/* Foundational Release III — Waves A and B                            */
 /* ------------------------------------------------------------------ */
 //
-// Wave A opens Release III. Like Release II it is grouped by arc rather than
-// drawn as a provenance tree: no frozen edge ledger has been published for it,
-// so a graph here would invent structure the corpus does not assert.
+// Wave A opens Release III and Wave B extends it into gauge geometry, twistor
+// incidence and finite Lorentzian connection selection. Like Release II, the
+// release is grouped rather than drawn as a provenance tree: no frozen edge
+// ledger has been published for it, so a graph here would invent structure the
+// corpus does not assert.
 
 export const RELEASE_III = {
-	records: 3,
-	preprints: 2,
+	records: 6,
+	preprints: 5,
 	datasets: 1,
-	published: '2026-09-03',
-	wave: 'A',
+	waves: {
+		A: { records: 3, preprints: 2, datasets: 1, published: '2026-09-03' },
+		B: { records: 3, preprints: 3, datasets: 0, published: '2026-09-08' },
+	},
 };
 
 export const RELEASE_III_ARCS: ReleaseIIArc[] = [
@@ -477,9 +481,9 @@ export const RELEASE_III_ARCS: ReleaseIIArc[] = [
 			'cf-20-synthetic-taichi-biphoton',
 		],
 		title: {
-			en: 'Reciprocal internal complementarity',
-			'zh-cn': '互反内在互补性',
-			'zh-tw': '互反內在互補性',
+			en: 'Wave A — Reciprocal internal complementarity',
+			'zh-cn': 'A 波——互反内在互补性',
+			'zh-tw': 'A 波——互反內在互補性',
 		},
 		blurb: {
 			en: 'A conditional route from Taichi-like mutual inclusion to a Schrödinger normal form, an exact separability-to-entanglement orbit, and a finite Born-form readout — then a source-complete synthetic biphoton model that tests whether a recognizable quantum image determines the entanglement behind it.',
@@ -496,7 +500,7 @@ export const RELEASE_III_ARCS: ReleaseIIArc[] = [
 		key: 'evidence3',
 		category: 'cf-dataset',
 		papers: ['cf-21-ric-exact-checks-archive'],
-		title: { en: 'Evidence archive', 'zh-cn': '证据存档', 'zh-tw': '證據存檔' },
+		title: { en: 'Wave A — Evidence archive', 'zh-cn': 'A 波——证据存档', 'zh-tw': 'A 波——證據存檔' },
 		blurb: {
 			en: 'Frozen fixtures, deterministic scripts, archived outputs, claim-to-evidence crosswalks and a unified verifier for both Wave A papers. Published as a Zenodo Dataset.',
 			'zh-cn': '为第一波两篇论文提供冻结的固定装置、确定性脚本、归档输出、主张—证据对照与统一验证器。以 Zenodo 数据集形式发布。',
@@ -506,6 +510,30 @@ export const RELEASE_III_ARCS: ReleaseIIArc[] = [
 			en: 'Holds no experimental data from the motivating 2023 biphoton experiment. Its numbers apply to the frozen synthetic model only, and the mock protocol shows software ordering rather than experimental certification.',
 			'zh-cn': '不包含作为动机的 2023 年双光子实验的任何实验数据。其数值仅适用于那个冻结的合成模型，模拟协议展示的是软件流程的次序，而非实验认证。',
 			'zh-tw': '不包含作為動機的 2023 年雙光子實驗的任何實驗資料。其數值僅適用於那個凍結的合成模型，模擬協定展示的是軟體流程的次序，而非實驗認證。',
+		},
+	},
+	{
+		key: 'comparison',
+		category: 'cf-ric',
+		papers: [
+			'cf-22-reciprocal-electromagnetism',
+			'cf-23-reciprocal-twistor-incidence',
+			'cf-24-reciprocal-lorentzian-connections',
+		],
+		title: {
+			en: 'Wave B — The geometry of comparison',
+			'zh-cn': 'B 波——比较之几何',
+			'zh-tw': 'B 波——比較之幾何',
+		},
+		blurb: {
+			en: 'Three conditional studies of comparison: how reciprocal phase can support compact electromagnetic gauge geometry, when Lorentzian twistor incidence can be carried by positive records, and when a finite Lorentzian action selects its connection.',
+			'zh-cn': '三项关于“比较”的条件性研究：互易相位如何支持紧致电磁规范几何，洛伦兹扭量关联何时能由正记录承载，以及有限洛伦兹作用量何时能够选择其联络。',
+			'zh-tw': '三項關於「比較」的條件性研究：互易相位如何支援緊緻電磁規範幾何，洛倫茲扭量關聯何時能由正記錄承載，以及有限洛倫茲作用量何時能夠選擇其聯絡。',
+		},
+		boundary: {
+			en: 'A circle is not yet electromagnetism; an incidence symmetry is not yet a physical operation; and one geometric solution is not yet the full action. The carrier, localization, transport, reality, action and boundary data remain explicit inputs where required.',
+			'zh-cn': '一个圆还不是电磁学；一个关联对称性还不是物理操作；一个几何解还不是整个作用量。载体、局域化、输运、实结构、作用量与边界数据，在需要之处仍是明确输入。',
+			'zh-tw': '一個圓還不是電磁學；一個關聯對稱性還不是物理操作；一個幾何解還不是整個作用量。載體、局域化、輸運、實結構、作用量與邊界資料，在需要之處仍是明確輸入。',
 		},
 	},
 ];

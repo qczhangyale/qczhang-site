@@ -1,9 +1,9 @@
 ---
-// The popular-science guide, embedded on the front page.
+// A popular-science guide, embedded on the front page.
 //
-// Rendered from the SAME content-collection entry that backs
-// /blog/from-relation-to-reality/, so the article has exactly one source of
-// truth and the blog copy and the front-page copy can never drift apart.
+// Rendered from the SAME content-collection entry that backs its blog route,
+// so each article has exactly one source of truth and its blog and front-page
+// copies can never drift apart.
 // Locale resolution matches the blog routes (pickLocalized), so the
 // Simplified and Traditional editions render on their own locale routes.
 import { getCollection, render } from 'astro:content';
@@ -26,7 +26,7 @@ const rendered = entry ? await render(entry) : undefined;
 
 // The article closes with its own annotated Zenodo link index. On the front
 // page that index would sit directly above the record trees, which list the
-// same eighteen records with summaries and detail pages — so it is cut here
+// the same records with summaries and detail pages — so it is cut here
 // and kept only in the blog copy. All three editions carry the same
 // <hr id="zenodo-index" /> marker at that point; the cut is a truncation, not
 // a CSS hide, so the duplicate links never reach the page at all.
@@ -64,8 +64,7 @@ const Content = html ? null : rendered?.Content;
 	.prose :global(p) {
 		margin: 0 0 1.2em;
 	}
-	/* The article opens with a pull quote whose 2.2em top margin stacked on
-	   the label above it. Nothing should push the first element down. */
+	/* Nothing should push the first article element away from its label. */
 	.prose > :global(:first-child) {
 		margin-top: 0;
 	}

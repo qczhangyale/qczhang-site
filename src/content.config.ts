@@ -30,7 +30,7 @@ const papers = defineCollection({
 		doi: z.string(),
 		date: z.coerce.date(),
 		// Sort key WITHIN a series. TCG uses 1..42 (research-marathon order);
-		// Complementarity-First uses 1..10 (Release I reading order). Always
+		// Complementarity-First uses 1..24 across Releases I–III. Always
 		// filter by series before sorting on this field.
 		order: z.number(),
 		// Which research series the paper belongs to. Defaults to 'tcg' so the
@@ -38,8 +38,9 @@ const papers = defineCollection({
 		series: z.enum(['cf', 'tcg']).optional().default('tcg'),
 		// Which Foundational Release a Complementarity-First paper belongs to.
 		// Release I (2026-08-18) is the grammar; Release II (2026-08-26) extends
-		// it into time and electromagnetism; Release III opens with Wave A
-		// (2026-09-03) on reciprocal internal complementarity. TCG papers have
+		// it into time and electromagnetism; Release III spans Wave A
+		// (2026-09-03) on reciprocal internal complementarity and Wave B
+		// (2026-09-08) on the geometry of comparison. TCG papers have
 		// no release.
 		release: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
 		// Internal release code (CF-F1, CFQF-Q4, CUD-G1, ...). Complementarity-First

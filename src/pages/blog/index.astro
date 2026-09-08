@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { filterEnglishOnly } from '../../i18n';
+import { filterEnglishOnly, t } from '../../i18n';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -37,7 +37,7 @@ const featured = allPosts.filter((x) => !x.post.data.pinned && x.post.data.featu
 const highlight = [...pinned, ...featured];
 const recent = allPosts.filter((x) => !x.post.data.pinned && !x.post.data.featured);
 
-const pageDescription = "Long-form writing on the Twistor Configuration Geometry program — essays, notes, and explanations.";
+const pageDescription = t('en', 'blog.intro');
 ---
 
 <!doctype html>

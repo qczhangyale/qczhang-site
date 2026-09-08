@@ -50,8 +50,8 @@ const CODE_OF: Record<string, string> = {
 const TOTAL_CF = RELEASE.records + RELEASE_II.records + RELEASE_III.records;
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
-	// Two essays cover three releases: the older one has a Part I and a
-	// Part II, so the tabs are anchors into it rather than separate pieces.
+	// Three essays cover three releases: the oldest has a Part I and a
+	// Part II, while the two Release-III essays cover Waves A and B.
 	tabsLabel: {
 		en: 'Jump to a release',
 		'zh-cn': '跳至某次发布',
@@ -61,34 +61,39 @@ const copy = {
 	tabII: { en: 'Release II', 'zh-cn': '发布 II', 'zh-tw': '發布 II' },
 	tabIII: { en: 'Release III', 'zh-cn': '发布 III', 'zh-tw': '發布 III' },
 	relIII: {
-		en: 'Release III — Wave A',
-		'zh-cn': '发布 III —— 第一波',
-		'zh-tw': '發布 III —— 第一波',
+		en: 'Release III — Waves A and B',
+		'zh-cn': '发布 III —— A 波与 B 波',
+		'zh-tw': '發布 III —— A 波與 B 波',
 	},
 	relIIInote: {
-		en: 'Grouped by arc. Hover a row for its summary; the title opens Zenodo. Wave A does not revise Releases I or II retroactively.',
-		'zh-cn': '按弧分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。第一波不会追溯性地修改发布 I 或 II。',
-		'zh-tw': '按弧分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。第一波不會追溯性地修改發布 I 或 II。',
+		en: 'Grouped by wave and arc. Hover a row for its summary; the title opens Zenodo. Wave B does not revise earlier waves or releases retroactively.',
+		'zh-cn': '按波次与研究弧分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。B 波不会追溯性地修改更早的波次或发布。',
+		'zh-tw': '按波次與研究弧分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。B 波不會追溯性地修改更早的波次或發布。',
 	},
 	relIIIsub: {
-		en: `Three records published ${RELEASE_III.published}: two preprints on reciprocal internal complementarity and a reproducibility dataset. Wave A opens the release; later waves are not published yet.`,
-		'zh-cn': `${RELEASE_III.published} 发布的三条记录：两篇关于互反内在互补性的预印本与一份可复现数据集。第一波开启本次发布；后续各波尚未发布。`,
-		'zh-tw': `${RELEASE_III.published} 發布的三條紀錄：兩篇關於互反內在互補性的預印本與一份可重現資料集。第一波開啟本次發布；後續各波尚未發布。`,
+		en: `Six records across two waves. Wave A (${RELEASE_III.waves.A.published}) contains two preprints on reciprocal internal complementarity and a reproducibility dataset; Wave B (${RELEASE_III.waves.B.published}) adds three preprints on gauge geometry, twistor incidence and Lorentzian connection selection.`,
+		'zh-cn': `两波共六条记录。A 波（${RELEASE_III.waves.A.published}）包含两篇关于互反内在互补性的预印本与一份可复现数据集；B 波（${RELEASE_III.waves.B.published}）新增三篇关于规范几何、扭量关联与洛伦兹联络选择的预印本。`,
+		'zh-tw': `兩波共六條紀錄。A 波（${RELEASE_III.waves.A.published}）包含兩篇關於互反內在互補性的預印本與一份可重現資料集；B 波（${RELEASE_III.waves.B.published}）新增三篇關於規範幾何、扭量關聯與洛倫茲聯絡選擇的預印本。`,
 	},
 	indexEyebrow: { en: 'The records', 'zh-cn': '记录', 'zh-tw': '紀錄' },
 	// Readers who arrived looking for a paper rather than the essays get one
 	// affordance, in the row that stays on screen.
-	// Names the essay that follows, so the two embedded pieces do not run
+	// Names the essays that follow, so the embedded pieces do not run
 	// together as one continuous article.
-	essayIII: {
+	essayIIIA: {
 		en: 'Release III · Wave A',
-		'zh-cn': '发布 III · 第一波',
-		'zh-tw': '發布 III · 第一波',
+		'zh-cn': '发布 III · A 波',
+		'zh-tw': '發布 III · A 波',
+	},
+	essayIIIB: {
+		en: 'Release III · Wave B',
+		'zh-cn': '发布 III · B 波',
+		'zh-tw': '發布 III · B 波',
 	},
 	tabPublications: {
-		en: `(${TOTAL_CF} publications)`,
-		'zh-cn': `（${TOTAL_CF} 篇论文）`,
-		'zh-tw': `（${TOTAL_CF} 篇論文）`,
+		en: `(${TOTAL_CF} records)`,
+		'zh-cn': `（${TOTAL_CF} 条记录）`,
+		'zh-tw': `（${TOTAL_CF} 條紀錄）`,
 	},
 	indexTitle: {
 		en: 'Browse the corpus',
@@ -96,9 +101,9 @@ const copy = {
 		'zh-tw': '瀏覽語料庫',
 	},
 	indexNote: {
-		en: 'The records the article describes, arranged by structure rather than by narrative. Hover any row for its summary; titles open Zenodo.',
-		'zh-cn': '文章所述的那些记录，按结构而非叙事排列。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。',
-		'zh-tw': '文章所述的那些紀錄，按結構而非敘事排列。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。',
+		en: 'The records these articles describe, arranged by structure rather than by narrative. Hover any row for its summary; titles open Zenodo.',
+		'zh-cn': '这些文章所述的记录，按结构而非叙事排列。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。',
+		'zh-tw': '這些文章所述的紀錄，按結構而非敘事排列。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。',
 	},
 	relI: {
 		en: 'Release I — building the grammar',
@@ -169,12 +174,17 @@ const copy = {
     order matches the order the essays appear in. */}
 <HomeArticle locale={locale} anchor="cf-release-1" />
 
-{/* The anchor sits on the label, not the article, so the jump lands on the
-    "Release III · Wave A" line rather than below it. */}
+{/* The anchor sits on the first Release-III label, so the tab lands at the
+    beginning of Wave A and Wave B follows it chronologically. */}
 <div class="essay-label" id="cf-release-3">
-	<span>{s(copy.essayIII)}</span>
+	<span>{s(copy.essayIIIA)}</span>
 </div>
 <HomeArticle locale={locale} slug="the-quantum-whole" />
+
+<div class="essay-label">
+	<span>{s(copy.essayIIIB)}</span>
+</div>
+<HomeArticle locale={locale} slug="the-geometry-of-comparison" />
 
 <div class="section" id="records">
 	<div class="section-eyebrow">{s(copy.indexEyebrow)}</div>

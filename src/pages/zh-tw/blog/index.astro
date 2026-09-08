@@ -20,7 +20,9 @@ function readingMinutes(body: string | undefined): number {
 		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
 		.replace(/[#>*_~`-]+/g, ' ');
 	const words = cleaned.split(/\s+/).filter((w) => w.length > 0).length;
-	return Math.max(1, Math.round(words / 200));
+	const cjk = (cleaned.match(/[一-鿿]/g) ?? []).length;
+	const effectiveWords = words + cjk * 0.8;
+	return Math.max(1, Math.round(effectiveWords / 200));
 }
 
 const LONG_READ_THRESHOLD = 5;

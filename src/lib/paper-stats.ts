@@ -26,7 +26,7 @@ const ADJACENT_WORKSTREAM_ORDERS = [17, 18, 19, 20];
 export interface PaperCounts {
 	/** Every paper on the site, both series. */
 	total: number;
-	/** Papers in the Complementarity-First series (both releases). */
+	/** Records in the Complementarity-First series (all releases). */
 	cf: number;
 	/** Complementarity-First records in Foundational Release I. */
 	cfRelease1: number;
