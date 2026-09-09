@@ -526,14 +526,14 @@ export const RELEASE_III_ARCS: ReleaseIIArc[] = [
 			'zh-tw': 'B 波——比較之幾何',
 		},
 		blurb: {
-			en: 'Three conditional studies of comparison: how reciprocal phase can support compact electromagnetic gauge geometry, when Lorentzian twistor incidence can be carried by positive records, and when a finite Lorentzian action selects its connection.',
-			'zh-cn': '三项关于“比较”的条件性研究：互易相位如何支持紧致电磁规范几何，洛伦兹扭量关联何时能由正记录承载，以及有限洛伦兹作用量何时能够选择其联络。',
-			'zh-tw': '三項關於「比較」的條件性研究：互易相位如何支援緊緻電磁規範幾何，洛倫茲扭量關聯何時能由正記錄承載，以及有限洛倫茲作用量何時能夠選擇其聯絡。',
+			en: 'RIC–EM, RIC–TI and RIC–LC address localized phase comparison, positive-record transport of incidence-plane supports, and action-level connection selection under independent connection variation.',
+			'zh-cn': 'RIC–EM、RIC–TI 与 RIC–LC 分别研究局域相位比较、关联平面支撑的正记录传输，以及独立联络变分下的作用量层级联络选择。',
+			'zh-tw': 'RIC–EM、RIC–TI 與 RIC–LC 分別研究局域相位比較、關聯平面支撐的正記錄傳輸，以及獨立聯絡變分下的作用量層級聯絡選擇。',
 		},
 		boundary: {
-			en: 'A circle is not yet electromagnetism; an incidence symmetry is not yet a physical operation; and one geometric solution is not yet the full action. The carrier, localization, transport, reality, action and boundary data remain explicit inputs where required.',
-			'zh-cn': '一个圆还不是电磁学；一个关联对称性还不是物理操作；一个几何解还不是整个作用量。载体、局域化、输运、实结构、作用量与边界数据，在需要之处仍是明确输入。',
-			'zh-tw': '一個圓還不是電磁學；一個關聯對稱性還不是物理操作；一個幾何解還不是整個作用量。載體、局域化、輸運、實結構、作用量與邊界資料，在需要之處仍是明確輸入。',
+			en: 'Carrier, localization, transport, reality, action and boundary data remain explicit inputs where required; the three typed structures are not identified, and no unified continuum theory is claimed.',
+			'zh-cn': '载体、局域化、输运、实结构、作用量与边界数据，在需要之处仍是明确输入；三类结构并未被认定为同一对象，也没有提出统一的连续理论。',
+			'zh-tw': '載體、局域化、輸運、實結構、作用量與邊界資料，在需要之處仍是明確輸入；三類結構並未被認定為同一對象，也沒有提出統一的連續理論。',
 		},
 	},
 ];
