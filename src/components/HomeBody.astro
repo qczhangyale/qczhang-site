@@ -13,6 +13,8 @@ import {
 	RELEASE_II,
 	RELEASE_III,
 	RELEASE_III_ARCS,
+	RELEASE_IV,
+	RELEASE_IV_ARCS,
 	READING_PATHS,
 	OPEN_PROBLEMS,
 	pathName,
@@ -46,8 +48,9 @@ const CODE_OF: Record<string, string> = {
 };
 
 // The record index below lists every Complementarity-First record, so the
-// button's count is the sum across the three releases.
-const TOTAL_CF = RELEASE.records + RELEASE_II.records + RELEASE_III.records;
+// button's count is the sum across the four releases.
+const TOTAL_CF =
+	RELEASE.records + RELEASE_II.records + RELEASE_III.records + RELEASE_IV.records;
 const s = (v: any) => v[locale] ?? v.en;
 const copy = {
 	// Three essays cover three releases: the oldest has a Part I and a
@@ -60,6 +63,7 @@ const copy = {
 	tabI: { en: 'Release I', 'zh-cn': '发布 I', 'zh-tw': '發布 I' },
 	tabII: { en: 'Release II', 'zh-cn': '发布 II', 'zh-tw': '發布 II' },
 	tabIII: { en: 'Release III', 'zh-cn': '发布 III', 'zh-tw': '發布 III' },
+	tabIV: { en: 'Release IV', 'zh-cn': '发布 IV', 'zh-tw': '發布 IV' },
 	relIII: {
 		en: 'Release III — Waves A and B',
 		'zh-cn': '发布 III —— A 波与 B 波',
@@ -89,6 +93,26 @@ const copy = {
 		en: 'Release III · Wave B',
 		'zh-cn': '发布 III · B 波',
 		'zh-tw': '發布 III · B 波',
+	},
+	essayIV: {
+		en: 'Release IV',
+		'zh-cn': '发布 IV',
+		'zh-tw': '發布 IV',
+	},
+	relIV: {
+		en: 'Release IV — records, composition, and controlled dynamics',
+		'zh-cn': '发布 IV —— 记录、复合与受控动力学',
+		'zh-tw': '發布 IV —— 紀錄、複合與受控動力學',
+	},
+	relIVsub: {
+		en: 'Fifteen records published 3 October 2026: fourteen research papers across five branches, plus the release overview.',
+		'zh-cn': '2026 年 10 月 3 日发布的十五条记录：横跨五个分支的十四篇研究论文，以及一份发布总览。',
+		'zh-tw': '2026 年 10 月 3 日發布的十五條紀錄：橫跨五個分支的十四篇研究論文，以及一份發布總覽。',
+	},
+	relIVnote: {
+		en: 'Grouped by branch. Hover a row for its summary; the title opens Zenodo. Cross-branch vocabulary does not imply a shared physical carrier.',
+		'zh-cn': '按分支分组。将鼠标悬停于任一行可查看摘要；点击标题跳转 Zenodo。跨分支的共用词汇并不意味着共享同一物理载体。',
+		'zh-tw': '按分支分組。將滑鼠懸停於任一行可查看摘要；點擊標題跳轉 Zenodo。跨分支的共用詞彙並不意味著共享同一物理載體。',
 	},
 	tabPublications: {
 		en: `(${TOTAL_CF} records)`,
@@ -166,6 +190,7 @@ const copy = {
 			<a href="#cf-release-1">{s(copy.tabI)}</a>
 			<a href="#cf-release-2">{s(copy.tabII)}</a>
 			<a href="#cf-release-3">{s(copy.tabIII)}</a>
+			<a href="#cf-release-4">{s(copy.tabIV)}</a>
 		</nav>
 	</div>
 </div>
@@ -185,6 +210,13 @@ const copy = {
 	<span>{s(copy.essayIIIB)}</span>
 </div>
 <HomeArticle locale={locale} slug="the-geometry-of-comparison" />
+
+{/* Release IV's guide is one essay rather than per-wave pieces, so the
+    tab anchor sits directly on its label. */}
+<div class="essay-label" id="cf-release-4">
+	<span>{s(copy.essayIV)}</span>
+</div>
+<HomeArticle locale={locale} slug="what-the-parts-leave-out" />
 
 <div class="section" id="records">
 	<div class="section-eyebrow">{s(copy.indexEyebrow)}</div>
@@ -208,6 +240,12 @@ const copy = {
 	<h2>{s(copy.relIII)}</h2>
 	<p class="section-intro">{s(copy.relIIIsub)}</p>
 	<CfReleaseIITree locale={locale} release={3} arcs={RELEASE_III_ARCS} note={s(copy.relIIInote)} />
+</div>
+
+<div class="section">
+	<h2>{s(copy.relIV)}</h2>
+	<p class="section-intro">{s(copy.relIVsub)}</p>
+	<CfReleaseIITree locale={locale} release={4} arcs={RELEASE_IV_ARCS} note={s(copy.relIVnote)} />
 </div>
 
 <div class="section">

@@ -40,9 +40,10 @@ const papers = defineCollection({
 		// Release I (2026-08-18) is the grammar; Release II (2026-08-26) extends
 		// it into time and electromagnetism; Release III spans Wave A
 		// (2026-09-03) on reciprocal internal complementarity and Wave B
-		// (2026-09-08) on the geometry of comparison. TCG papers have
-		// no release.
-		release: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
+		// (2026-09-08) on the geometry of comparison; Release IV (2026-10-03)
+		// is fourteen papers plus an overview on records, composition and
+		// controlled dynamics. TCG papers have no release.
+		release: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).optional(),
 		// Internal release code (CF-F1, CFQF-Q4, CUD-G1, ...). Complementarity-First
 		// papers cross-reference each other by these codes in the release overview,
 		// so they are shown on cards and detail pages. TCG papers have none.
@@ -66,6 +67,12 @@ const papers = defineCollection({
 			'cf-dataset',
 			// Complementarity-First — Release III
 			'cf-ric',
+			// Complementarity-First — Release IV
+			'cf-refresh',
+			'cf-magnetic',
+			'cf-cells',
+			'cf-superconductivity',
+			'cf-composition',
 		]),
 		precision: z.string().optional(),
 		description: z.string(),

@@ -64,6 +64,15 @@ const Content = html ? null : rendered?.Content;
 	.prose :global(p) {
 		margin: 0 0 1.2em;
 	}
+
+	/* An article whose source carries footnotes keeps them in its blog copy,
+	   but the front-page embed is truncated at the Zenodo-index marker, so the
+	   definitions never reach this page. Hide the markers rather than leave
+	   superscripts pointing at anchors that were cut away. Note that remark
+	   puts the marker attribute on the anchor, not the wrapping superscript. */
+	.prose :global(a[data-footnote-ref]) {
+		display: none;
+	}
 	/* Nothing should push the first article element away from its label. */
 	.prose > :global(:first-child) {
 		margin-top: 0;
